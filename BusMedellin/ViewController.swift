@@ -56,11 +56,18 @@ extension ViewController: MKMapViewDelegate {
 
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         if let annotation = annotation as? BMAnnotation {
-            let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: annotation.reuseId)
-            annotationView.animatesDrop = true
-            annotationView.pinColor = annotation.pinColor
-            annotationView.draggable = true
-            annotationView.canShowCallout = true
+
+            var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(annotation.reuseId) as? MKPinAnnotationView
+            if (annotationView == nil) {
+                annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: annotation.reuseId)
+                annotationView?.annotation = annotation
+            }
+
+//            let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: annotation.reuseId)
+            annotationView?.animatesDrop = true
+            annotationView?.pinColor = annotation.pinColor
+            annotationView?.draggable = true
+            annotationView?.canShowCallout = false
             return annotationView
         }
         return nil
@@ -96,6 +103,11 @@ extension ViewController: MKMapViewDelegate {
 
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, didChangeDragState newState: MKAnnotationViewDragState, fromOldState oldState: MKAnnotationViewDragState) {
 
+        switch newState {
+            case .Starting:             view.dragState = .Dragging
+            case .Ending, .Canceling:   view.dragState = .None
+            default: break
+        }
     }
 
     /**
@@ -125,9 +137,13 @@ extension ViewController: MKMapViewDelegate {
         var pointsToUse = coordinates
         let myPolyline = MKGeodesicPolyline(coordinates: &pointsToUse, count: coordinates.count)
         // Remove previous overlays
-        self.mapView?.removeOverlays(self.mapView?.overlays ?? [])
+        self.removeDrawnRoutes()
         // Add new overlay
         self.mapView?.addOverlay(myPolyline, level: MKOverlayLevel.AboveLabels)
+    }
+
+    private func removeDrawnRoutes() {
+        self.mapView?.removeOverlays(self.mapView?.overlays ?? [])
     }
 
     private func createLocationsFromCoordinates(coordinates: [[Double]]) -> [CLLocationCoordinate2D] {
@@ -166,6 +182,9 @@ extension ViewController {
             // Remove current annotation
             self.mapView?.removeAnnotation(safe: self.startAnnotation)
             self.startAnnotation = nil
+            // Remove previous routes
+            self.removeDrawnRoutes()
+
         } else if let centerCoordinate = self.mapView?.centerCoordinate {
             // Add new annotation
             self.startAnnotation = BMStartAnnotation.createWithCoordinates(centerCoordinate)
@@ -178,7 +197,7 @@ extension ViewController {
         if let location = self.checkLocationAuthorizationStatus() {
             self.nearMeButton?.locationState = .Active
             self.centerMapOnLocation(location)
-            self.fetchRoutesForLocation(location)
+//            self.fetchRoutesForLocation(location)
         } else {
             self.nearMeButton?.locationState = .Inactive
         }

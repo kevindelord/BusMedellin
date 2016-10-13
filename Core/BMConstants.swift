@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct BMPlist {
 
@@ -16,6 +17,14 @@ struct BMPlist {
     struct FusionTable {
         static let Identifier   = "FusionTableId"
         static let Key          = "FusionTableKey"
+    }
+
+    static let MapDefault       = "MapDefault"
+
+    struct CityCenter {
+        static let Latitude     = "Latitude"
+        static let Longitude    = "Longitude"
+        static let Radius       = "Radius"
     }
 }
 
@@ -30,4 +39,9 @@ struct API {
             static let Geometry     = "geometry"
         }
     }
+}
+
+struct Map {
+
+    static let RouteColor       = UIColor(33, g: 150, b: 243)
 }

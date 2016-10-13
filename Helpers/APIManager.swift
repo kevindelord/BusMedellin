@@ -50,7 +50,7 @@ struct APIManager {
 
 extension APIManager {
 
-    static func coordinatesForRouteName(routeName: String, completion: ((coordinates: [[Float]], error: NSError?) -> Void)?) {
+    static func coordinatesForRouteName(routeName: String, completion: ((coordinates: [[Double]], error: NSError?) -> Void)?) {
 
         //
         // baseURL+ "?sql=SELECT geometry FROM " + idFusionTable + " WHERE CODIGO_RUT='" + route + "'&key=" + keyFusionTable
@@ -68,7 +68,7 @@ extension APIManager {
                 rows            = jsonObject[API.Response.Key.Rows] as? [[[String:AnyObject]]],
                 row             = rows.first?.first,
                 geometry        = row[API.Response.Key.Geometry] as? [String:AnyObject],
-                coordinates     = geometry[API.Response.Key.Coordinates] as? [[Float]] {
+                coordinates     = geometry[API.Response.Key.Coordinates] as? [[Double]] {
 
                     DKLog(Verbose.Manager.API, "APIManager: did Receive \(coordinates.count) coordinates for route name: \(routeName)\n")
                     completion?(coordinates: coordinates, error: nil)
@@ -82,7 +82,7 @@ extension APIManager {
         })
     }
 
-    static func routesAroundCoordinates(lat lat: Float, lng: Float, radius: Float = 500, completion: ((routes: [[String]], error: NSError?) -> Void)?) {
+    static func routesAroundCoordinates(lat lat: Double, lng: Double, radius: Double = 500, completion: ((routes: [[String]], error: NSError?) -> Void)?) {
 
         //
         // BaseURL + "?sql=SELECT Nombre_Rut,CODIGO_RUT FROM " + idFusionTable + " WHERE ST_INTERSECTS(geometry,CIRCLE(LATLNG(" + lat + "," + lng + ")," + radius + "))&key=" + keyFusionTable

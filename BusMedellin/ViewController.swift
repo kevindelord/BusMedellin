@@ -8,30 +8,119 @@
 
 import UIKit
 import MapKit
+import DKHelper
 
 class ViewController: UIViewController {
 
     @IBOutlet weak var mapView : MKMapView?
 
+    private let locationManager = CLLocationManager()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-//        CLLocationManager.requestWhenInUseAuthorization()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        self.locateMeButtonPressed()
     }
 
-    private func fetchCoordinatesForRouteName() {
-        APIManager.coordinatesForRouteName("RU130RA", completion: { (coordinates, error) in
+    private var cityCenterLocation : CLLocation {
+        let info = NSBundle.entryInPListForKey(BMPlist.MapDefault) as? [String:String]
+        let latitude = (Double(info?[BMPlist.CityCenter.Latitude] ?? "0") ?? 0)
+        let longitude = (Double(info?[BMPlist.CityCenter.Longitude] ?? "0") ?? 0)
+        return CLLocation(latitude: latitude, longitude: longitude)
+    }
+
+    private var defaultZoomRadius : CLLocationDistance {
+        let info = NSBundle.entryInPListForKey(BMPlist.MapDefault) as? [String:String]
+        let radius = Double(info?[BMPlist.CityCenter.Radius] ?? "0")
+        return (radius ?? 0)
+    }
+}
+
+// MARK: - MapView
+
+extension ViewController: MKMapViewDelegate {
+
+    private func checkLocationAuthorizationStatus() -> CLLocation {
+        if (CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse) {
+            self.mapView?.showsUserLocation = true
+            let userLocation = self.mapView?.userLocation.location
+            return (userLocation ?? self.cityCenterLocation)
+        } else {
+            self.locationManager.requestWhenInUseAuthorization()
+            return self.cityCenterLocation
+        }
+    }
+
+    private func centerMapOnLocation(location: CLLocation) {
+        let regionRadius: CLLocationDistance = self.defaultZoomRadius
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 2.0, regionRadius * 2.0)
+        self.mapView?.setRegion(coordinateRegion, animated: true)
+    }
+
+    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
+
+        let lineView = MKPolylineRenderer(overlay: overlay)
+        lineView.strokeColor = Map.RouteColor
+        lineView.lineWidth = 1
+        return lineView
+    }
+
+    private func drawRouteForCoordinates(coordinates: [[Double]]) {
+
+        if (coordinates.isEmpty == true) {
+            return
+        }
+        var pointsToUse = [CLLocationCoordinate2D]()
+        coordinates.forEach { (values: [Double]) in
+            if let
+                x = values[safe: 1],
+                y = values[safe: 0] {
+                    pointsToUse += [CLLocationCoordinate2DMake(CLLocationDegrees(x), CLLocationDegrees(y))]
+            }
+        }
+
+        let myPolyline = MKGeodesicPolyline(coordinates: &pointsToUse, count: coordinates.count)
+        // Remove previous overlays
+        self.mapView?.removeOverlays(self.mapView?.overlays ?? [])
+        // Add new overlay
+        self.mapView?.addOverlay(myPolyline, level: MKOverlayLevel.AboveLabels)
+    }
+}
+
+// MARK: - Interface Action
+
+extension ViewController {
+
+    @IBAction func locateMeButtonPressed() {
+        let location = self.checkLocationAuthorizationStatus()
+        self.centerMapOnLocation(location)
+        self.fetchRoutesForLocation(location)
+    }
+}
+
+// MARK: - Data
+
+extension ViewController {
+
+    private func fetchCoordinatesForRouteName(routeName: String) {
+
+        APIManager.coordinatesForRouteName(routeName, completion: { (coordinates, error) in
             UIAlertController.showErrorPopup(error)
-            print(coordinates)
+            self.drawRouteForCoordinates(coordinates)
         })
+    }
+
+    private func fetchRoutesForLocation(location: CLLocation) {
+
+        APIManager.routesAroundCoordinates(lat: location.coordinate.latitude, lng: location.coordinate.longitude) { (routes, error) in
+            UIAlertController.showErrorPopup(error)
+            if let routeName = routes.first?[safe: 1] {
+                self.fetchCoordinatesForRouteName(routeName)
+            }
+        }
     }
 
     private func fetchRoutesForPoints() {

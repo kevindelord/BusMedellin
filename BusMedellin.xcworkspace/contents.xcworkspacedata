@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Resources/medellin.gpx">
+   </FileRef>
+   <FileRef
       location = "group:BusMedellin.xcodeproj">
    </FileRef>
    <FileRef

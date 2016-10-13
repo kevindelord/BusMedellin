@@ -22,6 +22,6 @@ struct Configuration {
 struct Verbose {
 
     struct Manager {
-        static let API              : Bool = true
+        static let API              : Bool = false
     }
 }

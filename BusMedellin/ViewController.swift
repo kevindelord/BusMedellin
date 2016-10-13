@@ -54,6 +54,16 @@ class ViewController                        : UIViewController {
 
 extension ViewController: MKMapViewDelegate {
 
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        if let annotation = annotation as? BMAnnotation {
+            let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: annotation.reuseId)
+            annotationView.animatesDrop = true
+            annotationView.pinColor = annotation.pinColor
+            return annotationView
+        }
+        return nil
+    }
+
     private func checkLocationAuthorizationStatus() -> CLLocation? {
         if (CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse) {
             self.mapView?.showsUserLocation = true
@@ -130,7 +140,7 @@ extension ViewController {
             self.mapView?.removeAnnotation(safe: self.destinationAnnotation)
             self.destinationAnnotation = nil
         } else if let centerCoordinate = self.mapView?.centerCoordinate {
-            self.destinationAnnotation = BMAnnotation(title: "Destination Point", subtitle: "Where you want to arrive.", coordinate: centerCoordinate)
+            self.destinationAnnotation = BMDestinationAnnotation.createWithCoordinates(centerCoordinate)
             self.mapView?.addAnnotation(safe: self.destinationAnnotation)
         }
     }
@@ -142,7 +152,7 @@ extension ViewController {
             self.mapView?.removeAnnotation(safe: self.startAnnotation)
             self.startAnnotation = nil
         } else if let centerCoordinate = self.mapView?.centerCoordinate {
-            self.startAnnotation = BMAnnotation(title: "Starting Point", subtitle: "Where you want to take a bus.", coordinate: centerCoordinate)
+            self.startAnnotation = BMStartAnnotation.createWithCoordinates(centerCoordinate)
             self.mapView?.addAnnotation(safe: self.startAnnotation)
         }
     }

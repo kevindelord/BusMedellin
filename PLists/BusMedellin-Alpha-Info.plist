@@ -2,8 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Enable location to find buses nearby!</string>
+	<key>APIBaseURL</key>
+	<string>https://www.googleapis.com/fusiontables/v1/query</string>
 	<key>AppId</key>
 	<string>0123456789</string>
 	<key>CFBundleDevelopmentRegion</key>
@@ -24,8 +24,23 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>FusionTableId</key>
+	<string>1_ihDJT-_zFRLXb526aaS0Ct3TiXTlcPDy_BlAz0</string>
+	<key>FusionTableKey</key>
+	<string>AIzaSyC59BP_KRtQDLeb5XM_x0eQNT_tdlBbHZc</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>MapDefault</key>
+	<dict>
+		<key>Latitude</key>
+		<string>6.2442</string>
+		<key>Longitude</key>
+		<string>-75.5812</string>
+		<key>Radius</key>
+		<string>3300</string>
+	</dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Enable location to find buses nearby!</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -38,21 +53,6 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-	<key>APIBaseURL</key>
-	<string>https://www.googleapis.com/fusiontables/v1/query</string>
-	<key>FusionTableId</key>
-	<string>1_ihDJT-_zFRLXb526aaS0Ct3TiXTlcPDy_BlAz0</string>
-	<key>FusionTableKey</key>
-	<string>AIzaSyC59BP_KRtQDLeb5XM_x0eQNT_tdlBbHZc</string>
-	<key>MapDefault</key>
-	<dict>
-		<key>Latitude</key>
-		<string>6.2442</string>
-		<key>Longitude</key>
-		<string>-75.5812</string>
-		<key>Radius</key>
-		<string>3300</string>
-	</dict>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

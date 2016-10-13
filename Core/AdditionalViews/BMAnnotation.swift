@@ -13,7 +13,7 @@ class BMAnnotation  : NSObject, MKAnnotation {
 
     let title       : String?
     let subtitle    : String?
-    let coordinate  : CLLocationCoordinate2D
+    var coordinate  : CLLocationCoordinate2D
     let reuseId     : String
     let pinColor    : MKPinAnnotationColor
 

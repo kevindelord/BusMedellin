@@ -62,8 +62,6 @@ extension ViewController: MKMapViewDelegate {
                 annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: annotation.reuseId)
                 annotationView?.annotation = annotation
             }
-
-//            let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: annotation.reuseId)
             annotationView?.animatesDrop = true
             annotationView?.pinColor = annotation.pinColor
             annotationView?.draggable = true

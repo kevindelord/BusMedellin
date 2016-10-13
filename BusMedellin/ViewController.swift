@@ -68,25 +68,30 @@ extension ViewController: MKMapViewDelegate {
         return lineView
     }
 
-    private func drawRouteForCoordinates(coordinates: [[Double]]) {
+    private func drawRouteForCoordinates(coordinates: [CLLocationCoordinate2D]) {
 
         if (coordinates.isEmpty == true) {
             return
         }
-        var pointsToUse = [CLLocationCoordinate2D]()
-        coordinates.forEach { (values: [Double]) in
-            if let
-                x = values[safe: 1],
-                y = values[safe: 0] {
-                    pointsToUse += [CLLocationCoordinate2DMake(CLLocationDegrees(x), CLLocationDegrees(y))]
-            }
-        }
-
+        // A 'var' is required by MKGeodesicPolyline()
+        var pointsToUse = coordinates
         let myPolyline = MKGeodesicPolyline(coordinates: &pointsToUse, count: coordinates.count)
         // Remove previous overlays
         self.mapView?.removeOverlays(self.mapView?.overlays ?? [])
         // Add new overlay
         self.mapView?.addOverlay(myPolyline, level: MKOverlayLevel.AboveLabels)
+    }
+
+    private func createLocationsFromCoordinates(coordinates: [[Double]]) -> [CLLocationCoordinate2D] {
+        var pointsToUse = [CLLocationCoordinate2D]()
+        coordinates.forEach { (values: [Double]) in
+            if let
+                y = values[safe: 0],
+                x = values[safe: 1] {
+                    pointsToUse += [CLLocationCoordinate2DMake(CLLocationDegrees(x), CLLocationDegrees(y))]
+            }
+        }
+        return pointsToUse
     }
 }
 
@@ -109,15 +114,16 @@ extension ViewController {
 
         APIManager.coordinatesForRouteName(routeName, completion: { (coordinates, error) in
             UIAlertController.showErrorPopup(error)
-            self.drawRouteForCoordinates(coordinates)
+            let locationCoordinates = self.createLocationsFromCoordinates(coordinates)
+            self.drawRouteForCoordinates(locationCoordinates)
         })
     }
 
     private func fetchRoutesForLocation(location: CLLocation) {
 
-        APIManager.routesAroundCoordinates(lat: location.coordinate.latitude, lng: location.coordinate.longitude) { (routes, error) in
+        APIManager.routesAroundLocation(location) { (routes, error) in
             UIAlertController.showErrorPopup(error)
-            if let routeName = routes.first?[safe: 1] {
+            if let routeName = routes.first?.code {
                 self.fetchCoordinatesForRouteName(routeName)
             }
         }
@@ -128,13 +134,15 @@ extension ViewController {
         // start point  lat: 6.19608, lng: -75.5751 -> 19 Lineas
         // end point    lat: 6.20623, lng: -75.5855 -> 20 lineas
 
-        APIManager.routesAroundCoordinates(lat: 6.196077726336638, lng: -75.57505116931151) { (routes, error) in
+        let firstLocation = CLLocation(latitude: 6.196077726336638, longitude: -75.57505116931151)
+        APIManager.routesAroundLocation(firstLocation) { (routes, error) in
             if (routes.count == 19) {
                 print("start point success")
             }
         }
 
-        APIManager.routesAroundCoordinates(lat: 6.206232183494578, lng: -75.58550066406245) { (routes, error) in
+        let secondLocation = CLLocation(latitude: 6.206232183494578, longitude: -75.58550066406245)
+        APIManager.routesAroundLocation(secondLocation) { (routes, error) in
             if (routes.count == 20) {
                 print("end point success")
             }

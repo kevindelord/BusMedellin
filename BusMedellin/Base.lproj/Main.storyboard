@@ -24,7 +24,7 @@
                                 </connections>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CHS-87-dSR">
-                                <rect key="frame" x="10" y="540" width="50" height="50"/>
+                                <rect key="frame" x="540" y="540" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="xhk-xC-qMG"/>
                                     <constraint firstAttribute="height" constant="50" id="zZF-YP-pO5"/>
@@ -39,9 +39,9 @@
                         <constraints>
                             <constraint firstItem="LWz-z4-Ovo" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Fnn-HZ-Zjr"/>
                             <constraint firstItem="LWz-z4-Ovo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Zpf-3d-CcC"/>
+                            <constraint firstAttribute="trailing" secondItem="CHS-87-dSR" secondAttribute="trailing" constant="10" id="dhh-b4-UFe"/>
                             <constraint firstAttribute="trailing" secondItem="LWz-z4-Ovo" secondAttribute="trailing" id="gbO-oR-Ilg"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="CHS-87-dSR" secondAttribute="bottom" constant="10" id="sKW-E3-EmA"/>
-                            <constraint firstItem="CHS-87-dSR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="xQh-no-JHq"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="LWz-z4-Ovo" secondAttribute="bottom" id="znc-NA-Zih"/>
                         </constraints>
                     </view>

@@ -19,6 +19,7 @@
 		75640BFC1DAF1AAD002B4A56 /* BMConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75640BFB1DAF1AAD002B4A56 /* BMConstants.swift */; };
 		75640BFE1DAF1B11002B4A56 /* DMDefines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75640BFD1DAF1B11002B4A56 /* DMDefines.swift */; };
 		75805BBD1DAF1D9700DACFF5 /* DKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75805BB91DAF1D9700DACFF5 /* DKExtensions.swift */; };
+		75805BC41DAF5B7E00DACFF5 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75805BC31DAF5B7E00DACFF5 /* Route.swift */; };
 		AFFD37F54C66E16096BAF358 /* Pods_BusMedellin_Alpha.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 303C336AEDCC072779B8226E /* Pods_BusMedellin_Alpha.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +39,8 @@
 		75640BFB1DAF1AAD002B4A56 /* BMConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BMConstants.swift; path = Core/BMConstants.swift; sourceTree = "<group>"; };
 		75640BFD1DAF1B11002B4A56 /* DMDefines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DMDefines.swift; path = Core/DMDefines.swift; sourceTree = "<group>"; };
 		75805BB91DAF1D9700DACFF5 /* DKExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DKExtensions.swift; sourceTree = "<group>"; };
+		75805BC01DAF5B3A00DACFF5 /* medellin.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = medellin.gpx; path = Resources/medellin.gpx; sourceTree = "<group>"; };
+		75805BC31DAF5B7E00DACFF5 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Route.swift; path = Models/Route.swift; sourceTree = "<group>"; };
 		BCAAEAB40516B6059850CA36 /* Pods-BusMedellin-Alpha.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusMedellin-Alpha.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BusMedellin-Alpha/Pods-BusMedellin-Alpha.debug.xcconfig"; sourceTree = "<group>"; };
 		C5083B8EF7A8C636C7DDB3DB /* Pods-BusMedellin-Alpha.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusMedellin-Alpha.release.xcconfig"; path = "Pods/Target Support Files/Pods-BusMedellin-Alpha/Pods-BusMedellin-Alpha.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -57,6 +60,7 @@
 		7554E76D1DAF16E400F1178C = {
 			isa = PBXGroup;
 			children = (
+				75805BC21DAF5B6900DACFF5 /* Models */,
 				75805BB61DAF1D9700DACFF5 /* Submodules */,
 				75640BF81DAF1A8C002B4A56 /* Core */,
 				75640BF51DAF1A5F002B4A56 /* PLists */,
@@ -92,6 +96,7 @@
 		7554E78B1DAF18BE00F1178C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				75805BC01DAF5B3A00DACFF5 /* medellin.gpx */,
 				75640BEC1DAF19C5002B4A56 /* Settings.bundle */,
 			);
 			name = Resources;
@@ -138,6 +143,14 @@
 				75805BB91DAF1D9700DACFF5 /* DKExtensions.swift */,
 			);
 			path = DKExtensionsSwift;
+			sourceTree = "<group>";
+		};
+		75805BC21DAF5B6900DACFF5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				75805BC31DAF5B7E00DACFF5 /* Route.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		AE0CB248D55F640D6BD12CEB /* Frameworks */ = {
@@ -280,6 +293,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75805BC41DAF5B7E00DACFF5 /* Route.swift in Sources */,
 				75640BF21DAF19FB002B4A56 /* APIManager.swift in Sources */,
 				7554E77C1DAF16E400F1178C /* ViewController.swift in Sources */,
 				75640BF31DAF19FB002B4A56 /* Appirater.swift in Sources */,

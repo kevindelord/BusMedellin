@@ -9,6 +9,7 @@
 import Foundation
 import AFNetworking
 import DKHelper
+import MapKit
 
 extension AFHTTPRequestSerializer {
 
@@ -82,7 +83,7 @@ extension APIManager {
         })
     }
 
-    static func routesAroundCoordinates(lat lat: Double, lng: Double, radius: Double = 500, completion: ((routes: [[String]], error: NSError?) -> Void)?) {
+    static func routesAroundLocation(location: CLLocation, radius: Double = Map.DefaultSearchRadius, completion: ((routes: [Route], error: NSError?) -> Void)?) {
 
         //
         // BaseURL + "?sql=SELECT Nombre_Rut,CODIGO_RUT FROM " + idFusionTable + " WHERE ST_INTERSECTS(geometry,CIRCLE(LATLNG(" + lat + "," + lng + ")," + radius + "))&key=" + keyFusionTable
@@ -92,14 +93,17 @@ extension APIManager {
         //
         let identifier = NSBundle.stringEntryInPListForKey(BMPlist.FusionTable.Identifier)
         let key = NSBundle.stringEntryInPListForKey(BMPlist.FusionTable.Key)
+        let lat = location.coordinate.latitude
+        let lng = location.coordinate.longitude
         let parameters = ["sql":"SELECT Nombre_Rut,CODIGO_RUT FROM \(identifier) WHERE ST_INTERSECTS(geometry,CIRCLE(LATLNG(\(lat),\(lng)),\(radius)))", "key" : key]
 
         self.GETRequest(parameters, success: { (session, responseObject) in
 
             if let
-                jsonObject      = responseObject as? [String:AnyObject],
-                routes            = jsonObject[API.Response.Key.Rows] as? [[String]] {
+                jsonObject  = responseObject as? [String:AnyObject],
+                routeData   = jsonObject[API.Response.Key.Rows] as? [[String]] {
 
+                let routes = Route.createRoutes(routeData)
                 DKLog(Verbose.Manager.API, "APIManager: did Receive \(routes.count) routes around: \(lat),\(lng)\n")
                 completion?(routes: routes, error: nil)
                 return

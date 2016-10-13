@@ -12,17 +12,22 @@ import DKHelper
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var mapView : MKMapView?
+    @IBOutlet weak var mapView      : MKMapView?
+    @IBOutlet weak var nearMeButton : BMLocateButton?
 
     private let locationManager = CLLocationManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // By default show Medellin city center
+        self.centerMapOnLocation(self.cityCenterLocation)
+        // Setup 'locate me' button.
+        self.nearMeButton?.setup(self.mapView)
     }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        self.locateMeButtonPressed()
     }
 
     private var cityCenterLocation : CLLocation {
@@ -43,17 +48,31 @@ class ViewController: UIViewController {
 
 extension ViewController: MKMapViewDelegate {
 
-    private func checkLocationAuthorizationStatus() -> CLLocation {
+    private func checkLocationAuthorizationStatus() -> CLLocation? {
         if (CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse) {
             self.mapView?.showsUserLocation = true
             let userLocation = self.mapView?.userLocation.location
-            return (userLocation ?? self.cityCenterLocation)
+            return userLocation
         } else {
             self.locationManager.requestWhenInUseAuthorization()
-            return self.cityCenterLocation
+            return nil
         }
     }
 
+    func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
+        // If the location suddenly become available adapt the location button.
+        if (userLocation.location == nil) {
+            self.nearMeButton?.locationState = .Inactive
+        } else if (self.nearMeButton?.locationState == .Inactive) {
+            self.nearMeButton?.locationState = .Available
+        }
+    }
+
+    /**
+     Center the map on a specific location.
+
+     - parameter location: Location to center the map to.
+     */
     private func centerMapOnLocation(location: CLLocation) {
         let regionRadius: CLLocationDistance = self.defaultZoomRadius
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 2.0, regionRadius * 2.0)
@@ -61,9 +80,8 @@ extension ViewController: MKMapViewDelegate {
     }
 
     func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
-
         let lineView = MKPolylineRenderer(overlay: overlay)
-        lineView.strokeColor = Map.RouteColor
+        lineView.strokeColor = BMColor.Blue
         lineView.lineWidth = 1
         return lineView
     }
@@ -95,14 +113,18 @@ extension ViewController: MKMapViewDelegate {
     }
 }
 
-// MARK: - Interface Action
+// MARK: - Interface Builder Action
 
 extension ViewController {
 
     @IBAction func locateMeButtonPressed() {
-        let location = self.checkLocationAuthorizationStatus()
-        self.centerMapOnLocation(location)
-        self.fetchRoutesForLocation(location)
+        if let location = self.checkLocationAuthorizationStatus() {
+            self.nearMeButton?.locationState = .Active
+            self.centerMapOnLocation(location)
+            self.fetchRoutesForLocation(location)
+        } else {
+            self.nearMeButton?.locationState = .Inactive
+        }
     }
 }
 
@@ -128,6 +150,11 @@ extension ViewController {
             }
         }
     }
+}
+
+// MARK: - Debug
+
+extension ViewController {
 
     private func fetchRoutesForPoints() {
 

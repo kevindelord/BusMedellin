@@ -23,13 +23,14 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="5Bw-Vj-BQc"/>
                                 </connections>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CHS-87-dSR">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CHS-87-dSR" customClass="BMLocateButton" customModule="BusMedellin_Alpha" customModuleProvider="target">
                                 <rect key="frame" x="540" y="540" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="xhk-xC-qMG"/>
                                     <constraint firstAttribute="height" constant="50" id="zZF-YP-pO5"/>
                                 </constraints>
-                                <state key="normal" image="locate_button"/>
+                                <color key="tintColor" red="0.61176470589999998" green="0.019607843140000001" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="NearMe"/>
                                 <connections>
                                     <action selector="locateMeButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vkf-69-bkg"/>
                                 </connections>
@@ -47,6 +48,7 @@
                     </view>
                     <connections>
                         <outlet property="mapView" destination="LWz-z4-Ovo" id="0FL-EX-vRl"/>
+                        <outlet property="nearMeButton" destination="CHS-87-dSR" id="dBT-33-S3y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -55,6 +57,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="locate_button" width="50" height="50"/>
+        <image name="NearMe" width="50" height="50"/>
     </resources>
 </document>

@@ -51,7 +51,7 @@
 		<key>Longitude</key>
 		<string>-75.5812</string>
 		<key>Radius</key>
-		<string>2850</string>
+		<string>3000</string>
 	</dict>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>

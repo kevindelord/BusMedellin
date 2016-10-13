@@ -42,6 +42,12 @@ struct API {
 }
 
 struct Map {
+
     static let DefaultSearchRadius  = 500.0
-    static let RouteColor           = UIColor(33, g: 150, b: 243)
+}
+
+struct BMColor {
+
+    static let Blue             = UIColor(33, g: 150, b: 243)
+    static let Gray             = UIColor(149, g: 165, b: 166)
 }

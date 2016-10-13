@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		75513BE01DB019C600957F40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75513BDF1DB019C600957F40 /* Assets.xcassets */; };
+		75513BE31DB01ED900957F40 /* BMLocateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75513BE21DB01ED900957F40 /* BMLocateButton.swift */; };
 		7554E77A1DAF16E400F1178C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554E7791DAF16E400F1178C /* AppDelegate.swift */; };
 		7554E77C1DAF16E400F1178C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554E77B1DAF16E400F1178C /* ViewController.swift */; };
 		7554E77F1DAF16E400F1178C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7554E77D1DAF16E400F1178C /* Main.storyboard */; };
-		7554E7811DAF16E400F1178C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7554E7801DAF16E400F1178C /* Assets.xcassets */; };
 		7554E7841DAF16E400F1178C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7554E7821DAF16E400F1178C /* LaunchScreen.storyboard */; };
 		75640BED1DAF19C5002B4A56 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 75640BEC1DAF19C5002B4A56 /* Settings.bundle */; };
 		75640BF21DAF19FB002B4A56 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75640BEF1DAF19FB002B4A56 /* APIManager.swift */; };
@@ -25,11 +26,12 @@
 
 /* Begin PBXFileReference section */
 		303C336AEDCC072779B8226E /* Pods_BusMedellin_Alpha.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BusMedellin_Alpha.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		75513BDF1DB019C600957F40 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
+		75513BE21DB01ED900957F40 /* BMLocateButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BMLocateButton.swift; path = Core/AdditionalViews/BMLocateButton.swift; sourceTree = "<group>"; };
 		7554E7761DAF16E400F1178C /* BusMedellin-Alpha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BusMedellin-Alpha.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7554E7791DAF16E400F1178C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7554E77B1DAF16E400F1178C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7554E77E1DAF16E400F1178C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		7554E7801DAF16E400F1178C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7554E7831DAF16E400F1178C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		75640BEC1DAF19C5002B4A56 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Resources/Settings.bundle; sourceTree = "<group>"; };
 		75640BEF1DAF19FB002B4A56 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
@@ -57,6 +59,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		75513BE11DB01ECD00957F40 /* AdditionalViews */ = {
+			isa = PBXGroup;
+			children = (
+				75513BE21DB01ED900957F40 /* BMLocateButton.swift */,
+			);
+			name = AdditionalViews;
+			sourceTree = "<group>";
+		};
 		7554E76D1DAF16E400F1178C = {
 			isa = PBXGroup;
 			children = (
@@ -87,7 +97,6 @@
 				7554E7791DAF16E400F1178C /* AppDelegate.swift */,
 				7554E77B1DAF16E400F1178C /* ViewController.swift */,
 				7554E77D1DAF16E400F1178C /* Main.storyboard */,
-				7554E7801DAF16E400F1178C /* Assets.xcassets */,
 				7554E7821DAF16E400F1178C /* LaunchScreen.storyboard */,
 			);
 			path = BusMedellin;
@@ -96,6 +105,7 @@
 		7554E78B1DAF18BE00F1178C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				75513BDF1DB019C600957F40 /* Assets.xcassets */,
 				75805BC01DAF5B3A00DACFF5 /* medellin.gpx */,
 				75640BEC1DAF19C5002B4A56 /* Settings.bundle */,
 			);
@@ -123,6 +133,7 @@
 		75640BF81DAF1A8C002B4A56 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				75513BE11DB01ECD00957F40 /* AdditionalViews */,
 				75640BFB1DAF1AAD002B4A56 /* BMConstants.swift */,
 				75640BFD1DAF1B11002B4A56 /* DMDefines.swift */,
 			);
@@ -233,7 +244,7 @@
 			files = (
 				75640BED1DAF19C5002B4A56 /* Settings.bundle in Resources */,
 				7554E7841DAF16E400F1178C /* LaunchScreen.storyboard in Resources */,
-				7554E7811DAF16E400F1178C /* Assets.xcassets in Resources */,
+				75513BE01DB019C600957F40 /* Assets.xcassets in Resources */,
 				7554E77F1DAF16E400F1178C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -295,6 +306,7 @@
 			files = (
 				75805BC41DAF5B7E00DACFF5 /* Route.swift in Sources */,
 				75640BF21DAF19FB002B4A56 /* APIManager.swift in Sources */,
+				75513BE31DB01ED900957F40 /* BMLocateButton.swift in Sources */,
 				7554E77C1DAF16E400F1178C /* ViewController.swift in Sources */,
 				75640BF31DAF19FB002B4A56 /* Appirater.swift in Sources */,
 				75640BF41DAF19FB002B4A56 /* Reachability.swift in Sources */,

@@ -60,6 +60,14 @@ class BMDestinationButton   : UIButton {
             }
         }
     }
+
+    func toggleState() {
+        if (self.destinationState == .Inactive) {
+            self.destinationState = .Active
+        } else {
+            self.destinationState = .Inactive
+        }
+    }
 }
 
 class BMStartButton         : UIButton {
@@ -73,6 +81,14 @@ class BMStartButton         : UIButton {
             case .Inactive:             self.tintColor = BMColor.Gray
             case .Available, .Active:   self.tintColor = BMColor.Black
             }
+        }
+    }
+
+    func toggleState() {
+        if (self.startState == .Inactive) {
+            self.startState = .Active
+        } else {
+            self.startState = .Inactive
         }
     }
 }

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		75513BE01DB019C600957F40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75513BDF1DB019C600957F40 /* Assets.xcassets */; };
 		75513BE31DB01ED900957F40 /* BMLocateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75513BE21DB01ED900957F40 /* BMLocateButton.swift */; };
+		75513BE51DB02D2300957F40 /* BMAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75513BE41DB02D2300957F40 /* BMAnnotation.swift */; };
+		75513BE71DB02E5700957F40 /* MKMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75513BE61DB02E5700957F40 /* MKMapView.swift */; };
 		7554E77A1DAF16E400F1178C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554E7791DAF16E400F1178C /* AppDelegate.swift */; };
 		7554E77C1DAF16E400F1178C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554E77B1DAF16E400F1178C /* ViewController.swift */; };
 		7554E77F1DAF16E400F1178C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7554E77D1DAF16E400F1178C /* Main.storyboard */; };
@@ -28,6 +30,8 @@
 		303C336AEDCC072779B8226E /* Pods_BusMedellin_Alpha.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BusMedellin_Alpha.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75513BDF1DB019C600957F40 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
 		75513BE21DB01ED900957F40 /* BMLocateButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BMLocateButton.swift; path = Core/AdditionalViews/BMLocateButton.swift; sourceTree = "<group>"; };
+		75513BE41DB02D2300957F40 /* BMAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BMAnnotation.swift; path = Core/AdditionalViews/BMAnnotation.swift; sourceTree = "<group>"; };
+		75513BE61DB02E5700957F40 /* MKMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKMapView.swift; sourceTree = "<group>"; };
 		7554E7761DAF16E400F1178C /* BusMedellin-Alpha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BusMedellin-Alpha.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7554E7791DAF16E400F1178C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7554E77B1DAF16E400F1178C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				75513BE21DB01ED900957F40 /* BMLocateButton.swift */,
+				75513BE41DB02D2300957F40 /* BMAnnotation.swift */,
 			);
 			name = AdditionalViews;
 			sourceTree = "<group>";
@@ -117,6 +122,7 @@
 			children = (
 				75640BEF1DAF19FB002B4A56 /* APIManager.swift */,
 				75640BF01DAF19FB002B4A56 /* Appirater.swift */,
+				75513BE61DB02E5700957F40 /* MKMapView.swift */,
 				75640BF11DAF19FB002B4A56 /* Reachability.swift */,
 			);
 			path = Helpers;
@@ -304,8 +310,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75513BE51DB02D2300957F40 /* BMAnnotation.swift in Sources */,
 				75805BC41DAF5B7E00DACFF5 /* Route.swift in Sources */,
 				75640BF21DAF19FB002B4A56 /* APIManager.swift in Sources */,
+				75513BE71DB02E5700957F40 /* MKMapView.swift in Sources */,
 				75513BE31DB01ED900957F40 /* BMLocateButton.swift in Sources */,
 				7554E77C1DAF16E400F1178C /* ViewController.swift in Sources */,
 				75640BF31DAF19FB002B4A56 /* Appirater.swift in Sources */,

@@ -17,7 +17,9 @@ class ViewController                        : UIViewController {
     @IBOutlet weak var destinationButton    : BMDestinationButton?
     @IBOutlet weak var startButton          : BMStartButton?
 
-    private let locationManager = CLLocationManager()
+    private let locationManager             = CLLocationManager()
+    private var startAnnotation             : BMAnnotation?
+    private var destinationAnnotation       : BMAnnotation?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,18 +124,26 @@ extension ViewController: MKMapViewDelegate {
 extension ViewController {
 
     @IBAction func destinationButtonlocatePressed() {
-        if (self.destinationButton?.destinationState == .Inactive) {
-            self.destinationButton?.destinationState = .Active
-        } else {
-            self.destinationButton?.destinationState = .Inactive
+        self.destinationButton?.toggleState()
+
+        if (self.destinationAnnotation != nil) {
+            self.mapView?.removeAnnotation(safe: self.destinationAnnotation)
+            self.destinationAnnotation = nil
+        } else if let centerCoordinate = self.mapView?.centerCoordinate {
+            self.destinationAnnotation = BMAnnotation(title: "Destination Point", subtitle: "Where you want to arrive.", coordinate: centerCoordinate)
+            self.mapView?.addAnnotation(safe: self.destinationAnnotation)
         }
     }
 
     @IBAction func startButtonlocatePressed() {
-        if (self.startButton?.startState == .Inactive) {
-            self.startButton?.startState = .Active
-        } else {
-            self.startButton?.startState = .Inactive
+        self.startButton?.toggleState()
+
+        if (self.startAnnotation != nil) {
+            self.mapView?.removeAnnotation(safe: self.startAnnotation)
+            self.startAnnotation = nil
+        } else if let centerCoordinate = self.mapView?.centerCoordinate {
+            self.startAnnotation = BMAnnotation(title: "Starting Point", subtitle: "Where you want to take a bus.", coordinate: centerCoordinate)
+            self.mapView?.addAnnotation(safe: self.startAnnotation)
         }
     }
 

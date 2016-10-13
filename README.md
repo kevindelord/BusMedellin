@@ -9,7 +9,7 @@ You can find the online version here: [http://tdurand.github.io/mapamedellin](ht
 
 ## Important
 
-The data is *not* automatically updated.
+**The data is not automatically updated.**
 
 * The data is from [Secretaría de Transportes y Tránsito de Medellín](http://www.medellin.gov.co).
 * The application uses Google Fusion Table to manipulate data.

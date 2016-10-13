@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "2C122F84AFE26FC2233A3A50A0333CE0F0348437",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "2C122F84AFE26FC2233A3A50A0333CE0F0348437" : 0,
+    "919CF189C56C1B8A65F5272C2F5A7797ECED2EC7" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "292283A4-39E9-4934-9ACA-2A3523488C12",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "2C122F84AFE26FC2233A3A50A0333CE0F0348437" : "BusMedellin\/",
+    "919CF189C56C1B8A65F5272C2F5A7797ECED2EC7" : "BusMedellin\/Submodules\/DKExtensionsSwift\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "BusMedellin",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "BusMedellin.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/kevindelord\/BusMedellin.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2C122F84AFE26FC2233A3A50A0333CE0F0348437"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/kevindelord\/DKExtensionsSwift.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "919CF189C56C1B8A65F5272C2F5A7797ECED2EC7"
+    }
+  ]
+}

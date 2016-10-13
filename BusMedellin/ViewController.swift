@@ -59,6 +59,8 @@ extension ViewController: MKMapViewDelegate {
             let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: annotation.reuseId)
             annotationView.animatesDrop = true
             annotationView.pinColor = annotation.pinColor
+            annotationView.draggable = true
+            annotationView.canShowCallout = true
             return annotationView
         }
         return nil
@@ -82,6 +84,18 @@ extension ViewController: MKMapViewDelegate {
         } else if (self.nearMeButton?.locationState == .Inactive) {
             self.nearMeButton?.locationState = .Available
         }
+    }
+
+    func mapView(mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
+        if (mapView.userLocation.location == nil) {
+            self.nearMeButton?.locationState = .Inactive
+        } else if (self.nearMeButton?.locationState == .Active) {
+            self.nearMeButton?.locationState = .Available
+        }
+    }
+
+    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, didChangeDragState newState: MKAnnotationViewDragState, fromOldState oldState: MKAnnotationViewDragState) {
+
     }
 
     /**
@@ -149,11 +163,14 @@ extension ViewController {
         self.startButton?.toggleState()
 
         if (self.startAnnotation != nil) {
+            // Remove current annotation
             self.mapView?.removeAnnotation(safe: self.startAnnotation)
             self.startAnnotation = nil
         } else if let centerCoordinate = self.mapView?.centerCoordinate {
+            // Add new annotation
             self.startAnnotation = BMStartAnnotation.createWithCoordinates(centerCoordinate)
             self.mapView?.addAnnotation(safe: self.startAnnotation)
+            self.fetchRoutesForCoordinates(centerCoordinate)
         }
     }
 
@@ -179,6 +196,12 @@ extension ViewController {
             let locationCoordinates = self.createLocationsFromCoordinates(coordinates)
             self.drawRouteForCoordinates(locationCoordinates)
         })
+    }
+
+    private func fetchRoutesForCoordinates(coordinates: CLLocationCoordinate2D) {
+
+        let location = CLLocation(latitude: coordinates.latitude, longitude: coordinates.longitude)
+        self.fetchRoutesForLocation(location)
     }
 
     private func fetchRoutesForLocation(location: CLLocation) {

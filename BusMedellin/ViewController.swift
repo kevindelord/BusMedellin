@@ -10,10 +10,12 @@ import UIKit
 import MapKit
 import DKHelper
 
-class ViewController: UIViewController {
+class ViewController                        : UIViewController {
 
-    @IBOutlet weak var mapView      : MKMapView?
-    @IBOutlet weak var nearMeButton : BMLocateButton?
+    @IBOutlet weak var mapView              : MKMapView?
+    @IBOutlet weak var nearMeButton         : BMLocateButton?
+    @IBOutlet weak var destinationButton    : BMDestinationButton?
+    @IBOutlet weak var startButton          : BMStartButton?
 
     private let locationManager = CLLocationManager()
 
@@ -22,8 +24,10 @@ class ViewController: UIViewController {
 
         // By default show Medellin city center
         self.centerMapOnLocation(self.cityCenterLocation)
-        // Setup 'locate me' button.
+        // Setup 'locate me', 'Destination' and 'Start' buttons.
         self.nearMeButton?.setup(self.mapView)
+        self.startButton?.startState = .Inactive
+        self.destinationButton?.destinationState = .Inactive
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -116,6 +120,22 @@ extension ViewController: MKMapViewDelegate {
 // MARK: - Interface Builder Action
 
 extension ViewController {
+
+    @IBAction func destinationButtonlocatePressed() {
+        if (self.destinationButton?.destinationState == .Inactive) {
+            self.destinationButton?.destinationState = .Active
+        } else {
+            self.destinationButton?.destinationState = .Inactive
+        }
+    }
+
+    @IBAction func startButtonlocatePressed() {
+        if (self.startButton?.startState == .Inactive) {
+            self.startButton?.startState = .Active
+        } else {
+            self.startButton?.startState = .Inactive
+        }
+    }
 
     @IBAction func locateMeButtonPressed() {
         if let location = self.checkLocationAuthorizationStatus() {

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import MapKit
 
-enum LocateButtonState {
+enum MBButtonState {
     case Inactive
     case Available
     case Active
@@ -18,7 +18,7 @@ enum LocateButtonState {
 
 class BMLocateButton    : UIButton {
 
-    var locationState   : LocateButtonState = .Inactive {
+    var locationState   : MBButtonState = .Inactive {
         didSet {
             switch self.locationState {
             case .Inactive:
@@ -43,6 +43,36 @@ class BMLocateButton    : UIButton {
             self.locationState = .Available
         } else {
             self.locationState = .Inactive
+        }
+    }
+}
+
+class BMDestinationButton   : UIButton {
+
+    var destinationState    : MBButtonState = .Inactive {
+        didSet {
+            let img = UIImage(named: "buttonFinishLine")?.imageWithRenderingMode(.AlwaysTemplate)
+            self.setImage(img, forState: .Normal)
+
+            switch self.destinationState {
+            case .Inactive:             self.tintColor = BMColor.Gray
+            case .Available, .Active:   self.tintColor = BMColor.Black
+            }
+        }
+    }
+}
+
+class BMStartButton         : UIButton {
+
+    var startState          : MBButtonState = .Inactive {
+        didSet {
+            let img = UIImage(named: "buttonStart")?.imageWithRenderingMode(.AlwaysTemplate)
+            self.setImage(img, forState: .Normal)
+
+            switch self.startState {
+            case .Inactive:             self.tintColor = BMColor.Gray
+            case .Available, .Active:   self.tintColor = BMColor.Black
+            }
         }
     }
 }

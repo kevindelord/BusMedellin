@@ -50,4 +50,5 @@ struct BMColor {
 
     static let Blue             = UIColor(33, g: 150, b: 243)
     static let Gray             = UIColor(149, g: 165, b: 166)
+    static let Black            = UIColor.blackColor()
 }

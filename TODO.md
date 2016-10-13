@@ -2,7 +2,6 @@
 
 * Integrate Swiftlint.
 * Add bottom scroll view to display results.
-* Start app with routes around user location. None if only city center and no user location.
 * Add destination pin.
 * Detail view of route.
 * App Icon

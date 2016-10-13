@@ -35,20 +35,48 @@
                                     <action selector="locateMeButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vkf-69-bkg"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yjl-ay-CVB" customClass="BMDestinationButton" customModule="BusMedellin_Alpha" customModuleProvider="target">
+                                <rect key="frame" x="530" y="20" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="8W9-7w-KqM"/>
+                                    <constraint firstAttribute="height" constant="50" id="d1Q-Hq-fX2"/>
+                                </constraints>
+                                <state key="normal" image="buttonFinishLine"/>
+                                <connections>
+                                    <action selector="destinationButtonlocatePressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="cGb-PK-KmQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tvw-Gk-sGO" customClass="BMStartButton" customModule="BusMedellin_Alpha" customModuleProvider="target">
+                                <rect key="frame" x="455" y="20" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="5DN-Yc-96L"/>
+                                    <constraint firstAttribute="height" constant="50" id="5dV-t0-22L"/>
+                                </constraints>
+                                <state key="normal" image="buttonStart"/>
+                                <connections>
+                                    <action selector="startButtonlocatePressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vrq-ZN-XIQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="yjl-ay-CVB" firstAttribute="centerY" secondItem="Tvw-Gk-sGO" secondAttribute="centerY" id="85T-nX-u9t"/>
                             <constraint firstItem="LWz-z4-Ovo" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Fnn-HZ-Zjr"/>
                             <constraint firstItem="LWz-z4-Ovo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Zpf-3d-CcC"/>
+                            <constraint firstItem="yjl-ay-CVB" firstAttribute="leading" secondItem="Tvw-Gk-sGO" secondAttribute="trailing" constant="25" id="aWa-LQ-0fP"/>
                             <constraint firstAttribute="trailing" secondItem="CHS-87-dSR" secondAttribute="trailing" constant="10" id="dhh-b4-UFe"/>
                             <constraint firstAttribute="trailing" secondItem="LWz-z4-Ovo" secondAttribute="trailing" id="gbO-oR-Ilg"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="CHS-87-dSR" secondAttribute="bottom" constant="10" id="sKW-E3-EmA"/>
+                            <constraint firstItem="yjl-ay-CVB" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="uHc-HH-Qwy"/>
+                            <constraint firstAttribute="trailing" secondItem="yjl-ay-CVB" secondAttribute="trailing" constant="20" id="zJZ-Sa-FjC"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="LWz-z4-Ovo" secondAttribute="bottom" id="znc-NA-Zih"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="destinationButton" destination="yjl-ay-CVB" id="Sws-gx-a3r"/>
                         <outlet property="mapView" destination="LWz-z4-Ovo" id="0FL-EX-vRl"/>
                         <outlet property="nearMeButton" destination="CHS-87-dSR" id="dBT-33-S3y"/>
+                        <outlet property="startButton" destination="Tvw-Gk-sGO" id="ktw-FT-YYo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -58,5 +86,7 @@
     </scenes>
     <resources>
         <image name="NearMe" width="50" height="50"/>
+        <image name="buttonFinishLine" width="50" height="50"/>
+        <image name="buttonStart" width="50" height="50"/>
     </resources>
 </document>

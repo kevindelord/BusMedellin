@@ -30,3 +30,10 @@ $> cd BusMedellin
 $> git submodule update --init --recursive
 $> pod install
 ```
+
+## External Links:
+
+* [Google Fusion Table](https://fusiontables.google.com/data?docid=1_ihDJT-_zFRLXb526aaS0Ct3TiXTlcPDy_BlAz0)
+* [Mapamedellin](http://tdurand.github.io/mapamedellin)
+* [Thibault Durand's Blog](http://thibault-durand.fr/)
+* [Story The Bus Map Of Fortaleza](http://tdurand.tumblr.com/post/31393552608/how-i-created-a-bus-map-of-fortaleza-brazil)

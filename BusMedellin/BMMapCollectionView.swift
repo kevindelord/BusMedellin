@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  BMMapCollectionView.swift
 //  BusMedellin
 //
 //  Created by Kevin Delord on 13/10/16.
@@ -9,8 +9,31 @@
 import UIKit
 import MapKit
 import DKHelper
+import CSStickyHeaderFlowLayout
 
-class ViewController                        : UIViewController {
+class BMMapCollectionView                   : UICollectionReusableView {
+
+    var mapContainer                        : BMMapView?
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.clipsToBounds = true
+        self.interfaceInitialisation()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.interfaceInitialisation()
+    }
+
+    private func interfaceInitialisation() {
+        self.mapContainer = UIView.loadFromNib(XibFile.BMMapView) as? BMMapView
+        self.mapContainer?.frame = self.bounds
+        self.addSubview(safe: self.mapContainer)
+    }
+}
+
+class BMMapView                             : UIView {
 
     @IBOutlet weak var mapView              : MKMapView?
     @IBOutlet weak var nearMeButton         : BMLocateButton?
@@ -21,19 +44,29 @@ class ViewController                        : UIViewController {
     private var startAnnotation             : BMAnnotation?
     private var destinationAnnotation       : BMAnnotation?
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    var didFetchAvailableRoutesBlock        : ((routes: [Route]) -> Void)?
+    var showErrorPopupBlock                 : ((error: NSError?) -> Void)?
 
-        // By default show Medellin city center
-        self.centerMapOnLocation(self.cityCenterLocation)
-        // Setup 'locate me', 'Destination' and 'Start' buttons.
-        self.nearMeButton?.setup(self.mapView)
-        self.startButton?.startState = .Inactive
-        self.destinationButton?.destinationState = .Inactive
+    override init(frame: CGRect) {
+        super.init(frame: frame)
     }
 
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
+    private static var __onceToken: dispatch_once_t = 0
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        // Initialise the interface that way only once.
+        dispatch_once(&BMMapView.__onceToken) {
+            // By default show Medellin city center
+            self.centerMapOnLocation(self.cityCenterLocation)
+            // Setup 'locate me', 'Destination' and 'Start' buttons.
+            self.nearMeButton?.setup(self.mapView)
+            self.startButton?.startState = .Inactive
+            self.destinationButton?.destinationState = .Inactive
+        }
     }
 
     private var cityCenterLocation : CLLocation {
@@ -52,7 +85,7 @@ class ViewController                        : UIViewController {
 
 // MARK: - MapView
 
-extension ViewController: MKMapViewDelegate {
+extension BMMapView: MKMapViewDelegate {
 
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         if let annotation = annotation as? BMAnnotation {
@@ -60,12 +93,11 @@ extension ViewController: MKMapViewDelegate {
             var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(annotation.reuseId) as? MKPinAnnotationView
             if (annotationView == nil) {
                 annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: annotation.reuseId)
-                annotationView?.annotation = annotation
             }
+            annotationView?.annotation = annotation
             annotationView?.animatesDrop = true
             annotationView?.pinColor = annotation.pinColor
-            annotationView?.draggable = true
-            annotationView?.canShowCallout = false
+            annotationView?.canShowCallout = true
             return annotationView
         }
         return nil
@@ -91,23 +123,6 @@ extension ViewController: MKMapViewDelegate {
         }
     }
 
-    func mapView(mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
-        if (mapView.userLocation.location == nil) {
-            self.nearMeButton?.locationState = .Inactive
-        } else if (self.nearMeButton?.locationState == .Active) {
-            self.nearMeButton?.locationState = .Available
-        }
-    }
-
-    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, didChangeDragState newState: MKAnnotationViewDragState, fromOldState oldState: MKAnnotationViewDragState) {
-
-        switch newState {
-            case .Starting:             view.dragState = .Dragging
-            case .Ending, .Canceling:   view.dragState = .None
-            default: break
-        }
-    }
-
     /**
      Center the map on a specific location.
 
@@ -122,7 +137,7 @@ extension ViewController: MKMapViewDelegate {
     func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
         let lineView = MKPolylineRenderer(overlay: overlay)
         lineView.strokeColor = BMColor.Blue
-        lineView.lineWidth = 1
+        lineView.lineWidth = 1.5
         return lineView
     }
 
@@ -131,6 +146,7 @@ extension ViewController: MKMapViewDelegate {
         if (coordinates.isEmpty == true) {
             return
         }
+
         // A 'var' is required by MKGeodesicPolyline()
         var pointsToUse = coordinates
         let myPolyline = MKGeodesicPolyline(coordinates: &pointsToUse, count: coordinates.count)
@@ -159,21 +175,25 @@ extension ViewController: MKMapViewDelegate {
 
 // MARK: - Interface Builder Action
 
-extension ViewController {
+extension BMMapView {
 
     @IBAction func destinationButtonlocatePressed() {
         self.destinationButton?.toggleState()
 
         if (self.destinationAnnotation != nil) {
+            // Remove destination pin.
             self.mapView?.removeAnnotation(safe: self.destinationAnnotation)
             self.destinationAnnotation = nil
+
         } else if let centerCoordinate = self.mapView?.centerCoordinate {
+            // Add a new destination pin at the center of the map.
             self.destinationAnnotation = BMDestinationAnnotation.createWithCoordinates(centerCoordinate)
             self.mapView?.addAnnotation(safe: self.destinationAnnotation)
         }
     }
 
     @IBAction func startButtonlocatePressed() {
+        // UI change
         self.startButton?.toggleState()
 
         if (self.startAnnotation != nil) {
@@ -182,59 +202,76 @@ extension ViewController {
             self.startAnnotation = nil
             // Remove previous routes
             self.removeDrawnRoutes()
+            // Reset the collection view
+            self.didFetchAvailableRoutesBlock?(routes: [])
 
         } else if let centerCoordinate = self.mapView?.centerCoordinate {
-            // Add new annotation
+            // Add a new annotation at the center of the map.
             self.startAnnotation = BMStartAnnotation.createWithCoordinates(centerCoordinate)
             self.mapView?.addAnnotation(safe: self.startAnnotation)
-            self.fetchRoutesForCoordinates(centerCoordinate)
+
+            // Fetch routes around that location
+            self.fetchRoutesForCoordinates(centerCoordinate, completion: { (routes) in
+                // Draw the first route as example.
+                if let routeCode = routes.first?.code {
+                    self.fetchAndDrawRoute(routeCode)
+                }
+                // Notify and reload the collection view with the new results.
+                self.didFetchAvailableRoutesBlock?(routes: routes)
+            })
+
         }
     }
 
     @IBAction func locateMeButtonPressed() {
         if let location = self.checkLocationAuthorizationStatus() {
-            self.nearMeButton?.locationState = .Active
             self.centerMapOnLocation(location)
-//            self.fetchRoutesForLocation(location)
-        } else {
-            self.nearMeButton?.locationState = .Inactive
         }
     }
 }
 
 // MARK: - Data
 
-extension ViewController {
+extension BMMapView {
 
-    private func fetchCoordinatesForRouteName(routeName: String) {
+    /**
+     Fetch coordinates of the given route and display it on the map.
 
-        APIManager.coordinatesForRouteName(routeName, completion: { (coordinates, error) in
+     - parameter route: The Route entity to fetch and to display.
+     */
+    func fetchAndDrawRoute(route: Route) {
+        self.fetchAndDrawRoute(route.code)
+    }
+
+    /**
+     Fetch coordinates of a route using its identifier (aka route code) and display it on the map.
+
+     - parameter routeCode: The route identifier used to fetch the coordinates.
+     */
+    private func fetchAndDrawRoute(routeCode: String) {
+        APIManager.coordinatesForRouteCode(routeCode, completion: { (coordinates, error) in
             UIAlertController.showErrorPopup(error)
             let locationCoordinates = self.createLocationsFromCoordinates(coordinates)
             self.drawRouteForCoordinates(locationCoordinates)
         })
     }
 
-    private func fetchRoutesForCoordinates(coordinates: CLLocationCoordinate2D) {
-
+    private func fetchRoutesForCoordinates(coordinates: CLLocationCoordinate2D, completion: ((routes: [Route]) -> Void)?) {
         let location = CLLocation(latitude: coordinates.latitude, longitude: coordinates.longitude)
-        self.fetchRoutesForLocation(location)
+        self.fetchRoutesForLocation(location, completion: completion)
     }
 
-    private func fetchRoutesForLocation(location: CLLocation) {
-
+    private func fetchRoutesForLocation(location: CLLocation, completion: ((routes: [Route]) -> Void)?) {
         APIManager.routesAroundLocation(location) { (routes, error) in
             UIAlertController.showErrorPopup(error)
-            if let routeName = routes.first?.code {
-                self.fetchCoordinatesForRouteName(routeName)
-            }
+            completion?(routes: routes)
         }
     }
 }
 
 // MARK: - Debug
 
-extension ViewController {
+extension BMMapView {
 
     private func fetchRoutesForPoints() {
 

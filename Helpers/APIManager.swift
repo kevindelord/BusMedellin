@@ -51,7 +51,7 @@ struct APIManager {
 
 extension APIManager {
 
-    static func coordinatesForRouteName(routeName: String, completion: ((coordinates: [[Double]], error: NSError?) -> Void)?) {
+    static func coordinatesForRouteCode(routeCode: String, completion: ((coordinates: [[Double]], error: NSError?) -> Void)?) {
 
         //
         // baseURL+ "?sql=SELECT geometry FROM " + idFusionTable + " WHERE CODIGO_RUT='" + route + "'&key=" + keyFusionTable
@@ -60,7 +60,7 @@ extension APIManager {
         //
         let identifier = NSBundle.stringEntryInPListForKey(BMPlist.FusionTable.Identifier)
         let key = NSBundle.stringEntryInPListForKey(BMPlist.FusionTable.Key)
-        let parameters = ["sql":"SELECT geometry FROM \(identifier) WHERE CODIGO_RUT='\(routeName)'", "key" : key]
+        let parameters = ["sql":"SELECT geometry FROM \(identifier) WHERE CODIGO_RUT='\(routeCode)'", "key" : key]
 
         self.GETRequest(parameters, success: { (session, responseObject) in
 
@@ -71,12 +71,12 @@ extension APIManager {
                 geometry        = row[API.Response.Key.Geometry] as? [String:AnyObject],
                 coordinates     = geometry[API.Response.Key.Coordinates] as? [[Double]] {
 
-                    DKLog(Verbose.Manager.API, "APIManager: did Receive \(coordinates.count) coordinates for route name: \(routeName)\n")
+                    DKLog(Verbose.Manager.API, "APIManager: did Receive \(coordinates.count) coordinates for route name: \(routeCode)\n")
                     completion?(coordinates: coordinates, error: nil)
                     return
             }
 
-            DKLog(Verbose.Manager.API, "APIManager: parsing 'geometry' list failed for route name: \(routeName)\n")
+            DKLog(Verbose.Manager.API, "APIManager: parsing 'geometry' list failed for route name: \(routeCode)\n")
             completion?(coordinates: [], error: nil)
             }, failure: { (operation: NSURLSessionTask?, error: NSError) in
                 completion?(coordinates: [], error: error)

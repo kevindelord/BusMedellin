@@ -8,7 +8,7 @@ def corePods
 	pod 'Appirater', '~> 2.0.5'
 	pod 'AFNetworking', '~> 3.0.4'
 	pod 'MBProgressHUD', '~> 0.9.1'
-	pod 'netfox', '~> 1.7.2'
+    pod 'CSStickyHeaderFlowLayout'
 	pod 'DKHelper', '~> 2.2.3'
 end
 

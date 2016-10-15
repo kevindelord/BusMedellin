@@ -41,9 +41,31 @@ struct API {
     }
 }
 
+struct StaticHeight {
+
+    struct CollectionView {
+
+        static let Cell             : CGFloat = 60
+        static let SectionHeader    : CGFloat = 80
+    }
+}
+
 struct Map {
 
     static let DefaultSearchRadius  = 500.0
+}
+
+struct XibFile {
+
+    static let BMMapView        = "BMMapView"
+}
+
+struct ReuseId {
+
+    static let ParallaxHeader   = "MapCollectionView_ParallaxHeader"
+    static let SectionHeader    = "CollectionView_SectionHeader"
+    static let ResultCell       = "CollectionView_ResultCell"
+
 }
 
 struct BMColor {

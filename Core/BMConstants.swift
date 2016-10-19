@@ -53,15 +53,10 @@ struct StaticHeight {
 struct Map {
 
     static let DefaultSearchRadius  = 500.0
-    static let DeltaAfterSearch = 0.007
-
-    struct PinReuseIdentifier {
-        static let PickUp       = "PickUpAnnotaion_Id"
-        static let Destination  = "DestinationAnnotaion_Id"
-    }
+    static let DeltaAfterSearch     = 0.007
 
     struct Address {
-        static let Street       = "Street"
+        static let Street           = "Street"
     }
 }
 
@@ -75,7 +70,8 @@ struct ReuseId {
     static let ParallaxHeader   = "MapCollectionView_ParallaxHeader"
     static let SectionHeader    = "CollectionView_SectionHeader"
     static let ResultCell       = "CollectionView_ResultCell"
-
+    static let PickUpPin        = "PickUpAnnotaion_Id"
+    static let DestinationPin   = "DestinationAnnotaion_Id"
 }
 
 struct BMColor {

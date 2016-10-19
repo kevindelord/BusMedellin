@@ -21,6 +21,7 @@
 		75640BF41DAF19FB002B4A56 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75640BF11DAF19FB002B4A56 /* Reachability.swift */; };
 		75640BFC1DAF1AAD002B4A56 /* BMConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75640BFB1DAF1AAD002B4A56 /* BMConstants.swift */; };
 		75640BFE1DAF1B11002B4A56 /* DMDefines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75640BFD1DAF1B11002B4A56 /* DMDefines.swift */; };
+		757E0A8F1DB72E0400D89B83 /* BMAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757E0A8E1DB72E0400D89B83 /* BMAddressView.swift */; };
 		75805BBD1DAF1D9700DACFF5 /* DKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75805BB91DAF1D9700DACFF5 /* DKExtensions.swift */; };
 		75805BC41DAF5B7E00DACFF5 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75805BC31DAF5B7E00DACFF5 /* Route.swift */; };
 		75FEDCF51DB1DC3700D692C4 /* BMCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FEDCF41DB1DC3700D692C4 /* BMCollectionViewController.swift */; };
@@ -48,6 +49,7 @@
 		75640BF61DAF1A5F002B4A56 /* BusMedellin-Alpha-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "BusMedellin-Alpha-Info.plist"; sourceTree = "<group>"; };
 		75640BFB1DAF1AAD002B4A56 /* BMConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BMConstants.swift; path = Core/BMConstants.swift; sourceTree = "<group>"; };
 		75640BFD1DAF1B11002B4A56 /* DMDefines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DMDefines.swift; path = Core/DMDefines.swift; sourceTree = "<group>"; };
+		757E0A8E1DB72E0400D89B83 /* BMAddressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BMAddressView.swift; sourceTree = "<group>"; };
 		75805BB91DAF1D9700DACFF5 /* DKExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DKExtensions.swift; sourceTree = "<group>"; };
 		75805BC01DAF5B3A00DACFF5 /* medellin.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = medellin.gpx; path = Resources/medellin.gpx; sourceTree = "<group>"; };
 		75805BC31DAF5B7E00DACFF5 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Route.swift; path = Models/Route.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 			children = (
 				75513BE21DB01ED900957F40 /* BMButtons.swift */,
 				75513BE41DB02D2300957F40 /* BMAnnotations.swift */,
+				757E0A8E1DB72E0400D89B83 /* BMAddressView.swift */,
 			);
 			name = AdditionalViews;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				75FEDCF91DB1DED700D692C4 /* BMCollectionSectionHeader.swift in Sources */,
 				75640BFE1DAF1B11002B4A56 /* DMDefines.swift in Sources */,
 				75FEDCF51DB1DC3700D692C4 /* BMCollectionViewController.swift in Sources */,
+				757E0A8F1DB72E0400D89B83 /* BMAddressView.swift in Sources */,
 				7554E77A1DAF16E400F1178C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "NearMeFilled.png",
+      "filename" : "pickupLocation.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "NearMeFilled@2x.png",
+      "filename" : "pickupLocation@2x.png",
       "scale" : "2x"
     },
     {

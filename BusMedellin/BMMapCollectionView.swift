@@ -37,8 +37,11 @@ class BMMapView                             : UIView {
 
     @IBOutlet weak var mapView              : MKMapView?
     @IBOutlet weak var nearMeButton         : BMLocateButton?
-    @IBOutlet weak var destinationButton    : BMDestinationButton?
-    @IBOutlet weak var startButton          : BMStartButton?
+    @IBOutlet weak var locationButton       : UIButton?
+    @IBOutlet weak var pinDescriptionLabel  : UILabel?
+    @IBOutlet weak var pickUpInfoView       : BMAddressView?
+    @IBOutlet weak var destinationInfoView  : BMAddressView?
+    @IBOutlet weak var destinationInfoViewTopConstraint : NSLayoutConstraint?
 
     private let locationManager             = CLLocationManager()
     private var startAnnotation             : BMAnnotation?
@@ -62,10 +65,11 @@ class BMMapView                             : UIView {
         dispatch_once(&BMMapView.__onceToken) {
             // By default show Medellin city center
             self.centerMapOnLocation(self.cityCenterLocation)
-            // Setup 'locate me', 'Destination' and 'Start' buttons.
+            // Setup 'locate me' button.
             self.nearMeButton?.setup(self.mapView)
-            self.startButton?.startState = .Inactive
-            self.destinationButton?.destinationState = .Inactive
+            // Setup address views
+            self.pickUpInfoView?.setupWithState(.PickUp)
+            self.destinationInfoView?.setupWithState(.Destination)
         }
     }
 
@@ -95,9 +99,9 @@ extension BMMapView: MKMapViewDelegate {
                 annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: annotation.reuseId)
             }
             annotationView?.annotation = annotation
-            annotationView?.animatesDrop = true
+            annotationView?.animatesDrop = false
             annotationView?.pinColor = annotation.pinColor
-            annotationView?.canShowCallout = true
+            annotationView?.canShowCallout = false
             return annotationView
         }
         return nil
@@ -177,49 +181,41 @@ extension BMMapView: MKMapViewDelegate {
 
 extension BMMapView {
 
-    @IBAction func destinationButtonlocatePressed() {
-        self.destinationButton?.toggleState()
+//    @IBAction func pickupLocationButtonPressed() {
+//        // UI change
+//        if (self.startAnnotation != nil) {
+//            // Remove current annotation
+//            self.mapView?.removeAnnotation(safe: self.startAnnotation)
+//            self.startAnnotation = nil
+//            // Remove previous routes
+//            self.removeDrawnRoutes()
+//            // Reset the collection view
+//            self.didFetchAvailableRoutesBlock?(routes: [])
+//
+//        } else if let centerCoordinate = self.mapView?.centerCoordinate {
+//            // Add a new annotation at the center of the map.
+//            self.startAnnotation = BMStartAnnotation.createWithCoordinates(centerCoordinate)
+//            self.mapView?.addAnnotation(safe: self.startAnnotation)
+//
+//            // Fetch routes around that location
+//            self.fetchRoutesForCoordinates(centerCoordinate, completion: { (routes) in
+//                // Draw the first route as example.
+//                if let routeCode = routes.first?.code {
+//                    self.fetchAndDrawRoute(routeCode)
+//                }
+//                // Notify and reload the collection view with the new results.
+//                self.didFetchAvailableRoutesBlock?(routes: routes)
+//            })
+//
+//        }
+//    }
 
-        if (self.destinationAnnotation != nil) {
-            // Remove destination pin.
-            self.mapView?.removeAnnotation(safe: self.destinationAnnotation)
-            self.destinationAnnotation = nil
+    @IBAction func locationButtonPressed() {
 
-        } else if let centerCoordinate = self.mapView?.centerCoordinate {
-            // Add a new destination pin at the center of the map.
-            self.destinationAnnotation = BMDestinationAnnotation.createWithCoordinates(centerCoordinate)
-            self.mapView?.addAnnotation(safe: self.destinationAnnotation)
-        }
-    }
-
-    @IBAction func startButtonlocatePressed() {
-        // UI change
-        self.startButton?.toggleState()
-
-        if (self.startAnnotation != nil) {
-            // Remove current annotation
-            self.mapView?.removeAnnotation(safe: self.startAnnotation)
-            self.startAnnotation = nil
-            // Remove previous routes
-            self.removeDrawnRoutes()
-            // Reset the collection view
-            self.didFetchAvailableRoutesBlock?(routes: [])
-
-        } else if let centerCoordinate = self.mapView?.centerCoordinate {
-            // Add a new annotation at the center of the map.
-            self.startAnnotation = BMStartAnnotation.createWithCoordinates(centerCoordinate)
-            self.mapView?.addAnnotation(safe: self.startAnnotation)
-
-            // Fetch routes around that location
-            self.fetchRoutesForCoordinates(centerCoordinate, completion: { (routes) in
-                // Draw the first route as example.
-                if let routeCode = routes.first?.code {
-                    self.fetchAndDrawRoute(routeCode)
-                }
-                // Notify and reload the collection view with the new results.
-                self.didFetchAvailableRoutesBlock?(routes: routes)
-            })
-
+        if (self.startAnnotation == nil) {
+            self.didSetPickUpLocation()
+        } else if (self.destinationAnnotation == nil) {
+            self.didSetDestinationLocation()
         }
     }
 
@@ -230,7 +226,107 @@ extension BMMapView {
     }
 }
 
-// MARK: - Data
+// MARK: - Functionalities
+
+extension BMMapView {
+
+    private func didSetPickUpLocation() {
+        if let centerCoordinate = self.mapView?.centerCoordinate {
+            // Add a new annotation at the center of the map.
+            self.startAnnotation = BMStartAnnotation.createWithCoordinates(centerCoordinate)
+            self.mapView?.addAnnotation(safe: self.startAnnotation)
+
+            UIView.animateWithDuration(0.3, animations: {
+                // Hide the location button and its text
+                self.locationButton?.alpha = 0
+                self.pinDescriptionLabel?.alpha = 0
+
+                }, completion: { (finished: Bool) in
+                    // Fetch the address of the location
+                    let location = CLLocation(latitude: centerCoordinate.latitude, longitude: centerCoordinate.longitude)
+                    self.fetchAddressForLocation(location, completion: { (address) in
+
+                        // Show the address in the dedicated view.
+                        self.pickUpInfoView?.updateWithAddress(address)
+                        // Set the location button and text to the destination state.
+                        self.locationButton?.setImage(UIImage(named: "destinationLocation"), forState: .Normal)
+                        self.pinDescriptionLabel?.text = "SET DESTINATION"
+                        UIView.animateWithDuration(0.5, animations: {
+                            // Show UI elements
+                            self.locationButton?.alpha = 1
+                            self.pinDescriptionLabel?.alpha = 1
+                            // Show the destination address view.
+                            self.destinationInfoView?.backgroundColor = UIColor.whiteColor()
+                            self.destinationInfoViewTopConstraint?.constant += 20
+                            // Move the map up North a bit.
+                            let newLocation = CLLocation(latitude: centerCoordinate.latitude + 0.007, longitude: centerCoordinate.longitude)
+                            let regionRadius: CLLocationDistance = self.defaultZoomRadius
+                            let coordinateRegion = MKCoordinateRegionMakeWithDistance(newLocation.coordinate, regionRadius, regionRadius)
+                            self.mapView?.setRegion(coordinateRegion, animated: true)
+                        })
+                    })
+            })
+        }
+    }
+
+    private func didSetDestinationLocation() {
+        if let centerCoordinate = self.mapView?.centerCoordinate {
+            // Add a new destination pin at the center of the map.
+            self.destinationAnnotation = BMDestinationAnnotation.createWithCoordinates(centerCoordinate)
+            self.mapView?.addAnnotation(safe: self.destinationAnnotation)
+
+            UIView.animateWithDuration(0.3, animations: {
+                // Hide the location button and its text
+                self.locationButton?.alpha = 0
+                self.pinDescriptionLabel?.alpha = 0
+
+                }, completion: { (finished: Bool) in
+                    // Fetch the address of the location
+                    let location = CLLocation(latitude: centerCoordinate.latitude, longitude: centerCoordinate.longitude)
+                    self.fetchAddressForLocation(location, completion: { (address) in
+                        // Show the address in the dedicated view.
+                        self.destinationInfoView?.updateWithAddress(address)
+                        //
+                        self.searchForRoutesBetweenAnnotations({ (routes: [Route]) in
+                            // Draw the first route as example.
+                            if let routeCode = routes.first?.code {
+                                self.fetchAndDrawRoute(routeCode)
+                            }
+                            // Notify and reload the collection view with the new results.
+                            self.didFetchAvailableRoutesBlock?(routes: routes)
+                        })
+                    })
+            })
+        }
+    }
+
+    private func searchForRoutesBetweenAnnotations(completion: ((routes: [Route]) -> Void)?) {
+
+        if let pickUpCoordinate = self.startAnnotation?.coordinate {
+            // Fetch all routes passing by the pick up location.
+            self.fetchRoutesForCoordinates(pickUpCoordinate, completion: { (pickUpRoutes: [Route]) in
+
+                if let destinationCoordinate = self.destinationAnnotation?.coordinate {
+                    // Fetch all routes passing by the destination location.
+                    self.fetchRoutesForCoordinates(destinationCoordinate, completion: { (destinationRoutes: [Route]) in
+
+                        // Filter the routes to only the ones matching.
+                        var commonRoutes = [Route]()
+                        for pickUpRoute in pickUpRoutes {
+                            for destinationRoute in destinationRoutes
+                                where (destinationRoute.code == pickUpRoute.code) {
+                                    commonRoutes.append(destinationRoute)
+                            }
+                        }
+                        completion?(routes: commonRoutes)
+                    })
+                }
+            })
+        }
+    }
+}
+
+// MARK: - Data Management
 
 extension BMMapView {
 
@@ -256,41 +352,43 @@ extension BMMapView {
         })
     }
 
+    /**
+     Fetch all bus routes around given coordinates.
+
+     - parameter coordinates:   The coordinates to search for routes around.
+     - parameter completion:    Block having as parameter an array of routes passing by the given coordinates.
+     */
     private func fetchRoutesForCoordinates(coordinates: CLLocationCoordinate2D, completion: ((routes: [Route]) -> Void)?) {
         let location = CLLocation(latitude: coordinates.latitude, longitude: coordinates.longitude)
         self.fetchRoutesForLocation(location, completion: completion)
     }
 
+    /**
+     Fetch all bus routes around a given location.
+
+     - parameter location:   The location to search for routes around it.
+     - parameter completion: Block having as parameter an array of routes passing by the given location.
+     */
     private func fetchRoutesForLocation(location: CLLocation, completion: ((routes: [Route]) -> Void)?) {
         APIManager.routesAroundLocation(location) { (routes, error) in
             UIAlertController.showErrorPopup(error)
             completion?(routes: routes)
         }
     }
-}
 
-// MARK: - Debug
+    /**
+     Fetch the real address of a location using the CLGeocoder.
 
-extension BMMapView {
-
-    private func fetchRoutesForPoints() {
-
-        // start point  lat: 6.19608, lng: -75.5751 -> 19 Lineas
-        // end point    lat: 6.20623, lng: -75.5855 -> 20 lineas
-
-        let firstLocation = CLLocation(latitude: 6.196077726336638, longitude: -75.57505116931151)
-        APIManager.routesAroundLocation(firstLocation) { (routes, error) in
-            if (routes.count == 19) {
-                print("start point success")
-            }
-        }
-
-        let secondLocation = CLLocation(latitude: 6.206232183494578, longitude: -75.58550066406245)
-        APIManager.routesAroundLocation(secondLocation) { (routes, error) in
-            if (routes.count == 20) {
-                print("end point success")
-            }
+     - parameter location:   The location to find the address.
+     - parameter completion: Block having as optional parameter the address of the given location.
+     */
+    func fetchAddressForLocation(location: CLLocation, completion: ((address: String?) -> Void)?) {
+        CLGeocoder().reverseGeocodeLocation(location) { (placemarks: [CLPlacemark]?, error: NSError?) in
+            placemarks?.forEach({ (placemark: CLPlacemark) in
+                print(placemark.addressDictionary)
+                let street = placemark.addressDictionary?["Street"] as? String
+                completion?(address: street)
+            })
         }
     }
 }
-

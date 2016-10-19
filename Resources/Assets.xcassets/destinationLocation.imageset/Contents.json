@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "buttonFinishLine.png",
+      "filename" : "destinationLocation.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "buttonFinishLine@2x.png",
+      "filename" : "destinationLocation@2x.png",
       "scale" : "2x"
     },
     {

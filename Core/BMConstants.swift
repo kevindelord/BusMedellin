@@ -53,6 +53,16 @@ struct StaticHeight {
 struct Map {
 
     static let DefaultSearchRadius  = 500.0
+    static let DeltaAfterSearch = 0.007
+
+    struct PinReuseIdentifier {
+        static let PickUp       = "PickUpAnnotaion_Id"
+        static let Destination  = "DestinationAnnotaion_Id"
+    }
+
+    struct Address {
+        static let Street       = "Street"
+    }
 }
 
 struct XibFile {

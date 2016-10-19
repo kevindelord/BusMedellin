@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -30,7 +31,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5hX-xe-Htd" userLabel="locationButton">
-                    <rect key="frame" x="166" y="238.5" width="267" height="59"/>
+                    <rect key="frame" x="166" y="238" width="267" height="59"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="267" id="Sr7-z9-8Xe"/>
                         <constraint firstAttribute="height" constant="59" id="m4K-W7-Q9i"/>
@@ -41,11 +42,11 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SET PICKUP LOCATION" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xE2-eY-ZaT" userLabel="pinDescriptionText">
-                    <rect key="frame" x="166" y="243.5" width="247.5" height="30"/>
+                    <rect key="frame" x="166" y="243" width="247.5" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="qv9-x9-3G0"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -54,34 +55,46 @@
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ebe-vF-VbB">
                             <rect key="frame" x="15" y="15" width="10" height="10"/>
-                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="10" id="5gz-ph-Mdz"/>
                                 <constraint firstAttribute="width" constant="10" id="WJP-Wq-Oqg"/>
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lfz-Wq-vgF">
-                            <rect key="frame" x="41" y="0.0" width="471" height="40"/>
+                            <rect key="frame" x="41" y="0.0" width="439" height="40"/>
                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vch-4c-sRG">
+                            <rect key="frame" x="492" y="12" width="16" height="16"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="Vch-4c-sRG" secondAttribute="height" multiplier="1:1" id="dwN-wX-SWv"/>
+                            </constraints>
+                            <state key="normal" image="cross"/>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.90196078431372551" green="0.90196078431372551" blue="0.90196078431372551" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="lfz-Wq-vgF" firstAttribute="leading" secondItem="Ebe-vF-VbB" secondAttribute="trailing" constant="16" id="2Ez-3B-sVP"/>
                         <constraint firstItem="Ebe-vF-VbB" firstAttribute="top" secondItem="b7K-uG-JL7" secondAttribute="top" constant="15" id="3Pr-tv-LXA"/>
+                        <constraint firstAttribute="trailing" secondItem="Vch-4c-sRG" secondAttribute="trailing" constant="12" id="7lE-cy-NFR"/>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="KvG-V2-aey"/>
                         <constraint firstAttribute="height" constant="40" id="PaZ-Aj-x7f"/>
                         <constraint firstItem="Ebe-vF-VbB" firstAttribute="leading" secondItem="b7K-uG-JL7" secondAttribute="leading" constant="15" id="W8x-B1-LIQ"/>
                         <constraint firstItem="lfz-Wq-vgF" firstAttribute="top" secondItem="b7K-uG-JL7" secondAttribute="top" id="bjw-BS-TnW"/>
+                        <constraint firstItem="Vch-4c-sRG" firstAttribute="leading" secondItem="lfz-Wq-vgF" secondAttribute="trailing" constant="12" id="d7Q-8F-Bbo"/>
+                        <constraint firstAttribute="bottom" secondItem="Vch-4c-sRG" secondAttribute="bottom" constant="12" id="h01-sE-xzP"/>
                         <constraint firstAttribute="bottom" secondItem="lfz-Wq-vgF" secondAttribute="bottom" id="jW0-J2-7mA"/>
+                        <constraint firstItem="Vch-4c-sRG" firstAttribute="top" secondItem="b7K-uG-JL7" secondAttribute="top" constant="12" id="k6M-zN-8hZ"/>
                         <constraint firstAttribute="bottom" secondItem="Ebe-vF-VbB" secondAttribute="bottom" constant="15" id="p7s-xn-P5L"/>
-                        <constraint firstAttribute="trailing" secondItem="lfz-Wq-vgF" secondAttribute="trailing" constant="8" id="unr-7t-amg"/>
+                        <constraint firstAttribute="trailing" secondItem="lfz-Wq-vgF" secondAttribute="trailing" constant="70" id="unr-7t-amg"/>
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
                             <exclude reference="KvG-V2-aey"/>
+                            <exclude reference="unr-7t-amg"/>
                         </mask>
                     </variation>
                     <connections>
@@ -94,30 +107,46 @@
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CzP-9g-wXG">
                             <rect key="frame" x="15" y="15" width="10" height="10"/>
-                            <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.29803921568627451" green="0.85098039215686272" blue="0.39215686274509803" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="10" id="hpc-1U-rhV"/>
                                 <constraint firstAttribute="height" constant="10" id="s7w-EK-9pw"/>
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nGn-Kz-FR1">
-                            <rect key="frame" x="41" y="0.0" width="471" height="40"/>
+                            <rect key="frame" x="41" y="0.0" width="439" height="40"/>
                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Agd-yg-7mu">
+                            <rect key="frame" x="492" y="12" width="16" height="16"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="Agd-yg-7mu" secondAttribute="height" multiplier="1:1" id="tls-l1-cIf"/>
+                            </constraints>
+                            <state key="normal" image="cross"/>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="Agd-yg-7mu" secondAttribute="trailing" constant="12" id="58E-9R-wX5"/>
                         <constraint firstItem="CzP-9g-wXG" firstAttribute="top" secondItem="MHe-Hz-gNQ" secondAttribute="top" constant="15" id="68d-fk-OiX"/>
-                        <constraint firstAttribute="trailing" secondItem="nGn-Kz-FR1" secondAttribute="trailing" constant="8" id="8kG-tj-cgF"/>
+                        <constraint firstAttribute="bottom" secondItem="Agd-yg-7mu" secondAttribute="bottom" constant="12" id="6QL-d1-gon"/>
+                        <constraint firstAttribute="trailing" secondItem="nGn-Kz-FR1" secondAttribute="trailing" constant="48" id="8kG-tj-cgF"/>
+                        <constraint firstItem="Agd-yg-7mu" firstAttribute="top" secondItem="MHe-Hz-gNQ" secondAttribute="top" constant="12" id="Gkc-1K-zrm"/>
                         <constraint firstItem="nGn-Kz-FR1" firstAttribute="leading" secondItem="CzP-9g-wXG" secondAttribute="trailing" constant="16" id="Rs3-fq-qct"/>
                         <constraint firstItem="nGn-Kz-FR1" firstAttribute="top" secondItem="MHe-Hz-gNQ" secondAttribute="top" id="V5l-lg-Ub7"/>
                         <constraint firstAttribute="height" constant="40" id="j3d-mt-HdB"/>
+                        <constraint firstItem="Agd-yg-7mu" firstAttribute="leading" secondItem="nGn-Kz-FR1" secondAttribute="trailing" constant="12" id="lcq-qK-mEJ"/>
                         <constraint firstAttribute="bottom" secondItem="nGn-Kz-FR1" secondAttribute="bottom" id="ll0-Wu-EMM"/>
                         <constraint firstAttribute="bottom" secondItem="CzP-9g-wXG" secondAttribute="bottom" constant="15" id="m2l-Oh-XgU"/>
                         <constraint firstItem="CzP-9g-wXG" firstAttribute="leading" secondItem="MHe-Hz-gNQ" secondAttribute="leading" constant="15" id="vHm-0t-iH2"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="8kG-tj-cgF"/>
+                        </mask>
+                    </variation>
                     <connections>
                         <outlet property="addressLabel" destination="nGn-Kz-FR1" id="rH3-I2-ue5"/>
                         <outlet property="dotIndicator" destination="CzP-9g-wXG" id="jbn-S3-yZn"/>
@@ -157,6 +186,7 @@
     </objects>
     <resources>
         <image name="NearMe" width="50" height="50"/>
+        <image name="cross" width="50" height="50"/>
         <image name="pickupLocation" width="267" height="59"/>
     </resources>
 </document>

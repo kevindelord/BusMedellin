@@ -21,6 +21,8 @@ struct Configuration {
 
 struct Verbose {
 
+    static let PinAddress           : Bool = false
+
     struct Manager {
         static let API              : Bool = false
     }

@@ -17,9 +17,9 @@ class BMAnnotation  : NSObject, MKAnnotation {
     let reuseId     : String
     let pinColor    : MKPinAnnotationColor
 
-    init(title: String, subtitle: String, coordinate: CLLocationCoordinate2D, reuseId: String, pinColor: MKPinAnnotationColor) {
-        self.title = title
-        self.subtitle = subtitle
+    init(coordinate: CLLocationCoordinate2D, reuseId: String, pinColor: MKPinAnnotationColor) {
+        self.title = nil
+        self.subtitle = nil
         self.coordinate = coordinate
         self.reuseId = reuseId
         self.pinColor = pinColor
@@ -30,13 +30,13 @@ class BMAnnotation  : NSObject, MKAnnotation {
 class BMStartAnnotation : BMAnnotation {
 
     static func createWithCoordinates(coordinates: CLLocationCoordinate2D) -> BMStartAnnotation {
-        return BMStartAnnotation(title: "Starting Point", subtitle: "Where you want to take a bus.", coordinate: coordinates, reuseId: "STARTSTART", pinColor: .Green)
+        return BMStartAnnotation(coordinate: coordinates, reuseId: Map.PinReuseIdentifier.PickUp, pinColor: .Green)
     }
 }
 
 class BMDestinationAnnotation : BMAnnotation {
 
     static func createWithCoordinates(coordinates: CLLocationCoordinate2D) -> BMStartAnnotation {
-        return BMStartAnnotation(title: "Destination Point", subtitle: "Where you want to arrive.", coordinate: coordinates, reuseId: "BMDestinationBMDestination", pinColor: .Red)
+        return BMStartAnnotation(coordinate: coordinates, reuseId: Map.PinReuseIdentifier.Destination, pinColor: .Red)
     }
 }

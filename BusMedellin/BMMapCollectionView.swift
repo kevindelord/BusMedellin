@@ -257,9 +257,9 @@ extension BMMapView {
                             self.pinDescriptionLabel?.alpha = 1
                             // Show the destination address view.
                             self.destinationInfoView?.backgroundColor = UIColor.whiteColor()
-                            self.destinationInfoViewTopConstraint?.constant += 20
+                            self.destinationInfoViewTopConstraint?.constant += ((self.destinationInfoView?.frameHeight ?? 0) * 0.5)
                             // Move the map up North a bit.
-                            let newLocation = CLLocation(latitude: centerCoordinate.latitude + 0.007, longitude: centerCoordinate.longitude)
+                            let newLocation = CLLocation(latitude: centerCoordinate.latitude + Map.DeltaAfterSearch, longitude: centerCoordinate.longitude)
                             let regionRadius: CLLocationDistance = self.defaultZoomRadius
                             let coordinateRegion = MKCoordinateRegionMakeWithDistance(newLocation.coordinate, regionRadius, regionRadius)
                             self.mapView?.setRegion(coordinateRegion, animated: true)
@@ -385,8 +385,8 @@ extension BMMapView {
     func fetchAddressForLocation(location: CLLocation, completion: ((address: String?) -> Void)?) {
         CLGeocoder().reverseGeocodeLocation(location) { (placemarks: [CLPlacemark]?, error: NSError?) in
             placemarks?.forEach({ (placemark: CLPlacemark) in
-                print(placemark.addressDictionary)
-                let street = placemark.addressDictionary?["Street"] as? String
+                DKLog(Verbose.PinAddress, "Address found: \(placemark.addressDictionary ?? [:])")
+                let street = placemark.addressDictionary?[Map.Address.Street] as? String
                 completion?(address: street)
             })
         }

@@ -45,7 +45,7 @@ struct StaticHeight {
 
     struct CollectionView {
 
-        static let Cell             : CGFloat = 60
+        static let Cell             : CGFloat = 80
         static let SectionHeader    : CGFloat = 80
     }
 }
@@ -63,6 +63,8 @@ struct Map {
 struct XibFile {
 
     static let BMMapView        = "BMMapView"
+    static let BMHeaderView     = "BMHeaderView"
+    static let BMCellView       = "BMCellView"
 }
 
 struct ReuseId {
@@ -79,4 +81,6 @@ struct BMColor {
     static let Blue             = UIColor(33, g: 150, b: 243)
     static let Gray             = UIColor(149, g: 165, b: 166)
     static let Black            = UIColor.blackColor()
+    static let ViewBorder       = UIColor(230, g: 230, b: 230)
+    static let DotBorder        = UIColor(150, g: 150, b: 150)
 }

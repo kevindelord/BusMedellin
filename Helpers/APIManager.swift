@@ -95,7 +95,7 @@ extension APIManager {
         let key = NSBundle.stringEntryInPListForKey(BMPlist.FusionTable.Key)
         let lat = location.coordinate.latitude
         let lng = location.coordinate.longitude
-        let parameters = ["sql":"SELECT Nombre_Rut,CODIGO_RUT FROM \(identifier) WHERE ST_INTERSECTS(geometry,CIRCLE(LATLNG(\(lat),\(lng)),\(radius)))", "key" : key]
+        let parameters = ["sql":"SELECT Nombre_Rut,CODIGO_RUT,NomBar,NomCom FROM \(identifier) WHERE ST_INTERSECTS(geometry,CIRCLE(LATLNG(\(lat),\(lng)),\(radius)))", "key" : key]
 
         self.GETRequest(parameters, success: { (session, responseObject) in
 

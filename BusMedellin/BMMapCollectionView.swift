@@ -13,7 +13,7 @@ import CSStickyHeaderFlowLayout
 
 class BMMapCollectionView                       : UICollectionReusableView {
 
-    var mapContainer                        : BMMapView?
+    var mapContainer                            : BMMapView?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -50,7 +50,7 @@ class BMMapView                                 : UIView {
     private var startAnnotation                 : BMAnnotation?
     private var destinationAnnotation           : BMAnnotation?
 
-    var didFetchAvailableRoutesBlock            : ((routes: [Route]) -> Void)?
+    var didFetchAvailableRoutesBlock            : ((routes: [Route]?) -> Void)?
     var showErrorPopupBlock                     : ((error: NSError?) -> Void)?
 
     override init(frame: CGRect) {
@@ -193,7 +193,7 @@ extension BMMapView {
             self.cancelPickUpButton?.alpha = 0
             self.pickUpInfoView?.updateWithAddress(nil)
             // Show the destination address view.
-            self.destinationInfoView?.backgroundColor = UIColor(230, g: 230, b: 230)
+            self.destinationInfoView?.backgroundColor = BMColor.ViewBorder
             self.destinationInfoViewTopConstraint?.constant -= ((self.destinationInfoView?.frameHeight ?? 0) * 0.5)
             self.linkBetweenDots?.alpha = 0
             // Reset map
@@ -203,6 +203,8 @@ extension BMMapView {
             // Reset map indicator
             self.locationButton?.setImage(UIImage(named: "pickupLocation"), forState: .Normal)
             self.pinDescriptionLabel?.text = "SET PICKUP LOCATION"
+            // Notify and reload the collection view.
+            self.didFetchAvailableRoutesBlock?(routes: nil)
         })
     }
 
@@ -222,11 +224,12 @@ extension BMMapView {
             // Reset map indicator
             self.locationButton?.setImage(UIImage(named: "destinationLocation"), forState: .Normal)
             self.pinDescriptionLabel?.text = "SET DESTINATION"
+            // Notify and reload the collection view with the new results.
+            self.didFetchAvailableRoutesBlock?(routes: nil)
         })
     }
 
     @IBAction func locationButtonPressed() {
-
         if (self.startAnnotation == nil) {
             self.didSetPickUpLocation()
         } else if (self.destinationAnnotation == nil) {

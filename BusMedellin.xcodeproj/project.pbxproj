@@ -24,9 +24,11 @@
 		757E0A8F1DB72E0400D89B83 /* BMAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757E0A8E1DB72E0400D89B83 /* BMAddressView.swift */; };
 		75805BBD1DAF1D9700DACFF5 /* DKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75805BB91DAF1D9700DACFF5 /* DKExtensions.swift */; };
 		75805BC41DAF5B7E00DACFF5 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75805BC31DAF5B7E00DACFF5 /* Route.swift */; };
+		75F8B4C01DB95E6200F43109 /* BMHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75F8B4BF1DB95E6200F43109 /* BMHeaderView.xib */; };
+		75F8B4C21DB9691200F43109 /* BMCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75F8B4C11DB9691200F43109 /* BMCellView.xib */; };
 		75FEDCF51DB1DC3700D692C4 /* BMCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FEDCF41DB1DC3700D692C4 /* BMCollectionViewController.swift */; };
 		75FEDCF91DB1DED700D692C4 /* BMCollectionSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FEDCF81DB1DED700D692C4 /* BMCollectionSectionHeader.swift */; };
-		75FEDCFB1DB1DF2F00D692C4 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FEDCFA1DB1DF2F00D692C4 /* CollectionViewCell.swift */; };
+		75FEDCFB1DB1DF2F00D692C4 /* BMCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FEDCFA1DB1DF2F00D692C4 /* BMCollectionViewCell.swift */; };
 		75FEDCFD1DB1E63300D692C4 /* BMMapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75FEDCFC1DB1E63300D692C4 /* BMMapView.xib */; };
 		AFFD37F54C66E16096BAF358 /* Pods_BusMedellin_Alpha.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 303C336AEDCC072779B8226E /* Pods_BusMedellin_Alpha.framework */; };
 /* End PBXBuildFile section */
@@ -53,10 +55,12 @@
 		75805BB91DAF1D9700DACFF5 /* DKExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DKExtensions.swift; sourceTree = "<group>"; };
 		75805BC01DAF5B3A00DACFF5 /* medellin.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = medellin.gpx; path = Resources/medellin.gpx; sourceTree = "<group>"; };
 		75805BC31DAF5B7E00DACFF5 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Route.swift; path = Models/Route.swift; sourceTree = "<group>"; };
+		75F8B4BF1DB95E6200F43109 /* BMHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BMHeaderView.xib; path = Resources/BMHeaderView.xib; sourceTree = "<group>"; };
+		75F8B4C11DB9691200F43109 /* BMCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BMCellView.xib; path = Resources/BMCellView.xib; sourceTree = "<group>"; };
 		75FEDCF41DB1DC3700D692C4 /* BMCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BMCollectionViewController.swift; path = Core/Controller/BMCollectionViewController.swift; sourceTree = "<group>"; };
 		75FEDCF61DB1DCE500D692C4 /* BusMedellin-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "BusMedellin-Bridging-Header.h"; path = "Helpers/BusMedellin-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		75FEDCF81DB1DED700D692C4 /* BMCollectionSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BMCollectionSectionHeader.swift; path = Core/BMCollectionSectionHeader.swift; sourceTree = "<group>"; };
-		75FEDCFA1DB1DF2F00D692C4 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionViewCell.swift; path = Core/CollectionViewCell.swift; sourceTree = "<group>"; };
+		75FEDCFA1DB1DF2F00D692C4 /* BMCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BMCollectionViewCell.swift; path = Core/BMCollectionViewCell.swift; sourceTree = "<group>"; };
 		75FEDCFC1DB1E63300D692C4 /* BMMapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BMMapView.xib; path = Resources/BMMapView.xib; sourceTree = SOURCE_ROOT; };
 		BCAAEAB40516B6059850CA36 /* Pods-BusMedellin-Alpha.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusMedellin-Alpha.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BusMedellin-Alpha/Pods-BusMedellin-Alpha.debug.xcconfig"; sourceTree = "<group>"; };
 		C5083B8EF7A8C636C7DDB3DB /* Pods-BusMedellin-Alpha.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusMedellin-Alpha.release.xcconfig"; path = "Pods/Target Support Files/Pods-BusMedellin-Alpha/Pods-BusMedellin-Alpha.release.xcconfig"; sourceTree = "<group>"; };
@@ -126,6 +130,8 @@
 				75513BDF1DB019C600957F40 /* Assets.xcassets */,
 				75805BC01DAF5B3A00DACFF5 /* medellin.gpx */,
 				75640BEC1DAF19C5002B4A56 /* Settings.bundle */,
+				75F8B4BF1DB95E6200F43109 /* BMHeaderView.xib */,
+				75F8B4C11DB9691200F43109 /* BMCellView.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -157,7 +163,7 @@
 				75640BFB1DAF1AAD002B4A56 /* BMConstants.swift */,
 				75640BFD1DAF1B11002B4A56 /* DMDefines.swift */,
 				75FEDCF41DB1DC3700D692C4 /* BMCollectionViewController.swift */,
-				75FEDCFA1DB1DF2F00D692C4 /* CollectionViewCell.swift */,
+				75FEDCFA1DB1DF2F00D692C4 /* BMCollectionViewCell.swift */,
 				75FEDCF81DB1DED700D692C4 /* BMCollectionSectionHeader.swift */,
 			);
 			name = Core;
@@ -274,8 +280,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75F8B4C21DB9691200F43109 /* BMCellView.xib in Resources */,
 				75640BED1DAF19C5002B4A56 /* Settings.bundle in Resources */,
 				7554E7841DAF16E400F1178C /* LaunchScreen.storyboard in Resources */,
+				75F8B4C01DB95E6200F43109 /* BMHeaderView.xib in Resources */,
 				75513BE01DB019C600957F40 /* Assets.xcassets in Resources */,
 				75FEDCFD1DB1E63300D692C4 /* BMMapView.xib in Resources */,
 				7554E77F1DAF16E400F1178C /* Main.storyboard in Resources */,
@@ -340,7 +348,7 @@
 				75513BE51DB02D2300957F40 /* BMAnnotations.swift in Sources */,
 				75805BC41DAF5B7E00DACFF5 /* Route.swift in Sources */,
 				75640BF21DAF19FB002B4A56 /* APIManager.swift in Sources */,
-				75FEDCFB1DB1DF2F00D692C4 /* CollectionViewCell.swift in Sources */,
+				75FEDCFB1DB1DF2F00D692C4 /* BMCollectionViewCell.swift in Sources */,
 				75513BE71DB02E5700957F40 /* MKMapView.swift in Sources */,
 				75513BE31DB01ED900957F40 /* BMButtons.swift in Sources */,
 				7554E77C1DAF16E400F1178C /* BMMapCollectionView.swift in Sources */,

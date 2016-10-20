@@ -42,9 +42,9 @@ class BMAddressView                         : UIView {
 
         // Borders
         self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor(230, g: 230, b: 230).CGColor
+        self.layer.borderColor = BMColor.ViewBorder.CGColor
         self.dotIndicator?.layer.borderWidth = 1
-        self.dotIndicator?.layer.borderColor = UIColor(150, g: 150, b: 150).CGColor
+        self.dotIndicator?.layer.borderColor = BMColor.DotBorder.CGColor
     }
 
     func updateWithAddress(address: String?) {

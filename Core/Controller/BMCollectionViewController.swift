@@ -11,8 +11,9 @@ import CSStickyHeaderFlowLayout
 
 class BMCollectionViewController: UICollectionViewController {
 
-    var availableRoutes         = [Route]()
+    var availableRoutes         : [Route]?
     var displayRouteOnMap       : ((route: Route) -> Void)?
+    var drawnRoute              : Route?
 
     private var layout : CSStickyHeaderFlowLayout? {
         return self.collectionView?.collectionViewLayout as? CSStickyHeaderFlowLayout
@@ -20,9 +21,10 @@ class BMCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.collectionView?.backgroundColor = UIColor.whiteColor()
 
         // Setup Cells: list of bus lines
-        self.collectionView?.registerClass(CollectionViewCell.self, forCellWithReuseIdentifier: ReuseId.ResultCell)
+        self.collectionView?.registerClass(BMCollectionViewCell.self, forCellWithReuseIdentifier: ReuseId.ResultCell)
         self.layout?.itemSize = CGSizeMake(self.view.frame.size.width, StaticHeight.CollectionView.Cell)
 
         // Setup Header: map view
@@ -32,6 +34,8 @@ class BMCollectionViewController: UICollectionViewController {
         // Setup Section Header: header with title "number of lines"
         self.collectionView?.registerClass(BMCollectionViewSectionHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: ReuseId.SectionHeader)
         self.layout?.headerReferenceSize = CGSizeMake(self.view.frame.size.width, StaticHeight.CollectionView.SectionHeader)
+
+        self.layout?.minimumLineSpacing = 0
     }
 }
 
@@ -42,19 +46,21 @@ extension BMCollectionViewController {
     // Cells
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.availableRoutes.count
+        return (self.availableRoutes?.count ?? 0)
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ReuseId.ResultCell, forIndexPath: indexPath) as? CollectionViewCell
-        cell?.text = self.availableRoutes[safe: indexPath.row]?.name
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ReuseId.ResultCell, forIndexPath: indexPath) as? BMCollectionViewCell
+        if let route = self.availableRoutes?[safe: indexPath.row] {
+            cell?.cellContainer?.updateContent(route)
+        }
         return (cell ?? UICollectionViewCell())
     }
 
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         collectionView.deselectItemAtIndexPath(indexPath, animated: true)
-        if let route = self.availableRoutes[safe: indexPath.item] {
+        if let route = self.availableRoutes?[safe: indexPath.item] {
             self.displayRouteOnMap?(route: route)
             collectionView.setContentOffset(CGPoint.zero, animated: true)
         }
@@ -72,9 +78,8 @@ extension BMCollectionViewController {
 
         } else if (kind == UICollectionElementKindSectionHeader),
             let view = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: ReuseId.SectionHeader, forIndexPath: indexPath) as? BMCollectionViewSectionHeader {
-                view.backgroundColor = UIColor.greenColor()
-                view.label.text = "  \(self.availableRoutes.count) routes found"
-                return view
+            view.headerContainer?.updateContent(self.availableRoutes, drawnRoute: self.drawnRoute)
+            return view
         }
         
         return UICollectionReusableView()
@@ -85,10 +90,14 @@ extension BMCollectionViewController {
 
 extension BMCollectionViewController {
 
-    func reloadAvailableRoutes(routes: [Route]) {
+    func reloadAvailableRoutes(routes: [Route]?) {
         self.availableRoutes = routes
+        self.drawnRoute = routes?.first
 
-        if (self.availableRoutes.isEmpty == false) {
+        if (routes != nil && routes?.isEmpty == true) {
+            UIAlertController.showErrorMessage("No routes available for the choosen locations.")
+        }
+        if (self.availableRoutes?.isEmpty == false) {
             // Reload the collection view to show the number of bus lines found.
             self.collectionView?.reloadData()
             // Scroll up a bit to indicate the user that he can scroll up.

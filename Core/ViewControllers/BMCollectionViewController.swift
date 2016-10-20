@@ -28,7 +28,7 @@ class BMCollectionViewController: UICollectionViewController {
         self.layout?.itemSize = CGSizeMake(self.view.frame.size.width, StaticHeight.CollectionView.Cell)
 
         // Setup Header: map view
-        self.collectionView?.registerClass(BMMapCollectionView.self, forSupplementaryViewOfKind: CSStickyHeaderParallaxHeader, withReuseIdentifier: ReuseId.ParallaxHeader)
+        self.collectionView?.registerClass(BMCollectionMapView.self, forSupplementaryViewOfKind: CSStickyHeaderParallaxHeader, withReuseIdentifier: ReuseId.ParallaxHeader)
         self.layout?.parallaxHeaderReferenceSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height - StaticHeight.CollectionView.SectionHeader)
 
         // Setup Section Header: header with title "number of lines"
@@ -73,7 +73,7 @@ extension BMCollectionViewController {
     override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
 
         if (kind == CSStickyHeaderParallaxHeader),
-            let view = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: ReuseId.ParallaxHeader, forIndexPath: indexPath) as? BMMapCollectionView {
+            let view = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: ReuseId.ParallaxHeader, forIndexPath: indexPath) as? BMCollectionMapView {
                 view.mapContainer?.didFetchAvailableRoutesBlock = self.reloadAvailableRoutes
                 self.displayRouteOnMap = view.mapContainer?.fetchAndDrawRoute
                 return view

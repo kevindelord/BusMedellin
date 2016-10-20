@@ -1,5 +1,5 @@
 //
-//  BMMapCollectionView.swift
+//  BMCollectionMapView.swift
 //  BusMedellin
 //
 //  Created by Kevin Delord on 13/10/16.
@@ -11,7 +11,7 @@ import MapKit
 import DKHelper
 import CSStickyHeaderFlowLayout
 
-class BMMapCollectionView                       : UICollectionReusableView {
+class BMCollectionMapView                       : UICollectionReusableView {
 
     var mapContainer                            : BMMapView?
 

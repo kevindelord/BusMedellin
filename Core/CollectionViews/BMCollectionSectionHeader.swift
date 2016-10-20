@@ -78,7 +78,7 @@ class BMHeaderView                          : UIView {
     }
 
     private func showAppTitle() {
-        self.appTitle?.text = "Bus Medellin"
+        self.appTitle?.text = "Bus Paisa"
         self.infoButton?.alpha = 1
         self.routeTitle?.text = ""
         self.subtitle?.text = ""

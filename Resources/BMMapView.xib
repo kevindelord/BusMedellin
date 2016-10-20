@@ -51,7 +51,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b7K-uG-JL7" userLabel="DestinationInfoView" customClass="BMAddressView" customModule="BusMedellin_Alpha" customModuleProvider="target">
-                    <rect key="frame" x="40" y="60" width="520" height="40"/>
+                    <rect key="frame" x="40" y="59" width="520" height="40"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ebe-vF-VbB">
                             <rect key="frame" x="15" y="15" width="10" height="10"/>
@@ -158,22 +158,32 @@
                         <outlet property="dotIndicator" destination="CzP-9g-wXG" id="jbn-S3-yZn"/>
                     </connections>
                 </view>
+                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mdo-rp-lPe">
+                    <rect key="frame" x="60" y="64" width="1" height="31"/>
+                    <color key="backgroundColor" red="0.58823529411764708" green="0.58823529411764708" blue="0.58823529411764708" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="31" id="Wqp-fS-IV5"/>
+                        <constraint firstAttribute="width" constant="1" id="xXB-Eo-Kzf"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="MHe-Hz-gNQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="40" id="4Jx-xa-427"/>
                 <constraint firstItem="xE2-eY-ZaT" firstAttribute="top" secondItem="5hX-xe-Htd" secondAttribute="top" constant="5" id="4P2-g9-yqh"/>
+                <constraint firstItem="mdo-rp-lPe" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="64" id="5ov-Qs-2oR"/>
                 <constraint firstAttribute="trailing" secondItem="MHe-Hz-gNQ" secondAttribute="trailing" constant="40" id="8V5-0n-dbU"/>
                 <constraint firstItem="b7K-uG-JL7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="40" id="9Rl-Pi-z3D"/>
                 <constraint firstAttribute="trailing" secondItem="G62-R6-2VT" secondAttribute="trailing" id="9kn-Qr-1pO"/>
                 <constraint firstAttribute="bottom" secondItem="G62-R6-2VT" secondAttribute="bottom" id="DfB-W3-bhi"/>
                 <constraint firstItem="G62-R6-2VT" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="HdK-RT-cjr"/>
                 <constraint firstItem="xE2-eY-ZaT" firstAttribute="leading" secondItem="5hX-xe-Htd" secondAttribute="leading" id="Ign-Mn-HhN"/>
-                <constraint firstItem="b7K-uG-JL7" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="60" id="KhZ-ec-5Xl"/>
+                <constraint firstItem="b7K-uG-JL7" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="59" id="KhZ-ec-5Xl"/>
                 <constraint firstAttribute="bottom" secondItem="ySs-Kx-qjd" secondAttribute="bottom" constant="20" id="P3z-ty-mZ9"/>
                 <constraint firstItem="MHe-Hz-gNQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="40" id="Tac-2d-zhe"/>
                 <constraint firstItem="G62-R6-2VT" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="TnM-lg-LtY"/>
                 <constraint firstAttribute="trailing" secondItem="b7K-uG-JL7" secondAttribute="trailing" constant="40" id="aVm-cX-hKz"/>
+                <constraint firstItem="mdo-rp-lPe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="60" id="goh-ap-K63"/>
                 <constraint firstItem="xE2-eY-ZaT" firstAttribute="trailing" secondItem="5hX-xe-Htd" secondAttribute="trailing" constant="-20" id="gqp-gy-fqw"/>
                 <constraint firstAttribute="trailing" secondItem="ySs-Kx-qjd" secondAttribute="trailing" constant="20" id="hrr-ep-8At"/>
                 <constraint firstItem="5hX-xe-Htd" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="nSm-Tz-ARB"/>
@@ -184,6 +194,7 @@
                 <outlet property="cancelPickUpButton" destination="Agd-yg-7mu" id="SeY-Dk-W7v"/>
                 <outlet property="destinationInfoView" destination="b7K-uG-JL7" id="pwr-FL-L72"/>
                 <outlet property="destinationInfoViewTopConstraint" destination="KhZ-ec-5Xl" id="FkN-1t-dOV"/>
+                <outlet property="linkBetweenDots" destination="mdo-rp-lPe" id="9Mq-FZ-V7K"/>
                 <outlet property="locationButton" destination="5hX-xe-Htd" id="3xu-Um-Jdc"/>
                 <outlet property="mapView" destination="G62-R6-2VT" id="7oj-Kl-3uP"/>
                 <outlet property="nearMeButton" destination="ySs-Kx-qjd" id="o8I-NK-Pbh"/>

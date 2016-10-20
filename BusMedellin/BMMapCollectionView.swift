@@ -44,6 +44,7 @@ class BMMapView                                 : UIView {
     @IBOutlet weak var cancelDestinationButton  : UIButton?
     @IBOutlet weak var cancelPickUpButton       : UIButton?
     @IBOutlet weak var destinationInfoViewTopConstraint : NSLayoutConstraint?
+    @IBOutlet weak var linkBetweenDots          : UIView?
 
     private let locationManager                 = CLLocationManager()
     private var startAnnotation                 : BMAnnotation?
@@ -194,6 +195,7 @@ extension BMMapView {
             // Show the destination address view.
             self.destinationInfoView?.backgroundColor = UIColor(230, g: 230, b: 230)
             self.destinationInfoViewTopConstraint?.constant -= ((self.destinationInfoView?.frameHeight ?? 0) * 0.5)
+            self.linkBetweenDots?.alpha = 0
             // Reset map
             self.removeDrawnRoutes()
             self.mapView?.removeAnnotation(safe: self.startAnnotation)
@@ -272,6 +274,7 @@ extension BMMapView {
                             // Show the destination address view.
                             self.destinationInfoView?.backgroundColor = UIColor.whiteColor()
                             self.destinationInfoViewTopConstraint?.constant += ((self.destinationInfoView?.frameHeight ?? 0) * 0.5)
+                            self.linkBetweenDots?.alpha = 1
                             // Move the map up North a bit.
                             let newLocation = CLLocation(latitude: centerCoordinate.latitude + Map.DeltaAfterSearch, longitude: centerCoordinate.longitude)
                             let regionRadius: CLLocationDistance = self.defaultZoomRadius

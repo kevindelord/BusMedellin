@@ -39,7 +39,10 @@ class BMCellView                                : UICollectionViewCell {
     @IBOutlet private weak var titleBottomConstraint : NSLayoutConstraint?
 
     func updateContent(route: Route) {
+        // Title
         self.titleLabel?.text = route.name
+
+        // Subtitle
         if (route.district != "") {
             var subtitleString = route.district
             if (route.area != "") {

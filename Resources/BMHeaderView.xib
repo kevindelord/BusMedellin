@@ -13,7 +13,7 @@
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bus Medellin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i5B-1P-g5c">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
-                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
+                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -23,7 +23,6 @@
                         <constraint firstAttribute="height" constant="22" id="1bm-YT-fkN"/>
                         <constraint firstAttribute="width" constant="22" id="Nsz-xK-pQV"/>
                     </constraints>
-                    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z8r-do-wRv" userLabel="topBorder">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="1"/>
@@ -32,12 +31,35 @@
                         <constraint firstAttribute="height" constant="1" id="ara-ah-1zj"/>
                     </constraints>
                 </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WXr-nV-HCz">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="njp-Xn-MPi"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="njp-Xn-MPi"/>
+                        </mask>
+                    </variation>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iie-qk-oJA">
+                    <rect key="frame" x="0.0" y="30" width="600" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="vAZ-ie-KEX"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3g6-qW-Gd2">
                     <rect key="frame" x="0.0" y="59" width="600" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="n5F-g6-POC"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
+                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -45,6 +67,8 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="Z8r-do-wRv" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="6iz-ti-5rd"/>
+                <constraint firstAttribute="trailing" secondItem="WXr-nV-HCz" secondAttribute="trailing" id="7U4-ls-mW1"/>
+                <constraint firstItem="WXr-nV-HCz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ABd-zR-j8n"/>
                 <constraint firstItem="i5B-1P-g5c" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="BgJ-rS-zmP"/>
                 <constraint firstItem="i5B-1P-g5c" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="D4H-BM-j8k"/>
                 <constraint firstAttribute="trailing" secondItem="weu-NP-V1Y" secondAttribute="trailing" constant="16" id="GSQ-1M-jbz"/>
@@ -54,22 +78,22 @@
                 <constraint firstAttribute="trailing" secondItem="Z8r-do-wRv" secondAttribute="trailing" id="LMx-Rs-dYd"/>
                 <constraint firstItem="3g6-qW-Gd2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="QVt-Dm-lp7"/>
                 <constraint firstAttribute="trailing" secondItem="i5B-1P-g5c" secondAttribute="trailing" id="X1V-m5-8xF"/>
+                <constraint firstItem="WXr-nV-HCz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="doS-2R-uAa"/>
                 <constraint firstAttribute="bottom" secondItem="3g6-qW-Gd2" secondAttribute="bottom" id="gSj-8b-5WI"/>
-                <constraint firstItem="i5B-1P-g5c" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="kBz-dO-dAO"/>
+                <constraint firstAttribute="trailing" secondItem="iie-qk-oJA" secondAttribute="trailing" id="hHD-ki-l35"/>
+                <constraint firstAttribute="bottom" secondItem="iie-qk-oJA" secondAttribute="bottom" constant="20" id="nRj-nv-hNm"/>
+                <constraint firstItem="iie-qk-oJA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ouS-dq-ykn"/>
                 <constraint firstItem="weu-NP-V1Y" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="uTK-aQ-qAF"/>
-                <constraint firstItem="3g6-qW-Gd2" firstAttribute="top" secondItem="Z8r-do-wRv" secondAttribute="bottom" constant="8" id="y1H-x7-Puz"/>
+                <constraint firstAttribute="bottom" secondItem="WXr-nV-HCz" secondAttribute="bottom" constant="40" id="vny-UE-Qrr"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="kBz-dO-dAO"/>
-                    <exclude reference="y1H-x7-Puz"/>
-                </mask>
-            </variation>
             <connections>
+                <outlet property="appTitle" destination="i5B-1P-g5c" id="0WE-uo-eZw"/>
                 <outlet property="infoButton" destination="weu-NP-V1Y" id="tng-AF-9DB"/>
-                <outlet property="subtitle" destination="3g6-qW-Gd2" id="KWw-Fu-FFT"/>
-                <outlet property="title" destination="i5B-1P-g5c" id="Yc5-OX-BUo"/>
+                <outlet property="routeTitle" destination="WXr-nV-HCz" id="VRn-3g-dGj"/>
+                <outlet property="subtitle" destination="iie-qk-oJA" id="oK5-3P-YVw"/>
+                <outlet property="titleBottomConstraint" destination="vny-UE-Qrr" id="Jdl-8i-ohc"/>
+                <outlet property="totalRoutes" destination="3g6-qW-Gd2" id="ZfW-sz-hyz"/>
             </connections>
         </view>
     </objects>

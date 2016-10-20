@@ -61,8 +61,10 @@ extension BMCollectionViewController {
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         collectionView.deselectItemAtIndexPath(indexPath, animated: true)
         if let route = self.availableRoutes?[safe: indexPath.item] {
+            self.drawnRoute = route
             self.displayRouteOnMap?(route: route)
             collectionView.setContentOffset(CGPoint.zero, animated: true)
+            collectionView.reloadData()
         }
     }
 

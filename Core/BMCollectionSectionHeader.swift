@@ -34,22 +34,54 @@ class BMCollectionViewSectionHeader     : UICollectionReusableView {
 
 class BMHeaderView                          : UIView {
 
-    @IBOutlet private weak var title        : UILabel?
+    @IBOutlet private weak var appTitle     : UILabel?
+    @IBOutlet private weak var routeTitle   : UILabel?
     @IBOutlet private weak var subtitle     : UILabel?
+    @IBOutlet private weak var totalRoutes  : UILabel?
     @IBOutlet private weak var infoButton   : UIButton?
+    @IBOutlet private weak var titleBottomConstraint : NSLayoutConstraint?
 
     func updateContent(availableRoutes: [Route]?, drawnRoute: Route?) {
-        if (availableRoutes == nil) {
-            self.title?.text = "Bus Medellin"
-            self.infoButton?.alpha = 1
-            self.subtitle?.text = ""
-        } else if (availableRoutes?.isEmpty == false && drawnRoute == nil) {
-            self.title?.text = "\((availableRoutes?.count ?? 0)) bus routes available"
+        if (availableRoutes == nil || availableRoutes?.isEmpty == true) {
+            self.showAppTitle()
+
+        } else if let route = drawnRoute {
+            // Title
+            self.routeTitle?.text = route.name
+            self.appTitle?.text = ""
             self.infoButton?.alpha = 0
-        } else if (availableRoutes?.isEmpty == false && drawnRoute != nil) {
-            self.subtitle?.text = "\((availableRoutes?.count ?? 0)) bus routes available"
-            self.title?.text = (drawnRoute?.name ?? "")
-            self.infoButton?.alpha = 0
+            // Subtitle
+            self.configureSubtitle(route)
+            // Other Routes
+            self.configureOtherRoutes(availableRoutes)
         }
+    }
+
+    private func configureOtherRoutes(availableRoutes: [Route]?) {
+        if let routes = availableRoutes where (routes.count > 1) {
+            self.totalRoutes?.text = "\(routes.count) bus routes available."
+        }
+    }
+
+    private func configureSubtitle(route: Route) {
+        if (route.district != "") {
+            var subtitleString = route.district
+            if (route.area != "") {
+                subtitleString += ", \(route.area)"
+            }
+            self.subtitle?.text = subtitleString
+            self.titleBottomConstraint?.constant = 40
+        } else {
+            self.subtitle?.text = ""
+            self.titleBottomConstraint?.constant = 0
+        }
+    }
+
+    private func showAppTitle() {
+        self.appTitle?.text = "Bus Medellin"
+        self.infoButton?.alpha = 1
+        self.routeTitle?.text = ""
+        self.subtitle?.text = ""
+        self.totalRoutes?.text = ""
     }
 }

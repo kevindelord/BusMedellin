@@ -11,7 +11,7 @@ import MapKit
 import DKHelper
 import CSStickyHeaderFlowLayout
 
-class BMMapCollectionView                   : UICollectionReusableView {
+class BMMapCollectionView                       : UICollectionReusableView {
 
     var mapContainer                        : BMMapView?
 
@@ -33,22 +33,24 @@ class BMMapCollectionView                   : UICollectionReusableView {
     }
 }
 
-class BMMapView                             : UIView {
+class BMMapView                                 : UIView {
 
-    @IBOutlet weak var mapView              : MKMapView?
-    @IBOutlet weak var nearMeButton         : BMLocateButton?
-    @IBOutlet weak var locationButton       : UIButton?
-    @IBOutlet weak var pinDescriptionLabel  : UILabel?
-    @IBOutlet weak var pickUpInfoView       : BMAddressView?
-    @IBOutlet weak var destinationInfoView  : BMAddressView?
+    @IBOutlet weak var mapView                  : MKMapView?
+    @IBOutlet weak var nearMeButton             : BMLocateButton?
+    @IBOutlet weak var locationButton           : UIButton?
+    @IBOutlet weak var pinDescriptionLabel      : UILabel?
+    @IBOutlet weak var pickUpInfoView           : BMAddressView?
+    @IBOutlet weak var destinationInfoView      : BMAddressView?
+    @IBOutlet weak var cancelDestinationButton  : UIButton?
+    @IBOutlet weak var cancelPickUpButton       : UIButton?
     @IBOutlet weak var destinationInfoViewTopConstraint : NSLayoutConstraint?
 
-    private let locationManager             = CLLocationManager()
-    private var startAnnotation             : BMAnnotation?
-    private var destinationAnnotation       : BMAnnotation?
+    private let locationManager                 = CLLocationManager()
+    private var startAnnotation                 : BMAnnotation?
+    private var destinationAnnotation           : BMAnnotation?
 
-    var didFetchAvailableRoutesBlock        : ((routes: [Route]) -> Void)?
-    var showErrorPopupBlock                 : ((error: NSError?) -> Void)?
+    var didFetchAvailableRoutesBlock            : ((routes: [Route]) -> Void)?
+    var showErrorPopupBlock                     : ((error: NSError?) -> Void)?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -181,34 +183,45 @@ extension BMMapView: MKMapViewDelegate {
 
 extension BMMapView {
 
-//    @IBAction func pickupLocationButtonPressed() {
-//        // UI change
-//        if (self.startAnnotation != nil) {
-//            // Remove current annotation
-//            self.mapView?.removeAnnotation(safe: self.startAnnotation)
-//            self.startAnnotation = nil
-//            // Remove previous routes
-//            self.removeDrawnRoutes()
-//            // Reset the collection view
-//            self.didFetchAvailableRoutesBlock?(routes: [])
-//
-//        } else if let centerCoordinate = self.mapView?.centerCoordinate {
-//            // Add a new annotation at the center of the map.
-//            self.startAnnotation = BMStartAnnotation.createWithCoordinates(centerCoordinate)
-//            self.mapView?.addAnnotation(safe: self.startAnnotation)
-//
-//            // Fetch routes around that location
-//            self.fetchRoutesForCoordinates(centerCoordinate, completion: { (routes) in
-//                // Draw the first route as example.
-//                if let routeCode = routes.first?.code {
-//                    self.fetchAndDrawRoute(routeCode)
-//                }
-//                // Notify and reload the collection view with the new results.
-//                self.didFetchAvailableRoutesBlock?(routes: routes)
-//            })
-//
-//        }
-//    }
+    @IBAction func cancelPickUpButtonPressed() {
+
+        UIView.animateWithDuration(0.3, animations: {
+            // Hide UI elements
+            self.locationButton?.alpha = 1
+            self.pinDescriptionLabel?.alpha = 1
+            self.cancelPickUpButton?.alpha = 0
+            self.pickUpInfoView?.updateWithAddress(nil)
+            // Show the destination address view.
+            self.destinationInfoView?.backgroundColor = UIColor(230, g: 230, b: 230)
+            self.destinationInfoViewTopConstraint?.constant -= ((self.destinationInfoView?.frameHeight ?? 0) * 0.5)
+            // Reset map
+            self.removeDrawnRoutes()
+            self.mapView?.removeAnnotation(safe: self.startAnnotation)
+            self.startAnnotation = nil
+            // Reset map indicator
+            self.locationButton?.setImage(UIImage(named: "pickupLocation"), forState: .Normal)
+            self.pinDescriptionLabel?.text = "SET PICKUP LOCATION"
+        })
+    }
+
+    @IBAction func cancelDestinationButtonPressed() {
+
+        UIView.animateWithDuration(0.3, animations: {
+            // Hide UI elements
+            self.locationButton?.alpha = 1
+            self.pinDescriptionLabel?.alpha = 1
+            self.cancelDestinationButton?.alpha = 0
+            self.cancelPickUpButton?.alpha = 1
+            self.destinationInfoView?.updateWithAddress(nil)
+            // Reset map
+            self.removeDrawnRoutes()
+            self.mapView?.removeAnnotation(safe: self.destinationAnnotation)
+            self.destinationAnnotation = nil
+            // Reset map indicator
+            self.locationButton?.setImage(UIImage(named: "destinationLocation"), forState: .Normal)
+            self.pinDescriptionLabel?.text = "SET DESTINATION"
+        })
+    }
 
     @IBAction func locationButtonPressed() {
 
@@ -255,6 +268,7 @@ extension BMMapView {
                             // Show UI elements
                             self.locationButton?.alpha = 1
                             self.pinDescriptionLabel?.alpha = 1
+                            self.cancelPickUpButton?.alpha = 1
                             // Show the destination address view.
                             self.destinationInfoView?.backgroundColor = UIColor.whiteColor()
                             self.destinationInfoViewTopConstraint?.constant += ((self.destinationInfoView?.frameHeight ?? 0) * 0.5)
@@ -279,6 +293,8 @@ extension BMMapView {
                 // Hide the location button and its text
                 self.locationButton?.alpha = 0
                 self.pinDescriptionLabel?.alpha = 0
+                self.cancelDestinationButton?.alpha = 1
+                self.cancelPickUpButton?.alpha = 0
 
                 }, completion: { (finished: Bool) in
                     // Fetch the address of the location

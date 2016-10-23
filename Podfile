@@ -7,9 +7,10 @@ def corePods
     pod 'Reachability', '~> 3.2'
 	pod 'Appirater', '~> 2.0.5'
 	pod 'AFNetworking', '~> 3.0.4'
-	pod 'MBProgressHUD', '~> 0.9.1'
+#	pod 'MBProgressHUD', '~> 0.9.1'
     pod 'CSStickyHeaderFlowLayout'
 	pod 'DKHelper', '~> 2.2.3'
+    pod 'Buglife', '~> 1.3.3'
 end
 
 target 'BusMedellin-Alpha' do

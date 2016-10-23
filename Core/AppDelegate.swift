@@ -8,6 +8,7 @@
 
 import UIKit
 import Appirater
+import Buglife
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Appirater.setup()
+        Buglife.sharedBuglife().startWithAPIKey(NSBundle.stringEntryInPListForKey(BMPlist.BuglifeID))
 
         return true
     }

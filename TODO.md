@@ -6,6 +6,7 @@
 * Integrate Buglife - 1h
 * Add radius around pin - 1h
 * User Location: if the user refused the location, on press to location button redirect him to settings. - 30m
+* Add MBProgressHUD !
 
 ## UNCLEAR
 

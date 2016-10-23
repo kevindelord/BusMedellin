@@ -13,6 +13,7 @@ struct BMPlist {
 
     static let AppId            = "AppId"
     static let APIBaseURL       = "APIBaseURL"
+    static let BuglifeID        = "BuglifeID"
 
     struct FusionTable {
 

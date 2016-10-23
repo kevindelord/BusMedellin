@@ -249,6 +249,7 @@
 				7554E7741DAF16E400F1178C /* Resources */,
 				54FC4BD789233E736E681BEA /* [CP] Embed Pods Frameworks */,
 				FFA6AE7701F3BF5D51276FF7 /* [CP] Copy Pods Resources */,
+				7567B2991DBD5E94008938FB /* Swiftlint */,
 			);
 			buildRules = (
 			);
@@ -339,6 +340,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BusMedellin-Alpha/Pods-BusMedellin-Alpha-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7567B2991DBD5E94008938FB /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi";
 			showEnvVarsInLog = 0;
 		};
 		FFA6AE7701F3BF5D51276FF7 /* [CP] Copy Pods Resources */ = {

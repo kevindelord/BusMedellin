@@ -48,21 +48,20 @@ struct APIManager {
 	}
 }
 
-
 extension APIManager {
 
     static func coordinatesForRouteCode(routeCode: String, completion: ((coordinates: [[Double]], error: NSError?) -> Void)?) {
 
-        //
-        // baseURL+ "?sql=SELECT geometry FROM " + idFusionTable + " WHERE CODIGO_RUT='" + route + "'&key=" + keyFusionTable
-        //
-        // https://www.googleapis.com/fusiontables/v1/query?sql=SELECT%20geometry%20FROM%201_ihDJT-_zFRLXb526aaS0Ct3TiXTlcPDy_BlAz0%20WHERE%20CODIGO_RUT=%27RU130RA%27&key=AIzaSyC59BP_KRtQDLeb5XM_x0eQNT_tdlBbHZc&callback=jQuery180014487654335838962_1476318703876&_=1476324379366
-        //
+        /*
+        baseURL+ "?sql=SELECT geometry FROM " + idFusionTable + " WHERE CODIGO_RUT='" + route + "'&key=" + keyFusionTable
+
+        https://www.googleapis.com/fusiontables/v1/query?sql=SELECT%20geometry%20FROM%201_ihDJT-_zFRLXb526aaS0Ct3TiXTlcPDy_BlAz0%20WHERE%20CODIGO_RUT=%27RU130RA%27&key=AIzaSyC59BP_KRtQDLeb5XM_x0eQNT_tdlBbHZc&callback=jQuery180014487654335838962_1476318703876&_=1476324379366
+        */
         let identifier = NSBundle.stringEntryInPListForKey(BMPlist.FusionTable.Identifier)
         let key = NSBundle.stringEntryInPListForKey(BMPlist.FusionTable.Key)
         let parameters = ["sql":"SELECT geometry FROM \(identifier) WHERE CODIGO_RUT='\(routeCode)'", "key" : key]
 
-        self.GETRequest(parameters, success: { (session, responseObject) in
+        self.GETRequest(parameters, success: { (session: NSURLSessionDataTask, responseObject: AnyObject?) in
 
             if let
                 jsonObject      = responseObject as? [String:AnyObject],
@@ -85,19 +84,20 @@ extension APIManager {
 
     static func routesAroundLocation(location: CLLocation, radius: Double = Map.DefaultSearchRadius, completion: ((routes: [Route], error: NSError?) -> Void)?) {
 
-        //
-        // BaseURL + "?sql=SELECT Nombre_Rut,CODIGO_RUT FROM " + idFusionTable + " WHERE ST_INTERSECTS(geometry,CIRCLE(LATLNG(" + lat + "," + lng + ")," + radius + "))&key=" + keyFusionTable
-        //
-        // https://www.googleapis.com/fusiontables/v1/query?sql=SELECT%20Nombre_Rut,CODIGO_RUT%20FROM%201_ihDJT-_zFRLXb526aaS0Ct3TiXTlcPDy_BlAz0%20WHERE%20ST_INTERSECTS(geometry,CIRCLE(LATLNG(6.207853406405264,-75.58648771697993),500))&key=AIzaSyC59BP_KRtQDLeb5XM_x0eQNT_tdlBbHZc&callback=jQuery180014487654335838962_1476318703876&_=1476328479515
+        /*
+        BaseURL + "?sql=SELECT Nombre_Rut,CODIGO_RUT FROM " + idFusionTable + " WHERE ST_INTERSECTS(geometry,CIRCLE(LATLNG(" + lat + "," + lng + ")," + radius + "))&key=" + keyFusionTable
 
-        //
+        // swiftlint:disable line_length
+        https://www.googleapis.com/fusiontables/v1/query?sql=SELECT%20Nombre_Rut,CODIGO_RUT%20FROM%201_ihDJT-_zFRLXb526aaS0Ct3TiXTlcPDy_BlAz0%20WHERE%20ST_INTERSECTS(geometry,CIRCLE(LATLNG(6.207853406405264,-75.58648771697993),500))&key=AIzaSyC59BP_KRtQDLeb5XM_x0eQNT_tdlBbHZc&callback=jQuery180014487654335838962_1476318703876&_=1476328479515
+        // swiftlint:enable line_length
+        */
         let identifier = NSBundle.stringEntryInPListForKey(BMPlist.FusionTable.Identifier)
         let key = NSBundle.stringEntryInPListForKey(BMPlist.FusionTable.Key)
         let lat = location.coordinate.latitude
         let lng = location.coordinate.longitude
         let parameters = ["sql":"SELECT Nombre_Rut,CODIGO_RUT,NomBar,NomCom FROM \(identifier) WHERE ST_INTERSECTS(geometry,CIRCLE(LATLNG(\(lat),\(lng)),\(radius)))", "key" : key]
 
-        self.GETRequest(parameters, success: { (session, responseObject) in
+        self.GETRequest(parameters, success: { (session: NSURLSessionDataTask, responseObject: AnyObject?) in
 
             if let
                 jsonObject  = responseObject as? [String:AnyObject],

@@ -21,19 +21,20 @@ class BMCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         self.collectionView?.backgroundColor = UIColor.whiteColor()
 
         // Setup Cells: list of bus lines
         self.collectionView?.registerClass(BMCollectionViewCell.self, forCellWithReuseIdentifier: ReuseId.ResultCell)
-        self.layout?.itemSize = CGSizeMake(self.view.frame.size.width, StaticHeight.CollectionView.Cell)
+        self.layout?.itemSize = CGSize(width: self.view.frame.size.width, height: StaticHeight.CollectionView.Cell)
 
         // Setup Header: map view
         self.collectionView?.registerClass(BMCollectionMapView.self, forSupplementaryViewOfKind: CSStickyHeaderParallaxHeader, withReuseIdentifier: ReuseId.ParallaxHeader)
-        self.layout?.parallaxHeaderReferenceSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height - StaticHeight.CollectionView.SectionHeader)
+        self.layout?.parallaxHeaderReferenceSize = CGSize(width: self.view.frame.size.width, height: (self.view.frame.size.height - StaticHeight.CollectionView.SectionHeader))
 
         // Setup Section Header: header with title "number of lines"
         self.collectionView?.registerClass(BMCollectionViewSectionHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: ReuseId.SectionHeader)
-        self.layout?.headerReferenceSize = CGSizeMake(self.view.frame.size.width, StaticHeight.CollectionView.SectionHeader)
+        self.layout?.headerReferenceSize = CGSize(width: self.view.frame.size.width, height: StaticHeight.CollectionView.SectionHeader)
 
         self.layout?.minimumLineSpacing = 0
     }
@@ -83,7 +84,7 @@ extension BMCollectionViewController {
             view.headerContainer?.updateContent(self.availableRoutes, drawnRoute: self.drawnRoute)
             return view
         }
-        
+
         return UICollectionReusableView()
     }
 }
@@ -109,7 +110,7 @@ extension BMCollectionViewController {
             // Reset the scroll if possible.
             self.collectionView?.setContentOffset(CGPoint.zero, animated: true)
             // And then, after the animation (0.3s) reload the collection view.
-            self.performBlockAfterDelay(0.3, block: { 
+            self.performBlockAfterDelay(0.3, block: {
                 self.collectionView?.reloadData()
             })
         }

@@ -1,0 +1,154 @@
+###
+# Swiftlint configuration file.
+# Latest version supported: 0.12.0
+# Any newer version hasn't been checked yet and might not follow the style guide.
+###
+
+disabled_rules: # rule identifiers to exclude from running
+  - colon # exaclty one space after the : >>> let abc: Void\n
+  - control_statement # no rounded brackets around conditions. we would need this the other way around
+  - todo # TODO can be written in the code but should be linked to a ticket on JIRA.
+  - nesting # func nesting max 1 level
+
+excluded: # paths to ignore during linting. overridden by `included`.
+  - Carthage
+  - Pods
+  - External
+  - Submodules
+  - Generated
+  - Core/Model/CoreData
+
+# rule parameters
+cyclomatic_complexity:
+  - 20 #warning
+  - 35 #error
+
+file_length:
+  - 600 #warning
+  - 800 #error
+
+function_body_length:
+  - 40 #warning
+  - 80 #error
+
+line_length:
+  - 300 #warning
+  - 350 #error
+
+type_body_length:
+  - 400 #warning
+  - 500 #error
+
+opt_in_rules:
+  - missing_docs
+  - force_unwrapping
+  - conditional_returns_on_newline
+  - private_outlet
+  - vertical_whitespace
+
+custom_rules:
+  extra_whitespace:
+    name: "Extra whitespaces"
+    regex: "([a-zA-Z0-9=?.\(\),><!'\"][ ]{2,}[a-zA-Z0-9?.\(\),><!'\"])"
+    message: "Remove extra whitespaces"
+    severity: warning
+  unnecessary_datatype:
+    name: "Unnecessary Datatype"
+    regex: "(?m-s)(let|var).*(:\s\[+(\w|:| |\t)+\]+\s*=\s*\[:*\])"
+    message: "Unnecessary datatype. Use '= [DataType]()' instead of ': [DataType] = []'"
+    severity: warning
+  missing_parameter_name:
+    name: "Missing parameter name"
+    regex: "(_( |\t|:|\))( |\t|=)(?! try).*)"
+    message: "Variable named '_' should be avoided. Please use a valid name."
+    severity: warning
+  missing_closure_name:
+    name: "Missing closure name"
+    regex: "^\s*\}\) \{.*"
+    message: "Add the missing closure name"
+    severity: warning
+  empty_commented_line:
+    name: "Empty Commented Out Line"
+    regex: "(\t+| +)//\n"
+    message: "Remove useless comment lines or use /* format */"
+    severity: warning
+  comments_space:
+    name: "Space After Comment"
+    regex: "(^ *//\w+)"
+    message: "There should be a space after //"
+    severity: warning
+  comments_capitalized_ignore_possible_code:
+    name: "Capitalize First Word In Comment"
+    regex: "(\s??// +(?!swiftlint)[a-z]+)"
+    message: "The first word of a comment should be capitalized"
+    severity: warning
+  empty_first_line:
+    name: "Empty First Line"
+    regex: "(^[ a-zA-Z ]*(?:protocol|extension|class|struct) (?!(?:var|let))[ a-zA-Z:]*\{\n *\S+)"
+    message: "There should be an empty line after a declaration"
+    severity: warning
+  empty_line_after_guard:
+    name: "Empty Line After Guard"
+    regex: "(^ *guard[ a-zA-Z0-9=?.\(\),><!]*\{[ a-zA-Z0-9=?.\(\),><!]*\}\n *(?!(?:return|guard))\S+)"
+    message: "There should be an empty line after a guard"
+    severity: warning
+  empty_line_after_super:
+    name: "Empty Line After Super"
+    regex: "(^ *super\.[ a-zA-Z0-9=?.\(\)\{\}:,><!]*\n *(?!(?:\}|return))\S+)"
+    message: "There should be an empty line after super"
+    severity: warning
+  multiple_empty_lines:
+    name: "Multiple Empty Lines"
+    regex: "((?:\s*\n){3,})"
+    message: "There are too many empty lines"
+    severity: warning
+  unnecessary_leading_void_in:
+    name: "Unnecessary -> Void in at the end of the line"
+    regex: "(-> (Void|\(\)) in$)"
+    message: "Unnecessary '-> Void in' at the end of the line. Use only 'in'"
+    severity: warning
+  unnecessary_type:
+    name: "Unnecessary Type"
+    regex: "(?sm)[ \ta-zA-Z0-9]?(?:let|var){1} [ \ta-zA-Z0-9]+?:[ \t]+?([a-zA-Z0-9]+?)[\t ]+?=[\t ]?\1"
+    message: "Type Definition Not Needed"
+    severity: warning
+  missing_brackets:
+    name: "Missing brackets"
+    regex: "(^(\t| )*(if|\} else if) (((?!(let|var|\())).)*\{)"
+    message: "If statements should be surrounded by rounded brackets"
+    severity: warning
+  empty_closure_params:
+    name: "Empty closure params"
+    regex: "\{ (\(\) -> Void in)$"
+    message: "`() -> Void in` should be avoided"
+    severity: warning
+  incomplete_if:
+    name: "Incomplete if"
+    regex: "(^ *if \(((?!( is | > | < | (=|!|<|>)= )).)*\) \{)"
+    message: "if should contain == true or == false"
+    severity: warning
+  single_line_body:
+    name: "Single Line Body"
+    regex: "(?i-sm)((if|while|do|for)*? \{(?!\n|.?(s|g)et).+?\}\n)"
+    message: "Single line bodies are not allowed"
+    severity: warning
+  missing_closure_datatype:
+    name: "Missing Closure Data Type"
+    regex: "(\{[\s]{1}\([^:]+?\)[\s]{1}in)"
+    message: "Data Type in Closure is missing"
+    severity: warning
+  invalid_mark_format:
+    name: "Invalid MARK Format"
+    regex: "(?m-s)(\/\/[\s]*?MARK(?!(\:[\s]{1}\-[\s]{1}){1}))"
+    message: "Use format: MARK: - Your Info"
+    severity: warning
+  prefer_structs_over_classes:
+    name: "Prefer structs over classes"
+    regex: "(?m-s)(class[\s]{1}[a-zA-Z]*[\s]*\{$)"
+    message: "Prefer structs over classes"
+    severity: warning
+  missing_brackets_unwrap:
+    name: "Missing rounded brackets around ??"
+    regex: "(\?\?[^)]*$)"
+    message: "Missing rounded brackets around ??"
+    severity: warning

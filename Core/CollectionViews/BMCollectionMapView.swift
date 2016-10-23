@@ -11,18 +11,20 @@ import MapKit
 import DKHelper
 import CSStickyHeaderFlowLayout
 
-class BMCollectionMapView                       : UICollectionReusableView {
+class BMCollectionMapView                               : UICollectionReusableView {
 
-    var mapContainer                            : BMMapView?
+    var mapContainer                                    : BMMapView?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+
         self.clipsToBounds = true
         self.interfaceInitialisation()
     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+
         self.interfaceInitialisation()
     }
 
@@ -33,25 +35,25 @@ class BMCollectionMapView                       : UICollectionReusableView {
     }
 }
 
-class BMMapView                                 : UIView {
+class BMMapView                                         : UIView {
 
-    @IBOutlet weak var mapView                  : MKMapView?
-    @IBOutlet weak var nearMeButton             : BMLocateButton?
-    @IBOutlet weak var locationButton           : UIButton?
-    @IBOutlet weak var pinDescriptionLabel      : UILabel?
-    @IBOutlet weak var pickUpInfoView           : BMAddressView?
-    @IBOutlet weak var destinationInfoView      : BMAddressView?
-    @IBOutlet weak var cancelDestinationButton  : UIButton?
-    @IBOutlet weak var cancelPickUpButton       : UIButton?
-    @IBOutlet weak var destinationInfoViewTopConstraint : NSLayoutConstraint?
-    @IBOutlet weak var linkBetweenDots          : UIView?
+    @IBOutlet weak private var mapView                  : MKMapView?
+    @IBOutlet weak private var nearMeButton             : BMLocateButton?
+    @IBOutlet weak private var locationButton           : UIButton?
+    @IBOutlet weak private var pinDescriptionLabel      : UILabel?
+    @IBOutlet weak private var pickUpInfoView           : BMAddressView?
+    @IBOutlet weak private var destinationInfoView      : BMAddressView?
+    @IBOutlet weak private var cancelDestinationButton  : UIButton?
+    @IBOutlet weak private var cancelPickUpButton       : UIButton?
+    @IBOutlet weak private var destinationInfoViewTopConstraint : NSLayoutConstraint?
+    @IBOutlet weak private var linkBetweenDots          : UIView?
 
-    private let locationManager                 = CLLocationManager()
-    private var startAnnotation                 : BMAnnotation?
-    private var destinationAnnotation           : BMAnnotation?
+    private let locationManager                         = CLLocationManager()
+    private var startAnnotation                         : BMAnnotation?
+    private var destinationAnnotation                   : BMAnnotation?
 
-    var didFetchAvailableRoutesBlock            : ((routes: [Route]?) -> Void)?
-    var showErrorPopupBlock                     : ((error: NSError?) -> Void)?
+    var didFetchAvailableRoutesBlock                    : ((routes: [Route]?) -> Void)?
+    var showErrorPopupBlock                             : ((error: NSError?) -> Void)?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -61,11 +63,12 @@ class BMMapView                                 : UIView {
         super.init(coder: aDecoder)
     }
 
-    private static var __onceToken: dispatch_once_t = 0
+    private static var _onceToken: dispatch_once_t = 0
     override func layoutSubviews() {
         super.layoutSubviews()
+
         // Initialise the interface that way only once.
-        dispatch_once(&BMMapView.__onceToken) {
+        dispatch_once(&BMMapView._onceToken) {
             // By default show Medellin city center
             self.centerMapOnLocation(self.cityCenterLocation)
             // Setup 'locate me' button.
@@ -262,7 +265,7 @@ extension BMMapView {
                 }, completion: { (finished: Bool) in
                     // Fetch the address of the location
                     let location = CLLocation(latitude: centerCoordinate.latitude, longitude: centerCoordinate.longitude)
-                    self.fetchAddressForLocation(location, completion: { (address) in
+                    self.fetchAddressForLocation(location, completion: { (address: String?) in
 
                         // Show the address in the dedicated view.
                         self.pickUpInfoView?.updateWithAddress(address)
@@ -305,10 +308,10 @@ extension BMMapView {
                 }, completion: { (finished: Bool) in
                     // Fetch the address of the location
                     let location = CLLocation(latitude: centerCoordinate.latitude, longitude: centerCoordinate.longitude)
-                    self.fetchAddressForLocation(location, completion: { (address) in
+                    self.fetchAddressForLocation(location, completion: { (address: String?) in
                         // Show the address in the dedicated view.
                         self.destinationInfoView?.updateWithAddress(address)
-                        //
+                        // Search for all available routes between the two locations.
                         self.searchForRoutesBetweenAnnotations({ (routes: [Route]) in
                             // Draw the first route as example.
                             if let routeCode = routes.first?.code {
@@ -367,7 +370,7 @@ extension BMMapView {
      - parameter routeCode: The route identifier used to fetch the coordinates.
      */
     private func fetchAndDrawRoute(routeCode: String) {
-        APIManager.coordinatesForRouteCode(routeCode, completion: { (coordinates, error) in
+        APIManager.coordinatesForRouteCode(routeCode, completion: { (coordinates: [[Double]], error: NSError?) in
             UIAlertController.showErrorPopup(error)
             let locationCoordinates = self.createLocationsFromCoordinates(coordinates)
             self.drawRouteForCoordinates(locationCoordinates)
@@ -392,7 +395,7 @@ extension BMMapView {
      - parameter completion: Block having as parameter an array of routes passing by the given location.
      */
     private func fetchRoutesForLocation(location: CLLocation, completion: ((routes: [Route]) -> Void)?) {
-        APIManager.routesAroundLocation(location) { (routes, error) in
+        APIManager.routesAroundLocation(location) { (routes: [Route], error: NSError?) in
             UIAlertController.showErrorPopup(error)
             completion?(routes: routes)
         }

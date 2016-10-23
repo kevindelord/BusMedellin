@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import DKHelper
 
 enum BMAddressViewState {
     case PickUp
@@ -21,8 +22,8 @@ enum BMAddressViewState {
 
     func defaultText() -> String {
         switch self {
-        case .PickUp:       return "Choose pickup location"
-        case .Destination:  return "Choose destination"
+        case .PickUp:       return L("LOCATION_VIEW_PICKUP")
+        case .Destination:  return L("LOCATION_VIEW_DESTINATION")
         }
     }
 }

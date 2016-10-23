@@ -23,6 +23,7 @@
 		75805BBD1DAF1D9700DACFF5 /* DKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75805BB91DAF1D9700DACFF5 /* DKExtensions.swift */; };
 		75805BC41DAF5B7E00DACFF5 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75805BC31DAF5B7E00DACFF5 /* Route.swift */; };
 		75C5E9521DBD637400FCE9D0 /* BMSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C5E9511DBD637400FCE9D0 /* BMSettingsViewController.swift */; };
+		75C5E9551DBD673700FCE9D0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 75C5E9571DBD673700FCE9D0 /* Localizable.strings */; };
 		75F8B4C01DB95E6200F43109 /* BMHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75F8B4BF1DB95E6200F43109 /* BMHeaderView.xib */; };
 		75F8B4C21DB9691200F43109 /* BMCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75F8B4C11DB9691200F43109 /* BMCellView.xib */; };
 		75F8B4C71DB9772A00F43109 /* BMCollectionSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F8B4C41DB9772A00F43109 /* BMCollectionSectionHeader.swift */; };
@@ -55,6 +56,9 @@
 		75805BC01DAF5B3A00DACFF5 /* medellin.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = medellin.gpx; path = Resources/medellin.gpx; sourceTree = "<group>"; };
 		75805BC31DAF5B7E00DACFF5 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Route.swift; path = Models/Route.swift; sourceTree = "<group>"; };
 		75C5E9511DBD637400FCE9D0 /* BMSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BMSettingsViewController.swift; sourceTree = "<group>"; };
+		75C5E9561DBD673700FCE9D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		75C5E9581DBD674200FCE9D0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		75C5E9591DBD675200FCE9D0 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		75F8B4BF1DB95E6200F43109 /* BMHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BMHeaderView.xib; path = Resources/BMHeaderView.xib; sourceTree = "<group>"; };
 		75F8B4C11DB9691200F43109 /* BMCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BMCellView.xib; path = Resources/BMCellView.xib; sourceTree = "<group>"; };
 		75F8B4C41DB9772A00F43109 /* BMCollectionSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BMCollectionSectionHeader.swift; sourceTree = "<group>"; };
@@ -132,6 +136,7 @@
 				75F8B4BF1DB95E6200F43109 /* BMHeaderView.xib */,
 				75FEDCFC1DB1E63300D692C4 /* BMMapView.xib */,
 				75F8B4C11DB9691200F43109 /* BMCellView.xib */,
+				75C5E9571DBD673700FCE9D0 /* Localizable.strings */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -286,6 +291,8 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
+				es,
 			);
 			mainGroup = 7554E76D1DAF16E400F1178C;
 			productRefGroup = 7554E7771DAF16E400F1178C /* Products */;
@@ -307,6 +314,7 @@
 				7554E7841DAF16E400F1178C /* LaunchScreen.storyboard in Resources */,
 				75F8B4C01DB95E6200F43109 /* BMHeaderView.xib in Resources */,
 				75513BE01DB019C600957F40 /* Assets.xcassets in Resources */,
+				75C5E9551DBD673700FCE9D0 /* Localizable.strings in Resources */,
 				75FEDCFD1DB1E63300D692C4 /* BMMapView.xib in Resources */,
 				7554E77F1DAF16E400F1178C /* Main.storyboard in Resources */,
 			);
@@ -419,6 +427,17 @@
 				7554E7831DAF16E400F1178C /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		75C5E9571DBD673700FCE9D0 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				75C5E9561DBD673700FCE9D0 /* Base */,
+				75C5E9581DBD674200FCE9D0 /* fr */,
+				75C5E9591DBD675200FCE9D0 /* es */,
+			);
+			name = Localizable.strings;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

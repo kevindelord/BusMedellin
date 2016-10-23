@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  BusMedellin
+
+  Created by Kevin Delord on 23/10/16.
+  Copyright © 2016 Kevin Delord. All rights reserved.
+*/
+"APP_TITLE"                 = "Bus Paisa";
+"NUMBER_ROUTES_AVAILABLE"   = "%d bus routes available.";
+"PIN_PICKUP_LOCATION"       = "SET PICKUP LOCATION";
+"PIN_DESTINATION_LOCATION"  = "SET DESTINATION";
+"LOCATION_VIEW_PICKUP"      = "Choose pickup location";
+"LOCATION_VIEW_DESTINATION" = "Choose destination";
+"NO_ROUTE_FOUND"            = "No routes available for the choosen locations.";
+"SETTINGS_VC_TITLE"         = "Information";

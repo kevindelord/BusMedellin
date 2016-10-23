@@ -205,7 +205,7 @@ extension BMMapView {
             self.startAnnotation = nil
             // Reset map indicator
             self.locationButton?.setImage(UIImage(named: "pickupLocation"), forState: .Normal)
-            self.pinDescriptionLabel?.text = "SET PICKUP LOCATION"
+            self.pinDescriptionLabel?.text = L("PIN_PICKUP_LOCATION")
             // Notify and reload the collection view.
             self.didFetchAvailableRoutesBlock?(routes: nil)
         })
@@ -226,7 +226,7 @@ extension BMMapView {
             self.destinationAnnotation = nil
             // Reset map indicator
             self.locationButton?.setImage(UIImage(named: "destinationLocation"), forState: .Normal)
-            self.pinDescriptionLabel?.text = "SET DESTINATION"
+            self.pinDescriptionLabel?.text = L("PIN_DESTINATION_LOCATION")
             // Notify and reload the collection view with the new results.
             self.didFetchAvailableRoutesBlock?(routes: nil)
         })
@@ -271,7 +271,7 @@ extension BMMapView {
                         self.pickUpInfoView?.updateWithAddress(address)
                         // Set the location button and text to the destination state.
                         self.locationButton?.setImage(UIImage(named: "destinationLocation"), forState: .Normal)
-                        self.pinDescriptionLabel?.text = "SET DESTINATION"
+                        self.pinDescriptionLabel?.text = L("PIN_DESTINATION_LOCATION")
                         UIView.animateWithDuration(0.5, animations: {
                             // Show UI elements
                             self.locationButton?.alpha = 1

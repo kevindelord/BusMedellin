@@ -8,6 +8,7 @@
 
 import Foundation
 import CSStickyHeaderFlowLayout
+import DKHelper
 
 class BMCollectionViewController: UICollectionViewController {
 
@@ -83,7 +84,7 @@ extension BMCollectionViewController {
             let view = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: ReuseId.SectionHeader, forIndexPath: indexPath) as? BMCollectionViewSectionHeader {
             view.headerContainer?.updateContent(self.availableRoutes, drawnRoute: self.drawnRoute)
             view.headerContainer?.openSettingsBlock = {
-                self.performSegueWithIdentifier("openSettingsViewController", sender: nil)
+                self.performSegueWithIdentifier(Segue.Settings, sender: nil)
             }
             return view
         }
@@ -101,7 +102,7 @@ extension BMCollectionViewController {
         self.drawnRoute = routes?.first
 
         if (routes != nil && routes?.isEmpty == true) {
-            UIAlertController.showErrorMessage("No routes available for the choosen locations.")
+            UIAlertController.showErrorMessage(L("NO_ROUTE_FOUND"))
         }
         if (self.availableRoutes?.isEmpty == false) {
             // Reload the collection view to show the number of bus lines found.

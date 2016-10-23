@@ -63,6 +63,11 @@ struct Map {
     }
 }
 
+struct Segue {
+
+    static let Settings         = "openSettingsViewController"
+}
+
 struct XibFile {
 
     static let BMMapView        = "BMMapView"

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import DKHelper
 
 class BMCollectionViewSectionHeader     : UICollectionReusableView {
 
@@ -69,7 +70,7 @@ class BMHeaderView                          : UIView {
 
     private func configureOtherRoutes(availableRoutes: [Route]?) {
         if let routes = availableRoutes where (routes.count > 1) {
-            self.totalRoutes?.text = "\(routes.count) bus routes available."
+            self.totalRoutes?.text = String(format: L("NUMBER_ROUTES_AVAILABLE"), routes.count)
         }
     }
 
@@ -88,7 +89,7 @@ class BMHeaderView                          : UIView {
     }
 
     private func showAppTitle() {
-        self.appTitle?.text = "Bus Paisa"
+        self.appTitle?.text = L("APP_TITLE")
         self.infoButton?.alpha = 1
         self.routeTitle?.text = ""
         self.subtitle?.text = ""

@@ -16,7 +16,7 @@ class BMSettingsViewController              : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "Information"
+        self.title = L("SETTINGS_VC_TITLE")
         self.versionLabel?.text = appVersion()
     }
 

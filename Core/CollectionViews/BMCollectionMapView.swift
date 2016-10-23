@@ -11,6 +11,7 @@ import MapKit
 import DKHelper
 import CSStickyHeaderFlowLayout
 import MBProgressHUD
+import CoreLocation
 
 class BMCollectionMapView                               : UICollectionReusableView {
 
@@ -99,6 +100,14 @@ class BMMapView                                         : UIView {
 // MARK: - MapView
 
 extension BMMapView: MKMapViewDelegate {
+
+    func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        let mapCenter = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
+        // Force the map to stay close to the city center.
+        if (self.cityCenterLocation.distanceFromLocation(mapCenter) > Map.MaxScrollDistance) {
+            self.centerMapOnLocation(self.cityCenterLocation)
+        }
+    }
 
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         if let annotation = annotation as? BMAnnotation {

@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import DKHelper
 import CSStickyHeaderFlowLayout
+import MBProgressHUD
 
 class BMCollectionMapView                               : UICollectionReusableView {
 
@@ -156,7 +157,7 @@ extension BMMapView: MKMapViewDelegate {
 
         } else if let circle = overlay as? BMMapCircle {
             let circleRenderer = MKCircleRenderer(overlay: overlay)
-            circleRenderer.fillColor = (circle.color ?? UIColor.blueColor()).colorWithAlphaComponent(0.1)
+            circleRenderer.fillColor = (circle.color ?? UIColor.blueColor()).colorWithAlphaComponent(0.2)
             circleRenderer.strokeColor = (circle.color ?? UIColor.blueColor())
             circleRenderer.lineWidth = 1
             return circleRenderer
@@ -284,6 +285,8 @@ extension BMMapView {
                 self.pinDescriptionLabel?.alpha = 0
 
                 }, completion: { (finished: Bool) in
+                    // Show waiting HUD
+                    self.showWaitingHUD()
                     // Fetch the address of the location
                     let location = CLLocation(latitude: centerCoordinate.latitude, longitude: centerCoordinate.longitude)
                     self.fetchAddressForLocation(location, completion: { (address: String?) in
@@ -307,6 +310,8 @@ extension BMMapView {
                             let regionRadius: CLLocationDistance = self.defaultZoomRadius
                             let coordinateRegion = MKCoordinateRegionMakeWithDistance(newLocation.coordinate, regionRadius, regionRadius)
                             self.mapView?.setRegion(coordinateRegion, animated: true)
+                            // Hide waiting HUD
+                            self.hideWaitingHUD()
                         })
                     })
             })
@@ -329,6 +334,8 @@ extension BMMapView {
                 self.cancelPickUpButton?.alpha = 0
 
                 }, completion: { (finished: Bool) in
+                    // Show waiting HUD
+                    self.showWaitingHUD()
                     // Fetch the address of the location
                     let location = CLLocation(latitude: centerCoordinate.latitude, longitude: centerCoordinate.longitude)
                     self.fetchAddressForLocation(location, completion: { (address: String?) in
@@ -338,10 +345,13 @@ extension BMMapView {
                         self.searchForRoutesBetweenAnnotations({ (routes: [Route]) in
                             // Draw the first route as example.
                             if let routeCode = routes.first?.code {
-                                self.fetchAndDrawRoute(routeCode)
+                                self.fetchAndDrawRoute(routeCode, completion: {
+                                    // Notify and reload the collection view with the new results.
+                                    self.didFetchAvailableRoutesBlock?(routes: routes)
+                                    // Hide waiting HUD
+                                    self.hideWaitingHUD()
+                                })
                             }
-                            // Notify and reload the collection view with the new results.
-                            self.didFetchAvailableRoutesBlock?(routes: routes)
                         })
                     })
             })
@@ -374,6 +384,21 @@ extension BMMapView {
     }
 }
 
+// MARK: - Waiting HUD
+
+extension BMMapView {
+
+    private func showWaitingHUD() {
+        let hud = MBProgressHUD.showHUDAddedTo(self, animated: true)
+        hud.bezelView.color = UIColor.blackColor()
+        hud.contentColor = UIColor.whiteColor()
+    }
+
+    private func hideWaitingHUD() {
+        MBProgressHUD.hideHUDForView(self, animated: true)
+    }
+}
+
 // MARK: - Data Management
 
 extension BMMapView {
@@ -382,21 +407,24 @@ extension BMMapView {
      Fetch coordinates of the given route and display it on the map.
 
      - parameter route: The Route entity to fetch and to display.
+     - parameter completion: Closure called when the route has been fetched and displayed on the map.
      */
-    func fetchAndDrawRoute(route: Route) {
-        self.fetchAndDrawRoute(route.code)
+    func fetchAndDrawRoute(route: Route, completion: (() -> Void)?) {
+        self.fetchAndDrawRoute(route.code, completion: completion)
     }
 
     /**
      Fetch coordinates of a route using its identifier (aka route code) and display it on the map.
 
      - parameter routeCode: The route identifier used to fetch the coordinates.
+     - parameter completion: Closure called when the route has been fetched and displayed on the map.
      */
-    private func fetchAndDrawRoute(routeCode: String) {
+    private func fetchAndDrawRoute(routeCode: String, completion: (() -> Void)?) {
         APIManager.coordinatesForRouteCode(routeCode, completion: { (coordinates: [[Double]], error: NSError?) in
             UIAlertController.showErrorPopup(error)
             let locationCoordinates = self.createLocationsFromCoordinates(coordinates)
             self.drawRouteForCoordinates(locationCoordinates)
+            completion?()
         })
     }
 

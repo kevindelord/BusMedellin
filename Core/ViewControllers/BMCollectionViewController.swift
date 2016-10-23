@@ -13,7 +13,7 @@ import DKHelper
 class BMCollectionViewController: UICollectionViewController {
 
     var availableRoutes         : [Route]?
-    var displayRouteOnMap       : ((route: Route) -> Void)?
+    var displayRouteOnMap       : ((route: Route, completion: (() -> Void)?) -> Void)?
     var drawnRoute              : Route?
 
     private var layout : CSStickyHeaderFlowLayout? {
@@ -64,7 +64,7 @@ extension BMCollectionViewController {
         collectionView.deselectItemAtIndexPath(indexPath, animated: true)
         if let route = self.availableRoutes?[safe: indexPath.item] {
             self.drawnRoute = route
-            self.displayRouteOnMap?(route: route)
+            self.displayRouteOnMap?(route: route, completion: nil)
             collectionView.setContentOffset(CGPoint.zero, animated: true)
             collectionView.reloadData()
         }

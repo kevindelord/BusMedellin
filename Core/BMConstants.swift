@@ -57,7 +57,7 @@ struct Map {
 
     static let DefaultSearchRadius  = 500.0
     static let DeltaAfterSearch     = 0.007
-    static let MaxScrollDistance    = 12000
+    static let MaxScrollDistance    : Double = 12000.0
 
     struct Address {
 

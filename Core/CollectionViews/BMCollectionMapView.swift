@@ -51,6 +51,8 @@ class BMMapView                                         : UIView {
     private let locationManager                         = CLLocationManager()
     private var startAnnotation                         : BMAnnotation?
     private var destinationAnnotation                   : BMAnnotation?
+    private var startCircle                             : BMMapCircle?
+    private var destinationCircle                       : BMMapCircle?
 
     var didFetchAvailableRoutesBlock                    : ((routes: [Route]?) -> Void)?
     var showErrorPopupBlock                             : ((error: NSError?) -> Void)?
@@ -145,10 +147,21 @@ extension BMMapView: MKMapViewDelegate {
     }
 
     func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
-        let lineView = MKPolylineRenderer(overlay: overlay)
-        lineView.strokeColor = BMColor.Blue
-        lineView.lineWidth = 1.5
-        return lineView
+
+        if (overlay is MKGeodesicPolyline) {
+            let lineView = MKPolylineRenderer(overlay: overlay)
+            lineView.strokeColor = BMColor.Blue
+            lineView.lineWidth = 1.5
+            return lineView
+
+        } else if let circle = overlay as? BMMapCircle {
+            let circleRenderer = MKCircleRenderer(overlay: overlay)
+            circleRenderer.fillColor = (circle.color ?? UIColor.blueColor()).colorWithAlphaComponent(0.1)
+            circleRenderer.strokeColor = (circle.color ?? UIColor.blueColor())
+            circleRenderer.lineWidth = 1
+            return circleRenderer
+        }
+        return MKOverlayRenderer()
     }
 
     private func drawRouteForCoordinates(coordinates: [CLLocationCoordinate2D]) {
@@ -167,7 +180,11 @@ extension BMMapView: MKMapViewDelegate {
     }
 
     private func removeDrawnRoutes() {
-        self.mapView?.removeOverlays(self.mapView?.overlays ?? [])
+        self.mapView?.overlays.forEach { (overlay: MKOverlay) in
+            if (overlay is MKGeodesicPolyline) {
+                self.mapView?.removeOverlay(overlay)
+            }
+        }
     }
 
     private func createLocationsFromCoordinates(coordinates: [[Double]]) -> [CLLocationCoordinate2D] {
@@ -202,6 +219,7 @@ extension BMMapView {
             // Reset map
             self.removeDrawnRoutes()
             self.mapView?.removeAnnotation(safe: self.startAnnotation)
+            self.mapView?.removeOverlay(safe: self.startCircle)
             self.startAnnotation = nil
             // Reset map indicator
             self.locationButton?.setImage(UIImage(named: "pickupLocation"), forState: .Normal)
@@ -223,6 +241,7 @@ extension BMMapView {
             // Reset map
             self.removeDrawnRoutes()
             self.mapView?.removeAnnotation(safe: self.destinationAnnotation)
+            self.mapView?.removeOverlay(safe: self.destinationCircle)
             self.destinationAnnotation = nil
             // Reset map indicator
             self.locationButton?.setImage(UIImage(named: "destinationLocation"), forState: .Normal)
@@ -256,6 +275,8 @@ extension BMMapView {
             // Add a new annotation at the center of the map.
             self.startAnnotation = BMStartAnnotation.createWithCoordinates(centerCoordinate)
             self.mapView?.addAnnotation(safe: self.startAnnotation)
+            self.startCircle = BMMapCircle.createStartCircle(centerCoordinate: centerCoordinate)
+            self.mapView?.addOverlay(safe: self.startCircle)
 
             UIView.animateWithDuration(0.3, animations: {
                 // Hide the location button and its text
@@ -297,6 +318,8 @@ extension BMMapView {
             // Add a new destination pin at the center of the map.
             self.destinationAnnotation = BMDestinationAnnotation.createWithCoordinates(centerCoordinate)
             self.mapView?.addAnnotation(safe: self.destinationAnnotation)
+            self.destinationCircle = BMMapCircle.createDestinationCircle(centerCoordinate: centerCoordinate)
+            self.mapView?.addOverlay(safe: self.destinationCircle)
 
             UIView.animateWithDuration(0.3, animations: {
                 // Hide the location button and its text

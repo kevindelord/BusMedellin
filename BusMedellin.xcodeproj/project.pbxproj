@@ -17,6 +17,7 @@
 		75640BF41DAF19FB002B4A56 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75640BF11DAF19FB002B4A56 /* Reachability.swift */; };
 		75640BFC1DAF1AAD002B4A56 /* BMConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75640BFB1DAF1AAD002B4A56 /* BMConstants.swift */; };
 		75640BFE1DAF1B11002B4A56 /* DMDefines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75640BFD1DAF1B11002B4A56 /* DMDefines.swift */; };
+		756493741DBD6F68007811A6 /* BMMapCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756493731DBD6F68007811A6 /* BMMapCircle.swift */; };
 		75805BBD1DAF1D9700DACFF5 /* DKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75805BB91DAF1D9700DACFF5 /* DKExtensions.swift */; };
 		75805BC41DAF5B7E00DACFF5 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75805BC31DAF5B7E00DACFF5 /* Route.swift */; };
 		75C5E9521DBD637400FCE9D0 /* BMSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C5E9511DBD637400FCE9D0 /* BMSettingsViewController.swift */; };
@@ -49,6 +50,7 @@
 		75640BF61DAF1A5F002B4A56 /* BusMedellin-Alpha-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "BusMedellin-Alpha-Info.plist"; sourceTree = "<group>"; };
 		75640BFB1DAF1AAD002B4A56 /* BMConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BMConstants.swift; path = Core/BMConstants.swift; sourceTree = "<group>"; };
 		75640BFD1DAF1B11002B4A56 /* DMDefines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DMDefines.swift; path = Core/DMDefines.swift; sourceTree = "<group>"; };
+		756493731DBD6F68007811A6 /* BMMapCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BMMapCircle.swift; path = Core/AdditionalViews/BMMapCircle.swift; sourceTree = "<group>"; };
 		75805BB91DAF1D9700DACFF5 /* DKExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DKExtensions.swift; sourceTree = "<group>"; };
 		75805BC01DAF5B3A00DACFF5 /* medellin.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = medellin.gpx; path = Resources/medellin.gpx; sourceTree = "<group>"; };
 		75805BC31DAF5B7E00DACFF5 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Route.swift; path = Models/Route.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				75513BE21DB01ED900957F40 /* BMButtons.swift */,
 				75513BE41DB02D2300957F40 /* BMAnnotations.swift */,
 				75C5E95A1DBD697900FCE9D0 /* BMAddressView.swift */,
+				756493731DBD6F68007811A6 /* BMMapCircle.swift */,
 			);
 			name = AdditionalViews;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 				75640BF31DAF19FB002B4A56 /* Appirater.swift in Sources */,
 				75640BF41DAF19FB002B4A56 /* Reachability.swift in Sources */,
 				75F8B4CB1DB9773800F43109 /* AppDelegate.swift in Sources */,
+				756493741DBD6F68007811A6 /* BMMapCircle.swift in Sources */,
 				75F8B4C91DB9772A00F43109 /* BMCollectionMapView.swift in Sources */,
 				75C5E95B1DBD697900FCE9D0 /* BMAddressView.swift in Sources */,
 				75C5E9521DBD637400FCE9D0 /* BMSettingsViewController.swift in Sources */,

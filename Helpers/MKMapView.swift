@@ -32,4 +32,26 @@ extension MKMapView {
             self.removeAnnotation(_annotation)
         }
     }
+
+    /**
+     Adds a single overlay object to the map.
+
+     - parameter overlay: Optional overlay. If nil nothing happens.
+     */
+    public func addOverlay(safe overlay: MKOverlay?) {
+        if let _overlay = overlay {
+            self.addOverlay(_overlay)
+        }
+    }
+
+    /**
+     Removes a single overlay object from the map.
+
+     - parameter overlay: Optional overlay. If nil nothing happens.
+     */
+    public func removeOverlay(safe overlay: MKOverlay?) {
+        if let _overlay = overlay {
+            self.removeOverlay(_overlay)
+        }
+    }
 }

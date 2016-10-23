@@ -87,6 +87,8 @@ struct ReuseId {
 
 struct BMColor {
 
+    static let Red              = UIColor(255, g: 59, b: 48)
+    static let Green            = UIColor(76, g: 217, b: 100)
     static let Blue             = UIColor(33, g: 150, b: 243)
     static let Gray             = UIColor(149, g: 165, b: 166)
     static let Black            = UIColor.blackColor()

@@ -15,8 +15,8 @@ enum BMAddressViewState {
 
     func dotColor() -> UIColor {
         switch self {
-        case .PickUp:       return UIColor.greenColor()
-        case .Destination:  return UIColor.redColor()
+        case .PickUp:       return BMColor.Green
+        case .Destination:  return BMColor.Red
         }
     }
 

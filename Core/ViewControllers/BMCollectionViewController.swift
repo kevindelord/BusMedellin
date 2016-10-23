@@ -82,6 +82,9 @@ extension BMCollectionViewController {
         } else if (kind == UICollectionElementKindSectionHeader),
             let view = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: ReuseId.SectionHeader, forIndexPath: indexPath) as? BMCollectionViewSectionHeader {
             view.headerContainer?.updateContent(self.availableRoutes, drawnRoute: self.drawnRoute)
+            view.headerContainer?.openSettingsBlock = {
+                self.performSegueWithIdentifier("openSettingsViewController", sender: nil)
+            }
             return view
         }
 

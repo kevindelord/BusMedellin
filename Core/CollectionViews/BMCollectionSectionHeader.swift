@@ -36,12 +36,20 @@ class BMCollectionViewSectionHeader     : UICollectionReusableView {
 
 class BMHeaderView                          : UIView {
 
+    // MARK: - Outlets
+
     @IBOutlet private weak var appTitle     : UILabel?
     @IBOutlet private weak var routeTitle   : UILabel?
     @IBOutlet private weak var subtitle     : UILabel?
     @IBOutlet private weak var totalRoutes  : UILabel?
     @IBOutlet private weak var infoButton   : UIButton?
     @IBOutlet private weak var titleBottomConstraint : NSLayoutConstraint?
+
+    // MARK: - Attributes
+
+    var openSettingsBlock                   : (() -> Void)?
+
+    // MARK: - Setup Functions
 
     func updateContent(availableRoutes: [Route]?, drawnRoute: Route?) {
         if (availableRoutes == nil || availableRoutes?.isEmpty == true) {
@@ -85,5 +93,11 @@ class BMHeaderView                          : UIView {
         self.routeTitle?.text = ""
         self.subtitle?.text = ""
         self.totalRoutes?.text = ""
+    }
+
+    // MARK: - Interface actions
+
+    @IBAction func infoButtonPressed() {
+        self.openSettingsBlock?()
     }
 }

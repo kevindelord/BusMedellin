@@ -23,6 +23,9 @@
                         <constraint firstAttribute="height" constant="22" id="1bm-YT-fkN"/>
                         <constraint firstAttribute="width" constant="22" id="Nsz-xK-pQV"/>
                     </constraints>
+                    <connections>
+                        <action selector="infoButtonPressed" destination="iN0-l3-epB" eventType="touchUpInside" id="Yic-Rt-N1c"/>
+                    </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z8r-do-wRv" userLabel="topBorder">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="1"/>
@@ -86,6 +89,7 @@
                 <constraint firstItem="weu-NP-V1Y" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="uTK-aQ-qAF"/>
                 <constraint firstAttribute="bottom" secondItem="WXr-nV-HCz" secondAttribute="bottom" constant="40" id="vny-UE-Qrr"/>
             </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="appTitle" destination="i5B-1P-g5c" id="0WE-uo-eZw"/>

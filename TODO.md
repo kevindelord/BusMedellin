@@ -3,7 +3,6 @@
 * Debug logic to clear search ('x' buttons). - 1h
 * App Icon - 1h
 * Localization + Clear directory - 1h
-* App Version - 20m
 * Integrate HockeySDK - 1h
 * Integrate Buglife - 1h
 * Add radius around pin - 1h

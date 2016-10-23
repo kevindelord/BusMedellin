@@ -22,6 +22,7 @@
 		757E0A8F1DB72E0400D89B83 /* BMAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757E0A8E1DB72E0400D89B83 /* BMAddressView.swift */; };
 		75805BBD1DAF1D9700DACFF5 /* DKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75805BB91DAF1D9700DACFF5 /* DKExtensions.swift */; };
 		75805BC41DAF5B7E00DACFF5 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75805BC31DAF5B7E00DACFF5 /* Route.swift */; };
+		75C5E9521DBD637400FCE9D0 /* BMSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C5E9511DBD637400FCE9D0 /* BMSettingsViewController.swift */; };
 		75F8B4C01DB95E6200F43109 /* BMHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75F8B4BF1DB95E6200F43109 /* BMHeaderView.xib */; };
 		75F8B4C21DB9691200F43109 /* BMCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75F8B4C11DB9691200F43109 /* BMCellView.xib */; };
 		75F8B4C71DB9772A00F43109 /* BMCollectionSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F8B4C41DB9772A00F43109 /* BMCollectionSectionHeader.swift */; };
@@ -53,6 +54,7 @@
 		75805BB91DAF1D9700DACFF5 /* DKExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DKExtensions.swift; sourceTree = "<group>"; };
 		75805BC01DAF5B3A00DACFF5 /* medellin.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = medellin.gpx; path = Resources/medellin.gpx; sourceTree = "<group>"; };
 		75805BC31DAF5B7E00DACFF5 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Route.swift; path = Models/Route.swift; sourceTree = "<group>"; };
+		75C5E9511DBD637400FCE9D0 /* BMSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BMSettingsViewController.swift; sourceTree = "<group>"; };
 		75F8B4BF1DB95E6200F43109 /* BMHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BMHeaderView.xib; path = Resources/BMHeaderView.xib; sourceTree = "<group>"; };
 		75F8B4C11DB9691200F43109 /* BMCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BMCellView.xib; path = Resources/BMCellView.xib; sourceTree = "<group>"; };
 		75F8B4C41DB9772A00F43109 /* BMCollectionSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BMCollectionSectionHeader.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				75F8B4CD1DB9774600F43109 /* BMCollectionViewController.swift */,
+				75C5E9511DBD637400FCE9D0 /* BMSettingsViewController.swift */,
 			);
 			name = ViewControllers;
 			path = Core/ViewControllers;
@@ -389,6 +392,7 @@
 				75640BF41DAF19FB002B4A56 /* Reachability.swift in Sources */,
 				75F8B4CB1DB9773800F43109 /* AppDelegate.swift in Sources */,
 				75F8B4C91DB9772A00F43109 /* BMCollectionMapView.swift in Sources */,
+				75C5E9521DBD637400FCE9D0 /* BMSettingsViewController.swift in Sources */,
 				75F8B4CE1DB9774600F43109 /* BMCollectionViewController.swift in Sources */,
 				75805BBD1DAF1D9700DACFF5 /* DKExtensions.swift in Sources */,
 				75640BFC1DAF1AAD002B4A56 /* BMConstants.swift in Sources */,

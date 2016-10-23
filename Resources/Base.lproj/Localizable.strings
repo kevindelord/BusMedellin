@@ -13,3 +13,7 @@
 "LOCATION_VIEW_DESTINATION" = "Choose destination";
 "NO_ROUTE_FOUND"            = "No routes available for the choosen locations.";
 "SETTINGS_VC_TITLE"         = "Information";
+"LOCATION_ERROR_TITLE"      = "Location services needed";
+"LOCATION_ERROR_MESSAGE"    = "Please go to Settings to let the app locate you on the map.";
+"LOCATION_ERROR_SETTINGS"   = "Settings";
+"LOCATION_ERROR_CANCEL"     = "Cancel";

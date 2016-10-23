@@ -30,7 +30,7 @@
                         <action selector="locateMeButtonPressed" destination="iN0-l3-epB" eventType="touchUpInside" id="YHw-RI-RqO"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5hX-xe-Htd" userLabel="locationButton">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5hX-xe-Htd" userLabel="setLocationButton">
                     <rect key="frame" x="166" y="238" width="267" height="59"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="267" id="Sr7-z9-8Xe"/>
@@ -38,7 +38,7 @@
                     </constraints>
                     <state key="normal" image="pickupLocation"/>
                     <connections>
-                        <action selector="locationButtonPressed" destination="iN0-l3-epB" eventType="touchUpInside" id="tiR-Ew-uhL"/>
+                        <action selector="setLocationButtonPressed" destination="iN0-l3-epB" eventType="touchUpInside" id="lVh-BY-LJ5"/>
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SET PICKUP LOCATION" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xE2-eY-ZaT" userLabel="pinDescriptionText">

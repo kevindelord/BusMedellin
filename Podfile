@@ -6,7 +6,7 @@ use_frameworks!
 def corePods
     pod 'Reachability', '~> 3.2'
 	pod 'Appirater', '~> 2.0.5'
-	pod 'AFNetworking', '~> 3.0.4'
+	pod 'AFNetworking', '~> 3.1.0'
 	pod 'MBProgressHUD', '~> 1.0.0'
     pod 'CSStickyHeaderFlowLayout', '~> 0.2.11'
 	pod 'DKHelper', '~> 2.2.3'

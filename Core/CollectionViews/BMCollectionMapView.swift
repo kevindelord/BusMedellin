@@ -120,11 +120,29 @@ extension BMMapView: MKMapViewDelegate {
         if (CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse) {
             self.mapView?.showsUserLocation = true
             let userLocation = self.mapView?.userLocation.location
+            if (userLocation == nil) {
+                self.showPopupToRedirectToSettings()
+            }
             return userLocation
+        } else if (CLLocationManager.authorizationStatus() == .Denied) {
+            self.showPopupToRedirectToSettings()
+            return nil
         } else {
             self.locationManager.requestWhenInUseAuthorization()
             return nil
         }
+    }
+
+    private func showPopupToRedirectToSettings() {
+        let presentingViewController = UIApplication.sharedApplication().windows.first?.rootViewController
+        let ac = UIAlertController(title: L("LOCATION_ERROR_TITLE"), message: L("LOCATION_ERROR_MESSAGE"), preferredStyle: .Alert)
+        ac.addAction(UIAlertAction(title: L("LOCATION_ERROR_CANCEL"), style: .Default, handler: nil))
+        ac.addAction(UIAlertAction(title: L("LOCATION_ERROR_SETTINGS"), style: .Cancel, handler: { (action: UIAlertAction) in
+            if let url = NSURL(string: UIApplicationOpenSettingsURLString) {
+                UIApplication.sharedApplication().openURL(url)
+            }
+        }))
+        presentingViewController?.presentViewController(ac, animated: true, completion: nil)
     }
 
     func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
@@ -252,7 +270,7 @@ extension BMMapView {
         })
     }
 
-    @IBAction func locationButtonPressed() {
+    @IBAction func setLocationButtonPressed() {
         if (self.startAnnotation == nil) {
             self.didSetPickUpLocation()
         } else if (self.destinationAnnotation == nil) {

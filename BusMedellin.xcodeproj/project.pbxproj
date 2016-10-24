@@ -46,6 +46,8 @@
 		758E10501DBD92D000D872BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75513BDF1DB019C600957F40 /* Assets.xcassets */; };
 		758E10511DBD92D000D872BC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 75C5E9571DBD673700FCE9D0 /* Localizable.strings */; };
 		758E10521DBD92D000D872BC /* BMMapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75FEDCFC1DB1E63300D692C4 /* BMMapView.xib */; };
+		758E105D1DBD96D000D872BC /* HockeySDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758E105C1DBD96D000D872BC /* HockeySDK.swift */; };
+		758E105E1DBD96D000D872BC /* HockeySDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758E105C1DBD96D000D872BC /* HockeySDK.swift */; };
 		75C5E9521DBD637400FCE9D0 /* BMSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C5E9511DBD637400FCE9D0 /* BMSettingsViewController.swift */; };
 		75C5E9551DBD673700FCE9D0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 75C5E9571DBD673700FCE9D0 /* Localizable.strings */; };
 		75C5E95B1DBD697900FCE9D0 /* BMAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C5E95A1DBD697900FCE9D0 /* BMAddressView.swift */; };
@@ -87,6 +89,7 @@
 		75805BC31DAF5B7E00DACFF5 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Route.swift; path = Models/Route.swift; sourceTree = "<group>"; };
 		758E10591DBD92D100D872BC /* BusMedellin-Live-AppStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BusMedellin-Live-AppStore.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		758E105B1DBD930A00D872BC /* BusMedellin-Live-AppStore-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BusMedellin-Live-AppStore-Info.plist"; sourceTree = "<group>"; };
+		758E105C1DBD96D000D872BC /* HockeySDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HockeySDK.swift; sourceTree = "<group>"; };
 		75C5E9511DBD637400FCE9D0 /* BMSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BMSettingsViewController.swift; sourceTree = "<group>"; };
 		75C5E9561DBD673700FCE9D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		75C5E9581DBD674200FCE9D0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -185,6 +188,7 @@
 			children = (
 				75FEDCF71DB1DDA700D692C4 /* Header */,
 				75640BEF1DAF19FB002B4A56 /* APIManager.swift */,
+				758E105C1DBD96D000D872BC /* HockeySDK.swift */,
 				75640BF01DAF19FB002B4A56 /* Appirater.swift */,
 				75513BE61DB02E5700957F40 /* MKMapView.swift */,
 				75640BF11DAF19FB002B4A56 /* Reachability.swift */,
@@ -537,6 +541,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				75513BE51DB02D2300957F40 /* BMAnnotations.swift in Sources */,
+				758E105D1DBD96D000D872BC /* HockeySDK.swift in Sources */,
 				75805BC41DAF5B7E00DACFF5 /* Route.swift in Sources */,
 				75F8B4C71DB9772A00F43109 /* BMCollectionSectionHeader.swift in Sources */,
 				75640BF21DAF19FB002B4A56 /* APIManager.swift in Sources */,
@@ -562,6 +567,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				758E10361DBD92D000D872BC /* BMAnnotations.swift in Sources */,
+				758E105E1DBD96D000D872BC /* HockeySDK.swift in Sources */,
 				758E10371DBD92D000D872BC /* Route.swift in Sources */,
 				758E10381DBD92D000D872BC /* BMCollectionSectionHeader.swift in Sources */,
 				758E10391DBD92D000D872BC /* APIManager.swift in Sources */,

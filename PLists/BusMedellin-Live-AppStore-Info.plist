@@ -64,5 +64,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>HockeyAppId</key>
+	<string>1044d82e3b0f4a0586de41a5e8980903</string>
 </dict>
 </plist>

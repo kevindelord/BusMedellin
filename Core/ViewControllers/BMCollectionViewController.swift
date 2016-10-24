@@ -15,6 +15,7 @@ class BMCollectionViewController: UICollectionViewController {
     var availableRoutes         : [Route]?
     var displayRouteOnMap       : ((route: Route, completion: (() -> Void)?) -> Void)?
     var drawnRoute              : Route?
+    var statusBarHidden         : Bool = false
 
     private var layout : CSStickyHeaderFlowLayout? {
         return self.collectionView?.collectionViewLayout as? CSStickyHeaderFlowLayout
@@ -38,6 +39,14 @@ class BMCollectionViewController: UICollectionViewController {
         self.layout?.headerReferenceSize = CGSize(width: self.view.frame.size.width, height: StaticHeight.CollectionView.SectionHeader)
 
         self.layout?.minimumLineSpacing = 0
+    }
+
+    override func preferredStatusBarUpdateAnimation() -> UIStatusBarAnimation {
+        return .Slide
+    }
+
+    override func prefersStatusBarHidden() -> Bool {
+        return self.statusBarHidden
     }
 }
 
@@ -90,6 +99,26 @@ extension BMCollectionViewController {
         }
 
         return UICollectionReusableView()
+    }
+
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+
+        let limitHeight = (scrollView.contentOffset.y + StaticHeight.CollectionView.SectionHeader + UIApplication.sharedApplication().statusBarFrame.size.height)
+        let isCurrentlyHidden = self.statusBarHidden
+
+        if (self.statusBarHidden == false && limitHeight >= self.view.frameHeight) {
+            self.statusBarHidden = true
+
+        } else if (self.statusBarHidden == true && limitHeight < self.view.frameHeight) {
+            self.statusBarHidden = false
+        }
+
+        if (isCurrentlyHidden != self.statusBarHidden) {
+            // Update the status bar
+            UIView.animateWithDuration(0.25, animations: {
+                self.setNeedsStatusBarAppearanceUpdate()
+            })
+        }
     }
 }
 

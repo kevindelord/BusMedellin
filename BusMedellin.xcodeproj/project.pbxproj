@@ -92,7 +92,6 @@
 		758E105C1DBD96D000D872BC /* HockeySDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HockeySDK.swift; sourceTree = "<group>"; };
 		75C5E9511DBD637400FCE9D0 /* BMSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BMSettingsViewController.swift; sourceTree = "<group>"; };
 		75C5E9561DBD673700FCE9D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		75C5E9581DBD674200FCE9D0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		75C5E9591DBD675200FCE9D0 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		75C5E95A1DBD697900FCE9D0 /* BMAddressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BMAddressView.swift; path = Core/AdditionalViews/BMAddressView.swift; sourceTree = "<group>"; };
 		75C5E95C1DBD698100FCE9D0 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Resources/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -365,7 +364,6 @@
 			knownRegions = (
 				en,
 				Base,
-				fr,
 				es,
 			);
 			mainGroup = 7554E76D1DAF16E400F1178C;
@@ -595,7 +593,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				75C5E9561DBD673700FCE9D0 /* Base */,
-				75C5E9581DBD674200FCE9D0 /* fr */,
 				75C5E9591DBD675200FCE9D0 /* es */,
 			);
 			name = Localizable.strings;

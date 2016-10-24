@@ -17,6 +17,7 @@ import Foundation
 struct Configuration {
 
     static let DebugAppirater       : Bool = (false && isDebug)
+    static let AnalyticsEnabled     : Bool = (true && !isDebug) // Always true on RELEASE
 }
 
 struct Verbose {

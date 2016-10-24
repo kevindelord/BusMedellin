@@ -80,6 +80,10 @@ class BMMapView                                         : UIView {
             // Setup address views
             self.pickUpInfoView?.setupWithState(.PickUp)
             self.destinationInfoView?.setupWithState(.Destination)
+            // Setup cancel buttons
+            let imageInset = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
+            self.cancelPickUpButton?.imageEdgeInsets = imageInset
+            self.cancelDestinationButton?.imageEdgeInsets = imageInset
         }
     }
 

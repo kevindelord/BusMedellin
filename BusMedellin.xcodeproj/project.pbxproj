@@ -18,6 +18,8 @@
 		75640BFC1DAF1AAD002B4A56 /* BMConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75640BFB1DAF1AAD002B4A56 /* BMConstants.swift */; };
 		75640BFE1DAF1B11002B4A56 /* DMDefines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75640BFD1DAF1B11002B4A56 /* DMDefines.swift */; };
 		756493741DBD6F68007811A6 /* BMMapCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756493731DBD6F68007811A6 /* BMMapCircle.swift */; };
+		75679F161DBE77AF0066DF0F /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75679F151DBE77AF0066DF0F /* iAd.framework */; };
+		75679F171DBE77B50066DF0F /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75679F151DBE77AF0066DF0F /* iAd.framework */; };
 		757F31621DBE5E16002BB03F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 757F31611DBE5E16002BB03F /* GoogleService-Info.plist */; };
 		757F31631DBE5E16002BB03F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 757F31611DBE5E16002BB03F /* GoogleService-Info.plist */; };
 		757F31651DBE5F14002BB03F /* GoogleAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757F31641DBE5F14002BB03F /* GoogleAnalytics.swift */; };
@@ -90,6 +92,7 @@
 		75640BFB1DAF1AAD002B4A56 /* BMConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BMConstants.swift; path = Core/BMConstants.swift; sourceTree = "<group>"; };
 		75640BFD1DAF1B11002B4A56 /* DMDefines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DMDefines.swift; path = Core/DMDefines.swift; sourceTree = "<group>"; };
 		756493731DBD6F68007811A6 /* BMMapCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BMMapCircle.swift; path = Core/AdditionalViews/BMMapCircle.swift; sourceTree = "<group>"; };
+		75679F151DBE77AF0066DF0F /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		757F31611DBE5E16002BB03F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		757F31641DBE5F14002BB03F /* GoogleAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleAnalytics.swift; sourceTree = "<group>"; };
 		757F31671DBE5FD4002BB03F /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -125,6 +128,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75679F161DBE77AF0066DF0F /* iAd.framework in Frameworks */,
 				757F31681DBE5FD4002BB03F /* AdSupport.framework in Frameworks */,
 				C18EF7B9E2C22F4A87042BDB /* Pods_BusMedellin_Alpha_AdHoc.framework in Frameworks */,
 			);
@@ -134,6 +138,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75679F171DBE77B50066DF0F /* iAd.framework in Frameworks */,
 				757F31691DBE5FDC002BB03F /* AdSupport.framework in Frameworks */,
 				784CAD72F52AE0B32F011F1E /* Pods_BusMedellin_Live_AppStore.framework in Frameworks */,
 			);
@@ -286,6 +291,7 @@
 		AE0CB248D55F640D6BD12CEB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				75679F151DBE77AF0066DF0F /* iAd.framework */,
 				757F31671DBE5FD4002BB03F /* AdSupport.framework */,
 				303C336AEDCC072779B8226E /* Pods_BusMedellin_Alpha.framework */,
 				0669351D7212F380D200E0BA /* Pods_BusMedellin_Alpha_AdHoc.framework */,

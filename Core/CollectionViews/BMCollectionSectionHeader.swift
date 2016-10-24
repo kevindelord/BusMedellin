@@ -39,12 +39,13 @@ class BMHeaderView                          : UIView {
 
     // MARK: - Outlets
 
-    @IBOutlet private weak var appTitle     : UILabel?
-    @IBOutlet private weak var routeTitle   : UILabel?
-    @IBOutlet private weak var subtitle     : UILabel?
-    @IBOutlet private weak var totalRoutes  : UILabel?
-    @IBOutlet private weak var infoButton   : UIButton?
-    @IBOutlet private weak var titleBottomConstraint : NSLayoutConstraint?
+    @IBOutlet private weak var appTitle                 : UILabel?
+    @IBOutlet private weak var routeTitle               : UILabel?
+    @IBOutlet private weak var subtitle                 : UILabel?
+    @IBOutlet private weak var totalRoutes              : UILabel?
+    @IBOutlet private weak var infoButton               : UIButton?
+    @IBOutlet private weak var logoImageView            : UIImageView?
+    @IBOutlet private weak var titleBottomConstraint    : NSLayoutConstraint?
 
     // MARK: - Attributes
 
@@ -61,6 +62,7 @@ class BMHeaderView                          : UIView {
             self.routeTitle?.text = route.name
             self.appTitle?.text = ""
             self.infoButton?.alpha = 0
+            self.logoImageView?.alpha = 0
             // Subtitle
             self.configureSubtitle(route)
             // Other Routes
@@ -91,6 +93,7 @@ class BMHeaderView                          : UIView {
     private func showAppTitle() {
         self.appTitle?.text = L("APP_TITLE")
         self.infoButton?.alpha = 1
+        self.logoImageView?.alpha = 1
         self.routeTitle?.text = ""
         self.subtitle?.text = ""
         self.totalRoutes?.text = ""

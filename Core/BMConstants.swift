@@ -96,3 +96,12 @@ struct BMColor {
     static let ViewBorder       = UIColor(230, g: 230, b: 230)
     static let DotBorder        = UIColor(150, g: 150, b: 150)
 }
+
+struct BMExternalLink {
+
+    static let Project          = "https://github.com/kevindelord/BusMedellin"
+    static let ThibaultDurand   = "https://github.com/tdurand"
+    static let TwitterTDurand   = "https://twitter.com/tibbb"
+    static let WebVersion       = "http://tdurand.github.io/mapamedellin"
+    static let KevinDelord      = "https://github.com/kevindelord"
+}

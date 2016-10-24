@@ -62,7 +62,7 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lfz-Wq-vgF">
-                            <rect key="frame" x="41" y="0.0" width="427" height="40"/>
+                            <rect key="frame" x="41" y="0.0" width="439" height="40"/>
                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -87,7 +87,7 @@
                         <constraint firstAttribute="height" constant="40" id="PaZ-Aj-x7f"/>
                         <constraint firstItem="Ebe-vF-VbB" firstAttribute="leading" secondItem="b7K-uG-JL7" secondAttribute="leading" constant="15" id="W8x-B1-LIQ"/>
                         <constraint firstItem="lfz-Wq-vgF" firstAttribute="top" secondItem="b7K-uG-JL7" secondAttribute="top" id="bjw-BS-TnW"/>
-                        <constraint firstItem="Vch-4c-sRG" firstAttribute="leading" secondItem="lfz-Wq-vgF" secondAttribute="trailing" constant="12" id="d7Q-8F-Bbo"/>
+                        <constraint firstItem="Vch-4c-sRG" firstAttribute="leading" secondItem="lfz-Wq-vgF" secondAttribute="trailing" id="d7Q-8F-Bbo"/>
                         <constraint firstAttribute="bottom" secondItem="Vch-4c-sRG" secondAttribute="bottom" id="h01-sE-xzP"/>
                         <constraint firstAttribute="bottom" secondItem="lfz-Wq-vgF" secondAttribute="bottom" id="jW0-J2-7mA"/>
                         <constraint firstItem="Vch-4c-sRG" firstAttribute="top" secondItem="b7K-uG-JL7" secondAttribute="top" id="k6M-zN-8hZ"/>
@@ -117,7 +117,7 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nGn-Kz-FR1">
-                            <rect key="frame" x="41" y="0.0" width="427" height="40"/>
+                            <rect key="frame" x="41" y="0.0" width="439" height="40"/>
                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -143,7 +143,7 @@
                         <constraint firstItem="nGn-Kz-FR1" firstAttribute="leading" secondItem="CzP-9g-wXG" secondAttribute="trailing" constant="16" id="Rs3-fq-qct"/>
                         <constraint firstItem="nGn-Kz-FR1" firstAttribute="top" secondItem="MHe-Hz-gNQ" secondAttribute="top" id="V5l-lg-Ub7"/>
                         <constraint firstAttribute="height" constant="40" id="j3d-mt-HdB"/>
-                        <constraint firstItem="Agd-yg-7mu" firstAttribute="leading" secondItem="nGn-Kz-FR1" secondAttribute="trailing" constant="12" id="lcq-qK-mEJ"/>
+                        <constraint firstItem="Agd-yg-7mu" firstAttribute="leading" secondItem="nGn-Kz-FR1" secondAttribute="trailing" id="lcq-qK-mEJ"/>
                         <constraint firstAttribute="bottom" secondItem="nGn-Kz-FR1" secondAttribute="bottom" id="ll0-Wu-EMM"/>
                         <constraint firstAttribute="bottom" secondItem="CzP-9g-wXG" secondAttribute="bottom" constant="15" id="m2l-Oh-XgU"/>
                         <constraint firstItem="CzP-9g-wXG" firstAttribute="leading" secondItem="MHe-Hz-gNQ" secondAttribute="leading" constant="15" id="vHm-0t-iH2"/>

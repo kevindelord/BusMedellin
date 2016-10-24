@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Appirater.setup()
         Buglife.sharedBuglife().startWithAPIKey(NSBundle.stringEntryInPListForKey(BMPlist.BuglifeID))
         HockeySDK.setup()
-        GoogleAnalytics.setup()
+        Analytics.setup()
 
         return true
     }

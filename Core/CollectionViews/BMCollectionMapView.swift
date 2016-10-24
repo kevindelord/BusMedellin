@@ -142,7 +142,7 @@ extension BMMapView: MKMapViewDelegate {
             return nil
         } else {
             self.locationManager.requestWhenInUseAuthorization()
-            GoogleAnalytics.UserLocation.DidAskForUserLocation.send()
+            Analytics.UserLocation.DidAskForUserLocation.send()
             return nil
         }
     }
@@ -157,7 +157,7 @@ extension BMMapView: MKMapViewDelegate {
             }
         }))
         presentingViewController?.presentViewController(ac, animated: true, completion: nil)
-        GoogleAnalytics.UserLocation.DidAskForSettings.send()
+        Analytics.UserLocation.DidAskForSettings.send()
     }
 
     func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
@@ -261,7 +261,7 @@ extension BMMapView {
             // Notify and reload the collection view.
             self.didFetchAvailableRoutesBlock?(routes: nil)
             // Analytics
-            GoogleAnalytics.PinLocation.DidCancelStart.send()
+            Analytics.PinLocation.DidCancelStart.send()
         })
     }
 
@@ -285,7 +285,7 @@ extension BMMapView {
             // Notify and reload the collection view with the new results.
             self.didFetchAvailableRoutesBlock?(routes: nil)
             // Analytics
-            GoogleAnalytics.PinLocation.DidCancelDestination.send()
+            Analytics.PinLocation.DidCancelDestination.send()
         })
     }
 
@@ -302,10 +302,10 @@ extension BMMapView {
             // Disable the locate me feature if the user is too far away from the city center.
             if (self.cityCenterLocation.distanceFromLocation(userLocation) < Map.MaxScrollDistance) {
                 self.centerMapOnLocation(userLocation)
-                GoogleAnalytics.UserLocation.DidLocateUser.send()
+                Analytics.UserLocation.DidLocateUser.send()
             } else {
                 UIAlertController.showInfoMessage("", message: L("USER_LOCATION_TOO_FAR"))
-                GoogleAnalytics.UserLocation.DidLocateUserTooFar.send()
+                Analytics.UserLocation.DidLocateUserTooFar.send()
             }
         }
     }
@@ -332,7 +332,7 @@ extension BMMapView {
                     // Show waiting HUD
                     self.showWaitingHUD()
                     // Analytics
-                    GoogleAnalytics.PinLocation.DidSetStart.send()
+                    Analytics.PinLocation.DidSetStart.send()
                     // Fetch the address of the location
                     let location = CLLocation(latitude: centerCoordinate.latitude, longitude: centerCoordinate.longitude)
                     self.fetchAddressForLocation(location, completion: { (address: String?) in
@@ -383,7 +383,7 @@ extension BMMapView {
                     // Show waiting HUD
                     self.showWaitingHUD()
                     // Analytics
-                    GoogleAnalytics.PinLocation.DidSetDestination.send()
+                    Analytics.PinLocation.DidSetDestination.send()
                     // Fetch the address of the location
                     let location = CLLocation(latitude: centerCoordinate.latitude, longitude: centerCoordinate.longitude)
                     self.fetchAddressForLocation(location, completion: { (address: String?) in
@@ -392,7 +392,7 @@ extension BMMapView {
                         // Search for all available routes between the two locations.
                         self.searchForRoutesBetweenAnnotations({ (routes: [Route]) in
                             // Analytics
-                            GoogleAnalytics.Route.DidSearchForMatchingRoutes.send(routeCode: nil, rounteCount: routes.count)
+                            Analytics.Route.DidSearchForMatchingRoutes.send(routeCode: nil, rounteCount: routes.count)
                             // Draw the first route as example.
                             if let routeCode = routes.first?.code {
                                 self.fetchAndDrawRoute(routeCode, completion: {
@@ -414,13 +414,13 @@ extension BMMapView {
             // Fetch all routes passing by the pick up location.
             self.fetchRoutesForCoordinates(pickUpCoordinate, completion: { (pickUpRoutes: [Route]) in
                 // Analytics
-                GoogleAnalytics.Route.DidSearchForStartRoutes.send(routeCode: nil, rounteCount: pickUpRoutes.count)
+                Analytics.Route.DidSearchForStartRoutes.send(routeCode: nil, rounteCount: pickUpRoutes.count)
 
                 if let destinationCoordinate = self.destinationAnnotation?.coordinate {
                     // Fetch all routes passing by the destination location.
                     self.fetchRoutesForCoordinates(destinationCoordinate, completion: { (destinationRoutes: [Route]) in
                         // Analytics
-                        GoogleAnalytics.Route.DidSearchForDestinationRoutes.send(routeCode: nil, rounteCount: destinationRoutes.count)
+                        Analytics.Route.DidSearchForDestinationRoutes.send(routeCode: nil, rounteCount: destinationRoutes.count)
 
                         // Filter the routes to only the ones matching.
                         var commonRoutes = [Route]()
@@ -479,7 +479,7 @@ extension BMMapView {
             let locationCoordinates = self.createLocationsFromCoordinates(coordinates)
             self.drawRouteForCoordinates(locationCoordinates)
             // Analytics
-            GoogleAnalytics.Route.DidDrawRoute.send(routeCode: routeCode, rounteCount: 1)
+            Analytics.Route.DidDrawRoute.send(routeCode: routeCode, rounteCount: 1)
             completion?()
         })
     }

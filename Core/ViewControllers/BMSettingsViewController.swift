@@ -40,7 +40,7 @@ class BMSettingsViewController                  : UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
 
-        GoogleAnalytics.sendScreenView(.Settings)
+        Analytics.sendScreenView(.Settings)
     }
 
     // MARK: - UI Setup functions

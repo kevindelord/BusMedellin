@@ -13,6 +13,7 @@ def corePods
     pod 'Buglife', '~> 1.3.3'
     pod 'HockeySDK', '~> 4.1.2'
     pod 'Google/Analytics'
+    pod 'Firebase/Core'
 end
 
 target 'BusMedellin-Alpha-AdHoc' do

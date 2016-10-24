@@ -44,7 +44,7 @@ class BMCollectionViewController: UICollectionViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
 
-        GoogleAnalytics.sendScreenView(.MapView)
+        Analytics.sendScreenView(.MapView)
     }
 
     override func preferredStatusBarUpdateAnimation() -> UIStatusBarAnimation {

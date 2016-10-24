@@ -6,8 +6,12 @@
 	<string>https://www.googleapis.com/fusiontables/v1/query</string>
 	<key>AppId</key>
 	<string>0123456789</string>
+	<key>BuglifeID</key>
+	<string>zABHFQBQuM6ZzTTXZoRDDwtt</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>Bus Paisa</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -53,10 +57,6 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-	<key>CFBundleDisplayName</key>
-	<string>Bus Paisa</string>
-	<key>BuglifeID</key>
-	<string>zABHFQBQuM6ZzTTXZoRDDwtt</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

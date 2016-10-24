@@ -18,6 +18,8 @@ class BMSettingsViewController                  : UIViewController {
     @IBOutlet private weak var bugTextLabel     : UILabel?
     @IBOutlet private weak var madeByTextView   : UITextView?
 
+    // MARK: - Lifeview cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,6 +36,14 @@ class BMSettingsViewController                  : UIViewController {
         self.setupAboutTextView()
         self.setupMadeByTextView()
     }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+
+        GoogleAnalytics.sendScreenView(.Settings)
+    }
+
+    // MARK: - UI Setup functions
 
     private var textViewFont : UIFont {
         var font = (UIFont(name: "Helvetica Neue Light", size: 15) ?? UIFont.systemFontOfSize(15))
@@ -72,6 +82,8 @@ class BMSettingsViewController                  : UIViewController {
 
         self.madeByTextView?.attributedText = attrStr
     }
+
+    // MARK: - Interface Actions
 
     @IBAction func closeButtonPressed() {
         self.dismissViewControllerAnimated(true, completion: nil)

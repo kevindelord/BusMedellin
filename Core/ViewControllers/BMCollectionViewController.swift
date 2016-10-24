@@ -41,6 +41,12 @@ class BMCollectionViewController: UICollectionViewController {
         self.layout?.minimumLineSpacing = 0
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+
+        GoogleAnalytics.sendScreenView(.MapView)
+    }
+
     override func preferredStatusBarUpdateAnimation() -> UIStatusBarAnimation {
         return .Slide
     }

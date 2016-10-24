@@ -1,6 +1,6 @@
 ## TODO
 
-* Integrate Google Analytics - 1h
+* ItunesConnect: get ready with content.
 * Update localise files.
 
 ## UNCLEAR

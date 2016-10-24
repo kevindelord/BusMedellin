@@ -26,5 +26,6 @@ struct Verbose {
     struct Manager {
 
         static let API              : Bool = false
+        static let Analytics        : Bool = false
     }
 }

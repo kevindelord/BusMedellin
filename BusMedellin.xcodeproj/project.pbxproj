@@ -18,6 +18,12 @@
 		75640BFC1DAF1AAD002B4A56 /* BMConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75640BFB1DAF1AAD002B4A56 /* BMConstants.swift */; };
 		75640BFE1DAF1B11002B4A56 /* DMDefines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75640BFD1DAF1B11002B4A56 /* DMDefines.swift */; };
 		756493741DBD6F68007811A6 /* BMMapCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756493731DBD6F68007811A6 /* BMMapCircle.swift */; };
+		757F31621DBE5E16002BB03F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 757F31611DBE5E16002BB03F /* GoogleService-Info.plist */; };
+		757F31631DBE5E16002BB03F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 757F31611DBE5E16002BB03F /* GoogleService-Info.plist */; };
+		757F31651DBE5F14002BB03F /* GoogleAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757F31641DBE5F14002BB03F /* GoogleAnalytics.swift */; };
+		757F31661DBE5F14002BB03F /* GoogleAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757F31641DBE5F14002BB03F /* GoogleAnalytics.swift */; };
+		757F31681DBE5FD4002BB03F /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 757F31671DBE5FD4002BB03F /* AdSupport.framework */; };
+		757F31691DBE5FDC002BB03F /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 757F31671DBE5FD4002BB03F /* AdSupport.framework */; };
 		75805BBD1DAF1D9700DACFF5 /* DKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75805BB91DAF1D9700DACFF5 /* DKExtensions.swift */; };
 		75805BC41DAF5B7E00DACFF5 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75805BC31DAF5B7E00DACFF5 /* Route.swift */; };
 		758E10361DBD92D000D872BC /* BMAnnotations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75513BE41DB02D2300957F40 /* BMAnnotations.swift */; };
@@ -84,6 +90,9 @@
 		75640BFB1DAF1AAD002B4A56 /* BMConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BMConstants.swift; path = Core/BMConstants.swift; sourceTree = "<group>"; };
 		75640BFD1DAF1B11002B4A56 /* DMDefines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DMDefines.swift; path = Core/DMDefines.swift; sourceTree = "<group>"; };
 		756493731DBD6F68007811A6 /* BMMapCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BMMapCircle.swift; path = Core/AdditionalViews/BMMapCircle.swift; sourceTree = "<group>"; };
+		757F31611DBE5E16002BB03F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		757F31641DBE5F14002BB03F /* GoogleAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleAnalytics.swift; sourceTree = "<group>"; };
+		757F31671DBE5FD4002BB03F /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		75805BB91DAF1D9700DACFF5 /* DKExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DKExtensions.swift; sourceTree = "<group>"; };
 		75805BC01DAF5B3A00DACFF5 /* medellin.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = medellin.gpx; path = Resources/medellin.gpx; sourceTree = "<group>"; };
 		75805BC31DAF5B7E00DACFF5 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Route.swift; path = Models/Route.swift; sourceTree = "<group>"; };
@@ -116,6 +125,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				757F31681DBE5FD4002BB03F /* AdSupport.framework in Frameworks */,
 				C18EF7B9E2C22F4A87042BDB /* Pods_BusMedellin_Alpha_AdHoc.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -124,6 +134,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				757F31691DBE5FDC002BB03F /* AdSupport.framework in Frameworks */,
 				784CAD72F52AE0B32F011F1E /* Pods_BusMedellin_Live_AppStore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -189,6 +200,7 @@
 				75640BEF1DAF19FB002B4A56 /* APIManager.swift */,
 				758E105C1DBD96D000D872BC /* HockeySDK.swift */,
 				75640BF01DAF19FB002B4A56 /* Appirater.swift */,
+				757F31641DBE5F14002BB03F /* GoogleAnalytics.swift */,
 				75513BE61DB02E5700957F40 /* MKMapView.swift */,
 				75640BF11DAF19FB002B4A56 /* Reachability.swift */,
 			);
@@ -198,6 +210,7 @@
 		75640BF51DAF1A5F002B4A56 /* PLists */ = {
 			isa = PBXGroup;
 			children = (
+				757F31611DBE5E16002BB03F /* GoogleService-Info.plist */,
 				758E105B1DBD930A00D872BC /* BusMedellin-Live-AppStore-Info.plist */,
 				75640BF61DAF1A5F002B4A56 /* BusMedellin-Alpha-Adhoc-Info.plist */,
 			);
@@ -273,6 +286,7 @@
 		AE0CB248D55F640D6BD12CEB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				757F31671DBE5FD4002BB03F /* AdSupport.framework */,
 				303C336AEDCC072779B8226E /* Pods_BusMedellin_Alpha.framework */,
 				0669351D7212F380D200E0BA /* Pods_BusMedellin_Alpha_AdHoc.framework */,
 				4301C8C80BE111EDA26F55FC /* Pods_BusMedellin_Live_AppStore.framework */,
@@ -384,6 +398,7 @@
 			files = (
 				75C5E95E1DBD698100FCE9D0 /* LaunchScreen.storyboard in Resources */,
 				75C5E95F1DBD698100FCE9D0 /* Main.storyboard in Resources */,
+				757F31621DBE5E16002BB03F /* GoogleService-Info.plist in Resources */,
 				75F8B4C21DB9691200F43109 /* BMCellView.xib in Resources */,
 				75640BED1DAF19C5002B4A56 /* Settings.bundle in Resources */,
 				75F8B4C01DB95E6200F43109 /* BMHeaderView.xib in Resources */,
@@ -399,6 +414,7 @@
 			files = (
 				758E104B1DBD92D000D872BC /* LaunchScreen.storyboard in Resources */,
 				758E104C1DBD92D000D872BC /* Main.storyboard in Resources */,
+				757F31631DBE5E16002BB03F /* GoogleService-Info.plist in Resources */,
 				758E104D1DBD92D000D872BC /* BMCellView.xib in Resources */,
 				758E104E1DBD92D000D872BC /* Settings.bundle in Resources */,
 				758E104F1DBD92D000D872BC /* BMHeaderView.xib in Resources */,
@@ -539,6 +555,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				75513BE51DB02D2300957F40 /* BMAnnotations.swift in Sources */,
+				757F31651DBE5F14002BB03F /* GoogleAnalytics.swift in Sources */,
 				758E105D1DBD96D000D872BC /* HockeySDK.swift in Sources */,
 				75805BC41DAF5B7E00DACFF5 /* Route.swift in Sources */,
 				75F8B4C71DB9772A00F43109 /* BMCollectionSectionHeader.swift in Sources */,
@@ -565,6 +582,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				758E10361DBD92D000D872BC /* BMAnnotations.swift in Sources */,
+				757F31661DBE5F14002BB03F /* GoogleAnalytics.swift in Sources */,
 				758E105E1DBD96D000D872BC /* HockeySDK.swift in Sources */,
 				758E10371DBD92D000D872BC /* Route.swift in Sources */,
 				758E10381DBD92D000D872BC /* BMCollectionSectionHeader.swift in Sources */,

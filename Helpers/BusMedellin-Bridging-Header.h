@@ -10,5 +10,6 @@
 #define BusMedellin_Bridging_Header_h
 
 #import <CSStickyHeaderFlowLayout/CSStickyHeaderFlowLayout.h>
+#import <Google/Analytics.h>
 
 #endif /* BusMedellin_Bridging_Header_h */

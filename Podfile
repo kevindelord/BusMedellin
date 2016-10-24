@@ -12,6 +12,7 @@ def corePods
 	pod 'DKHelper', '~> 2.2.3'
     pod 'Buglife', '~> 1.3.3'
     pod 'HockeySDK', '~> 4.1.2'
+    pod 'Google/Analytics'
 end
 
 target 'BusMedellin-Alpha-AdHoc' do

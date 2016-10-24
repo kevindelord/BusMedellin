@@ -5,7 +5,7 @@
 This project is an open-source iOS app that helps users using the buses in Medellin, Colombia.
 
 It is based on the work of [Thibault Durand](https://github.com/tdurand) on this [repository](https://github.com/tdurand/mapamedellin).
-You can find the online version here: [http://tdurand.github.io/mapamedellin](http://tdurand.github.io/mapamedellin).
+You can find the web version here: [http://tdurand.github.io/mapamedellin](http://tdurand.github.io/mapamedellin).
 
 ## Important
 
@@ -18,9 +18,10 @@ You can find the online version here: [http://tdurand.github.io/mapamedellin](ht
 
 To be able develop on this project you first need the following:
 
-* Xcode
-* Cocoapods
-* git
+* [Xcode](https://developer.apple.com/xcode/)
+* [Cocoapods](https://cocoapods.org/)
+* [git](https://git-scm.com/)
+* [Swiftlint](https://github.com/realm/SwiftLint) (optional)
 
 Back on your command line, execute the following and run the project:
 

@@ -20,6 +20,32 @@
 		756493741DBD6F68007811A6 /* BMMapCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756493731DBD6F68007811A6 /* BMMapCircle.swift */; };
 		75805BBD1DAF1D9700DACFF5 /* DKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75805BB91DAF1D9700DACFF5 /* DKExtensions.swift */; };
 		75805BC41DAF5B7E00DACFF5 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75805BC31DAF5B7E00DACFF5 /* Route.swift */; };
+		758E10361DBD92D000D872BC /* BMAnnotations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75513BE41DB02D2300957F40 /* BMAnnotations.swift */; };
+		758E10371DBD92D000D872BC /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75805BC31DAF5B7E00DACFF5 /* Route.swift */; };
+		758E10381DBD92D000D872BC /* BMCollectionSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F8B4C41DB9772A00F43109 /* BMCollectionSectionHeader.swift */; };
+		758E10391DBD92D000D872BC /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75640BEF1DAF19FB002B4A56 /* APIManager.swift */; };
+		758E103A1DBD92D000D872BC /* MKMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75513BE61DB02E5700957F40 /* MKMapView.swift */; };
+		758E103B1DBD92D000D872BC /* BMButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75513BE21DB01ED900957F40 /* BMButtons.swift */; };
+		758E103C1DBD92D000D872BC /* Appirater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75640BF01DAF19FB002B4A56 /* Appirater.swift */; };
+		758E103D1DBD92D000D872BC /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75640BF11DAF19FB002B4A56 /* Reachability.swift */; };
+		758E103E1DBD92D000D872BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F8B4CA1DB9773800F43109 /* AppDelegate.swift */; };
+		758E103F1DBD92D000D872BC /* BMMapCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756493731DBD6F68007811A6 /* BMMapCircle.swift */; };
+		758E10401DBD92D000D872BC /* BMCollectionMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F8B4C61DB9772A00F43109 /* BMCollectionMapView.swift */; };
+		758E10411DBD92D000D872BC /* BMAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C5E95A1DBD697900FCE9D0 /* BMAddressView.swift */; };
+		758E10421DBD92D000D872BC /* BMSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C5E9511DBD637400FCE9D0 /* BMSettingsViewController.swift */; };
+		758E10431DBD92D000D872BC /* BMCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F8B4CD1DB9774600F43109 /* BMCollectionViewController.swift */; };
+		758E10441DBD92D000D872BC /* DKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75805BB91DAF1D9700DACFF5 /* DKExtensions.swift */; };
+		758E10451DBD92D000D872BC /* BMConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75640BFB1DAF1AAD002B4A56 /* BMConstants.swift */; };
+		758E10461DBD92D000D872BC /* DMDefines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75640BFD1DAF1B11002B4A56 /* DMDefines.swift */; };
+		758E10471DBD92D000D872BC /* BMCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F8B4C51DB9772A00F43109 /* BMCollectionViewCell.swift */; };
+		758E104B1DBD92D000D872BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C5E95C1DBD698100FCE9D0 /* LaunchScreen.storyboard */; };
+		758E104C1DBD92D000D872BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C5E95D1DBD698100FCE9D0 /* Main.storyboard */; };
+		758E104D1DBD92D000D872BC /* BMCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75F8B4C11DB9691200F43109 /* BMCellView.xib */; };
+		758E104E1DBD92D000D872BC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 75640BEC1DAF19C5002B4A56 /* Settings.bundle */; };
+		758E104F1DBD92D000D872BC /* BMHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75F8B4BF1DB95E6200F43109 /* BMHeaderView.xib */; };
+		758E10501DBD92D000D872BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75513BDF1DB019C600957F40 /* Assets.xcassets */; };
+		758E10511DBD92D000D872BC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 75C5E9571DBD673700FCE9D0 /* Localizable.strings */; };
+		758E10521DBD92D000D872BC /* BMMapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75FEDCFC1DB1E63300D692C4 /* BMMapView.xib */; };
 		75C5E9521DBD637400FCE9D0 /* BMSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C5E9511DBD637400FCE9D0 /* BMSettingsViewController.swift */; };
 		75C5E9551DBD673700FCE9D0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 75C5E9571DBD673700FCE9D0 /* Localizable.strings */; };
 		75C5E95B1DBD697900FCE9D0 /* BMAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C5E95A1DBD697900FCE9D0 /* BMAddressView.swift */; };
@@ -33,27 +59,34 @@
 		75F8B4CB1DB9773800F43109 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F8B4CA1DB9773800F43109 /* AppDelegate.swift */; };
 		75F8B4CE1DB9774600F43109 /* BMCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F8B4CD1DB9774600F43109 /* BMCollectionViewController.swift */; };
 		75FEDCFD1DB1E63300D692C4 /* BMMapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75FEDCFC1DB1E63300D692C4 /* BMMapView.xib */; };
-		AFFD37F54C66E16096BAF358 /* Pods_BusMedellin_Alpha.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 303C336AEDCC072779B8226E /* Pods_BusMedellin_Alpha.framework */; };
+		784CAD72F52AE0B32F011F1E /* Pods_BusMedellin_Live_AppStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4301C8C80BE111EDA26F55FC /* Pods_BusMedellin_Live_AppStore.framework */; };
+		C18EF7B9E2C22F4A87042BDB /* Pods_BusMedellin_Alpha_AdHoc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0669351D7212F380D200E0BA /* Pods_BusMedellin_Alpha_AdHoc.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0669351D7212F380D200E0BA /* Pods_BusMedellin_Alpha_AdHoc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BusMedellin_Alpha_AdHoc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2AF79F6C1DA5CA29D33D3B02 /* Pods-BusMedellin-Alpha-AdHoc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusMedellin-Alpha-AdHoc.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BusMedellin-Alpha-AdHoc/Pods-BusMedellin-Alpha-AdHoc.debug.xcconfig"; sourceTree = "<group>"; };
 		303C336AEDCC072779B8226E /* Pods_BusMedellin_Alpha.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BusMedellin_Alpha.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3DEA8EFDB7D60226162490B7 /* Pods-BusMedellin-Live-AppStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusMedellin-Live-AppStore.release.xcconfig"; path = "Pods/Target Support Files/Pods-BusMedellin-Live-AppStore/Pods-BusMedellin-Live-AppStore.release.xcconfig"; sourceTree = "<group>"; };
+		4301C8C80BE111EDA26F55FC /* Pods_BusMedellin_Live_AppStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BusMedellin_Live_AppStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75513BDF1DB019C600957F40 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
 		75513BE21DB01ED900957F40 /* BMButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BMButtons.swift; path = Core/AdditionalViews/BMButtons.swift; sourceTree = "<group>"; };
 		75513BE41DB02D2300957F40 /* BMAnnotations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BMAnnotations.swift; path = Core/AdditionalViews/BMAnnotations.swift; sourceTree = "<group>"; };
 		75513BE61DB02E5700957F40 /* MKMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKMapView.swift; sourceTree = "<group>"; };
-		7554E7761DAF16E400F1178C /* BusMedellin-Alpha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BusMedellin-Alpha.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7554E7761DAF16E400F1178C /* BusMedellin-Alpha-AdHoc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BusMedellin-Alpha-AdHoc.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		75640BEC1DAF19C5002B4A56 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Resources/Settings.bundle; sourceTree = "<group>"; };
 		75640BEF1DAF19FB002B4A56 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		75640BF01DAF19FB002B4A56 /* Appirater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appirater.swift; sourceTree = "<group>"; };
 		75640BF11DAF19FB002B4A56 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
-		75640BF61DAF1A5F002B4A56 /* BusMedellin-Alpha-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "BusMedellin-Alpha-Info.plist"; sourceTree = "<group>"; };
+		75640BF61DAF1A5F002B4A56 /* BusMedellin-Alpha-Adhoc-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "BusMedellin-Alpha-Adhoc-Info.plist"; sourceTree = "<group>"; };
 		75640BFB1DAF1AAD002B4A56 /* BMConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BMConstants.swift; path = Core/BMConstants.swift; sourceTree = "<group>"; };
 		75640BFD1DAF1B11002B4A56 /* DMDefines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DMDefines.swift; path = Core/DMDefines.swift; sourceTree = "<group>"; };
 		756493731DBD6F68007811A6 /* BMMapCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BMMapCircle.swift; path = Core/AdditionalViews/BMMapCircle.swift; sourceTree = "<group>"; };
 		75805BB91DAF1D9700DACFF5 /* DKExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DKExtensions.swift; sourceTree = "<group>"; };
 		75805BC01DAF5B3A00DACFF5 /* medellin.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = medellin.gpx; path = Resources/medellin.gpx; sourceTree = "<group>"; };
 		75805BC31DAF5B7E00DACFF5 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Route.swift; path = Models/Route.swift; sourceTree = "<group>"; };
+		758E10591DBD92D100D872BC /* BusMedellin-Live-AppStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BusMedellin-Live-AppStore.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		758E105B1DBD930A00D872BC /* BusMedellin-Live-AppStore-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BusMedellin-Live-AppStore-Info.plist"; sourceTree = "<group>"; };
 		75C5E9511DBD637400FCE9D0 /* BMSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BMSettingsViewController.swift; sourceTree = "<group>"; };
 		75C5E9561DBD673700FCE9D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		75C5E9581DBD674200FCE9D0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -70,8 +103,10 @@
 		75F8B4CD1DB9774600F43109 /* BMCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BMCollectionViewController.swift; sourceTree = "<group>"; };
 		75FEDCF61DB1DCE500D692C4 /* BusMedellin-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "BusMedellin-Bridging-Header.h"; path = "Helpers/BusMedellin-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		75FEDCFC1DB1E63300D692C4 /* BMMapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BMMapView.xib; path = Resources/BMMapView.xib; sourceTree = SOURCE_ROOT; };
+		A7499BBE73A1F9A15DE3B84B /* Pods-BusMedellin-Alpha-AdHoc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusMedellin-Alpha-AdHoc.release.xcconfig"; path = "Pods/Target Support Files/Pods-BusMedellin-Alpha-AdHoc/Pods-BusMedellin-Alpha-AdHoc.release.xcconfig"; sourceTree = "<group>"; };
 		BCAAEAB40516B6059850CA36 /* Pods-BusMedellin-Alpha.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusMedellin-Alpha.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BusMedellin-Alpha/Pods-BusMedellin-Alpha.debug.xcconfig"; sourceTree = "<group>"; };
 		C5083B8EF7A8C636C7DDB3DB /* Pods-BusMedellin-Alpha.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusMedellin-Alpha.release.xcconfig"; path = "Pods/Target Support Files/Pods-BusMedellin-Alpha/Pods-BusMedellin-Alpha.release.xcconfig"; sourceTree = "<group>"; };
+		D1D74A19948FAF38E5BC6585 /* Pods-BusMedellin-Live-AppStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusMedellin-Live-AppStore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BusMedellin-Live-AppStore/Pods-BusMedellin-Live-AppStore.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,7 +114,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AFFD37F54C66E16096BAF358 /* Pods_BusMedellin_Alpha.framework in Frameworks */,
+				C18EF7B9E2C22F4A87042BDB /* Pods_BusMedellin_Alpha_AdHoc.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		758E10481DBD92D000D872BC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				784CAD72F52AE0B32F011F1E /* Pods_BusMedellin_Live_AppStore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,7 +158,8 @@
 		7554E7771DAF16E400F1178C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7554E7761DAF16E400F1178C /* BusMedellin-Alpha.app */,
+				7554E7761DAF16E400F1178C /* BusMedellin-Alpha-AdHoc.app */,
+				758E10591DBD92D100D872BC /* BusMedellin-Live-AppStore.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -151,7 +195,8 @@
 		75640BF51DAF1A5F002B4A56 /* PLists */ = {
 			isa = PBXGroup;
 			children = (
-				75640BF61DAF1A5F002B4A56 /* BusMedellin-Alpha-Info.plist */,
+				758E105B1DBD930A00D872BC /* BusMedellin-Live-AppStore-Info.plist */,
+				75640BF61DAF1A5F002B4A56 /* BusMedellin-Alpha-Adhoc-Info.plist */,
 			);
 			path = PLists;
 			sourceTree = "<group>";
@@ -226,6 +271,8 @@
 			isa = PBXGroup;
 			children = (
 				303C336AEDCC072779B8226E /* Pods_BusMedellin_Alpha.framework */,
+				0669351D7212F380D200E0BA /* Pods_BusMedellin_Alpha_AdHoc.framework */,
+				4301C8C80BE111EDA26F55FC /* Pods_BusMedellin_Live_AppStore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -235,6 +282,10 @@
 			children = (
 				BCAAEAB40516B6059850CA36 /* Pods-BusMedellin-Alpha.debug.xcconfig */,
 				C5083B8EF7A8C636C7DDB3DB /* Pods-BusMedellin-Alpha.release.xcconfig */,
+				2AF79F6C1DA5CA29D33D3B02 /* Pods-BusMedellin-Alpha-AdHoc.debug.xcconfig */,
+				A7499BBE73A1F9A15DE3B84B /* Pods-BusMedellin-Alpha-AdHoc.release.xcconfig */,
+				D1D74A19948FAF38E5BC6585 /* Pods-BusMedellin-Live-AppStore.debug.xcconfig */,
+				3DEA8EFDB7D60226162490B7 /* Pods-BusMedellin-Live-AppStore.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -242,9 +293,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7554E7751DAF16E400F1178C /* BusMedellin-Alpha */ = {
+		7554E7751DAF16E400F1178C /* BusMedellin-Alpha-AdHoc */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7554E7881DAF16E400F1178C /* Build configuration list for PBXNativeTarget "BusMedellin-Alpha" */;
+			buildConfigurationList = 7554E7881DAF16E400F1178C /* Build configuration list for PBXNativeTarget "BusMedellin-Alpha-AdHoc" */;
 			buildPhases = (
 				2D64230F4D513396A08A52B1 /* [CP] Check Pods Manifest.lock */,
 				7554E7721DAF16E400F1178C /* Sources */,
@@ -258,9 +309,30 @@
 			);
 			dependencies = (
 			);
-			name = "BusMedellin-Alpha";
+			name = "BusMedellin-Alpha-AdHoc";
 			productName = BusMedellin;
-			productReference = 7554E7761DAF16E400F1178C /* BusMedellin-Alpha.app */;
+			productReference = 7554E7761DAF16E400F1178C /* BusMedellin-Alpha-AdHoc.app */;
+			productType = "com.apple.product-type.application";
+		};
+		758E10331DBD92D000D872BC /* BusMedellin-Live-AppStore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 758E10561DBD92D000D872BC /* Build configuration list for PBXNativeTarget "BusMedellin-Live-AppStore" */;
+			buildPhases = (
+				758E10341DBD92D000D872BC /* [CP] Check Pods Manifest.lock */,
+				758E10351DBD92D000D872BC /* Sources */,
+				758E10481DBD92D000D872BC /* Frameworks */,
+				758E104A1DBD92D000D872BC /* Resources */,
+				758E10531DBD92D000D872BC /* [CP] Embed Pods Frameworks */,
+				758E10541DBD92D000D872BC /* [CP] Copy Pods Resources */,
+				758E10551DBD92D000D872BC /* Swiftlint */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "BusMedellin-Live-AppStore";
+			productName = BusMedellin;
+			productReference = 758E10591DBD92D100D872BC /* BusMedellin-Live-AppStore.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -294,7 +366,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7554E7751DAF16E400F1178C /* BusMedellin-Alpha */,
+				7554E7751DAF16E400F1178C /* BusMedellin-Alpha-AdHoc */,
+				758E10331DBD92D000D872BC /* BusMedellin-Live-AppStore */,
 			);
 		};
 /* End PBXProject section */
@@ -312,6 +385,21 @@
 				75513BE01DB019C600957F40 /* Assets.xcassets in Resources */,
 				75C5E9551DBD673700FCE9D0 /* Localizable.strings in Resources */,
 				75FEDCFD1DB1E63300D692C4 /* BMMapView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		758E104A1DBD92D000D872BC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				758E104B1DBD92D000D872BC /* LaunchScreen.storyboard in Resources */,
+				758E104C1DBD92D000D872BC /* Main.storyboard in Resources */,
+				758E104D1DBD92D000D872BC /* BMCellView.xib in Resources */,
+				758E104E1DBD92D000D872BC /* Settings.bundle in Resources */,
+				758E104F1DBD92D000D872BC /* BMHeaderView.xib in Resources */,
+				758E10501DBD92D000D872BC /* Assets.xcassets in Resources */,
+				758E10511DBD92D000D872BC /* Localizable.strings in Resources */,
+				758E10521DBD92D000D872BC /* BMMapView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,10 +433,70 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BusMedellin-Alpha/Pods-BusMedellin-Alpha-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BusMedellin-Alpha-AdHoc/Pods-BusMedellin-Alpha-AdHoc-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7567B2991DBD5E94008938FB /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi";
+			showEnvVarsInLog = 0;
+		};
+		758E10341DBD92D000D872BC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		758E10531DBD92D000D872BC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BusMedellin-Live-AppStore/Pods-BusMedellin-Live-AppStore-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		758E10541DBD92D000D872BC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BusMedellin-Live-AppStore/Pods-BusMedellin-Live-AppStore-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		758E10551DBD92D000D872BC /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -375,7 +523,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BusMedellin-Alpha/Pods-BusMedellin-Alpha-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BusMedellin-Alpha-AdHoc/Pods-BusMedellin-Alpha-AdHoc-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -403,6 +551,31 @@
 				75640BFC1DAF1AAD002B4A56 /* BMConstants.swift in Sources */,
 				75640BFE1DAF1B11002B4A56 /* DMDefines.swift in Sources */,
 				75F8B4C81DB9772A00F43109 /* BMCollectionViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		758E10351DBD92D000D872BC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				758E10361DBD92D000D872BC /* BMAnnotations.swift in Sources */,
+				758E10371DBD92D000D872BC /* Route.swift in Sources */,
+				758E10381DBD92D000D872BC /* BMCollectionSectionHeader.swift in Sources */,
+				758E10391DBD92D000D872BC /* APIManager.swift in Sources */,
+				758E103A1DBD92D000D872BC /* MKMapView.swift in Sources */,
+				758E103B1DBD92D000D872BC /* BMButtons.swift in Sources */,
+				758E103C1DBD92D000D872BC /* Appirater.swift in Sources */,
+				758E103D1DBD92D000D872BC /* Reachability.swift in Sources */,
+				758E103E1DBD92D000D872BC /* AppDelegate.swift in Sources */,
+				758E103F1DBD92D000D872BC /* BMMapCircle.swift in Sources */,
+				758E10401DBD92D000D872BC /* BMCollectionMapView.swift in Sources */,
+				758E10411DBD92D000D872BC /* BMAddressView.swift in Sources */,
+				758E10421DBD92D000D872BC /* BMSettingsViewController.swift in Sources */,
+				758E10431DBD92D000D872BC /* BMCollectionViewController.swift in Sources */,
+				758E10441DBD92D000D872BC /* DKExtensions.swift in Sources */,
+				758E10451DBD92D000D872BC /* BMConstants.swift in Sources */,
+				758E10461DBD92D000D872BC /* DMDefines.swift in Sources */,
+				758E10471DBD92D000D872BC /* BMCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -510,15 +683,15 @@
 		};
 		7554E7891DAF16E400F1178C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BCAAEAB40516B6059850CA36 /* Pods-BusMedellin-Alpha.debug.xcconfig */;
+			baseConfigurationReference = 2AF79F6C1DA5CA29D33D3B02 /* Pods-BusMedellin-Alpha-AdHoc.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Kévin Delord (6JWQEM352R)";
 				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = "PLists/BusMedellin-Alpha-Info.plist";
+				INFOPLIST_FILE = "PLists/BusMedellin-Alpha-Adhoc-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_SWIFT_FLAGS = "$(inherited) -D ALPHA -D DEBUG";
+				OTHER_SWIFT_FLAGS = "$(inherited) -D ALPHA -D ADHOC -D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.smartmobilefactory.handhelp.alpha;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "df4d822c-95fb-4b28-9b10-eb8410b07620";
@@ -528,18 +701,50 @@
 		};
 		7554E78A1DAF16E400F1178C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C5083B8EF7A8C636C7DDB3DB /* Pods-BusMedellin-Alpha.release.xcconfig */;
+			baseConfigurationReference = A7499BBE73A1F9A15DE3B84B /* Pods-BusMedellin-Alpha-AdHoc.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Smart Mobile Factory GmbH";
 				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = "PLists/BusMedellin-Alpha-Info.plist";
+				INFOPLIST_FILE = "PLists/BusMedellin-Alpha-Adhoc-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_SWIFT_FLAGS = "$(inherited) -D ALPHA -D RELEASE";
+				OTHER_SWIFT_FLAGS = "$(inherited) -D ALPHA -D ADHOC -D RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.smartmobilefactory.handhelp.alpha;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "e1193ad8-bd01-4d4a-9a4b-c940e543230d";
+				SWIFT_OBJC_BRIDGING_HEADER = "Helpers/BusMedellin-Bridging-Header.h";
+			};
+			name = Release;
+		};
+		758E10571DBD92D000D872BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D1D74A19948FAF38E5BC6585 /* Pods-BusMedellin-Live-AppStore.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = "PLists/BusMedellin-Live-AppStore-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) -D LIVE -D APPSTORE -D DEBUG";
+				PRODUCT_BUNDLE_IDENTIFIER = io.kevindelord.buspaisa;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Helpers/BusMedellin-Bridging-Header.h";
+			};
+			name = Debug;
+		};
+		758E10581DBD92D000D872BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3DEA8EFDB7D60226162490B7 /* Pods-BusMedellin-Live-AppStore.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = "PLists/BusMedellin-Live-AppStore-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) -D LIVE -D APPSTORE -D RELEASE";
+				PRODUCT_BUNDLE_IDENTIFIER = io.kevindelord.buspaisa;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Helpers/BusMedellin-Bridging-Header.h";
 			};
 			name = Release;
@@ -556,11 +761,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7554E7881DAF16E400F1178C /* Build configuration list for PBXNativeTarget "BusMedellin-Alpha" */ = {
+		7554E7881DAF16E400F1178C /* Build configuration list for PBXNativeTarget "BusMedellin-Alpha-AdHoc" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7554E7891DAF16E400F1178C /* Debug */,
 				7554E78A1DAF16E400F1178C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		758E10561DBD92D000D872BC /* Build configuration list for PBXNativeTarget "BusMedellin-Live-AppStore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				758E10571DBD92D000D872BC /* Debug */,
+				758E10581DBD92D000D872BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

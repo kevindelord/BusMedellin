@@ -13,7 +13,11 @@ def corePods
     pod 'Buglife', '~> 1.3.3'
 end
 
-target 'BusMedellin-Alpha' do
+target 'BusMedellin-Alpha-AdHoc' do
+    corePods
+end
+
+target 'BusMedellin-Live-AppStore' do
     corePods
 end
 

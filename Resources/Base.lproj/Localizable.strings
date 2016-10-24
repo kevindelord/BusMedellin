@@ -17,3 +17,5 @@
 "LOCATION_ERROR_MESSAGE"    = "Please go to Settings to let the app locate you on the map.";
 "LOCATION_ERROR_SETTINGS"   = "Settings";
 "LOCATION_ERROR_CANCEL"     = "Cancel";
+"USER_LOCATION_TOO_FAR"     = "You are too far away from the city center to use your location.";
+"POPUP_OK"                  = "OK";

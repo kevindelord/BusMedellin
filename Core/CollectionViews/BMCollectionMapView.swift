@@ -288,8 +288,13 @@ extension BMMapView {
     }
 
     @IBAction func locateMeButtonPressed() {
-        if let location = self.checkLocationAuthorizationStatus() {
-            self.centerMapOnLocation(location)
+        if let userLocation = self.checkLocationAuthorizationStatus() {
+            // Disable the locate me feature if the user is too far away from the city center.
+            if (self.cityCenterLocation.distanceFromLocation(userLocation) < Map.MaxScrollDistance) {
+                self.centerMapOnLocation(userLocation)
+            } else {
+                UIAlertController.showInfoMessage("", message: L("USER_LOCATION_TOO_FAR"))
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 ## TODO
 
+* Update screenshots in spanish.
 * Update localise files.
 
 ## UNCLEAR

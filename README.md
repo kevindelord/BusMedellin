@@ -1,5 +1,13 @@
 # BusMedellin
 
+Bus Paisa lets you discover bus lines in Medellin, Colombia.
+
+Choose your pickup and destination locations and get all the possible bus lines available. Select the best one and see it  clearly on the map!
+
+And all this for free :)
+
+![alt tag](https://raw.githubusercontent.com/kevindelord/BusMedellin/readme_with_images/Resources/AppStore_screenshots/appstore_screenshots_preview.jpg)
+
 ## About
 
 This project is an open-source iOS app that helps users using the buses in Medellin, Colombia.

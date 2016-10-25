@@ -9,15 +9,17 @@
 import Foundation
 
 #if DEBUG
-    private let isDebug = true
+    private let isDebug     = true
+    private let isRelease   = false
 #else
-    private let isDebug = false
+    private let isDebug     = false
+    private let isRelease   = true
 #endif
 
 struct Configuration {
 
     static let DebugAppirater       : Bool = (false && isDebug)
-    static let AnalyticsEnabled     : Bool = (true && !isDebug) // Always true on RELEASE
+    static let AnalyticsEnabled     : Bool = (true && isRelease)
 }
 
 struct Verbose {

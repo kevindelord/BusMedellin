@@ -30,7 +30,7 @@ The map forces the users to 'look at' Medellin in Colombia. If you press the 'lo
 If you are in the city the map redirects you to your location.
 Medellin city center: lat="6.238435" lon="-75.573277"
 
-Otherwise not much to say, it 'should be' bug free :)
+Otherwise not much to say, I hope it's bug free ;)
 
 Thanks
 

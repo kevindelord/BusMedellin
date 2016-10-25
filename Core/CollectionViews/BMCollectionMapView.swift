@@ -11,6 +11,7 @@ import MapKit
 import DKHelper
 import CSStickyHeaderFlowLayout
 import MBProgressHUD
+import Reachability
 
 class BMCollectionMapView                               : UICollectionReusableView {
 
@@ -346,10 +347,14 @@ extension BMMapView {
      This function checks what needs to be set and forward the process to a more dedicated function.
      */
     @IBAction func setLocationButtonPressed() {
-        if (self.startAnnotation == nil) {
-            self.didSetPickUpLocation()
-        } else if (self.destinationAnnotation == nil) {
-            self.didSetDestinationLocation()
+        if (Reachability.isConnected == true) {
+            if (self.startAnnotation == nil) {
+                self.didSetPickUpLocation()
+            } else if (self.destinationAnnotation == nil) {
+                self.didSetDestinationLocation()
+            }
+        } else {
+            UIAlertController.showErrorMessage(L("NO_INTERNET_CONNECTION"))
         }
     }
 

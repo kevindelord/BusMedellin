@@ -9,6 +9,7 @@
 import Foundation
 import CSStickyHeaderFlowLayout
 import DKHelper
+import Reachability
 
 class BMCollectionViewController: UICollectionViewController {
 
@@ -77,11 +78,15 @@ extension BMCollectionViewController {
 
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         collectionView.deselectItemAtIndexPath(indexPath, animated: true)
-        if let route = self.availableRoutes?[safe: indexPath.item] {
-            self.drawnRoute = route
-            self.displayRouteOnMap?(route: route, completion: nil)
-            collectionView.setContentOffset(CGPoint.zero, animated: true)
-            collectionView.reloadData()
+        if (Reachability.isConnected == true) {
+            if let route = self.availableRoutes?[safe: indexPath.item] {
+                self.drawnRoute = route
+                self.displayRouteOnMap?(route: route, completion: nil)
+                collectionView.setContentOffset(CGPoint.zero, animated: true)
+                collectionView.reloadData()
+            }
+        } else {
+            UIAlertController.showErrorMessage(L("NO_INTERNET_CONNECTION"))
         }
     }
 

@@ -6,8 +6,12 @@
 	<string>https://www.googleapis.com/fusiontables/v1/query</string>
 	<key>AppId</key>
 	<string>0123456789</string>
+	<key>BuglifeID</key>
+	<string>zABHFQBQuM6ZzTTXZoRDDwtt</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>Bus Paisa</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -28,6 +32,8 @@
 	<string>1_ihDJT-_zFRLXb526aaS0Ct3TiXTlcPDy_BlAz0</string>
 	<key>FusionTableKey</key>
 	<string>AIzaSyC59BP_KRtQDLeb5XM_x0eQNT_tdlBbHZc</string>
+	<key>HockeyAppId</key>
+	<string>1044d82e3b0f4a0586de41a5e8980903</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MapDefault</key>
@@ -49,14 +55,12 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>UIRequiresFullScreen</key>
+	<true/>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-	<key>CFBundleDisplayName</key>
-	<string>Bus Paisa</string>
-	<key>BuglifeID</key>
-	<string>zABHFQBQuM6ZzTTXZoRDDwtt</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -64,7 +68,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>HockeyAppId</key>
-	<string>1044d82e3b0f4a0586de41a5e8980903</string>
 </dict>
 </plist>

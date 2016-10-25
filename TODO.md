@@ -1,5 +1,7 @@
 ## TODO
 
+* Upload Binary on HockeyApp
+* Create git tag
 * Update screenshots in spanish.
 * Update localise files.
 

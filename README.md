@@ -32,6 +32,10 @@ $> git submodule update --init --recursive
 $> pod install
 ```
 
+## Analytics
+
+[Google Analytics](https://console.developers.google.com) and [Firebase](https://console.firebase.google.com) are integrated to analyse how the users use the app.
+
 ## External Links:
 
 * [Google Fusion Table](https://fusiontables.google.com/data?docid=1_ihDJT-_zFRLXb526aaS0Ct3TiXTlcPDy_BlAz0)

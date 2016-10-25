@@ -127,7 +127,7 @@ private struct GoogleAnalytics {
 
         // Optional: configure GAI options.
         let gai = GAI.sharedInstance()
-        gai.trackUncaughtExceptions = true  // Report uncaught exceptions
+        gai.trackUncaughtExceptions = true // Report uncaught exceptions
         #if RELEASE
             gai.logger.logLevel = .Error
         #else

@@ -20,6 +20,8 @@
 		756493741DBD6F68007811A6 /* BMMapCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756493731DBD6F68007811A6 /* BMMapCircle.swift */; };
 		75679F161DBE77AF0066DF0F /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75679F151DBE77AF0066DF0F /* iAd.framework */; };
 		75679F171DBE77B50066DF0F /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75679F151DBE77AF0066DF0F /* iAd.framework */; };
+		75679F191DBEDB550066DF0F /* BMCollectionMapView+Fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679F181DBEDB550066DF0F /* BMCollectionMapView+Fetch.swift */; };
+		75679F1A1DBEDB550066DF0F /* BMCollectionMapView+Fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679F181DBEDB550066DF0F /* BMCollectionMapView+Fetch.swift */; };
 		757F31621DBE5E16002BB03F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 757F31611DBE5E16002BB03F /* GoogleService-Info.plist */; };
 		757F31631DBE5E16002BB03F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 757F31611DBE5E16002BB03F /* GoogleService-Info.plist */; };
 		757F31651DBE5F14002BB03F /* GoogleAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757F31641DBE5F14002BB03F /* GoogleAnalytics.swift */; };
@@ -93,6 +95,7 @@
 		75640BFD1DAF1B11002B4A56 /* DMDefines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DMDefines.swift; path = Core/DMDefines.swift; sourceTree = "<group>"; };
 		756493731DBD6F68007811A6 /* BMMapCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BMMapCircle.swift; path = Core/AdditionalViews/BMMapCircle.swift; sourceTree = "<group>"; };
 		75679F151DBE77AF0066DF0F /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		75679F181DBEDB550066DF0F /* BMCollectionMapView+Fetch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BMCollectionMapView+Fetch.swift"; sourceTree = "<group>"; };
 		757F31611DBE5E16002BB03F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		757F31641DBE5F14002BB03F /* GoogleAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleAnalytics.swift; sourceTree = "<group>"; };
 		757F31671DBE5FD4002BB03F /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -265,6 +268,7 @@
 				75F8B4C41DB9772A00F43109 /* BMCollectionSectionHeader.swift */,
 				75F8B4C51DB9772A00F43109 /* BMCollectionViewCell.swift */,
 				75F8B4C61DB9772A00F43109 /* BMCollectionMapView.swift */,
+				75679F181DBEDB550066DF0F /* BMCollectionMapView+Fetch.swift */,
 			);
 			name = CollectionViews;
 			path = Core/CollectionViews;
@@ -577,6 +581,7 @@
 				75C5E9521DBD637400FCE9D0 /* BMSettingsViewController.swift in Sources */,
 				75F8B4CE1DB9774600F43109 /* BMCollectionViewController.swift in Sources */,
 				75805BBD1DAF1D9700DACFF5 /* DKExtensions.swift in Sources */,
+				75679F191DBEDB550066DF0F /* BMCollectionMapView+Fetch.swift in Sources */,
 				75640BFC1DAF1AAD002B4A56 /* BMConstants.swift in Sources */,
 				75640BFE1DAF1B11002B4A56 /* DMDefines.swift in Sources */,
 				75F8B4C81DB9772A00F43109 /* BMCollectionViewCell.swift in Sources */,
@@ -604,6 +609,7 @@
 				758E10421DBD92D000D872BC /* BMSettingsViewController.swift in Sources */,
 				758E10431DBD92D000D872BC /* BMCollectionViewController.swift in Sources */,
 				758E10441DBD92D000D872BC /* DKExtensions.swift in Sources */,
+				75679F1A1DBEDB550066DF0F /* BMCollectionMapView+Fetch.swift in Sources */,
 				758E10451DBD92D000D872BC /* BMConstants.swift in Sources */,
 				758E10461DBD92D000D872BC /* DMDefines.swift in Sources */,
 				758E10471DBD92D000D872BC /* BMCollectionViewCell.swift in Sources */,

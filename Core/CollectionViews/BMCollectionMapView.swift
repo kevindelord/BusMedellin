@@ -11,7 +11,6 @@ import MapKit
 import DKHelper
 import CSStickyHeaderFlowLayout
 import MBProgressHUD
-import CoreLocation
 
 class BMCollectionMapView                               : UICollectionReusableView {
 
@@ -87,6 +86,7 @@ class BMMapView                                         : UIView {
         }
     }
 
+    /// Default city center location
     private var cityCenterLocation : CLLocation {
         let info = NSBundle.entryInPListForKey(BMPlist.MapDefault) as? [String:String]
         let latitude = (Double(info?[BMPlist.CityCenter.Latitude] ?? "0") ?? 0)
@@ -94,6 +94,7 @@ class BMMapView                                         : UIView {
         return CLLocation(latitude: latitude, longitude: longitude)
     }
 
+    /// Default zoom radius of the mapView.
     private var defaultZoomRadius : CLLocationDistance {
         let info = NSBundle.entryInPListForKey(BMPlist.MapDefault) as? [String:String]
         let radius = Double(info?[BMPlist.CityCenter.Radius] ?? "0")
@@ -101,7 +102,7 @@ class BMMapView                                         : UIView {
     }
 }
 
-// MARK: - MapView
+// MARK: - MapView Delegate functions
 
 extension BMMapView: MKMapViewDelegate {
 
@@ -128,6 +129,38 @@ extension BMMapView: MKMapViewDelegate {
         }
         return nil
     }
+
+    func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
+        // If the location suddenly become available adapt the location button.
+        if (userLocation.location == nil) {
+            self.nearMeButton?.locationState = .Inactive
+        } else if (self.nearMeButton?.locationState == .Inactive) {
+            self.nearMeButton?.locationState = .Available
+        }
+    }
+
+    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
+
+        if (overlay is MKGeodesicPolyline) {
+            let lineView = MKPolylineRenderer(overlay: overlay)
+            lineView.strokeColor = BMColor.Blue
+            lineView.lineWidth = 1.5
+            return lineView
+
+        } else if let circle = overlay as? BMMapCircle {
+            let circleRenderer = MKCircleRenderer(overlay: overlay)
+            circleRenderer.fillColor = (circle.color ?? UIColor.blueColor()).colorWithAlphaComponent(0.2)
+            circleRenderer.strokeColor = (circle.color ?? UIColor.blueColor())
+            circleRenderer.lineWidth = 1
+            return circleRenderer
+        }
+        return MKOverlayRenderer()
+    }
+}
+
+// MARK: - User Location functions
+
+extension BMMapView {
 
     private func checkLocationAuthorizationStatus() -> CLLocation? {
         if (CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse) {
@@ -159,15 +192,11 @@ extension BMMapView: MKMapViewDelegate {
         presentingViewController?.presentViewController(ac, animated: true, completion: nil)
         Analytics.UserLocation.DidAskForSettings.send()
     }
+}
 
-    func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
-        // If the location suddenly become available adapt the location button.
-        if (userLocation.location == nil) {
-            self.nearMeButton?.locationState = .Inactive
-        } else if (self.nearMeButton?.locationState == .Inactive) {
-            self.nearMeButton?.locationState = .Available
-        }
-    }
+// MARK: - MapView Utility functions
+
+extension BMMapView {
 
     /**
      Center the map on a specific location.
@@ -180,25 +209,14 @@ extension BMMapView: MKMapViewDelegate {
         self.mapView?.setRegion(coordinateRegion, animated: true)
     }
 
-    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
+    /**
+     Draw a new route on the map using a set of coordinates.
 
-        if (overlay is MKGeodesicPolyline) {
-            let lineView = MKPolylineRenderer(overlay: overlay)
-            lineView.strokeColor = BMColor.Blue
-            lineView.lineWidth = 1.5
-            return lineView
+     This function also removes all already drawn routes from the mapView.
 
-        } else if let circle = overlay as? BMMapCircle {
-            let circleRenderer = MKCircleRenderer(overlay: overlay)
-            circleRenderer.fillColor = (circle.color ?? UIColor.blueColor()).colorWithAlphaComponent(0.2)
-            circleRenderer.strokeColor = (circle.color ?? UIColor.blueColor())
-            circleRenderer.lineWidth = 1
-            return circleRenderer
-        }
-        return MKOverlayRenderer()
-    }
-
-    private func drawRouteForCoordinates(coordinates: [CLLocationCoordinate2D]) {
+     - parameter coordinates: Array of coordinates representing the route to display.
+     */
+    func drawRouteForCoordinates(coordinates: [CLLocationCoordinate2D]) {
 
         if (coordinates.isEmpty == true) {
             return
@@ -213,6 +231,9 @@ extension BMMapView: MKMapViewDelegate {
         self.mapView?.addOverlay(myPolyline, level: MKOverlayLevel.AboveLabels)
     }
 
+    /**
+     Remove any drawn routes from the mapView.
+     */
     private func removeDrawnRoutes() {
         self.mapView?.overlays.forEach { (overlay: MKOverlay) in
             if (overlay is MKGeodesicPolyline) {
@@ -221,16 +242,41 @@ extension BMMapView: MKMapViewDelegate {
         }
     }
 
-    private func createLocationsFromCoordinates(coordinates: [[Double]]) -> [CLLocationCoordinate2D] {
-        var pointsToUse = [CLLocationCoordinate2D]()
-        coordinates.forEach { (values: [Double]) in
-            if let
-                y = values[safe: 0],
-                x = values[safe: 1] {
-                    pointsToUse += [CLLocationCoordinate2DMake(CLLocationDegrees(x), CLLocationDegrees(y))]
-            }
-        }
-        return pointsToUse
+    /**
+     Add a new start/pickup annotation on the map.
+
+     - parameter coordinate: Coordinate of the annotation.
+     */
+    private func addPickupAnnotation(coordinate: CLLocationCoordinate2D) {
+        self.startAnnotation = BMStartAnnotation.createWithCoordinates(coordinate)
+        self.mapView?.addAnnotation(safe: self.startAnnotation)
+        self.startCircle = BMMapCircle.createStartCircle(centerCoordinate: coordinate)
+        self.mapView?.addOverlay(safe: self.startCircle)
+    }
+
+    /**
+     Add a new destination annotation on the map.
+
+     - parameter coordinate: Coordinate of the annotation.
+     */
+    private func addDestinationAnnotation(coordinate: CLLocationCoordinate2D) {
+        self.destinationAnnotation = BMDestinationAnnotation.createWithCoordinates(coordinate)
+        self.mapView?.addAnnotation(safe: self.destinationAnnotation)
+        self.destinationCircle = BMMapCircle.createDestinationCircle(centerCoordinate: coordinate)
+        self.mapView?.addOverlay(safe: self.destinationCircle)
+    }
+
+    /**
+     Move the mapView up North from the given coordinates.
+
+     - parameter coordinate: Coordinate from where to move/scroll north.
+     - parameter delta:      Delta to move the map.
+     */
+    private func moveMapViewNorthFromCoordinate(coordinate: CLLocationCoordinate2D, delta: Double = Map.DeltaAfterSearch) {
+        let newLocation = CLLocation(latitude: coordinate.latitude + delta, longitude: coordinate.longitude)
+        let regionRadius: CLLocationDistance = self.defaultZoomRadius
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(newLocation.coordinate, regionRadius, regionRadius)
+        self.mapView?.setRegion(coordinateRegion, animated: true)
     }
 }
 
@@ -238,6 +284,9 @@ extension BMMapView: MKMapViewDelegate {
 
 extension BMMapView {
 
+    /**
+     Function called when the user presses the 'x' to cancel the PICKUP location.
+     */
     @IBAction func cancelPickUpButtonPressed() {
 
         UIView.animateWithDuration(0.3, animations: {
@@ -265,6 +314,9 @@ extension BMMapView {
         })
     }
 
+    /**
+     Function called when the user presses the 'x' to cancel the DESTINATION location.
+     */
     @IBAction func cancelDestinationButtonPressed() {
 
         UIView.animateWithDuration(0.3, animations: {
@@ -289,6 +341,10 @@ extension BMMapView {
         })
     }
 
+    /**
+     Function called when the user selects a pickup or destination location.
+     This function checks what needs to be set and forward the process to a more dedicated function.
+     */
     @IBAction func setLocationButtonPressed() {
         if (self.startAnnotation == nil) {
             self.didSetPickUpLocation()
@@ -297,6 +353,9 @@ extension BMMapView {
         }
     }
 
+    /**
+     Function called when the user presses the 'near me' (or aka 'locate me') button.
+     */
     @IBAction func locateMeButtonPressed() {
         if let userLocation = self.checkLocationAuthorizationStatus() {
             // Disable the locate me feature if the user is too far away from the city center.
@@ -315,13 +374,15 @@ extension BMMapView {
 
 extension BMMapView {
 
+    /**
+     Function called when the user did select a new PICKUP location.
+     This function add a new annotation on the map, display the views to set the destination.
+     It also fetch the address of the current pickup location and displays it.
+     */
     private func didSetPickUpLocation() {
         if let centerCoordinate = self.mapView?.centerCoordinate {
             // Add a new annotation at the center of the map.
-            self.startAnnotation = BMStartAnnotation.createWithCoordinates(centerCoordinate)
-            self.mapView?.addAnnotation(safe: self.startAnnotation)
-            self.startCircle = BMMapCircle.createStartCircle(centerCoordinate: centerCoordinate)
-            self.mapView?.addOverlay(safe: self.startCircle)
+            self.addPickupAnnotation(centerCoordinate)
 
             UIView.animateWithDuration(0.3, animations: {
                 // Hide the location button and its text
@@ -352,10 +413,7 @@ extension BMMapView {
                             self.destinationInfoViewTopConstraint?.constant += ((self.destinationInfoView?.frameHeight ?? 0) * 0.5)
                             self.linkBetweenDots?.alpha = 1
                             // Move the map up North a bit.
-                            let newLocation = CLLocation(latitude: centerCoordinate.latitude + Map.DeltaAfterSearch, longitude: centerCoordinate.longitude)
-                            let regionRadius: CLLocationDistance = self.defaultZoomRadius
-                            let coordinateRegion = MKCoordinateRegionMakeWithDistance(newLocation.coordinate, regionRadius, regionRadius)
-                            self.mapView?.setRegion(coordinateRegion, animated: true)
+                            self.moveMapViewNorthFromCoordinate(centerCoordinate)
                             // Hide waiting HUD
                             self.hideWaitingHUD()
                         })
@@ -364,13 +422,15 @@ extension BMMapView {
         }
     }
 
+    /**
+     Function called when the user did select a new DESTINATION location.
+     This function updates the mapView with a new annotation, search for the address of the destination location.
+     It also starts the process to search for routes between the two annotations.
+     */
     private func didSetDestinationLocation() {
         if let centerCoordinate = self.mapView?.centerCoordinate {
             // Add a new destination pin at the center of the map.
-            self.destinationAnnotation = BMDestinationAnnotation.createWithCoordinates(centerCoordinate)
-            self.mapView?.addAnnotation(safe: self.destinationAnnotation)
-            self.destinationCircle = BMMapCircle.createDestinationCircle(centerCoordinate: centerCoordinate)
-            self.mapView?.addOverlay(safe: self.destinationCircle)
+            self.addDestinationAnnotation(centerCoordinate)
 
             UIView.animateWithDuration(0.3, animations: {
                 // Hide the location button and its text
@@ -390,26 +450,16 @@ extension BMMapView {
                         // Show the address in the dedicated view.
                         self.destinationInfoView?.updateWithAddress(address)
                         // Search for all available routes between the two locations.
-                        self.searchForRoutesBetweenAnnotations({ (routes: [Route]) in
-                            // Analytics
-                            Analytics.Route.DidSearchForMatchingRoutes.send(routeCode: nil, rounteCount: routes.count)
-                            // Draw the first route as example.
-                            if let routeCode = routes.first?.code {
-                                self.fetchAndDrawRoute(routeCode, completion: {
-                                    // Notify and reload the collection view with the new results.
-                                    self.didFetchAvailableRoutesBlock?(routes: routes)
-                                    // Hide waiting HUD
-                                    self.hideWaitingHUD()
-                                })
-                            }
-                        })
+                        self.searchForRoutesBetweenAnnotations()
                     })
             })
         }
     }
 
-    private func searchForRoutesBetweenAnnotations(completion: ((routes: [Route]) -> Void)?) {
-
+    /**
+     Fetch routes around both PICKUP and DESTINATION annotations.
+     */
+    private func searchForRoutesBetweenAnnotations() {
         if let pickUpCoordinate = self.startAnnotation?.coordinate {
             // Fetch all routes passing by the pick up location.
             self.fetchRoutesForCoordinates(pickUpCoordinate, completion: { (pickUpRoutes: [Route]) in
@@ -423,18 +473,63 @@ extension BMMapView {
                         Analytics.Route.DidSearchForDestinationRoutes.send(routeCode: nil, rounteCount: destinationRoutes.count)
 
                         // Filter the routes to only the ones matching.
-                        var commonRoutes = [Route]()
-                        for pickUpRoute in pickUpRoutes {
-                            for destinationRoute in destinationRoutes
-                                where (destinationRoute.code == pickUpRoute.code) {
-                                    commonRoutes.append(destinationRoute)
-                            }
-                        }
-                        completion?(routes: commonRoutes)
+                        let matchingRoutes = self.findMatchingRoutes(pickUpRoutes: pickUpRoutes, destinationRoutes: destinationRoutes)
+                        self.didFindMatchingRoutes(matchingRoutes)
                     })
                 }
             })
         }
+    }
+
+    /**
+     If any draw the first matching route and send them all to the collection view to reload the list.
+
+     - parameter matchingRoutes: Array of routes that go through both PICKUP and DESTINATION annotation areas.
+     */
+    private func didFindMatchingRoutes(matchingRoutes: [Route]) {
+        // Analytics
+        Analytics.Route.DidSearchForMatchingRoutes.send(routeCode: nil, rounteCount: matchingRoutes.count)
+        // Draw the first route as example.
+        if let routeCode = matchingRoutes.first?.code {
+            self.fetchAndDrawRoute(routeCode, completion: {
+                self.didFinishFetchingAndDrawingNewRoutes(matchingRoutes)
+            })
+        } else {
+            self.didFinishFetchingAndDrawingNewRoutes(matchingRoutes)
+        }
+
+    }
+
+    /**
+     Filter the available routes to only the ones going through both PICKUP and DESTINATION annotation areas.
+
+     - parameter pickUpRoutes:      All routes going through the PICKUP annotation area.
+     - parameter destinationRoutes: All routes going through the DESTINATION annotation area.
+
+     - returns: Array of matching routes that go through both PICKUP and DESTINATION annotation areas.
+     */
+    private func findMatchingRoutes(pickUpRoutes pickUpRoutes: [Route], destinationRoutes: [Route]) -> [Route] {
+        var commonRoutes = [Route]()
+        for pickUpRoute in pickUpRoutes {
+            for destinationRoute in destinationRoutes
+                where (destinationRoute.code == pickUpRoute.code) {
+                    commonRoutes.append(destinationRoute)
+            }
+        }
+        return commonRoutes
+    }
+
+    /**
+     Send all matching routes to the collection view to reload the list.
+     This function also Hides any waiting HUD on the mapView.
+
+     - parameter routes: Array of routes that go through both PICKUP and DESTINATION annotation areas.
+     */
+    private func didFinishFetchingAndDrawingNewRoutes(routes: [Route]) {
+        // Notify and reload the collection view with the new results.
+        self.didFetchAvailableRoutesBlock?(routes: routes)
+        // Hide waiting HUD
+        self.hideWaitingHUD()
     }
 }
 
@@ -442,85 +537,19 @@ extension BMMapView {
 
 extension BMMapView {
 
+    /**
+     Show Waiting HUD on MapView.
+     */
     private func showWaitingHUD() {
         let hud = MBProgressHUD.showHUDAddedTo(self, animated: true)
         hud.bezelView.color = UIColor.blackColor()
         hud.contentColor = UIColor.whiteColor()
     }
 
+    /**
+     Hide Waiting HUD on MapView.
+     */
     private func hideWaitingHUD() {
         MBProgressHUD.hideHUDForView(self, animated: true)
-    }
-}
-
-// MARK: - Data Management
-
-extension BMMapView {
-
-    /**
-     Fetch coordinates of the given route and display it on the map.
-
-     - parameter route: The Route entity to fetch and to display.
-     - parameter completion: Closure called when the route has been fetched and displayed on the map.
-     */
-    func fetchAndDrawRoute(route: Route, completion: (() -> Void)?) {
-        self.fetchAndDrawRoute(route.code, completion: completion)
-    }
-
-    /**
-     Fetch coordinates of a route using its identifier (aka route code) and display it on the map.
-
-     - parameter routeCode: The route identifier used to fetch the coordinates.
-     - parameter completion: Closure called when the route has been fetched and displayed on the map.
-     */
-    private func fetchAndDrawRoute(routeCode: String, completion: (() -> Void)?) {
-        APIManager.coordinatesForRouteCode(routeCode, completion: { (coordinates: [[Double]], error: NSError?) in
-            UIAlertController.showErrorPopup(error)
-            let locationCoordinates = self.createLocationsFromCoordinates(coordinates)
-            self.drawRouteForCoordinates(locationCoordinates)
-            // Analytics
-            Analytics.Route.DidDrawRoute.send(routeCode: routeCode, rounteCount: 1)
-            completion?()
-        })
-    }
-
-    /**
-     Fetch all bus routes around given coordinates.
-
-     - parameter coordinates:   The coordinates to search for routes around.
-     - parameter completion:    Block having as parameter an array of routes passing by the given coordinates.
-     */
-    private func fetchRoutesForCoordinates(coordinates: CLLocationCoordinate2D, completion: ((routes: [Route]) -> Void)?) {
-        let location = CLLocation(latitude: coordinates.latitude, longitude: coordinates.longitude)
-        self.fetchRoutesForLocation(location, completion: completion)
-    }
-
-    /**
-     Fetch all bus routes around a given location.
-
-     - parameter location:   The location to search for routes around it.
-     - parameter completion: Block having as parameter an array of routes passing by the given location.
-     */
-    private func fetchRoutesForLocation(location: CLLocation, completion: ((routes: [Route]) -> Void)?) {
-        APIManager.routesAroundLocation(location) { (routes: [Route], error: NSError?) in
-            UIAlertController.showErrorPopup(error)
-            completion?(routes: routes)
-        }
-    }
-
-    /**
-     Fetch the real address of a location using the CLGeocoder.
-
-     - parameter location:   The location to find the address.
-     - parameter completion: Block having as optional parameter the address of the given location.
-     */
-    func fetchAddressForLocation(location: CLLocation, completion: ((address: String?) -> Void)?) {
-        CLGeocoder().reverseGeocodeLocation(location) { (placemarks: [CLPlacemark]?, error: NSError?) in
-            placemarks?.forEach({ (placemark: CLPlacemark) in
-                DKLog(Verbose.PinAddress, "Address found: \(placemark.addressDictionary ?? [:])")
-                let street = placemark.addressDictionary?[Map.Address.Street] as? String
-                completion?(address: street)
-            })
-        }
     }
 }

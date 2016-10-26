@@ -1,7 +1,6 @@
-iTunesConnect.txt
+# iTunesConnect EN
 
 ## App Description
-
 
 Bus Paisa lets you discover bus lines in Medellin, Colombia.
 
@@ -9,13 +8,16 @@ Choose your pickup and destination locations and get all the possible bus lines 
 
 And all this for free :)
 
-
-
 ## Keywords
 
 Bus Paisa Line Medellin Colombia Transport Traffic Route Path Way Taxi Car Metro Map Pin
 
+## Screenshots
 
+"Discover bus lines in Medellin"
+"Choose where to go"
+"And select the best bus line"
+"Enjoy"
 
 ## Apple Review Note
 
@@ -33,11 +35,3 @@ Medellin city center: lat="6.238435" lon="-75.573277"
 Otherwise not much to say, I hope it's bug free ;)
 
 Thanks
-
-
-## Screenshots
-
-"Discover bus lines in Medellin"
-"Choose where to go"
-"And select the best bus line"
-"Enjoy"

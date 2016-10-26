@@ -78,6 +78,7 @@ class BMMapView                                         : UIView {
             // Setup 'locate me' button.
             self.nearMeButton?.setup(self.mapView)
             // Setup address views
+            self.pinDescriptionLabel?.text = L("PIN_PICKUP_LOCATION")
             self.pickUpInfoView?.setupWithState(.PickUp)
             self.destinationInfoView?.setupWithState(.Destination)
             // Setup cancel buttons

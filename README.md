@@ -53,10 +53,5 @@ $> pod install
 
 ## TODO List
 
-* Upload Binary on iTunesConnect and HockeyApp.
-* Create git tag
-
-### Unclear
-
 * Add direction of route?
 * Add advertising?

@@ -146,12 +146,12 @@ extension BMMapView: MKMapViewDelegate {
         if (overlay is MKGeodesicPolyline) {
             let lineView = MKPolylineRenderer(overlay: overlay)
             lineView.strokeColor = BMColor.Blue
-            lineView.lineWidth = 1.5
+            lineView.lineWidth = Map.PolylineWidth
             return lineView
 
         } else if let circle = overlay as? BMMapCircle {
             let circleRenderer = MKCircleRenderer(overlay: overlay)
-            circleRenderer.fillColor = (circle.color ?? UIColor.blueColor()).colorWithAlphaComponent(0.2)
+            circleRenderer.fillColor = (circle.color ?? UIColor.blueColor()).colorWithAlphaComponent(Map.CircleColorAlpha)
             circleRenderer.strokeColor = (circle.color ?? UIColor.blueColor())
             circleRenderer.lineWidth = 1
             return circleRenderer

@@ -9,8 +9,8 @@
 "NUMBER_ROUTES_AVAILABLE"   = "%d rutas de bus disponibles.";
 "PIN_PICKUP_LOCATION"       = "PUNTO DE PARTIDA";
 "PIN_DESTINATION_LOCATION"  = "PUNTO DE DESTINO";
-"LOCATION_VIEW_PICKUP"      = "Elija punto de partida";
-"LOCATION_VIEW_DESTINATION" = "Elija un destino";
+"LOCATION_VIEW_PICKUP"      = "Elija el punto de partida";
+"LOCATION_VIEW_DESTINATION" = "Elija el un destino";
 "NO_ROUTE_FOUND"            = "No hay rutas disponibles para las ubicaciones seleccionadas.";
 "SETTINGS_VC_TITLE"         = "Información";
 "LOCATION_ERROR_TITLE"      = "Se requiere servicio de localización";
@@ -20,7 +20,7 @@
 "USER_LOCATION_TOO_FAR"     = "Usted se encuentra muy lejos del centro de la ciudad, no es posible usar su ubicación.";
 "POPUP_OK"                  = "OK";
 "SETTINGS_ABOUT_TITLE"      = "Acerca de Bus Paisa";
-"SETTINGS_ABOUT_TEXT"       = "Esta aplicación es un proyecto open-source que facilita y mejora el uso del bus a los usuarios de Medellín, Colombia.\n\nEstá basado en el trabajo de Thibault Durand (@tibbb), usted puede encontrar su versión web aquí.\n\nLa información expuesta fue proporcionada por la Secretaría de Transportes y Tránsito de Medellín. Las rutas no se actualizan automáticamente.";
+"SETTINGS_ABOUT_TEXT"       = "Esta aplicación es un proyecto open-source que facilita y mejora el uso del bus a los usuarios de Medellín, Colombia.\n\nEstá basado en el trabajo de Thibault Durand (@tibbb). Puede encontrar su versión web aquí.\n\nLa información mostrada fue proporcionada por la Secretaría de Transportes y Tránsito de Medellín. Las rutas no se actualizan automáticamente.";
 "SETTINGS_ABOUT_ANCHOR_1"   = "proyecto open-source";
 "SETTINGS_ABOUT_ANCHOR_2"   = "Thibault Durand";
 "SETTINGS_ABOUT_ANCHOR_3"   = "@tibbb";
@@ -29,4 +29,4 @@
 "SETTINGS_BUG_TEXT"         = "Agite su dispositivo para reportar problemas!";
 "SETTINGS_MADE_BY"          = "Hecho con ❤️ por Kevin Delord.";
 "SETTINGS_MADE_BY_ANCHOR"   = "Kevin Delord";
-"NO_INTERNET_CONNECTION"    = "La conexión a Internet aparece desconectado.";
+"NO_INTERNET_CONNECTION"    = "No hay conexión a internet.";

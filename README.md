@@ -6,7 +6,7 @@ Choose your pickup and destination locations and get all the possible bus lines 
 
 And all this for free :)
 
-![alt tag](https://raw.githubusercontent.com/kevindelord/BusMedellin/readme_with_images/Resources/AppStore_screenshots/appstore_screenshots_preview.jpg)
+![alt tag](https://raw.githubusercontent.com/kevindelord/BusMedellin/blob/master/Resources/AppStore_screenshots/iPhone_EN/iPhone_appstore_screenshots_preview_EN.jpg)
 
 ## About
 

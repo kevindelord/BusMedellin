@@ -17,9 +17,11 @@ extension MKMapView {
      - parameter annotation: Optional annotation. If nil nothing happens.
      */
     func addAnnotation(safe annotation: MKAnnotation?) {
-        if let _annotation = annotation {
-            self.addAnnotation(_annotation)
+        guard let annotation = annotation else {
+            return
         }
+        
+        self.addAnnotation(annotation)
     }
 
     /**
@@ -28,9 +30,11 @@ extension MKMapView {
      - parameter annotation: Optional annotation. If nil nothing happens.
      */
     func removeAnnotation(safe annotation: MKAnnotation?) {
-        if let _annotation = annotation {
-            self.removeAnnotation(_annotation)
+        guard let annotation = annotation else {
+            return
         }
+        
+        self.removeAnnotation(annotation)
     }
 
     /**
@@ -39,9 +43,11 @@ extension MKMapView {
      - parameter overlay: Optional overlay. If nil nothing happens.
      */
     public func addOverlay(safe overlay: MKOverlay?) {
-        if let _overlay = overlay {
-            self.addOverlay(_overlay)
+        guard let overlay = overlay else {
+            return
         }
+        
+        self.add(overlay)
     }
 
     /**
@@ -50,8 +56,10 @@ extension MKMapView {
      - parameter overlay: Optional overlay. If nil nothing happens.
      */
     public func removeOverlay(safe overlay: MKOverlay?) {
-        if let _overlay = overlay {
-            self.removeOverlay(_overlay)
+        guard let overlay = overlay else {
+            return
         }
+        
+        self.remove(overlay)
     }
 }

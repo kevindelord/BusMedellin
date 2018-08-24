@@ -31,7 +31,7 @@ class BMCollectionMapView                               : UICollectionReusableVi
     }
 
     private func interfaceInitialisation() {
-        self.mapContainer = UIView.loadFromNib(XibFile.BMMapView) as? BMMapView
+        self.mapContainer = UIView.load(fromNib: XibFile.BMMapView) as? BMMapView
         self.mapContainer?.frame = self.bounds
         self.addSubview(safe: self.mapContainer)
     }
@@ -56,8 +56,8 @@ class BMMapView                                         : UIView {
     private var startCircle                             : BMMapCircle?
     private var destinationCircle                       : BMMapCircle?
 
-    var didFetchAvailableRoutesBlock                    : ((routes: [Route]?) -> Void)?
-    var showErrorPopupBlock                             : ((error: NSError?) -> Void)?
+    var didFetchAvailableRoutesBlock                    : ((_ routes: [Route]?) -> Void)?
+    var showErrorPopupBlock                             : ((_ error: NSError?) -> Void)?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -67,14 +67,21 @@ class BMMapView                                         : UIView {
         super.init(coder: aDecoder)
     }
 
-    private static var _onceToken: dispatch_once_t = 0
+    
+//    private static var _onceToken: dispatch_once_t = 0
+    private static var isInitialized = false
+
     override func layoutSubviews() {
         super.layoutSubviews()
 
         // Initialise the interface that way only once.
-        dispatch_once(&BMMapView._onceToken) {
+        // TODO: use dispatch_once?
+//        dispatch_once(&BMMapView._onceToken) {
+        if (BMMapView.isInitialized == false) {
+            BMMapView.isInitialized = true
+
             // By default show Medellin city center
-            self.centerMapOnLocation(self.cityCenterLocation)
+            self.centerMap(on: self.cityCenterLocation)
             // Setup 'locate me' button.
             self.nearMeButton?.setup(self.mapView)
             // Setup address views
@@ -90,7 +97,7 @@ class BMMapView                                         : UIView {
 
     /// Default city center location
     private var cityCenterLocation : CLLocation {
-        let info = NSBundle.entryInPListForKey(BMPlist.MapDefault) as? [String:String]
+        let info = Bundle.entryInPList(forKey: BMPlist.MapDefault) as? [String:String]
         let latitude = (Double(info?[BMPlist.CityCenter.Latitude] ?? "0") ?? 0)
         let longitude = (Double(info?[BMPlist.CityCenter.Longitude] ?? "0") ?? 0)
         return CLLocation(latitude: latitude, longitude: longitude)
@@ -98,7 +105,7 @@ class BMMapView                                         : UIView {
 
     /// Default zoom radius of the mapView.
     private var defaultZoomRadius : CLLocationDistance {
-        let info = NSBundle.entryInPListForKey(BMPlist.MapDefault) as? [String:String]
+        let info = Bundle.entryInPList(forKey: BMPlist.MapDefault) as? [String:String]
         let radius = Double(info?[BMPlist.CityCenter.Radius] ?? "0")
         return (radius ?? 0)
     }
@@ -111,15 +118,15 @@ extension BMMapView: MKMapViewDelegate {
     func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         let mapCenter = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
         // Force the map to stay close to the city center.
-        if (self.cityCenterLocation.distanceFromLocation(mapCenter) > Map.MaxScrollDistance) {
-            self.centerMapOnLocation(self.cityCenterLocation)
+        if (self.cityCenterLocation.distance(from: mapCenter) > Map.MaxScrollDistance) {
+            self.centerMap(on: self.cityCenterLocation)
         }
     }
 
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         if let annotation = annotation as? BMAnnotation {
 
-            var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(annotation.reuseId) as? MKPinAnnotationView
+            var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotation.reuseId) as? MKPinAnnotationView
             if (annotationView == nil) {
                 annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: annotation.reuseId)
             }
@@ -151,8 +158,8 @@ extension BMMapView: MKMapViewDelegate {
 
         } else if let circle = overlay as? BMMapCircle {
             let circleRenderer = MKCircleRenderer(overlay: overlay)
-            circleRenderer.fillColor = (circle.color ?? UIColor.blueColor()).colorWithAlphaComponent(Map.CircleColorAlpha)
-            circleRenderer.strokeColor = (circle.color ?? UIColor.blueColor())
+            circleRenderer.fillColor = (circle.color ?? UIColor.blue).withAlphaComponent(Map.CircleColorAlpha)
+            circleRenderer.strokeColor = (circle.color ?? UIColor.blue)
             circleRenderer.lineWidth = 1
             return circleRenderer
         }
@@ -165,14 +172,14 @@ extension BMMapView: MKMapViewDelegate {
 extension BMMapView {
 
     private func checkLocationAuthorizationStatus() -> CLLocation? {
-        if (CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse) {
+        if (CLLocationManager.authorizationStatus() == .authorizedWhenInUse) {
             self.mapView?.showsUserLocation = true
             let userLocation = self.mapView?.userLocation.location
             if (userLocation == nil) {
                 self.showPopupToRedirectToSettings()
             }
             return userLocation
-        } else if (CLLocationManager.authorizationStatus() == .Denied) {
+        } else if (CLLocationManager.authorizationStatus() == .denied) {
             self.showPopupToRedirectToSettings()
             return nil
         } else {
@@ -183,15 +190,16 @@ extension BMMapView {
     }
 
     private func showPopupToRedirectToSettings() {
-        let presentingViewController = UIApplication.sharedApplication().windows.first?.rootViewController
-        let ac = UIAlertController(title: L("LOCATION_ERROR_TITLE"), message: L("LOCATION_ERROR_MESSAGE"), preferredStyle: .Alert)
-        ac.addAction(UIAlertAction(title: L("LOCATION_ERROR_CANCEL"), style: .Default, handler: nil))
-        ac.addAction(UIAlertAction(title: L("LOCATION_ERROR_SETTINGS"), style: .Cancel, handler: { (action: UIAlertAction) in
-            if let url = NSURL(string: UIApplicationOpenSettingsURLString) {
-                UIApplication.sharedApplication().openURL(url)
+        let presentingViewController = UIApplication.shared.windows.first?.rootViewController
+        let alertController = UIAlertController(title: L("LOCATION_ERROR_TITLE"), message: L("LOCATION_ERROR_MESSAGE"), preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: L("LOCATION_ERROR_CANCEL"), style: .default, handler: nil))
+        alertController.addAction(UIAlertAction(title: L("LOCATION_ERROR_SETTINGS"), style: .cancel, handler: { (action: UIAlertAction) in
+            if let url = URL(string: UIApplicationOpenSettingsURLString) {
+                UIApplication.shared.openURL(url)
             }
         }))
-        presentingViewController?.presentViewController(ac, animated: true, completion: nil)
+
+        presentingViewController?.present(alertController, animated: true, completion: nil)
         Analytics.UserLocation.DidAskForSettings.send()
     }
 }
@@ -205,7 +213,7 @@ extension BMMapView {
 
      - parameter location: Location to center the map to.
      */
-    private func centerMapOnLocation(location: CLLocation) {
+    private func centerMap(on location: CLLocation) {
         let regionRadius: CLLocationDistance = self.defaultZoomRadius
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 2.0, regionRadius * 2.0)
         self.mapView?.setRegion(coordinateRegion, animated: true)
@@ -230,7 +238,7 @@ extension BMMapView {
         // Remove previous overlays
         self.removeDrawnRoutes()
         // Add new overlay
-        self.mapView?.addOverlay(myPolyline, level: MKOverlayLevel.AboveLabels)
+        self.mapView?.add(myPolyline, level: MKOverlayLevel.aboveLabels)
     }
 
     /**
@@ -239,7 +247,7 @@ extension BMMapView {
     private func removeDrawnRoutes() {
         self.mapView?.overlays.forEach { (overlay: MKOverlay) in
             if (overlay is MKGeodesicPolyline) {
-                self.mapView?.removeOverlay(overlay)
+                self.mapView?.remove(overlay)
             }
         }
     }
@@ -250,7 +258,7 @@ extension BMMapView {
      - parameter coordinate: Coordinate of the annotation.
      */
     private func addPickupAnnotation(coordinate: CLLocationCoordinate2D) {
-        self.startAnnotation = BMStartAnnotation.createWithCoordinates(coordinate)
+        self.startAnnotation = BMStartAnnotation.create(withCoordinates: coordinate)
         self.mapView?.addAnnotation(safe: self.startAnnotation)
         self.startCircle = BMMapCircle.createStartCircle(centerCoordinate: coordinate)
         self.mapView?.addOverlay(safe: self.startCircle)
@@ -262,7 +270,7 @@ extension BMMapView {
      - parameter coordinate: Coordinate of the annotation.
      */
     private func addDestinationAnnotation(coordinate: CLLocationCoordinate2D) {
-        self.destinationAnnotation = BMDestinationAnnotation.createWithCoordinates(coordinate)
+        self.destinationAnnotation = BMDestinationAnnotation.create(withCoordinates: coordinate)
         self.mapView?.addAnnotation(safe: self.destinationAnnotation)
         self.destinationCircle = BMMapCircle.createDestinationCircle(centerCoordinate: coordinate)
         self.mapView?.addOverlay(safe: self.destinationCircle)
@@ -291,12 +299,12 @@ extension BMMapView {
      */
     @IBAction func cancelPickUpButtonPressed() {
 
-        UIView.animateWithDuration(0.3, animations: {
+        UIView.animate(withDuration: 0.3, animations: {
             // Hide UI elements
             self.locationButton?.alpha = 1
             self.pinDescriptionLabel?.alpha = 1
             self.cancelPickUpButton?.alpha = 0
-            self.pickUpInfoView?.updateWithAddress(nil)
+            self.pickUpInfoView?.update(withAddress: nil)
             // Show the destination address view.
             self.destinationInfoView?.backgroundColor = BMColor.ViewBorder
             self.destinationInfoViewTopConstraint?.constant -= ((self.destinationInfoView?.frameHeight ?? 0) * 0.5)
@@ -307,10 +315,10 @@ extension BMMapView {
             self.mapView?.removeOverlay(safe: self.startCircle)
             self.startAnnotation = nil
             // Reset map indicator
-            self.locationButton?.setImage(UIImage(named: "pickupLocation"), forState: .Normal)
+            self.locationButton?.setImage(UIImage(named: "pickupLocation"), for: .normal)
             self.pinDescriptionLabel?.text = L("PIN_PICKUP_LOCATION")
             // Notify and reload the collection view.
-            self.didFetchAvailableRoutesBlock?(routes: nil)
+            self.didFetchAvailableRoutesBlock?(nil)
             // Analytics
             Analytics.PinLocation.DidCancelStart.send()
         })
@@ -321,23 +329,23 @@ extension BMMapView {
      */
     @IBAction func cancelDestinationButtonPressed() {
 
-        UIView.animateWithDuration(0.3, animations: {
+        UIView.animate(withDuration: 0.3, animations: {
             // Hide UI elements
             self.locationButton?.alpha = 1
             self.pinDescriptionLabel?.alpha = 1
             self.cancelDestinationButton?.alpha = 0
             self.cancelPickUpButton?.alpha = 1
-            self.destinationInfoView?.updateWithAddress(nil)
+            self.destinationInfoView?.update(withAddress: nil)
             // Reset map
             self.removeDrawnRoutes()
             self.mapView?.removeAnnotation(safe: self.destinationAnnotation)
             self.mapView?.removeOverlay(safe: self.destinationCircle)
             self.destinationAnnotation = nil
             // Reset map indicator
-            self.locationButton?.setImage(UIImage(named: "destinationLocation"), forState: .Normal)
+            self.locationButton?.setImage(UIImage(named: "destinationLocation"), for: .normal)
             self.pinDescriptionLabel?.text = L("PIN_DESTINATION_LOCATION")
             // Notify and reload the collection view with the new results.
-            self.didFetchAvailableRoutesBlock?(routes: nil)
+            self.didFetchAvailableRoutesBlock?(nil)
             // Analytics
             Analytics.PinLocation.DidCancelDestination.send()
         })
@@ -365,8 +373,8 @@ extension BMMapView {
     @IBAction func locateMeButtonPressed() {
         if let userLocation = self.checkLocationAuthorizationStatus() {
             // Disable the locate me feature if the user is too far away from the city center.
-            if (self.cityCenterLocation.distanceFromLocation(userLocation) < Map.MaxScrollDistance) {
-                self.centerMapOnLocation(userLocation)
+            if (self.cityCenterLocation.distance(from: userLocation) < Map.MaxScrollDistance) {
+                self.centerMap(on: userLocation)
                 Analytics.UserLocation.DidLocateUser.send()
             } else {
                 UIAlertController.showInfoMessage("", message: L("USER_LOCATION_TOO_FAR"))
@@ -388,9 +396,9 @@ extension BMMapView {
     private func didSetPickUpLocation() {
         if let centerCoordinate = self.mapView?.centerCoordinate {
             // Add a new annotation at the center of the map.
-            self.addPickupAnnotation(centerCoordinate)
+            self.addPickupAnnotation(coordinate: centerCoordinate)
 
-            UIView.animateWithDuration(0.3, animations: {
+            UIView.animate(withDuration: 0.3, animations: {
                 // Hide the location button and its text
                 self.locationButton?.alpha = 0
                 self.pinDescriptionLabel?.alpha = 0
@@ -402,20 +410,19 @@ extension BMMapView {
                     Analytics.PinLocation.DidSetStart.send()
                     // Fetch the address of the location
                     let location = CLLocation(latitude: centerCoordinate.latitude, longitude: centerCoordinate.longitude)
-                    self.fetchAddressForLocation(location, completion: { (address: String?) in
-
+                    self.fetchAddress(forLocation: location, completion: { (address: String?) in
                         // Show the address in the dedicated view.
-                        self.pickUpInfoView?.updateWithAddress(address)
+                        self.pickUpInfoView?.update(withAddress: address)
                         // Set the location button and text to the destination state.
-                        self.locationButton?.setImage(UIImage(named: "destinationLocation"), forState: .Normal)
+                        self.locationButton?.setImage(UIImage(named: "destinationLocation"), for: .normal)
                         self.pinDescriptionLabel?.text = L("PIN_DESTINATION_LOCATION")
-                        UIView.animateWithDuration(0.5, animations: {
+                        UIView.animate(withDuration: 0.5, animations: {
                             // Show UI elements
                             self.locationButton?.alpha = 1
                             self.pinDescriptionLabel?.alpha = 1
                             self.cancelPickUpButton?.alpha = 1
                             // Show the destination address view.
-                            self.destinationInfoView?.backgroundColor = UIColor.whiteColor()
+                            self.destinationInfoView?.backgroundColor = .white
                             self.destinationInfoViewTopConstraint?.constant += ((self.destinationInfoView?.frameHeight ?? 0) * 0.5)
                             self.linkBetweenDots?.alpha = 1
                             // Move the map up North a bit.
@@ -438,7 +445,7 @@ extension BMMapView {
             // Add a new destination pin at the center of the map.
             self.addDestinationAnnotation(centerCoordinate)
 
-            UIView.animateWithDuration(0.3, animations: {
+            UIView.animate(withDuration: 0.3, animations: {
                 // Hide the location button and its text
                 self.locationButton?.alpha = 0
                 self.pinDescriptionLabel?.alpha = 0
@@ -452,9 +459,9 @@ extension BMMapView {
                     Analytics.PinLocation.DidSetDestination.send()
                     // Fetch the address of the location
                     let location = CLLocation(latitude: centerCoordinate.latitude, longitude: centerCoordinate.longitude)
-                    self.fetchAddressForLocation(location, completion: { (address: String?) in
+                    self.fetchAddress(forLocation: location, completion: { (address: String?) in
                         // Show the address in the dedicated view.
-                        self.destinationInfoView?.updateWithAddress(address)
+                        self.destinationInfoView?.update(withAddress: address)
                         // Search for all available routes between the two locations.
                         self.searchForRoutesBetweenAnnotations()
                     })
@@ -468,13 +475,13 @@ extension BMMapView {
     private func searchForRoutesBetweenAnnotations() {
         if let pickUpCoordinate = self.startAnnotation?.coordinate {
             // Fetch all routes passing by the pick up location.
-            self.fetchRoutesForCoordinates(pickUpCoordinate, completion: { (pickUpRoutes: [Route]) in
+            self.fetchRoutes(forCoordinates: pickUpCoordinate, completion: { (pickUpRoutes: [Route]) in
                 // Analytics
                 Analytics.Route.DidSearchForStartRoutes.send(routeCode: nil, rounteCount: pickUpRoutes.count)
 
                 if let destinationCoordinate = self.destinationAnnotation?.coordinate {
                     // Fetch all routes passing by the destination location.
-                    self.fetchRoutesForCoordinates(destinationCoordinate, completion: { (destinationRoutes: [Route]) in
+                    self.fetchRoutes(forCoordinates: destinationCoordinate, completion: { (destinationRoutes: [Route]) in
                         // Analytics
                         Analytics.Route.DidSearchForDestinationRoutes.send(routeCode: nil, rounteCount: destinationRoutes.count)
 
@@ -492,16 +499,16 @@ extension BMMapView {
 
      - parameter matchingRoutes: Array of routes that go through both PICKUP and DESTINATION annotation areas.
      */
-    private func didFindMatchingRoutes(matchingRoutes: [Route]) {
+    private func didFindMatchingRoutes(_ matchingRoutes: [Route]) {
         // Analytics
         Analytics.Route.DidSearchForMatchingRoutes.send(routeCode: nil, rounteCount: matchingRoutes.count)
         // Draw the first route as example.
         if let routeCode = matchingRoutes.first?.code {
             self.fetchAndDrawRoute(routeCode, completion: {
-                self.didFinishFetchingAndDrawingNewRoutes(matchingRoutes)
+                self.didFinishFetchingAndDrawingNewRoutes(routes: matchingRoutes)
             })
         } else {
-            self.didFinishFetchingAndDrawingNewRoutes(matchingRoutes)
+            self.didFinishFetchingAndDrawingNewRoutes(routes: matchingRoutes)
         }
 
     }
@@ -533,7 +540,7 @@ extension BMMapView {
      */
     private func didFinishFetchingAndDrawingNewRoutes(routes: [Route]) {
         // Notify and reload the collection view with the new results.
-        self.didFetchAvailableRoutesBlock?(routes: routes)
+        self.didFetchAvailableRoutesBlock?(routes)
         // Hide waiting HUD
         self.hideWaitingHUD()
     }
@@ -547,15 +554,15 @@ extension BMMapView {
      Show Waiting HUD on MapView.
      */
     private func showWaitingHUD() {
-        let hud = MBProgressHUD.showHUDAddedTo(self, animated: true)
-        hud.bezelView.color = UIColor.blackColor()
-        hud.contentColor = UIColor.whiteColor()
+        let hud = MBProgressHUD.showAdded(to: self, animated: true)
+        hud.bezelView.color = UIColor.black
+        hud.contentColor = UIColor.white
     }
 
     /**
      Hide Waiting HUD on MapView.
      */
     private func hideWaitingHUD() {
-        MBProgressHUD.hideHUDForView(self, animated: true)
+        MBProgressHUD.hide(for: self, animated: true)
     }
 }

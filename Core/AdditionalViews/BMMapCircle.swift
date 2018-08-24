@@ -14,7 +14,7 @@ class BMMapCircle   : MKCircle {
     var color       : UIColor?
 
     class func create(centerCoordinate coord: CLLocationCoordinate2D, radius: CLLocationDistance, color: UIColor) -> BMMapCircle {
-        let circle = BMMapCircle(centerCoordinate: coord, radius: radius)
+        let circle = BMMapCircle(center: coord, radius: radius)
         circle.color = color
         return circle
     }

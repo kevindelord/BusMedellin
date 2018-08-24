@@ -46,7 +46,7 @@ class BMSettingsViewController                  : UIViewController {
     // MARK: - UI Setup functions
 
     private var textViewFont : UIFont {
-        var font = (UIFont(name: "Helvetica Neue Light", size: 15) ?? UIFont.systemFontOfSize(15))
+        var font = (UIFont(name: "Helvetica Neue Light", size: 15) ?? UIFont.systemFont(ofSize: 15))
         if #available(iOS 8.2, *) {
             font = UIFont.systemFontOfSize(15, weight: UIFontWeightLight)
         }
@@ -86,6 +86,6 @@ class BMSettingsViewController                  : UIViewController {
     // MARK: - Interface Actions
 
     @IBAction func closeButtonPressed() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 }

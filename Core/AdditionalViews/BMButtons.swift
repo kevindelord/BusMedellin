@@ -21,19 +21,19 @@ class BMLocateButton    : UIButton {
         didSet {
             switch self.locationState {
             case .Inactive:
-                let img = UIImage(named: "NearMe")?.imageWithRenderingMode(.AlwaysTemplate)
-                self.setImage(img, forState: .Normal)
+                let img = UIImage(named: "NearMe")?.withRenderingMode(.alwaysTemplate)
+                self.setImage(img, for: .normal)
                 self.tintColor = BMColor.Gray
             case .Available:
-                let img = UIImage(named: "NearMe")?.imageWithRenderingMode(.AlwaysTemplate)
-                self.setImage(img, forState: .Normal)
+                let img = UIImage(named: "NearMe")?.withRenderingMode(.alwaysTemplate)
+                self.setImage(img, for: .normal)
                 self.tintColor = BMColor.Blue
             }
         }
     }
 
     func setup(mapView: MKMapView? = nil) {
-        if ((CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse || CLLocationManager.authorizationStatus() == .AuthorizedAlways)
+        if ((CLLocationManager.authorizationStatus() == .authorizedWhenInUse || CLLocationManager.authorizationStatus() == .authorizedAlways)
         && mapView?.userLocation.location != nil) {
             self.locationState = .Available
         } else {

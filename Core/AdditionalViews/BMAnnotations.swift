@@ -29,14 +29,14 @@ class BMAnnotation  : NSObject, MKAnnotation {
 
 class BMStartAnnotation : BMAnnotation {
 
-    static func createWithCoordinates(coordinates: CLLocationCoordinate2D) -> BMStartAnnotation {
-        return BMStartAnnotation(coordinate: coordinates, reuseId: ReuseId.PickUpPin, pinColor: .Green)
+    static func create(withCoordinates coordinates: CLLocationCoordinate2D) -> BMStartAnnotation {
+        return BMStartAnnotation(coordinate: coordinates, reuseId: ReuseId.PickUpPin, pinColor: .green)
     }
 }
 
 class BMDestinationAnnotation : BMAnnotation {
 
-    static func createWithCoordinates(coordinates: CLLocationCoordinate2D) -> BMStartAnnotation {
-        return BMStartAnnotation(coordinate: coordinates, reuseId: ReuseId.DestinationPin, pinColor: .Red)
+    static func create(withCoordinates coordinates: CLLocationCoordinate2D) -> BMStartAnnotation {
+        return BMStartAnnotation(coordinate: coordinates, reuseId: ReuseId.DestinationPin, pinColor: .red)
     }
 }

@@ -25,14 +25,15 @@ struct Route {
     static func createRoutes(data: [[String]]) -> [Route] {
         var routes = [Route]()
         data.forEach { (values: [String]) in
-            if let
-                name = values[safe: RouteData.Route.rawValue],
-                code = values[safe: RouteData.Code.rawValue],
-                district = values[safe: RouteData.District.rawValue],
-                area = values[safe: RouteData.Area.rawValue] {
+            if
+                let name = values[safe: RouteData.Route.rawValue],
+                let code = values[safe: RouteData.Code.rawValue],
+                let district = values[safe: RouteData.District.rawValue],
+                let area = values[safe: RouteData.Area.rawValue] {
                     routes.append(Route(name: name, code: code, district: district, area: area))
             }
         }
+
         return routes
     }
 }

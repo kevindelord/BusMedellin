@@ -14,7 +14,7 @@ import Reachability
 class BMCollectionViewController: UICollectionViewController {
 
     var availableRoutes         : [Route]?
-    var displayRouteOnMap       : ((route: Route, completion: (() -> Void)?) -> Void)?
+    var displayRouteOnMap       : ((_ route: Route, _ completion: (() -> Void)?) -> Void)?
     var drawnRoute              : Route?
     var statusBarHidden         : Bool = false
 
@@ -25,7 +25,7 @@ class BMCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.collectionView?.backgroundColor = UIColor.whiteColor()
+        self.collectionView?.backgroundColor = .white
 
         // Setup Cells: list of bus lines
         self.collectionView?.registerClass(BMCollectionViewCell.self, forCellWithReuseIdentifier: ReuseId.ResultCell)

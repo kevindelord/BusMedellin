@@ -20,7 +20,7 @@ extension BMMapView {
      - parameter completion: Closure called when the route has been fetched and displayed on the map.
      */
     func fetchAndDrawRoute(route: Route, completion: (() -> Void)?) {
-        self.fetchAndDrawRoute(route.code, completion: completion)
+        self.fetchAndDrawRoute(routeCode: route.code, completion: completion)
     }
 
     /**
@@ -30,15 +30,16 @@ extension BMMapView {
 
      - returns: Array of CLLocationCoordinate2D.
      */
-    private func createLocationsFromCoordinates(coordinates: [[Double]]) -> [CLLocationCoordinate2D] {
+    private func createLocations(fromCoordinates coordinates: [[Double]]) -> [CLLocationCoordinate2D] {
         var pointsToUse = [CLLocationCoordinate2D]()
         coordinates.forEach { (values: [Double]) in
-            if let
-                y = values[safe: 0],
-                x = values[safe: 1] {
+            if
+                let y = values[safe: 0],
+                let x = values[safe: 1] {
                 pointsToUse += [CLLocationCoordinate2DMake(CLLocationDegrees(x), CLLocationDegrees(y))]
             }
         }
+
         return pointsToUse
     }
 
@@ -49,9 +50,9 @@ extension BMMapView {
      - parameter completion: Closure called when the route has been fetched and displayed on the map.
      */
     func fetchAndDrawRoute(routeCode: String, completion: (() -> Void)?) {
-        APIManager.coordinatesForRouteCode(routeCode, completion: { (coordinates: [[Double]], error: NSError?) in
+        APIManager.coordinates(forRouteCode: routeCode, completion: { (coordinates: [[Double]], error: NSError?) in
             UIAlertController.showErrorPopup(error)
-            let locationCoordinates = self.createLocationsFromCoordinates(coordinates)
+            let locationCoordinates = self.createLocations(fromCoordinates: coordinates)
             self.drawRouteForCoordinates(locationCoordinates)
             // Analytics
             Analytics.Route.DidDrawRoute.send(routeCode: routeCode, rounteCount: 1)
@@ -65,9 +66,9 @@ extension BMMapView {
      - parameter coordinates:   The coordinates to search for routes around.
      - parameter completion:    Block having as parameter an array of routes passing by the given coordinates.
      */
-    func fetchRoutesForCoordinates(coordinates: CLLocationCoordinate2D, completion: ((routes: [Route]) -> Void)?) {
+    func fetchRoutes(forCoordinates coordinates: CLLocationCoordinate2D, completion: ((_ routes: [Route]) -> Void)?) {
         let location = CLLocation(latitude: coordinates.latitude, longitude: coordinates.longitude)
-        self.fetchRoutesForLocation(location, completion: completion)
+        self.fetchRoutes(forLocation: location, completion: completion)
     }
 
     /**
@@ -76,10 +77,10 @@ extension BMMapView {
      - parameter location:   The location to search for routes around it.
      - parameter completion: Block having as parameter an array of routes passing by the given location.
      */
-    private func fetchRoutesForLocation(location: CLLocation, completion: ((routes: [Route]) -> Void)?) {
-        APIManager.routesAroundLocation(location) { (routes: [Route], error: NSError?) in
+    private func fetchRoutes(forLocation location: CLLocation, completion: ((_ routes: [Route]) -> Void)?) {
+        APIManager.routes(aroundLocation: location) { (routes: [Route], error: NSError?) in
             UIAlertController.showErrorPopup(error)
-            completion?(routes: routes)
+            completion?(routes)
         }
     }
 
@@ -89,7 +90,7 @@ extension BMMapView {
      - parameter location:   The location to find the address.
      - parameter completion: Block having as optional parameter the address of the given location.
      */
-    func fetchAddressForLocation(location: CLLocation, completion: ((address: String?) -> Void)?) {
+    func fetchAddress(forLocation location: CLLocation, completion: ((_ address: String?) -> Void)?) {
         CLGeocoder().reverseGeocodeLocation(location) { (placemarks: [CLPlacemark]?, error: NSError?) in
             placemarks?.forEach({ (placemark: CLPlacemark) in
                 DKLog(Verbose.PinAddress, "Address found: \(placemark.addressDictionary ?? [:])")

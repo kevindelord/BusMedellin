@@ -43,12 +43,12 @@ class BMAddressView                         : UIView {
 
         // Borders
         self.layer.borderWidth = 1
-        self.layer.borderColor = BMColor.ViewBorder.CGColor
+        self.layer.borderColor = BMColor.ViewBorder.cgColor
         self.dotIndicator?.layer.borderWidth = 1
-        self.dotIndicator?.layer.borderColor = BMColor.DotBorder.CGColor
+        self.dotIndicator?.layer.borderColor = BMColor.DotBorder.cgColor
     }
 
-    func updateWithAddress(address: String?) {
+    func update(withAddress address: String?) {
         self.addressLabel?.text = (address ?? self.state.defaultText())
     }
 }

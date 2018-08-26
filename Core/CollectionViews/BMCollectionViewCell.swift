@@ -24,7 +24,7 @@ class BMCollectionViewCell                      : UICollectionViewCell {
     }
 
     private func interfaceInitialisation() {
-        self.cellContainer = UIView.load(fromNib: XibFile.BMCellView) as? BMCellView
+        self.cellContainer = UIView.load(from: XibFile.BMCellView) as? BMCellView
         self.cellContainer?.frame = self.bounds
         self.cellContainer?.layer.borderWidth = 1
         self.cellContainer?.layer.borderColor = BMColor.viewBorder.cgColor

@@ -8,7 +8,6 @@
 
 import Foundation
 import AFNetworking
-import DKHelper
 import MapKit
 
 extension AFHTTPRequestSerializer {
@@ -32,12 +31,11 @@ struct APIManager {
 
     private static func GETRequest(parameters: AnyObject?, success: @escaping ((_ session: URLSessionDataTask, _ responseObject: Any?) -> Void), failure: @escaping ((_ session: URLSessionTask?, _ error: Error) -> Void)) {
 
-        let fullPath = Bundle.stringEntryInPList(forKey:BMPlist.APIBaseURL)
+        let fullPath = (Bundle.main.stringEntryInPList(for: BMPlist.APIBaseURL) ?? "")
 		let manager = AFHTTPSessionManager()
 		manager.requestSerializer = AFHTTPRequestSerializer()
         DKLog(Verbose.Manager.API, "GET Request: \(fullPath) parameters: \(String(describing: parameters))")
 		DKLog(Verbose.Manager.API, "GET Request HTTP header field: \(manager.requestSerializer.httpRequestHeaders)")
-
         
         manager.get(fullPath, parameters: parameters, success: success, failure: { (session: URLSessionDataTask?, error: Error) in
             print(error.localizedDescription)
@@ -55,8 +53,8 @@ extension APIManager {
 
         https://www.googleapis.com/fusiontables/v1/query?sql=SELECT%20geometry%20FROM%201_ihDJT-_zFRLXb526aaS0Ct3TiXTlcPDy_BlAz0%20WHERE%20CODIGO_RUT=%27RU130RA%27&key=AIzaSyC59BP_KRtQDLeb5XM_x0eQNT_tdlBbHZc&callback=jQuery180014487654335838962_1476318703876&_=1476324379366
         */
-        let identifier = Bundle.stringEntryInPList(forKey:BMPlist.FusionTable.Identifier)
-        let key = Bundle.stringEntryInPList(forKey:BMPlist.FusionTable.Key)
+        let identifier = Bundle.main.stringEntryInPList(for: BMPlist.FusionTable.Identifier)
+        let key = Bundle.main.stringEntryInPList(for: BMPlist.FusionTable.Key)
         let parameters = ["sql":"SELECT geometry FROM \(identifier) WHERE CODIGO_RUT='\(routeCode)'", "key" : key]
 
         self.GETRequest(parameters: parameters as AnyObject, success: { (session: URLSessionDataTask, responseObject: Any?) in
@@ -89,8 +87,8 @@ extension APIManager {
         https://www.googleapis.com/fusiontables/v1/query?sql=SELECT%20Nombre_Rut,CODIGO_RUT%20FROM%201_ihDJT-_zFRLXb526aaS0Ct3TiXTlcPDy_BlAz0%20WHERE%20ST_INTERSECTS(geometry,CIRCLE(LATLNG(6.207853406405264,-75.58648771697993),500))&key=AIzaSyC59BP_KRtQDLeb5XM_x0eQNT_tdlBbHZc&callback=jQuery180014487654335838962_1476318703876&_=1476328479515
         // swiftlint:enable line_length
         */
-        let identifier = Bundle.stringEntryInPList(forKey:BMPlist.FusionTable.Identifier)
-        let key = Bundle.stringEntryInPList(forKey:BMPlist.FusionTable.Key)
+        let identifier = Bundle.main.stringEntryInPList(for: BMPlist.FusionTable.Identifier)
+        let key = Bundle.main.stringEntryInPList(for: BMPlist.FusionTable.Key)
         let lat = location.coordinate.latitude
         let lng = location.coordinate.longitude
         let parameters = ["sql":"SELECT Nombre_Rut,CODIGO_RUT,NomBar,NomCom FROM \(identifier) WHERE ST_INTERSECTS(geometry,CIRCLE(LATLNG(\(lat),\(lng)),\(radius)))", "key" : key]

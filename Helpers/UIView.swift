@@ -25,4 +25,14 @@ extension UIView {
 
 		self.addSubview(view)
     }
+
+	static func load(from nibName: String) -> UIView? {
+		let bundle = Bundle.main
+		guard (bundle.url(forResource: nibName, withExtension: ".xib") != nil || bundle.url(forResource: nibName, withExtension:".nib") != nil) else {
+			return nil
+
+		}
+
+		return bundle.loadNibNamed(nibName, owner: nil, options: nil)?.first as? UIView
+	}
 }

@@ -8,7 +8,6 @@
 
 import Foundation
 import CSStickyHeaderFlowLayout
-import DKHelper
 import Reachability
 
 class BMCollectionViewController: UICollectionViewController {

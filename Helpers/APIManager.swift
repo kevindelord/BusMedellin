@@ -30,27 +30,25 @@ extension URLSessionTask {
 
 struct APIManager {
 
-	private static func GETRequest(parameters: AnyObject?, success:((_ session: URLSessionDataTask, _ responseObject: AnyObject?) -> Void), failure:((_ session: URLSessionTask?, _ error: NSError) -> Void)) {
+    private static func GETRequest(parameters: AnyObject?, success: @escaping ((_ session: URLSessionDataTask, _ responseObject: Any?) -> Void), failure: @escaping ((_ session: URLSessionTask?, _ error: Error) -> Void)) {
 
         let fullPath = Bundle.stringEntryInPList(forKey:BMPlist.APIBaseURL)
 		let manager = AFHTTPSessionManager()
 		manager.requestSerializer = AFHTTPRequestSerializer()
-		DKLog(Verbose.Manager.API, "GET Request: \(fullPath) parameters: \(parameters)")
+        DKLog(Verbose.Manager.API, "GET Request: \(fullPath) parameters: \(String(describing: parameters))")
 		DKLog(Verbose.Manager.API, "GET Request HTTP header field: \(manager.requestSerializer.httpRequestHeaders)")
 
-		manager.GET(fullPath, parameters: parameters, success: { (session: URLSessionDataTask, responseObject: AnyObject?) in
-            success(session, responseObject)
-            }, failure: { (session: URLSessionDataTask?, error: NSError) in
-				let errorMsg = (error.localizedDescription ?? "no NSError object")
-                print(errorMsg)
-				failure(session: session, error: error)
-		})
+        
+        manager.get(fullPath, parameters: parameters, success: success, failure: { (session: URLSessionDataTask?, error: Error) in
+            print(error.localizedDescription)
+            failure(session, error)
+        })
 	}
 }
 
 extension APIManager {
 
-    static func coordinates(forRouteCode routeCode: String, completion: ((_ coordinates: [[Double]], _ error: NSError?) -> Void)?) {
+    static func coordinates(forRouteCode routeCode: String, completion: ((_ coordinates: [[Double]], _ error: Error?) -> Void)?) {
 
         /*
         baseURL+ "?sql=SELECT geometry FROM " + idFusionTable + " WHERE CODIGO_RUT='" + route + "'&key=" + keyFusionTable
@@ -61,7 +59,7 @@ extension APIManager {
         let key = Bundle.stringEntryInPList(forKey:BMPlist.FusionTable.Key)
         let parameters = ["sql":"SELECT geometry FROM \(identifier) WHERE CODIGO_RUT='\(routeCode)'", "key" : key]
 
-        self.GETRequest(parameters: parameters as AnyObject, success: { (session: URLSessionDataTask, responseObject: AnyObject?) in
+        self.GETRequest(parameters: parameters as AnyObject, success: { (session: URLSessionDataTask, responseObject: Any?) in
 
             if
                 let jsonObject      = responseObject as? [String:AnyObject],
@@ -77,12 +75,12 @@ extension APIManager {
 
             DKLog(Verbose.Manager.API, "APIManager: parsing 'geometry' list failed for route name: \(routeCode)\n")
             completion?([], nil)
-            }, failure: { (operation: URLSessionTask?, error: NSError) in
+            }, failure: { (operation: URLSessionTask?, error: Error) in
                 completion?([], error)
         })
     }
 
-    static func routes(aroundLocation location: CLLocation, radius: Double = Map.DefaultSearchRadius, completion: ((_ routes: [Route], _ error: NSError?) -> Void)?) {
+    static func routes(aroundLocation location: CLLocation, radius: Double = Map.DefaultSearchRadius, completion: ((_ routes: [Route], _ error: Error?) -> Void)?) {
 
         /*
         BaseURL + "?sql=SELECT Nombre_Rut,CODIGO_RUT FROM " + idFusionTable + " WHERE ST_INTERSECTS(geometry,CIRCLE(LATLNG(" + lat + "," + lng + ")," + radius + "))&key=" + keyFusionTable
@@ -97,9 +95,9 @@ extension APIManager {
         let lng = location.coordinate.longitude
         let parameters = ["sql":"SELECT Nombre_Rut,CODIGO_RUT,NomBar,NomCom FROM \(identifier) WHERE ST_INTERSECTS(geometry,CIRCLE(LATLNG(\(lat),\(lng)),\(radius)))", "key" : key]
 
-        self.GETRequest(parameters: parameters as AnyObject, success: { (session: URLSessionDataTask, responseObject: AnyObject?) in
+        self.GETRequest(parameters: parameters as AnyObject, success: { (session: URLSessionDataTask, responseObject: Any?) in
             if
-                let jsonObject  = responseObject as? [String:AnyObject],
+                let jsonObject  = responseObject as? [String: AnyObject],
                 let routeData   = jsonObject[API.Response.Key.Rows] as? [[String]] {
 
                 let routes = Route.createRoutes(data: routeData)
@@ -110,7 +108,7 @@ extension APIManager {
 
             DKLog(Verbose.Manager.API, "APIManager: parsing 'routes' list failed for routes around: \(lat),\(lng)\n")
             completion?([], nil)
-            }, failure: { (operation: URLSessionTask?, error: NSError) in
+            }, failure: { (operation: URLSessionTask?, error: Error) in
                 completion?([], error)
         })
     }

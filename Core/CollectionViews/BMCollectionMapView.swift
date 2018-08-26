@@ -57,7 +57,7 @@ class BMMapView                                         : UIView {
     private var destinationCircle                       : BMMapCircle?
 
     var didFetchAvailableRoutesBlock                    : ((_ routes: [Route]?) -> Void)?
-    var showErrorPopupBlock                             : ((_ error: NSError?) -> Void)?
+    var showErrorPopupBlock                             : ((_ error: Error?) -> Void)?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -83,11 +83,11 @@ class BMMapView                                         : UIView {
             // By default show Medellin city center
             self.centerMap(on: self.cityCenterLocation)
             // Setup 'locate me' button.
-            self.nearMeButton?.setup(self.mapView)
+            self.nearMeButton?.setup(mapView: self.mapView)
             // Setup address views
             self.pinDescriptionLabel?.text = L("PIN_PICKUP_LOCATION")
-            self.pickUpInfoView?.setupWithState(.PickUp)
-            self.destinationInfoView?.setupWithState(.Destination)
+            self.pickUpInfoView?.setupWithState(state: .PickUp)
+            self.destinationInfoView?.setupWithState(state: .Destination)
             // Setup cancel buttons
             let imageInset = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
             self.cancelPickUpButton?.imageEdgeInsets = imageInset
@@ -115,7 +115,7 @@ class BMMapView                                         : UIView {
 
 extension BMMapView: MKMapViewDelegate {
 
-    func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         let mapCenter = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
         // Force the map to stay close to the city center.
         if (self.cityCenterLocation.distance(from: mapCenter) > Map.MaxScrollDistance) {
@@ -123,7 +123,7 @@ extension BMMapView: MKMapViewDelegate {
         }
     }
 
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if let annotation = annotation as? BMAnnotation {
 
             var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotation.reuseId) as? MKPinAnnotationView
@@ -139,7 +139,7 @@ extension BMMapView: MKMapViewDelegate {
         return nil
     }
 
-    func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
+    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
         // If the location suddenly become available adapt the location button.
         if (userLocation.location == nil) {
             self.nearMeButton?.locationState = .Inactive
@@ -148,7 +148,7 @@ extension BMMapView: MKMapViewDelegate {
         }
     }
 
-    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
 
         if (overlay is MKGeodesicPolyline) {
             let lineView = MKPolylineRenderer(overlay: overlay)
@@ -426,7 +426,7 @@ extension BMMapView {
                             self.destinationInfoViewTopConstraint?.constant += ((self.destinationInfoView?.frameHeight ?? 0) * 0.5)
                             self.linkBetweenDots?.alpha = 1
                             // Move the map up North a bit.
-                            self.moveMapViewNorthFromCoordinate(centerCoordinate)
+                            self.moveMapViewNorthFromCoordinate(coordinate: centerCoordinate)
                             // Hide waiting HUD
                             self.hideWaitingHUD()
                         })
@@ -443,7 +443,7 @@ extension BMMapView {
     private func didSetDestinationLocation() {
         if let centerCoordinate = self.mapView?.centerCoordinate {
             // Add a new destination pin at the center of the map.
-            self.addDestinationAnnotation(centerCoordinate)
+            self.addDestinationAnnotation(coordinate: centerCoordinate)
 
             UIView.animate(withDuration: 0.3, animations: {
                 // Hide the location button and its text
@@ -504,7 +504,7 @@ extension BMMapView {
         Analytics.Route.DidSearchForMatchingRoutes.send(routeCode: nil, rounteCount: matchingRoutes.count)
         // Draw the first route as example.
         if let routeCode = matchingRoutes.first?.code {
-            self.fetchAndDrawRoute(routeCode, completion: {
+            self.fetchAndDrawRoute(routeCode: routeCode, completion: {
                 self.didFinishFetchingAndDrawingNewRoutes(routes: matchingRoutes)
             })
         } else {
@@ -521,7 +521,7 @@ extension BMMapView {
 
      - returns: Array of matching routes that go through both PICKUP and DESTINATION annotation areas.
      */
-    private func findMatchingRoutes(pickUpRoutes pickUpRoutes: [Route], destinationRoutes: [Route]) -> [Route] {
+    private func findMatchingRoutes(pickUpRoutes: [Route], destinationRoutes: [Route]) -> [Route] {
         var commonRoutes = [Route]()
         for pickUpRoute in pickUpRoutes {
             for destinationRoute in destinationRoutes

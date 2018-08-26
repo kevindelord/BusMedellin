@@ -37,7 +37,7 @@ class BMSettingsViewController                  : UIViewController {
         self.setupMadeByTextView()
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         Analytics.sendScreenView(.Settings)
@@ -48,37 +48,41 @@ class BMSettingsViewController                  : UIViewController {
     private var textViewFont : UIFont {
         var font = (UIFont(name: "Helvetica Neue Light", size: 15) ?? UIFont.systemFont(ofSize: 15))
         if #available(iOS 8.2, *) {
-            font = UIFont.systemFontOfSize(15, weight: UIFontWeightLight)
+            font = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.light)
         }
         return font
     }
 
     private func setupAboutTextView() {
-        let str : NSString = L("SETTINGS_ABOUT_TEXT")
+        let str = L("SETTINGS_ABOUT_TEXT")
         let attrStr = NSMutableAttributedString(string: L("SETTINGS_ABOUT_TEXT"))
 
-        [(L("SETTINGS_ABOUT_ANCHOR_1"), BMExternalLink.Project),
+        let anchors : [(text: String, url: String)] = [
+            (L("SETTINGS_ABOUT_ANCHOR_1"), BMExternalLink.Project),
             (L("SETTINGS_ABOUT_ANCHOR_2"), BMExternalLink.ThibaultDurand),
             (L("SETTINGS_ABOUT_ANCHOR_3"), BMExternalLink.TwitterTDurand),
             (L("SETTINGS_ABOUT_ANCHOR_4"), BMExternalLink.WebVersion)
-            ].forEach { (tuple: (anchor: String, url: String)) in
-                attrStr.addAttribute(NSLinkAttributeName, value: tuple.url, range: str.rangeOfString(tuple.anchor))
+        ]
+        
+        for anchor in anchors {
+            attrStr.addAttribute(.link, value: anchor.url, range: (str as NSString).range(of: anchor.text))
         }
-        attrStr.addAttribute(NSFontAttributeName, value: self.textViewFont, range: NSRange(location: 0, length: str.length))
+
+        attrStr.addAttribute(.font, value: self.textViewFont, range: NSRange(location: 0, length: str.count))
         self.aboutTextView?.attributedText = attrStr
     }
 
     private func setupMadeByTextView() {
-        let str : NSString = L("SETTINGS_MADE_BY")
+        let str = L("SETTINGS_MADE_BY")
         let attrStr = NSMutableAttributedString(string: L("SETTINGS_MADE_BY"))
 
         let tuple = (anchor: L("SETTINGS_MADE_BY_ANCHOR"), url: BMExternalLink.KevinDelord)
-        attrStr.addAttribute(NSLinkAttributeName, value: tuple.url, range: str.rangeOfString(tuple.anchor))
-        attrStr.addAttribute(NSFontAttributeName, value: self.textViewFont, range: NSRange(location: 0, length: str.length))
+        attrStr.addAttribute(.link, value: tuple.url, range: (str as NSString).range(of: tuple.anchor))
+        attrStr.addAttribute(.link, value: self.textViewFont, range: NSRange(location: 0, length: str.count))
         // Center text
         let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.alignment = .Center
-        attrStr.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSRange(location: 0, length: str.length))
+        paragraphStyle.alignment = .center
+        attrStr.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: str.count))
 
         self.madeByTextView?.attributedText = attrStr
     }

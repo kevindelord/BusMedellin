@@ -128,7 +128,7 @@ private struct GoogleAnalytics {
         // Configure tracker from GoogleService-Info.plist.
         var configureError:NSError?
         GGLContext.sharedInstance().configureWithError(&configureError)
-        assert(configureError == nil, "Error configuring Google services: \(configureError)")
+        assert(configureError == nil, "Error configuring Google services: \(String(describing: configureError))")
 
         // Optional: configure GAI options.
         let gai = GAI.sharedInstance()

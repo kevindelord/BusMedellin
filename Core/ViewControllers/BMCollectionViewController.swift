@@ -28,31 +28,31 @@ class BMCollectionViewController: UICollectionViewController {
         self.collectionView?.backgroundColor = .white
 
         // Setup Cells: list of bus lines
-        self.collectionView?.registerClass(BMCollectionViewCell.self, forCellWithReuseIdentifier: ReuseId.ResultCell)
+        self.collectionView?.register(BMCollectionViewCell.self, forCellWithReuseIdentifier: ReuseId.ResultCell)
         self.layout?.itemSize = CGSize(width: self.view.frame.size.width, height: StaticHeight.CollectionView.Cell)
 
         // Setup Header: map view
-        self.collectionView?.registerClass(BMCollectionMapView.self, forSupplementaryViewOfKind: CSStickyHeaderParallaxHeader, withReuseIdentifier: ReuseId.ParallaxHeader)
+        self.collectionView?.register(BMCollectionMapView.self, forSupplementaryViewOfKind: CSStickyHeaderParallaxHeader, withReuseIdentifier: ReuseId.ParallaxHeader)
         self.layout?.parallaxHeaderReferenceSize = CGSize(width: self.view.frame.size.width, height: (self.view.frame.size.height - StaticHeight.CollectionView.SectionHeader))
 
         // Setup Section Header: header with title "number of lines"
-        self.collectionView?.registerClass(BMCollectionViewSectionHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: ReuseId.SectionHeader)
+        self.collectionView?.register(BMCollectionViewSectionHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: ReuseId.SectionHeader)
         self.layout?.headerReferenceSize = CGSize(width: self.view.frame.size.width, height: StaticHeight.CollectionView.SectionHeader)
 
         self.layout?.minimumLineSpacing = 0
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         Analytics.sendScreenView(.MapView)
     }
 
-    override func preferredStatusBarUpdateAnimation() -> UIStatusBarAnimation {
-        return .Slide
+    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
+        return .slide
     }
 
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden: Bool {
         return self.statusBarHidden
     }
 }
@@ -63,25 +63,25 @@ extension BMCollectionViewController {
 
     // Cells
 
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return (self.availableRoutes?.count ?? 0)
     }
 
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ReuseId.ResultCell, forIndexPath: indexPath) as? BMCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReuseId.ResultCell, for: indexPath) as? BMCollectionViewCell
         if let route = self.availableRoutes?[safe: indexPath.row] {
-            cell?.cellContainer?.updateContent(route)
+            cell?.cellContainer?.updateContent(route: route)
         }
         return (cell ?? UICollectionViewCell())
     }
 
-    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        collectionView.deselectItemAtIndexPath(indexPath, animated: true)
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
         if (Reachability.isConnected == true) {
             if let route = self.availableRoutes?[safe: indexPath.item] {
                 self.drawnRoute = route
-                self.displayRouteOnMap?(route: route, completion: nil)
+                self.displayRouteOnMap?(route, nil)
                 collectionView.setContentOffset(CGPoint.zero, animated: true)
                 collectionView.reloadData()
             }
@@ -92,19 +92,19 @@ extension BMCollectionViewController {
 
     // Parallax Header
 
-    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
 
         if (kind == CSStickyHeaderParallaxHeader),
-            let view = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: ReuseId.ParallaxHeader, forIndexPath: indexPath) as? BMCollectionMapView {
+            let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ReuseId.ParallaxHeader, for: indexPath) as? BMCollectionMapView {
                 view.mapContainer?.didFetchAvailableRoutesBlock = self.reloadAvailableRoutes
                 self.displayRouteOnMap = view.mapContainer?.fetchAndDrawRoute
                 return view
 
         } else if (kind == UICollectionElementKindSectionHeader),
-            let view = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: ReuseId.SectionHeader, forIndexPath: indexPath) as? BMCollectionViewSectionHeader {
-            view.headerContainer?.updateContent(self.availableRoutes, drawnRoute: self.drawnRoute)
+            let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ReuseId.SectionHeader, for: indexPath) as? BMCollectionViewSectionHeader {
+            view.headerContainer?.updateContent(availableRoutes: self.availableRoutes, drawnRoute: self.drawnRoute)
             view.headerContainer?.openSettingsBlock = {
-                self.performSegueWithIdentifier(Segue.Settings, sender: nil)
+                self.performSegue(withIdentifier: Segue.Settings, sender: nil)
             }
             return view
         }
@@ -112,9 +112,9 @@ extension BMCollectionViewController {
         return UICollectionReusableView()
     }
 
-    override func scrollViewDidScroll(scrollView: UIScrollView) {
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
 
-        let limitHeight = (scrollView.contentOffset.y + StaticHeight.CollectionView.SectionHeader + UIApplication.sharedApplication().statusBarFrame.size.height)
+        let limitHeight = (scrollView.contentOffset.y + StaticHeight.CollectionView.SectionHeader + UIApplication.shared.statusBarFrame.size.height)
         let isCurrentlyHidden = self.statusBarHidden
 
         if (self.statusBarHidden == false && limitHeight >= self.view.frameHeight) {
@@ -126,7 +126,7 @@ extension BMCollectionViewController {
 
         if (isCurrentlyHidden != self.statusBarHidden) {
             // Update the status bar
-            UIView.animateWithDuration(0.25, animations: {
+            UIView.animate(withDuration: 0.25, animations: {
                 self.setNeedsStatusBarAppearanceUpdate()
             })
         }
@@ -148,13 +148,13 @@ extension BMCollectionViewController {
             // Reload the collection view to show the number of bus lines found.
             self.collectionView?.reloadData()
             // Scroll up a bit to indicate the user that he can scroll up.
-            let indexPath = NSIndexPath(forItem: 0, inSection: 0)
-            self.collectionView?.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.Bottom, animated: true)
+            let indexPath = IndexPath(item: 0, section: 0)
+            self.collectionView?.scrollToItem(at: indexPath, at: .bottom, animated: true)
         } else {
             // Reset the scroll if possible.
             self.collectionView?.setContentOffset(CGPoint.zero, animated: true)
             // And then, after the animation (0.3s) reload the collection view.
-            self.performBlockAfterDelay(0.3, block: {
+            self.performBlock(afterDelay: 0.3, block: {
                 self.collectionView?.reloadData()
             })
         }

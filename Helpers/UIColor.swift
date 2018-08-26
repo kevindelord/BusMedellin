@@ -1,5 +1,5 @@
 //
-//  UIColot.swift
+//  UIColor.swift
 //  BusMedellin
 //
 //  Created by kevindelord on 24/08/2018.

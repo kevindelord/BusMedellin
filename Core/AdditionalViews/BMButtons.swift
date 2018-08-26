@@ -6,38 +6,27 @@
 //  Copyright © 2016 Kevin Delord. All rights reserved.
 //
 
-import Foundation
 import UIKit
 import MapKit
 
-enum MBButtonState {
-    case Inactive
-    case Available
-}
-
 class BMLocateButton    : UIButton {
 
-    var locationState   : MBButtonState = .Inactive {
+    var locationState   : MBButtonState = .inactive {
         didSet {
-            switch self.locationState {
-            case .Inactive:
-                let img = UIImage(named: "NearMe")?.withRenderingMode(.alwaysTemplate)
-                self.setImage(img, for: .normal)
-                self.tintColor = BMColor.Gray
-            case .Available:
-                let img = UIImage(named: "NearMe")?.withRenderingMode(.alwaysTemplate)
-                self.setImage(img, for: .normal)
-                self.tintColor = BMColor.Blue
-            }
+            let img = UIImage(named: "NearMe")?.withRenderingMode(.alwaysTemplate)
+            self.setImage(img, for: .normal)
+            self.tintColor = self.locationState.tintColor
         }
     }
 
     func setup(mapView: MKMapView? = nil) {
-        if ((CLLocationManager.authorizationStatus() == .authorizedWhenInUse || CLLocationManager.authorizationStatus() == .authorizedAlways)
-        && mapView?.userLocation.location != nil) {
-            self.locationState = .Available
-        } else {
-            self.locationState = .Inactive
+        guard
+            (mapView?.userLocation.location != nil),
+            (CLLocationManager.authorizationStatus() == .authorizedWhenInUse || CLLocationManager.authorizationStatus() == .authorizedAlways) else {
+            self.locationState = .inactive
+            return
         }
+        
+        self.locationState = .available
     }
 }

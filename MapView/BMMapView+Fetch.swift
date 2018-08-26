@@ -12,17 +12,7 @@ import CoreLocation
 // MARK: - Data Management
 
 extension BMMapView {
-    
-    /**
-     Fetch coordinates of the given route and display it on the map.
-     
-     - parameter route: The Route entity to fetch and to display.
-     - parameter completion: Closure called when the route has been fetched and displayed on the map.
-     */
-    func fetchAndDrawRoute(route: Route, completion: (() -> Void)?) {
-        self.fetchAndDrawRoute(routeCode: route.code, completion: completion)
-    }
-    
+
     /**
      Transform an array of latitudes and longitudes into an array of CLLocationCoordinate2D.
      
@@ -55,7 +45,7 @@ extension BMMapView {
             let locationCoordinates = self.createLocations(fromCoordinates: coordinates)
             self.drawRouteForCoordinates(coordinates: locationCoordinates)
             // Analytics
-            Analytics.Route.DidDrawRoute.send(routeCode: routeCode, rounteCount: 1)
+            Analytics.Route.didDrawRoute.send(routeCode: routeCode, rounteCount: 1)
             completion?()
         })
     }

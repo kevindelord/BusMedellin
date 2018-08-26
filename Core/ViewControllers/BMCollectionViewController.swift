@@ -14,7 +14,7 @@ import Reachability
 class BMCollectionViewController: UICollectionViewController {
 
     var availableRoutes         : [Route]?
-    var displayRouteOnMap       : ((_ route: Route, _ completion: (() -> Void)?) -> Void)?
+    var displayRouteOnMap       : ((_ routeCode: String, _ completion: (() -> Void)?) -> Void)?
     var drawnRoute              : Route?
     var statusBarHidden         : Bool = false
 
@@ -45,7 +45,7 @@ class BMCollectionViewController: UICollectionViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        Analytics.sendScreenView(.MapView)
+        Analytics.send(screenView: .mapView)
     }
 
     override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
@@ -68,32 +68,37 @@ extension BMCollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReuseId.ResultCell, for: indexPath) as? BMCollectionViewCell
-        if let route = self.availableRoutes?[safe: indexPath.row] {
-            cell?.cellContainer?.updateContent(route: route)
+        guard
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReuseId.ResultCell, for: indexPath) as? BMCollectionViewCell,
+            let route = self.availableRoutes?[safe: indexPath.row] else {
+                return UICollectionViewCell()
         }
-        return (cell ?? UICollectionViewCell())
+
+        cell.cellContainer?.updateContent(route: route)
+        return cell
     }
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        if (Reachability.isConnected == true) {
-            if let route = self.availableRoutes?[safe: indexPath.item] {
-                self.drawnRoute = route
-                self.displayRouteOnMap?(route, nil)
-                collectionView.setContentOffset(CGPoint.zero, animated: true)
-                collectionView.reloadData()
-            }
-        } else {
+
+        guard (Reachability.isConnected == true) else {
             UIAlertController.showErrorMessage(L("NO_INTERNET_CONNECTION"))
+            return
         }
+
+        guard let route = self.availableRoutes?[safe: indexPath.item] else {
+            return
+        }
+        
+        self.drawnRoute = route
+        self.displayRouteOnMap?(route.code, nil)
+        collectionView.setContentOffset(CGPoint.zero, animated: true)
+        collectionView.reloadData()
     }
 
     // Parallax Header
 
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-
         if (kind == CSStickyHeaderParallaxHeader),
             let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ReuseId.ParallaxHeader, for: indexPath) as? BMCollectionMapView {
                 view.mapContainer?.didFetchAvailableRoutesBlock = self.reloadAvailableRoutes
@@ -113,7 +118,6 @@ extension BMCollectionViewController {
     }
 
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-
         let limitHeight = (scrollView.contentOffset.y + StaticHeight.CollectionView.SectionHeader + UIApplication.shared.statusBarFrame.size.height)
         let isCurrentlyHidden = self.statusBarHidden
 

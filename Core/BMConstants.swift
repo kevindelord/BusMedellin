@@ -90,13 +90,13 @@ struct ReuseId {
 
 struct BMColor {
 
-    static let Red              = UIColor(red: 255, green: 59, blue: 48) ?? .red
-    static let Green            = UIColor(red: 76, green: 217, blue: 100) ?? .green
-    static let Blue             = UIColor(red: 33, green: 150, blue: 243) ?? .blue
-    static let Gray             = UIColor(red: 149, green: 165, blue: 166) ?? .gray
-    static let Black            = UIColor.black
-    static let ViewBorder       = UIColor(red: 230, green: 230, blue: 230) ?? .lightGray
-    static let DotBorder        = UIColor(red: 150, green: 150, blue: 150) ?? .darkGray
+    static let red              = UIColor(red: 255, green: 59, blue: 48) ?? .red
+    static let green            = UIColor(red: 76, green: 217, blue: 100) ?? .green
+    static let blue             = UIColor(red: 33, green: 150, blue: 243) ?? .blue
+    static let gray             = UIColor(red: 149, green: 165, blue: 166) ?? .gray
+    static let black            = UIColor.black
+    static let viewBorder       = UIColor(red: 230, green: 230, blue: 230) ?? .lightGray
+    static let dotBorder        = UIColor(red: 150, green: 150, blue: 150) ?? .darkGray
 }
 
 struct BMExternalLink {

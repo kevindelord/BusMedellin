@@ -36,7 +36,6 @@ Back on your command line, execute the following and run the project:
 ```
 $> git clone https://github.com/kevindelord/BusMedellin
 $> cd BusMedellin
-$> git submodule update --init --recursive
 $> pod install
 ```
 

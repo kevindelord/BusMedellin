@@ -72,17 +72,14 @@ class BMMapView                                         : UIView {
     
     /// Default city center location
     private var cityCenterLocation : CLLocation {
-        let info = Bundle.main.entryInPList(for: BMPlist.MapDefault) as [String: String]?
-        let latitude = (Double(info?[BMPlist.CityCenter.Latitude] ?? "0") ?? 0)
-        let longitude = (Double(info?[BMPlist.CityCenter.Longitude] ?? "0") ?? 0)
+        let latitude = (Double(Configuration().defaultLatitude) ?? 0)
+        let longitude = (Double(Configuration().defaultLongitude) ?? 0)
         return CLLocation(latitude: latitude, longitude: longitude)
     }
     
     /// Default zoom radius of the mapView.
     private var defaultZoomRadius : CLLocationDistance {
-        let info = Bundle.main.entryInPList(for: BMPlist.MapDefault) as [String: String]?
-        let radius = Double(info?[BMPlist.CityCenter.Radius] ?? "0")
-        return (radius ?? 0)
+        return (Double(Configuration().defaultRadius) ?? 0)
     }
 }
 

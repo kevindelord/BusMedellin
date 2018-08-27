@@ -90,7 +90,7 @@ class APIManager {
 extension APIManager {
 
 	private static var GoogleIdentifiers: (identifier: String, key: String) {
-		let identifier = Configuration().fusionTableKey
+		let identifier = Configuration().fusionTableIdentifier
 		let key = Configuration().fusionTableKey
 		return (identifier, key)
 	}

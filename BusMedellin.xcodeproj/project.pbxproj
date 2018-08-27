@@ -29,8 +29,6 @@
 		754A253F2132CB8D00B3B083 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A253D2132CB8D00B3B083 /* UIView.swift */; };
 		754A25412132CC7300B3B083 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A25402132CC7300B3B083 /* Localization.swift */; };
 		754A25422132CC7300B3B083 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A25402132CC7300B3B083 /* Localization.swift */; };
-		754A25442132CEDD00B3B083 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A25432132CEDD00B3B083 /* Bundle.swift */; };
-		754A25452132CEDD00B3B083 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A25432132CEDD00B3B083 /* Bundle.swift */; };
 		75513BE01DB019C600957F40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75513BDF1DB019C600957F40 /* Assets.xcassets */; };
 		75513BE31DB01ED900957F40 /* BMButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75513BE21DB01ED900957F40 /* BMButtons.swift */; };
 		75513BE51DB02D2300957F40 /* BMAnnotations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75513BE41DB02D2300957F40 /* BMAnnotations.swift */; };
@@ -116,7 +114,6 @@
 		754A253A2132CB5C00B3B083 /* NSError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSError.swift; sourceTree = "<group>"; };
 		754A253D2132CB8D00B3B083 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		754A25402132CC7300B3B083 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
-		754A25432132CEDD00B3B083 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		75513BDF1DB019C600957F40 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
 		75513BE21DB01ED900957F40 /* BMButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BMButtons.swift; path = Core/AdditionalViews/BMButtons.swift; sourceTree = "<group>"; };
 		75513BE41DB02D2300957F40 /* BMAnnotations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BMAnnotations.swift; path = Core/AdditionalViews/BMAnnotations.swift; sourceTree = "<group>"; };
@@ -200,7 +197,6 @@
 			children = (
 				7546C99C21300A6E00F80153 /* UIColor.swift */,
 				75513BE61DB02E5700957F40 /* MKMapView.swift */,
-				754A25432132CEDD00B3B083 /* Bundle.swift */,
 				754A25342132CADC00B3B083 /* Array.swift */,
 				754A253D2132CB8D00B3B083 /* UIView.swift */,
 				754A253A2132CB5C00B3B083 /* NSError.swift */,
@@ -645,7 +641,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				75513BE51DB02D2300957F40 /* BMAnnotations.swift in Sources */,
-				754A25442132CEDD00B3B083 /* Bundle.swift in Sources */,
 				757F31651DBE5F14002BB03F /* GoogleAnalytics.swift in Sources */,
 				754A25412132CC7300B3B083 /* Localization.swift in Sources */,
 				758E105D1DBD96D000D872BC /* HockeySDK.swift in Sources */,
@@ -684,7 +679,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				758E10361DBD92D000D872BC /* BMAnnotations.swift in Sources */,
-				754A25452132CEDD00B3B083 /* Bundle.swift in Sources */,
 				757F31661DBE5F14002BB03F /* GoogleAnalytics.swift in Sources */,
 				754A25422132CC7300B3B083 /* Localization.swift in Sources */,
 				758E105E1DBD96D000D872BC /* HockeySDK.swift in Sources */,

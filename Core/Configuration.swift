@@ -25,6 +25,10 @@ struct Configuration: Decodable {
 		case fusionTableIdentifier
 		case fusionTableKey
 		case hockeyAppIdentifier
+		case defaultLatitude
+		case defaultLongitude
+		case defaultRadius
+
 	}
 
 	let apiBaseUrl				: String
@@ -33,6 +37,10 @@ struct Configuration: Decodable {
 	let fusionTableIdentifier	: String
 	let fusionTableKey			: String
 	let hockeyAppIdentifier		: String
+	let defaultLatitude			: String
+	let defaultLongitude		: String
+	let defaultRadius			: String
+
 
     static let debugAppirater	: Bool = (false && isDebug)
     static let analyticsEnabled	: Bool = (true && isRelease)
@@ -46,7 +54,6 @@ struct Configuration: Decodable {
 		}
 
 		self = config
-		print(self)
 	}
 }
 

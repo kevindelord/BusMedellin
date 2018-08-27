@@ -9,18 +9,6 @@
 import Foundation
 import UIKit
 
-struct BMPlist {
-
-    static let MapDefault       = "MapDefault"
-
-    struct CityCenter {
-
-        static let Latitude     = "Latitude"
-        static let Longitude    = "Longitude"
-        static let Radius       = "Radius"
-    }
-}
-
 struct API {
 
     struct Response {

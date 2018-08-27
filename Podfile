@@ -8,18 +8,23 @@ def corePods
 	pod 'Appirater', '~> 2.3.1'
 	pod 'MBProgressHUD', '~> 1.1.0'
     pod 'CSStickyHeaderFlowLayout', '~> 0.2.11'
-    pod 'Buglife', '~> 1.9.5'
+	pod 'Buglife', '~> 1.9.5' # Versions >= 2.0.0 require min iOS 9.0
     pod 'HockeySDK', '~> 5.1.2'
+end
+
+def analytics
     pod 'Google/Analytics'
     pod 'Firebase/Core'
 end
 
 target 'BusMedellin-Alpha-AdHoc' do
     corePods
+	analytics
 end
 
 target 'BusMedellin-Live-AppStore' do
     corePods
+	analytics
 end
 
 post_install do |installer|

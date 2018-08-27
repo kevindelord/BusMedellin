@@ -10,6 +10,8 @@ import Foundation
 import CSStickyHeaderFlowLayout
 import Reachability
 
+// TODO: crash on iPhone Plus when scrollable content is at the top of the screen.
+
 class BMCollectionViewController: UICollectionViewController {
 
 	var availableRoutes			: [Route]?

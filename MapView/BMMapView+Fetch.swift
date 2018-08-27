@@ -89,7 +89,7 @@ extension BMMapView {
 	func fetchAddress(forLocation location: CLLocation, completion: ((_ address: String?) -> Void)?) {
 		let handler = { (placemarks: [CLPlacemark]?, error: Error?) in
 			for placemark in (placemarks ?? []) {
-				DKLog(Verbose.pinAddress, "Address found: \(placemark.addressDictionary ?? [:])")
+				DKLog(Configuration.Verbose.pinAddress, "Address found: \(placemark.addressDictionary ?? [:])")
 				let street = placemark.addressDictionary?[Map.Address.street] as? String
 				completion?(street)
 			}

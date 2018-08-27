@@ -59,8 +59,8 @@ class APIManager {
 			APIManager.didCompleteSessionTask(data: data, success: success, failure: failure)
 		}
 
-		DKLog(Verbose.Manager.api, "Request: \(request)")
-		DKLog(Verbose.Manager.api, "HTTP header fields: \(request.allHTTPHeaderFields ?? [:])")
+		DKLog(Configuration.Verbose.api, "Request: \(request)")
+		DKLog(Configuration.Verbose.api, "HTTP header fields: \(request.allHTTPHeaderFields ?? [:])")
 		task.resume()
 	}
 
@@ -119,7 +119,7 @@ extension APIManager {
 					return
 			}
 
-			DKLog(Verbose.Manager.api, "APIManager: did Receive \(coordinates.count) coordinates for route name: \(routeCode)\n")
+			DKLog(Configuration.Verbose.api, "APIManager: did Receive \(coordinates.count) coordinates for route name: \(routeCode)\n")
 			success(coordinates)
 		}, failure: { (error: Error) in
 			failure(error)
@@ -152,7 +152,7 @@ extension APIManager {
 			}
 
 			let routes = Route.createRoutes(data: routeData)
-			DKLog(Verbose.Manager.api, "APIManager: did Receive \(routes.count) routes around: \(lat),\(lng)\n")
+			DKLog(Configuration.Verbose.api, "APIManager: did Receive \(routes.count) routes around: \(lat),\(lng)\n")
 			success(routes)
 
 		}, failure: { (error: Error) in

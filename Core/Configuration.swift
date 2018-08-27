@@ -38,9 +38,6 @@ struct Configuration: Decodable {
 	let defaultLatitude			: String
 	let defaultLongitude		: String
 
-	static let debugAppirater	: Bool = (false && isDebug)
-	static let analyticsEnabled	: Bool = (true && isRelease)
-
 	init() {
 		guard
 			let url = Bundle.main.url(forResource: "Configuration", withExtension: "plist"),
@@ -51,15 +48,14 @@ struct Configuration: Decodable {
 
 		self = config
 	}
-}
 
-struct Verbose {
+	static let debugAppirater	: Bool = (false && isDebug)
+	static let analyticsEnabled	: Bool = (true && isRelease)
 
-	static let pinAddress			: Bool = false
+	struct Verbose {
 
-	struct Manager {
-
-		static let api				: Bool = false
-		static let analytics		: Bool = false
+		static let pinAddress	: Bool = false
+		static let api			: Bool = false
+		static let analytics	: Bool = false
 	}
 }

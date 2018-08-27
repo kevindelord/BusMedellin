@@ -134,7 +134,7 @@ private struct GoogleAnalytics {
 		#if RELEASE
 		gai?.logger.logLevel = .Error
 		#else
-		gai?.logger.logLevel = (Verbose.Manager.analytics == true ? .verbose : .none)
+		gai?.logger.logLevel = (Configuration.Verbose.analytics == true ? .verbose : .none)
 		#endif
 	}
 

@@ -10,6 +10,7 @@ def corePods
     pod 'CSStickyHeaderFlowLayout', '~> 0.2.11'
 	pod 'Buglife', '~> 1.9.5' # Versions >= 2.0.0 require min iOS 9.0
     pod 'HockeySDK', '~> 5.1.2'
+	pod 'SwiftLint', '~> 0.27.0'
 end
 
 def analytics

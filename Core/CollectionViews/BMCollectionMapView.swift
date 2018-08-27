@@ -8,26 +8,26 @@
 
 import UIKit
 
-class BMCollectionMapView                               : UICollectionReusableView {
+class BMCollectionMapView	: UICollectionReusableView {
 
-    var mapContainer                                    : BMMapView?
+	var mapContainer		: BMMapView?
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+	override init(frame: CGRect) {
+		super.init(frame: frame)
 
-        self.clipsToBounds = true
-        self.interfaceInitialisation()
-    }
+		self.clipsToBounds = true
+		self.interfaceInitialisation()
+	}
 
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+	required init?(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)
 
-        self.interfaceInitialisation()
-    }
+		self.interfaceInitialisation()
+	}
 
-    private func interfaceInitialisation() {
-        self.mapContainer = UIView.load(from: XibFile.BMMapView) as? BMMapView
-        self.mapContainer?.frame = self.bounds
-        self.addSubview(safe: self.mapContainer)
-    }
+	private func interfaceInitialisation() {
+		self.mapContainer = UIView.load(from: XibFile.mapView) as? BMMapView
+		self.mapContainer?.frame = self.bounds
+		self.addSubview(safe: self.mapContainer)
+	}
 }

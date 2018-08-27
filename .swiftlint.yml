@@ -1,154 +1,311 @@
 ###
 # Swiftlint configuration file.
-# Latest version supported: 0.12.0
+# Latest version supported: 0.25.0
 # Any newer version hasn't been checked yet and might not follow the style guide.
 ###
 
-disabled_rules: # rule identifiers to exclude from running
+# rule identifiers to exclude from running
+disabled_rules:
   - colon # exaclty one space after the : >>> let abc: Void\n
   - control_statement # no rounded brackets around conditions. we would need this the other way around
   - todo # TODO can be written in the code but should be linked to a ticket on JIRA.
-  - nesting # func nesting max 1 level
+  - unused_closure_parameter
+  - redundant_string_enum_value
+  - vertical_parameter_alignment
+  - switch_case_alignment
 
-excluded: # paths to ignore during linting. overridden by `included`.
+# paths to ignore during linting. overridden by `included`.
+excluded:
   - Carthage
   - Pods
   - External
   - Submodules
   - Generated
   - Core/Model/CoreData
-
-# rule parameters
-cyclomatic_complexity:
-  - 20 #warning
-  - 35 #error
-
-file_length:
-  - 600 #warning
-  - 800 #error
-
-function_body_length:
-  - 40 #warning
-  - 80 #error
-
-line_length:
-  - 300 #warning
-  - 350 #error
-
-type_body_length:
-  - 400 #warning
-  - 500 #error
+  - App/Model/CoreData
+  - Database/Model
+  - fastlane
 
 opt_in_rules:
-  - missing_docs
   - force_unwrapping
   - conditional_returns_on_newline
   - private_outlet
   - vertical_whitespace
+  - closure_spacing
+  - explicit_init
+  - redundant_nil_coalescing
+  - nimble_operator
+  - attributes
+  - closure_end_indentation
+  - empty_count
+  - first_where
+  - implicitly_unwrapped_optional
+  - unneeded_parentheses_in_closure_argument
+  - multiline_parameters
+  - fatal_error_message
+  - let_var_whitespace
+  - redundant_string_enum_value
+  - required_enum_case
+  - private_action
+  - yoda_condition
+
+# rule parameters
+file_length:
+  warning: 600
+  error: 800
+  ignore_comment_only_lines: true
+
+cyclomatic_complexity:
+  ignores_case_statements: true
+  warning: 10
+  error: 20
+
+nesting:
+  type_level:
+    warning: 6
+  statement_level:
+    warning: 6
+
+function_body_length:
+  warning: 40
+  error: 80
+
+line_length: 300
+
+type_body_length:
+  warning: 400
+  error: 500
+
+large_tuple:
+  warning: 4
+  error: 6
+
+identifier_name:
+  excluded:
+    - to
+    - id
+    - by
+    - of
+    - at
+    - !str on
+    - x
+    - y
+    - L
+  # Allow the usage of underscores at the start of variables or constants. The lowercase check has currently to be disabled as "_" isn't considered as lowercase character
+  validates_start_lowercase: false
+  allowed_symbols:
+    - _
+
+type_name:
+  excluded:
+    - C
+    - UI
+    - T
+    - U
+    - V
+
+private_outlet:
+  allow_private_set: true
 
 custom_rules:
   extra_whitespace:
     name: "Extra whitespaces"
-    regex: "([a-zA-Z0-9=?.\(\),><!'\"][ ]{2,}[a-zA-Z0-9?.\(\),><!'\"])"
-    message: "Remove extra whitespaces"
+    regex: '([^\n/ \t]  |    | \t)'
+    message: "Indentation should be done with tabs. Only whitespaces in comments and up to three whitespaces at the start of a line or after tabs are allowed."
     severity: warning
+    match_kinds:
+      - string
+      - keyword
+      - parameter
+      - typeidentifier
+      - number
+      - identifier
   unnecessary_datatype:
     name: "Unnecessary Datatype"
-    regex: "(?m-s)(let|var).*(:\s\[+(\w|:| |\t)+\]+\s*=\s*\[:*\])"
+    regex: '(?m-s)(let|var).*(:\s\[+(\w|:| |\t)+\]+\s*=\s*\[:*\])'
     message: "Unnecessary datatype. Use '= [DataType]()' instead of ': [DataType] = []'"
-    severity: warning
-  missing_parameter_name:
-    name: "Missing parameter name"
-    regex: "(_( |\t|:|\))( |\t|=)(?! try).*)"
-    message: "Variable named '_' should be avoided. Please use a valid name."
     severity: warning
   missing_closure_name:
     name: "Missing closure name"
-    regex: "^\s*\}\) \{.*"
+    regex: '^\s*\}\) \{.*'
     message: "Add the missing closure name"
     severity: warning
   empty_commented_line:
     name: "Empty Commented Out Line"
-    regex: "(\t+| +)//\n"
+    regex: '(\t+| +)//\n'
     message: "Remove useless comment lines or use /* format */"
     severity: warning
   comments_space:
     name: "Space After Comment"
-    regex: "(^ *//\w+)"
-    message: "There should be a space after //"
+    regex: '(//\w+|///\w+)'
+    message: "There should be a space between the start of a comment and the first character."
     severity: warning
+    match_kinds:
+      - comment
+      - doccomment
+      - doccomment.field
   comments_capitalized_ignore_possible_code:
     name: "Capitalize First Word In Comment"
-    regex: "(\s??// +(?!swiftlint)[a-z]+)"
+    regex: '(// +(?!swiftlint)[a-z]+)'
     message: "The first word of a comment should be capitalized"
     severity: warning
+    match_kinds:
+      - comment
+      - doccomment
   empty_first_line:
     name: "Empty First Line"
-    regex: "(^[ a-zA-Z ]*(?:protocol|extension|class|struct) (?!(?:var|let))[ a-zA-Z:]*\{\n *\S+)"
-    message: "There should be an empty line after a declaration"
+    regex: '(extension|class) (?!(?:func|let|var))[^\{]*\{[^\n]*\n[\t ]*\w+'
+    message: "There should be an empty line after a class or extension declaration."
     severity: warning
+    match_kinds:
+      - keyword
+      - typeidentifier
+      - identifier
+      - typeidentifier
+      - argument
+      - string
+      - objectliteral
+      - placeholder
+      - parameter
+      - attribute.builtin
   empty_line_after_guard:
     name: "Empty Line After Guard"
-    regex: "(^ *guard[ a-zA-Z0-9=?.\(\),><!]*\{[ a-zA-Z0-9=?.\(\),><!]*\}\n *(?!(?:return|guard))\S+)"
+    regex: '(^ *guard[ a-zA-Z0-9=?.\(\),><!]*\{[ a-zA-Z0-9=?.\(\),><!]*\}\n *(?!(?:return|guard))\S+)'
     message: "There should be an empty line after a guard"
     severity: warning
   empty_line_after_super:
     name: "Empty Line After Super"
-    regex: "(^ *super\.[ a-zA-Z0-9=?.\(\)\{\}:,><!]*\n *(?!(?:\}|return))\S+)"
-    message: "There should be an empty line after super"
-    severity: warning
-  multiple_empty_lines:
-    name: "Multiple Empty Lines"
-    regex: "((?:\s*\n){3,})"
-    message: "There are too many empty lines"
+    regex: '(\{\n[ \t]*super\.[ a-zA-Z0-9=?.\(\)\{\}:,><!]*\n[ \t]*(?!(?:\}|return))\S+)'
+    message: "There should be an empty line after super if it's at the start of the function"
     severity: warning
   unnecessary_leading_void_in:
     name: "Unnecessary -> Void in at the end of the line"
-    regex: "(-> (Void|\(\)) in$)"
+    regex: '(-> (Void|\(\)) in$)'
     message: "Unnecessary '-> Void in' at the end of the line. Use only 'in'"
     severity: warning
   unnecessary_type:
     name: "Unnecessary Type"
-    regex: "(?sm)[ \ta-zA-Z0-9]?(?:let|var){1} [ \ta-zA-Z0-9]+?:[ \t]+?([a-zA-Z0-9]+?)[\t ]+?=[\t ]?\1"
+    regex: '(?sm)[ \ta-zA-Z0-9]?(?:let|var){1} [ \ta-zA-Z0-9]+?:[ \t]+?([a-zA-Z0-9]+?)[\t ]+?=[\t ]?\1'
     message: "Type Definition Not Needed"
     severity: warning
   missing_brackets:
     name: "Missing brackets"
-    regex: "(^(\t| )*(if|\} else if) (((?!(let|var|\())).)*\{)"
+    regex: '(^(\t| )*(if|\} else if) (((?!(let|var|\())).)*\{)'
     message: "If statements should be surrounded by rounded brackets"
     severity: warning
   empty_closure_params:
     name: "Empty closure params"
-    regex: "\{ (\(\) -> Void in)$"
+    regex: '\{ (\(\) -> Void in)$'
     message: "`() -> Void in` should be avoided"
     severity: warning
   incomplete_if:
     name: "Incomplete if"
-    regex: "(^ *if \(((?!( is | > | < | (=|!|<|>)= )).)*\) \{)"
+    regex: '(^ *if \(((?!( is | > | < | (=|!|<|>)= )).)*\) \{)'
     message: "if should contain == true or == false"
     severity: warning
   single_line_body:
     name: "Single Line Body"
-    regex: "(?i-sm)((if|while|do|for)*? \{(?!\n|.?(s|g)et).+?\}\n)"
+    regex: '(?i-sm)((if|while|do|for)*? \{(?!\n|.?(s|g)et).+?\}\n)'
     message: "Single line bodies are not allowed"
     severity: warning
   missing_closure_datatype:
     name: "Missing Closure Data Type"
-    regex: "(\{[\s]{1}\([^:]+?\)[\s]{1}in)"
+    regex: '(\{[\s]{1}(\[weak [\w]+?\][\s]{1})*?\([^:]+?\)[\s]{1}in)'
     message: "Data Type in Closure is missing"
     severity: warning
   invalid_mark_format:
     name: "Invalid MARK Format"
-    regex: "(?m-s)(\/\/[\s]*?MARK(?!(\:[\s]{1}\-[\s]{1}){1}))"
+    regex: '(?m-s)(\/\/[\s]*?MARK(?!(\:[\s]{1}\-[\s]{1}){1}))'
     message: "Use format: MARK: - Your Info"
     severity: warning
-  prefer_structs_over_classes:
-    name: "Prefer structs over classes"
-    regex: "(?m-s)(class[\s]{1}[a-zA-Z]*[\s]*\{$)"
-    message: "Prefer structs over classes"
+  missing_todo_link:
+    name: "Missing TODO Link"
+    regex: '(?i-s)((//|\*)[\s]*?(TODO|FIXME)((?!https://).)*$)'
+    message: "Missing Link to Jira for TODO"
+    severity: warning
+  missing_todo_message:
+    name: "Missing TODO Message"
+    regex: '(?i-s)(//|\*)[\s]*?(TODO|FIXME)[:\s]+https://'
+    message: "Missing TODO description"
     severity: warning
   missing_brackets_unwrap:
     name: "Missing rounded brackets around ??"
-    regex: "(\?\?[^)]*$)"
+    regex: '(\?\?[^)]*$)'
     message: "Missing rounded brackets around ??"
+    severity: warning
+  unnecessary_space:
+    name: "Unnecessary Space"
+    regex: '(\[[a-zA-Z0-9]+? {1}: {1}[a-zA-Z0-9]+?\])'
+    message: "Unnecessary space. use [DataType: DataType]."
+    severity: warning
+  missing_space:
+    name: "Missing Space"
+    regex: '(\[[a-zA-Z0-9]+?:[a-zA-Z0-9]+?\])'
+    message: "Missing space. use [DataType: DataType]."
+    severity: warning
+  missing_space_around_operator:
+    name: "Missing Space Around Operator"
+    regex: '[\w)]+(\+|-|\*|/)[\w(]+'
+    message: "Missing space around operator"
+    severity: warning
+    match_kinds:
+      - argument
+      - attribute.builtin
+      - attribute.id
+      - buildconfig.id
+      - buildconfig.keyword
+      - identifier
+      - keyword
+      - number
+      - objectliteral
+      - parameter
+      - placeholder
+      - typeidentifier
+  missing_empty_line:
+    name: "Missing Empty Line"
+    regex: '(?-smxi)(\}\n)([ \t]*?)([^\n\}\t ])'
+    message: "Missing empty line."
+    severity: warning
+  get_prefixed_function:
+    name: "Get prefixed function"
+    regex: '(?-smxi)(func get[A-Z0-9][\w]+?(\())'
+    message: "You should not prefix your functions with the word get."
+    severity: warning
+  multiline_if_statement_indentation_violation:
+    name: "Multiline if statement indentation violation"
+    regex: '(?m-six)^(?<tabs>[\t]+)(if|guard|case)\n[^{]+[\{]\n+\k<tabs>{1}[\t]{1}[\w]'
+    message: "You should indent the body by one level"
+    severity: warning
+  one_condition_per_if_statement_line:
+    name: "One condition per if statement line"
+    regex: '[\t]+(if|guard)[^\n]+?,(?!\s[a-zA-Z]+:)'
+    message: "Use if/guard with one condition per line indent by one level"
+    severity: warning
+  lowercase_constants:
+    name: "Lowercase Constants"
+    regex: '[ \t]let[ \t]*[A-Z][\w]*[ \t]*(=|:)'
+    message: "Constants should begin with a lowercase character."
+    severity: warning
+    match_kinds:
+      - argument
+      - attribute.builtin
+      - attribute.id
+      - buildconfig.id
+      - buildconfig.keyword
+      - comment
+      - comment.mark
+      - comment.url
+      - doccomment
+      - doccomment.field
+      - identifier
+      - keyword
+      - number
+      - objectliteral
+      - parameter
+      - placeholder
+      - typeidentifier
+  empty_lines_before_declaration_end:
+    name: "Empty lines before declaration end"
+    regex: '\n[ \t]*\n[ \t]*\}([ \t]*\n|\n)'
+    message: "Empty lines before a declaration aren't improving the readability."
     severity: warning

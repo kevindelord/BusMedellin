@@ -13,17 +13,14 @@ import Buglife
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
+	var window: UIWindow?
 
-    private func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        Appirater.setup()
+	private func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+		Appirater.setup()
 		HockeySDK.setup()
 		Analytics.setup()
+		Buglife.shared().start(withAPIKey: Configuration().buglifeIdentifier)
 
-		if let buglifeIdentifier = Bundle.main.stringEntryInPList(for: BMPlist.BuglifeID) {
-        	Buglife.shared().start(withAPIKey: buglifeIdentifier)
-		}
-
-        return true
-    }
+		return true
+	}
 }

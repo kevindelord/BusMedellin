@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>apiBaseUrl</key>
+	<string>https://www.googleapis.com/fusiontables/v1/query</string>
+	<key>appIdentifier</key>
+	<string>1168485545</string>
+	<key>buglifeIdentifier</key>
+	<string>zABHFQBQuM6ZzTTXZoRDDwtt</string>
+	<key>fusionTableIdentifier</key>
+	<string>1_ihDJT-_zFRLXb526aaS0Ct3TiXTlcPDy_BlAz0</string>
+	<key>fusionTableKey</key>
+	<string>AIzaSyDwufRWdHeGE6wbmSm4KvSX95phwJdc8GI</string>
+	<key>hockeyAppIdentifier</key>
+	<string>1044d82e3b0f4a0586de41a5e8980903</string>
+	<key>defaultLatitude</key>
+	<string>6.2442</string>
+	<key>defaultLongitude</key>
+	<string>-75.5812</string>
+</dict>
+</plist>

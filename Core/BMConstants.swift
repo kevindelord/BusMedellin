@@ -9,101 +9,80 @@
 import Foundation
 import UIKit
 
-struct BMPlist {
-
-    static let AppId            = "AppId"
-    static let APIBaseURL       = "APIBaseURL"
-    static let BuglifeID        = "BuglifeID"
-
-    struct FusionTable {
-
-        static let Identifier   = "FusionTableId"
-        static let Key          = "FusionTableKey"
-    }
-
-    static let MapDefault       = "MapDefault"
-
-    struct CityCenter {
-
-        static let Latitude     = "Latitude"
-        static let Longitude    = "Longitude"
-        static let Radius       = "Radius"
-    }
-}
-
 struct API {
 
-    struct Response {
+	struct Response {
 
-        struct Key {
+		struct Key {
 
-            static let Rows         = "rows"
-            static let Coordinates  = "coordinates"
-            static let Geometry     = "geometry"
-        }
-    }
+			static let rows			= "rows"
+			static let coordinates	= "coordinates"
+			static let geometry		= "geometry"
+		}
+	}
 }
 
 struct StaticHeight {
 
-    struct CollectionView {
+	struct CollectionView {
 
-        static let Cell             : CGFloat = 80
-        static let SectionHeader    : CGFloat = 80
-    }
+		static let cell				: CGFloat = 80
+		static let sectionHeader	: CGFloat = 80
+	}
 }
 
 struct Map {
 
-    static let DefaultSearchRadius  = 500.0
-    static let DeltaAfterSearch     = 0.007
-    static let MaxScrollDistance    : Double = 12000.0
-	static let CircleColorAlpha		: CGFloat = 0.3
-	static let PolylineWidth		: CGFloat = 2
+	static let defaultSearchRadius	= 500.0
+	static let defaultZoomRadius	: Double = 3300
+	static let deltaAfterSearch		= 0.007
+	static let maxScrollDistance	: Double = 12000.0
+	static let circleColorAlpha		: CGFloat = 0.3
+	static let polylineWidth		: CGFloat = 2
 
-    struct Address {
+	struct Address {
 
-        static let Street           = "Street"
-    }
+		static let street			= "Street"
+	}
 }
 
 struct Segue {
 
-    static let Settings         = "openSettingsViewController"
+	static let settings				= "openSettingsViewController"
 }
 
 struct XibFile {
 
-    static let BMMapView        = "BMMapView"
-    static let BMHeaderView     = "BMHeaderView"
-    static let BMCellView       = "BMCellView"
+	static let mapView				= "BMMapView"
+	static let headerView			= "BMHeaderView"
+	static let cellView				= "BMCellView"
 }
 
 struct ReuseId {
 
-    static let ParallaxHeader   = "MapCollectionView_ParallaxHeader"
-    static let SectionHeader    = "CollectionView_SectionHeader"
-    static let ResultCell       = "CollectionView_ResultCell"
-    static let PickUpPin        = "PickUpAnnotaion_Id"
-    static let DestinationPin   = "DestinationAnnotaion_Id"
+	static let parallaxHeader		= "MapCollectionView_ParallaxHeader"
+	static let sectionHeader		= "CollectionView_SectionHeader"
+	static let resultCell			= "CollectionView_ResultCell"
+	static let pickUpPin			= "PickUpAnnotaion_Id"
+	static let destinationPin		= "DestinationAnnotaion_Id"
 }
 
 struct BMColor {
 
-    static let red              = UIColor(red: 255, green: 59, blue: 48) ?? .red
-    static let green            = UIColor(red: 76, green: 217, blue: 100) ?? .green
-    static let blue             = UIColor(red: 33, green: 150, blue: 243) ?? .blue
-    static let gray             = UIColor(red: 149, green: 165, blue: 166) ?? .gray
-    static let black            = UIColor.black
-    static let viewBorder       = UIColor(red: 230, green: 230, blue: 230) ?? .lightGray
-    static let dotBorder        = UIColor(red: 150, green: 150, blue: 150) ?? .darkGray
+	static let red					= (UIColor(red: 255, green: 59, blue: 48) ?? .red)
+	static let green				= (UIColor(red: 76, green: 217, blue: 100) ?? .green)
+	static let blue					= (UIColor(red: 33, green: 150, blue: 243) ?? .blue)
+	static let gray					= (UIColor(red: 149, green: 165, blue: 166) ?? .gray)
+	static let black				= UIColor.black
+	static let viewBorder			= (UIColor(red: 230, green: 230, blue: 230) ?? .lightGray)
+	static let dotBorder			= (UIColor(red: 150, green: 150, blue: 150) ?? .darkGray)
 }
 
 struct BMExternalLink {
 
-    static let Project          = "https://github.com/kevindelord/BusMedellin"
-    static let ThibaultDurand   = "https://github.com/tdurand"
-    static let TwitterTDurand   = "https://twitter.com/tibbb"
-    static let WebVersion       = "http://tdurand.github.io/mapamedellin"
-    static let KevinDelord      = "https://github.com/kevindelord"
+	static let project				= "https://github.com/kevindelord/BusMedellin"
+	static let thibaultDurand		= "https://github.com/tdurand"
+	static let twitterTDurand		= "https://twitter.com/tibbb"
+	static let webVersion			= "http://tdurand.github.io/mapamedellin"
+	static let kevinDelord			= "https://github.com/kevindelord"
 }

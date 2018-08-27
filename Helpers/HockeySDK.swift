@@ -11,10 +11,6 @@ import HockeySDK
 
 struct HockeySDK {
 
-	// MARK: - Public Properties
-
-	static let IdentifierKey	= "HockeyAppId"
-
 	// MARK: - Private Properties
 
 	private static var isReleaseBuild: Bool {
@@ -33,15 +29,11 @@ struct HockeySDK {
 	- parameter crashManagerStatus: The `BITCrashManagerStatus` which determines whether crashes should be send to HockeyApp and whether it should be done automatically or manually by the user. The default value is `AutoSend`.
 	*/
 	static func setup(crashManagerStatus: BITCrashManagerStatus = .autoSend) {
-        if let _identifier = Bundle.main.object(forInfoDictionaryKey: IdentifierKey) as? String {
-			if (self.isReleaseBuild == true) {
-                BITHockeyManager.shared().configure(withIdentifier:_identifier)
-				BITHockeyManager.shared().start()
-				BITHockeyManager.shared().authenticator.authenticateInstallation()
-				BITHockeyManager.shared().crashManager.crashManagerStatus = crashManagerStatus
-			}
-		} else {
-			print("Warning: You have to set the `\(IdentifierKey)` key in the info plist.")
+		if (self.isReleaseBuild == true) {
+			BITHockeyManager.shared().configure(withIdentifier: Configuration().hockeyAppIdentifier)
+			BITHockeyManager.shared().start()
+			BITHockeyManager.shared().authenticator.authenticateInstallation()
+			BITHockeyManager.shared().crashManager.crashManagerStatus = crashManagerStatus
 		}
 	}
 }

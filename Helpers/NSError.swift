@@ -10,7 +10,7 @@ import Foundation
 
 extension NSError {
 
-    func log() {
-        print("Error: \(self) \(self.userInfo)")
-    }
+	func log() {
+		print("Error: \(self) \(self.userInfo)")
+	}
 }

@@ -11,55 +11,55 @@ import MapKit
 
 extension MKMapView {
 
-    /**
-     Adds the specified annotation to the map view.
+	/**
+	Adds the specified annotation to the map view.
 
-     - parameter annotation: Optional annotation. If nil nothing happens.
-     */
-    func addAnnotation(safe annotation: MKAnnotation?) {
-        guard let annotation = annotation else {
-            return
-        }
-        
-        self.addAnnotation(annotation)
-    }
+	- parameter annotation: Optional annotation. If nil nothing happens.
+	*/
+	func addAnnotation(safe annotation: MKAnnotation?) {
+		guard let annotation = annotation else {
+			return
+		}
 
-    /**
-     Removes the specified annotation object from the map view.
+		self.addAnnotation(annotation)
+	}
 
-     - parameter annotation: Optional annotation. If nil nothing happens.
-     */
-    func removeAnnotation(safe annotation: MKAnnotation?) {
-        guard let annotation = annotation else {
-            return
-        }
-        
-        self.removeAnnotation(annotation)
-    }
+	/**
+	Removes the specified annotation object from the map view.
 
-    /**
-     Adds a single overlay object to the map.
+	- parameter annotation: Optional annotation. If nil nothing happens.
+	*/
+	func removeAnnotation(safe annotation: MKAnnotation?) {
+		guard let annotation = annotation else {
+			return
+		}
 
-     - parameter overlay: Optional overlay. If nil nothing happens.
-     */
-    public func addOverlay(safe overlay: MKOverlay?) {
-        guard let overlay = overlay else {
-            return
-        }
-        
-        self.add(overlay)
-    }
+		self.removeAnnotation(annotation)
+	}
 
-    /**
-     Removes a single overlay object from the map.
+	/**
+	Adds a single overlay object to the map.
+	
+	- parameter overlay: Optional overlay. If nil nothing happens.
+	*/
+	public func addOverlay(safe overlay: MKOverlay?) {
+		guard let overlay = overlay else {
+			return
+		}
 
-     - parameter overlay: Optional overlay. If nil nothing happens.
-     */
-    public func removeOverlay(safe overlay: MKOverlay?) {
-        guard let overlay = overlay else {
-            return
-        }
-        
-        self.remove(overlay)
-    }
+		self.add(overlay)
+	}
+
+	/**
+	Removes a single overlay object from the map.
+
+	- parameter overlay: Optional overlay. If nil nothing happens.
+	*/
+	public func removeOverlay(safe overlay: MKOverlay?) {
+		guard let overlay = overlay else {
+			return
+		}
+
+		self.remove(overlay)
+	}
 }

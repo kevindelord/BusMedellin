@@ -8,41 +8,41 @@
 
 import Foundation
 
-class BMSettingsViewController                  : UIViewController {
+class BMSettingsViewController					: UIViewController {
 
-    @IBOutlet private weak var versionLabel     : UILabel?
-    @IBOutlet private weak var aboutTitleLabel  : UILabel?
-    @IBOutlet private weak var aboutTextView    : UITextView?
-    @IBOutlet private weak var bugTitleLabel    : UILabel?
-    @IBOutlet private weak var bugTextLabel     : UILabel?
-    @IBOutlet private weak var madeByTextView   : UITextView?
+	@IBOutlet private weak var versionLabel		: UILabel?
+	@IBOutlet private weak var aboutTitleLabel	: UILabel?
+	@IBOutlet private weak var aboutTextView	: UITextView?
+	@IBOutlet private weak var bugTitleLabel	: UILabel?
+	@IBOutlet private weak var bugTextLabel		: UILabel?
+	@IBOutlet private weak var madeByTextView	: UITextView?
 
-    // MARK: - Lifeview cycle
+	// MARK: - Lifeview cycle
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+	override func viewDidLoad() {
+		super.viewDidLoad()
 
-        // Screen title
-        self.title = L("SETTINGS_VC_TITLE")
+		// Screen title
+		self.title = L("SETTINGS_VC_TITLE")
 
-        // Labels
+		// Labels
 		self.configureVersionLabel()
-        self.aboutTitleLabel?.text = L("SETTINGS_ABOUT_TITLE")
-        self.bugTitleLabel?.text = L("SETTINGS_BUG_TITLE")
-        self.bugTextLabel?.text = L("SETTINGS_BUG_TEXT")
+		self.aboutTitleLabel?.text = L("SETTINGS_ABOUT_TITLE")
+		self.bugTitleLabel?.text = L("SETTINGS_BUG_TITLE")
+		self.bugTextLabel?.text = L("SETTINGS_BUG_TEXT")
 
-        // Text views
-        self.setupAboutTextView()
-        self.setupMadeByTextView()
-    }
+		// Text views
+		self.setupAboutTextView()
+		self.setupMadeByTextView()
+	}
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
 
-        Analytics.send(screenView: .settings)
-    }
+		Analytics.send(screenView: .settings)
+	}
 
-    // MARK: - UI Setup functions
+	// MARK: - UI Setup functions
 
 	private func configureVersionLabel() {
 		guard
@@ -57,51 +57,52 @@ class BMSettingsViewController                  : UIViewController {
 		self.versionLabel?.text = "Version \(shortVersion) (\(bundleVersion))"
 	}
 
-    private var textViewFont : UIFont {
-        var font = (UIFont(name: "Helvetica Neue Light", size: 15) ?? UIFont.systemFont(ofSize: 15))
-        if #available(iOS 8.2, *) {
-            font = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.light)
-        }
-        return font
-    }
+	private var textViewFont : UIFont {
+		var font = (UIFont(name: "Helvetica Neue Light", size: 15) ?? UIFont.systemFont(ofSize: 15))
+		if #available(iOS 8.2, *) {
+			font = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.light)
+		}
 
-    private func setupAboutTextView() {
-        let str = L("SETTINGS_ABOUT_TEXT")
-        let attrStr = NSMutableAttributedString(string: L("SETTINGS_ABOUT_TEXT"))
+		return font
+	}
 
-        let anchors : [(text: String, url: String)] = [
-            (L("SETTINGS_ABOUT_ANCHOR_1"), BMExternalLink.Project),
-            (L("SETTINGS_ABOUT_ANCHOR_2"), BMExternalLink.ThibaultDurand),
-            (L("SETTINGS_ABOUT_ANCHOR_3"), BMExternalLink.TwitterTDurand),
-            (L("SETTINGS_ABOUT_ANCHOR_4"), BMExternalLink.WebVersion)
-        ]
-        
-        for anchor in anchors {
-            attrStr.addAttribute(.link, value: anchor.url, range: (str as NSString).range(of: anchor.text))
-        }
+	private func setupAboutTextView() {
+		let str = L("SETTINGS_ABOUT_TEXT")
+		let attrStr = NSMutableAttributedString(string: L("SETTINGS_ABOUT_TEXT"))
 
-        attrStr.addAttribute(.font, value: self.textViewFont, range: NSRange(location: 0, length: str.count))
-        self.aboutTextView?.attributedText = attrStr
-    }
+		let anchors : [(text: String, url: String)] = [
+			(L("SETTINGS_ABOUT_ANCHOR_1"), BMExternalLink.project),
+			(L("SETTINGS_ABOUT_ANCHOR_2"), BMExternalLink.thibaultDurand),
+			(L("SETTINGS_ABOUT_ANCHOR_3"), BMExternalLink.twitterTDurand),
+			(L("SETTINGS_ABOUT_ANCHOR_4"), BMExternalLink.webVersion)
+		]
 
-    private func setupMadeByTextView() {
-        let str = L("SETTINGS_MADE_BY")
-        let attrStr = NSMutableAttributedString(string: L("SETTINGS_MADE_BY"))
+		for anchor in anchors {
+			attrStr.addAttribute(.link, value: anchor.url, range: (str as NSString).range(of: anchor.text))
+		}
 
-        let tuple = (anchor: L("SETTINGS_MADE_BY_ANCHOR"), url: BMExternalLink.KevinDelord)
-        attrStr.addAttribute(.link, value: tuple.url, range: (str as NSString).range(of: tuple.anchor))
-        attrStr.addAttribute(.link, value: self.textViewFont, range: NSRange(location: 0, length: str.count))
-        // Center text
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.alignment = .center
-        attrStr.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: str.count))
+		attrStr.addAttribute(.font, value: self.textViewFont, range: NSRange(location: 0, length: str.count))
+		self.aboutTextView?.attributedText = attrStr
+	}
 
-        self.madeByTextView?.attributedText = attrStr
-    }
+	private func setupMadeByTextView() {
+		let str = L("SETTINGS_MADE_BY")
+		let attrStr = NSMutableAttributedString(string: L("SETTINGS_MADE_BY"))
 
-    // MARK: - Interface Actions
+		let tuple = (anchor: L("SETTINGS_MADE_BY_ANCHOR"), url: BMExternalLink.kevinDelord)
+		attrStr.addAttribute(.link, value: tuple.url, range: (str as NSString).range(of: tuple.anchor))
+		attrStr.addAttribute(.link, value: self.textViewFont, range: NSRange(location: 0, length: str.count))
+		// Center text
+		let paragraphStyle = NSMutableParagraphStyle()
+		paragraphStyle.alignment = .center
+		attrStr.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: str.count))
 
-    @IBAction func closeButtonPressed() {
-        self.dismiss(animated: true, completion: nil)
-    }
+		self.madeByTextView?.attributedText = attrStr
+	}
+
+	// MARK: - Interface Actions
+
+	@IBAction private func closeButtonPressed() {
+		self.dismiss(animated: true, completion: nil)
+	}
 }

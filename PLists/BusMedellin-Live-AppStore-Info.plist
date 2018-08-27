@@ -2,12 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>APIBaseURL</key>
-	<string>https://www.googleapis.com/fusiontables/v1/query</string>
-	<key>AppId</key>
-	<string>0123456789</string>
-	<key>BuglifeID</key>
-	<string>zABHFQBQuM6ZzTTXZoRDDwtt</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -28,12 +22,6 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>2</string>
-	<key>FusionTableId</key>
-	<string>1_ihDJT-_zFRLXb526aaS0Ct3TiXTlcPDy_BlAz0</string>
-	<key>FusionTableKey</key>
-	<string>AIzaSyDwufRWdHeGE6wbmSm4KvSX95phwJdc8GI</string>
-	<key>HockeyAppId</key>
-	<string>1044d82e3b0f4a0586de41a5e8980903</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MapDefault</key>

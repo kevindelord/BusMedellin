@@ -22,24 +22,27 @@ struct DKLogSettings {
 
 func DKLog(_ verbose: Bool, _ obj: Any = "", file: String = #file, function: String = #function, line: Int = #line) {
 	#if DEBUG
-	if (verbose == true) {
-		if (DKLogSettings.shouldShowDetailedLogs == true),
-			let className = NSURL(string: file)?.lastPathComponent?.components(separatedBy: ".").first {
-
-			var logStatement = DKLogSettings.detailedLogFormat.replacingOccurrences(of: ":line", with: "\(line)")
-			logStatement = logStatement.replacingOccurrences(of: ":className", with: className)
-			logStatement = logStatement.replacingOccurrences(of: ":function", with: function)
-			logStatement = logStatement.replacingOccurrences(of: ":obj", with: "\(obj)")
-
-			if (logStatement.contains(":date")) {
-				let replacement = DKLogSettings.dateFormatter.string(from: Date())
-				logStatement = logStatement.replacingOccurrences(of: ":date", with: "\(replacement)")
-			}
-
-			print(logStatement)
-		} else {
-			print(obj)
-		}
+	guard (verbose == true) else {
+		return
 	}
+
+	guard
+		(DKLogSettings.shouldShowDetailedLogs == true),
+		let className = NSURL(string: file)?.lastPathComponent?.components(separatedBy: ".").first else {
+			print(obj)
+			return
+	}
+
+	var logStatement = DKLogSettings.detailedLogFormat.replacingOccurrences(of: ":line", with: "\(line)")
+	logStatement = logStatement.replacingOccurrences(of: ":className", with: className)
+	logStatement = logStatement.replacingOccurrences(of: ":function", with: function)
+	logStatement = logStatement.replacingOccurrences(of: ":obj", with: "\(obj)")
+
+	if (logStatement.contains(":date")) {
+		let replacement = DKLogSettings.dateFormatter.string(from: Date())
+		logStatement = logStatement.replacingOccurrences(of: ":date", with: "\(replacement)")
+	}
+
+	print(logStatement)
 	#endif
 }

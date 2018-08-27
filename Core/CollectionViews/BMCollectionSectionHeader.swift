@@ -8,28 +8,28 @@
 
 import Foundation
 
-class BMCollectionViewSectionHeader     : UICollectionReusableView {
+class BMCollectionViewSectionHeader		: UICollectionReusableView {
 
-    var headerContainer                 : BMHeaderView?
+	var headerContainer					: BMHeaderView?
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+	override init(frame: CGRect) {
+		super.init(frame: frame)
 
-        self.clipsToBounds = true
-        self.interfaceInitialisation()
-    }
+		self.clipsToBounds = true
+		self.interfaceInitialisation()
+	}
 
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+	required init?(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)
 
-        self.interfaceInitialisation()
-    }
+		self.interfaceInitialisation()
+	}
 
-    private func interfaceInitialisation() {
-        self.headerContainer = UIView.load(from: XibFile.BMHeaderView) as? BMHeaderView
-        self.headerContainer?.frame = self.bounds
-        self.headerContainer?.layer.borderWidth = 1
-        self.headerContainer?.layer.borderColor = BMColor.viewBorder.cgColor
-        self.addSubview(safe: self.headerContainer)
-    }
+	private func interfaceInitialisation() {
+		self.headerContainer = UIView.load(from: XibFile.headerView) as? BMHeaderView
+		self.headerContainer?.frame = self.bounds
+		self.headerContainer?.layer.borderWidth = 1
+		self.headerContainer?.layer.borderColor = BMColor.viewBorder.cgColor
+		self.addSubview(safe: self.headerContainer)
+	}
 }

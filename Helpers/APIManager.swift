@@ -28,9 +28,8 @@ class APIManager {
 
 	fileprivate init(staticURLWithParameters parameters: [String: String?]) {
 		guard
-			let fullPath = Bundle.main.stringEntryInPList(for: BMPlist.APIBaseURL),
 			let bundleIdentifier = Bundle.main.bundleIdentifier,
-			var urlComponents = URLComponents(string: fullPath) else {
+			var urlComponents = URLComponents(string: Configuration().apiBaseUrl) else {
 				return
 		}
 
@@ -60,8 +59,8 @@ class APIManager {
 			APIManager.didCompleteSessionTask(data: data, success: success, failure: failure)
 		}
 
-		DKLog(Verbose.Manager.API, "Request: \(request)")
-		DKLog(Verbose.Manager.API, "HTTP header fields: \(request.allHTTPHeaderFields ?? [:])")
+		DKLog(Configuration.Verbose.api, "Request: \(request)")
+		DKLog(Configuration.Verbose.api, "HTTP header fields: \(request.allHTTPHeaderFields ?? [:])")
 		task.resume()
 	}
 
@@ -91,12 +90,8 @@ class APIManager {
 extension APIManager {
 
 	private static var GoogleIdentifiers: (identifier: String, key: String) {
-		guard
-			let identifier = Bundle.main.stringEntryInPList(for: BMPlist.FusionTable.Identifier),
-			let key = Bundle.main.stringEntryInPList(for: BMPlist.FusionTable.Key) else {
-				return ("", "")
-		}
-
+		let identifier = Configuration().fusionTableIdentifier
+		let key = Configuration().fusionTableKey
 		return (identifier, key)
 	}
 
@@ -106,25 +101,25 @@ extension APIManager {
 	/// https://www.googleapis.com/fusiontables/v1/query?sql=SELECT%20geometry%20FROM%20<Google Fusion Table ID>%20WHERE%20CODIGO_RUT=%27RU130RA%27&key=<Google API Key>
 	static func coordinates(forRouteCode routeCode: String, success: @escaping (_ coordinates: [[Double]]) -> Void, failure: @escaping (_ error: Error) -> Void) {
 		let google = APIManager.GoogleIdentifiers
-        let parameters = [
+		let parameters = [
 			"key": google.key,
 			"sql": "SELECT geometry FROM \(google.identifier) WHERE CODIGO_RUT='\(routeCode)'"
 		]
 		let manager = APIManager(staticURLWithParameters: parameters)
 		manager.get(success: { (json: [AnyHashable: Any]) in
 			guard
-				let jsonObject      = json as? [String: Any],
-				let rows            = jsonObject[API.Response.Key.Rows] as? [[[String: Any]]],
-				let row             = rows.first?.first,
-				let geometry        = row[API.Response.Key.Geometry] as? [String:Any],
-				let coordinates     = geometry[API.Response.Key.Coordinates] as? [[Double]] else {
+				let jsonObject = json as? [String: Any],
+				let rows = jsonObject[API.Response.Key.rows] as? [[[String: Any]]],
+				let row = rows.first?.first,
+				let geometry = row[API.Response.Key.geometry] as? [String: Any],
+				let coordinates = geometry[API.Response.Key.coordinates] as? [[Double]] else {
 					let message = "Parsing geometry list failed for route name: \(routeCode)"
 					let error = NSError(domain: "BusPaisa", code: 300, userInfo: [NSLocalizedDescriptionKey: message])
 					failure(error)
 					return
 			}
 
-			DKLog(Verbose.Manager.API, "APIManager: did Receive \(coordinates.count) coordinates for route name: \(routeCode)\n")
+			DKLog(Configuration.Verbose.api, "APIManager: did Receive \(coordinates.count) coordinates for route name: \(routeCode)\n")
 			success(coordinates)
 		}, failure: { (error: Error) in
 			failure(error)
@@ -136,20 +131,20 @@ extension APIManager {
 	/// Base URL + "?sql=SELECT Nombre_Rut,CODIGO_RUT FROM " + idFusionTable + " WHERE ST_INTERSECTS(geometry,CIRCLE(LATLNG(" + lat + "," + lng + ")," + radius + "))&key=" + keyFusionTable
 	/// https://www.googleapis.com/fusiontables/v1/query?sql=SELECT%20Nombre_Rut,CODIGO_RUT%20FROM%20<Google Fusion Table ID>%20WHERE%20ST_INTERSECTS(geometry,CIRCLE(LATLNG(6.207853406405264,-75.58648771697993),500))&key=<Google API Key>
 	static func routes(aroundLocation location: CLLocation, success: @escaping (_ routes: [Route]) -> Void, failure: @escaping (_ error: Error) -> Void) {
-        let google = APIManager.GoogleIdentifiers
-        let lat = location.coordinate.latitude
-        let lng = location.coordinate.longitude
-		let radius = Map.DefaultSearchRadius
-        let parameters = [
+		let google = APIManager.GoogleIdentifiers
+		let lat = location.coordinate.latitude
+		let lng = location.coordinate.longitude
+		let radius = Map.defaultSearchRadius
+		let parameters = [
 			"key": google.key,
 			"sql": "SELECT Nombre_Rut,CODIGO_RUT,NomBar,NomCom FROM \(google.identifier) WHERE ST_INTERSECTS(geometry,CIRCLE(LATLNG(\(lat),\(lng)),\(radius)))"
 		]
 
 		let manager = APIManager(staticURLWithParameters: parameters)
 		manager.get(success: { (json: [AnyHashable: Any]) in
-            guard
-                let jsonObject  = json as? [String: Any],
-                let routeData   = jsonObject[API.Response.Key.Rows] as? [[String]] else {
+			guard
+				let jsonObject = json as? [String: Any],
+				let routeData = jsonObject[API.Response.Key.rows] as? [[String]] else {
 					let message = "Parsing route list failed for routes around location: \(lat),\(lng)"
 					let error = NSError(domain: "BusPaisa", code: 300, userInfo: [NSLocalizedDescriptionKey: message])
 					failure(error)
@@ -157,11 +152,11 @@ extension APIManager {
 			}
 
 			let routes = Route.createRoutes(data: routeData)
-			DKLog(Verbose.Manager.API, "APIManager: did Receive \(routes.count) routes around: \(lat),\(lng)\n")
+			DKLog(Configuration.Verbose.api, "APIManager: did Receive \(routes.count) routes around: \(lat),\(lng)\n")
 			success(routes)
 
 		}, failure: { (error: Error) in
 			failure(error)
-        })
-    }
+		})
+	}
 }

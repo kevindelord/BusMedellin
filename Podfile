@@ -6,10 +6,8 @@ use_frameworks!
 def corePods
     pod 'Reachability', '~> 3.2'
 	pod 'Appirater', '~> 2.0.5'
-	pod 'AFNetworking', '~> 3.1.0'
-	pod 'MBProgressHUD', '~> 1.0.0'
+	pod 'MBProgressHUD', '~> 1.1.0'
     pod 'CSStickyHeaderFlowLayout', '~> 0.2.11'
-    pod 'DKHelper', '~> 2.2.3' # TODO: remove
     pod 'Buglife', '~> 1.3.3'
     pod 'HockeySDK', '~> 4.1.2'
     pod 'Google/Analytics'

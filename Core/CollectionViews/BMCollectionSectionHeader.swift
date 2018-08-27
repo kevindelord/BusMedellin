@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import DKHelper
 
 class BMCollectionViewSectionHeader     : UICollectionReusableView {
 
@@ -27,7 +26,7 @@ class BMCollectionViewSectionHeader     : UICollectionReusableView {
     }
 
     private func interfaceInitialisation() {
-        self.headerContainer = UIView.load(fromNib: XibFile.BMHeaderView) as? BMHeaderView
+        self.headerContainer = UIView.load(from: XibFile.BMHeaderView) as? BMHeaderView
         self.headerContainer?.frame = self.bounds
         self.headerContainer?.layer.borderWidth = 1
         self.headerContainer?.layer.borderColor = BMColor.viewBorder.cgColor

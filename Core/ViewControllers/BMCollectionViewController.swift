@@ -8,7 +8,6 @@
 
 import Foundation
 import CSStickyHeaderFlowLayout
-import DKHelper
 import Reachability
 
 class BMCollectionViewController: UICollectionViewController {
@@ -121,10 +120,10 @@ extension BMCollectionViewController {
         let limitHeight = (scrollView.contentOffset.y + StaticHeight.CollectionView.SectionHeader + UIApplication.shared.statusBarFrame.size.height)
         let isCurrentlyHidden = self.statusBarHidden
 
-        if (self.statusBarHidden == false && limitHeight >= self.view.frameHeight) {
+        if (self.statusBarHidden == false && limitHeight >= self.view.frame.height) {
             self.statusBarHidden = true
 
-        } else if (self.statusBarHidden == true && limitHeight < self.view.frameHeight) {
+        } else if (self.statusBarHidden == true && limitHeight < self.view.frame.height) {
             self.statusBarHidden = false
         }
 
@@ -148,6 +147,7 @@ extension BMCollectionViewController {
         if (routes != nil && routes?.isEmpty == true) {
             UIAlertController.showErrorMessage(L("NO_ROUTE_FOUND"))
         }
+
         if (self.availableRoutes?.isEmpty == false) {
             // Reload the collection view to show the number of bus lines found.
             self.collectionView?.reloadData()
@@ -158,9 +158,9 @@ extension BMCollectionViewController {
             // Reset the scroll if possible.
             self.collectionView?.setContentOffset(CGPoint.zero, animated: true)
             // And then, after the animation (0.3s) reload the collection view.
-            self.performBlock(afterDelay: 0.3, block: {
-                self.collectionView?.reloadData()
-            })
+			DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
+                self?.collectionView?.reloadData()
+            }
         }
     }
 }

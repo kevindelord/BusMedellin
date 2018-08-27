@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import DKHelper
 
 class BMSettingsViewController                  : UIViewController {
 
@@ -27,7 +26,7 @@ class BMSettingsViewController                  : UIViewController {
         self.title = L("SETTINGS_VC_TITLE")
 
         // Labels
-        self.versionLabel?.text = appVersion()
+		self.configureVersionLabel()
         self.aboutTitleLabel?.text = L("SETTINGS_ABOUT_TITLE")
         self.bugTitleLabel?.text = L("SETTINGS_BUG_TITLE")
         self.bugTextLabel?.text = L("SETTINGS_BUG_TEXT")
@@ -44,6 +43,19 @@ class BMSettingsViewController                  : UIViewController {
     }
 
     // MARK: - UI Setup functions
+
+	private func configureVersionLabel() {
+		guard
+			let info = Bundle.main.infoDictionary,
+			let shortVersion = info["CFBundleShortVersionString"] as? String,
+			let bundleVersion = info["CFBundleVersion"] as? String else {
+				self.versionLabel?.text = ""
+				return
+		}
+
+		// TODO: localize
+		self.versionLabel?.text = "Version \(shortVersion) (\(bundleVersion))"
+	}
 
     private var textViewFont : UIFont {
         var font = (UIFont(name: "Helvetica Neue Light", size: 15) ?? UIFont.systemFont(ofSize: 15))

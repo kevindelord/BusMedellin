@@ -17,9 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Appirater.setup()
-        Buglife.shared().start(withAPIKey: Bundle.stringEntryInPList(forKey: BMPlist.BuglifeID))
-        HockeySDK.setup()
-        Analytics.setup()
+		HockeySDK.setup()
+		Analytics.setup()
+
+		if let buglifeIdentifier = Bundle.main.stringEntryInPList(for: BMPlist.BuglifeID) {
+        	Buglife.shared().start(withAPIKey: buglifeIdentifier)
+		}
 
         return true
     }

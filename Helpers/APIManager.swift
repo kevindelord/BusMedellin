@@ -7,109 +7,161 @@
 //
 
 import Foundation
-import AFNetworking
-import DKHelper
 import MapKit
 
-extension AFHTTPRequestSerializer {
+extension URLComponents {
 
-	func addHeaderFields(headerFields: [(value: String, key: String)]?) {
-		for tuple in (headerFields ?? []) {
-			self.setValue(tuple.value, forHTTPHeaderField: tuple.key)
+	mutating func addQueryItems(from parameters: [String: String?]) {
+		self.queryItems = parameters.compactMap { (key: String, value: String?) -> URLQueryItem? in
+			guard let value = value else {
+				return nil
+			}
+
+			return URLQueryItem(name: key, value: value)
 		}
 	}
 }
 
-extension URLSessionTask {
+class APIManager {
 
-	/// Cast the current `response` NSURLResponse into a NSHTTPURLResponse and return the static code.
-	var responseStatusCode : Int? {
-		return (self.response as? HTTPURLResponse)?.statusCode
+	private var request			: URLRequest?
+
+	fileprivate init(staticURLWithParameters parameters: [String: String?]) {
+		guard
+			let fullPath = Bundle.main.stringEntryInPList(for: BMPlist.APIBaseURL),
+			let bundleIdentifier = Bundle.main.bundleIdentifier,
+			var urlComponents = URLComponents(string: fullPath) else {
+				return
+		}
+
+		urlComponents.addQueryItems(from: parameters)
+		guard let url = urlComponents.url else {
+			return
+		}
+
+		self.request = URLRequest(url: url)
+		self.request?.httpMethod = "GET"
+		self.request?.setValue(bundleIdentifier, forHTTPHeaderField: "x-ios-bundle-identifier")
 	}
-}
 
-struct APIManager {
+	private func get(success: @escaping ((_ json: [AnyHashable: Any]) -> Void), failure: @escaping ((_ error: Error) -> Void)) {
+		guard let request = self.request else {
+			return
+		}
 
-    private static func GETRequest(parameters: AnyObject?, success: @escaping ((_ session: URLSessionDataTask, _ responseObject: Any?) -> Void), failure: @escaping ((_ session: URLSessionTask?, _ error: Error) -> Void)) {
+		let config = URLSessionConfiguration.default
+		let session = URLSession(configuration: config)
+		let task = session.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
+			if let error = error {
+				failure(error)
+				return
+			}
 
-        let fullPath = Bundle.stringEntryInPList(forKey:BMPlist.APIBaseURL)
-		let manager = AFHTTPSessionManager()
-		manager.requestSerializer = AFHTTPRequestSerializer()
-        DKLog(Verbose.Manager.API, "GET Request: \(fullPath) parameters: \(String(describing: parameters))")
-		DKLog(Verbose.Manager.API, "GET Request HTTP header field: \(manager.requestSerializer.httpRequestHeaders)")
+			APIManager.didCompleteSessionTask(data: data, success: success, failure: failure)
+		}
 
-        
-        manager.get(fullPath, parameters: parameters, success: success, failure: { (session: URLSessionDataTask?, error: Error) in
-            print(error.localizedDescription)
-            failure(session, error)
-        })
+		DKLog(Verbose.Manager.API, "Request: \(request)")
+		DKLog(Verbose.Manager.API, "HTTP header fields: \(request.allHTTPHeaderFields ?? [:])")
+		task.resume()
+	}
+
+	private static func didCompleteSessionTask(data: Data?, success: @escaping ((_ json: [AnyHashable: Any]) -> Void), failure: @escaping ((_ error: Error) -> Void)) {
+		do {
+			guard
+				let data = data,
+				let json = try JSONSerialization.jsonObject(with: data, options: []) as? [AnyHashable: Any] else {
+					DispatchQueue.main.async {
+						failure(NSError(domain: "BusPaisa", code: 300, userInfo: [NSLocalizedDescriptionKey: "Can't deserialize response."]))
+					}
+
+					return
+			}
+
+			DispatchQueue.main.async {
+				success(json)
+			}
+		} catch let error {
+			DispatchQueue.main.async {
+				failure(error)
+			}
+		}
 	}
 }
 
 extension APIManager {
 
-    static func coordinates(forRouteCode routeCode: String, completion: ((_ coordinates: [[Double]], _ error: Error?) -> Void)?) {
+	private static var GoogleIdentifiers: (identifier: String, key: String) {
+		guard
+			let identifier = Bundle.main.stringEntryInPList(for: BMPlist.FusionTable.Identifier),
+			let key = Bundle.main.stringEntryInPList(for: BMPlist.FusionTable.Key) else {
+				return ("", "")
+		}
 
-        /*
-        baseURL+ "?sql=SELECT geometry FROM " + idFusionTable + " WHERE CODIGO_RUT='" + route + "'&key=" + keyFusionTable
+		return (identifier, key)
+	}
 
-        https://www.googleapis.com/fusiontables/v1/query?sql=SELECT%20geometry%20FROM%201_ihDJT-_zFRLXb526aaS0Ct3TiXTlcPDy_BlAz0%20WHERE%20CODIGO_RUT=%27RU130RA%27&key=AIzaSyC59BP_KRtQDLeb5XM_x0eQNT_tdlBbHZc&callback=jQuery180014487654335838962_1476318703876&_=1476324379366
-        */
-        let identifier = Bundle.stringEntryInPList(forKey:BMPlist.FusionTable.Identifier)
-        let key = Bundle.stringEntryInPList(forKey:BMPlist.FusionTable.Key)
-        let parameters = ["sql":"SELECT geometry FROM \(identifier) WHERE CODIGO_RUT='\(routeCode)'", "key" : key]
+	/// Fetch all coordinates for a specific route.
+	///
+	/// Base URL + "?sql=SELECT geometry FROM " + idFusionTable + " WHERE CODIGO_RUT='" + route + "'&key=" + keyFusionTable
+	/// https://www.googleapis.com/fusiontables/v1/query?sql=SELECT%20geometry%20FROM%20<Google Fusion Table ID>%20WHERE%20CODIGO_RUT=%27RU130RA%27&key=<Google API Key>
+	static func coordinates(forRouteCode routeCode: String, success: @escaping (_ coordinates: [[Double]]) -> Void, failure: @escaping (_ error: Error) -> Void) {
+		let google = APIManager.GoogleIdentifiers
+        let parameters = [
+			"key": google.key,
+			"sql": "SELECT geometry FROM \(google.identifier) WHERE CODIGO_RUT='\(routeCode)'"
+		]
+		let manager = APIManager(staticURLWithParameters: parameters)
+		manager.get(success: { (json: [AnyHashable: Any]) in
+			guard
+				let jsonObject      = json as? [String: Any],
+				let rows            = jsonObject[API.Response.Key.Rows] as? [[[String: Any]]],
+				let row             = rows.first?.first,
+				let geometry        = row[API.Response.Key.Geometry] as? [String:Any],
+				let coordinates     = geometry[API.Response.Key.Coordinates] as? [[Double]] else {
+					let message = "Parsing geometry list failed for route name: \(routeCode)"
+					let error = NSError(domain: "BusPaisa", code: 300, userInfo: [NSLocalizedDescriptionKey: message])
+					failure(error)
+					return
+			}
 
-        self.GETRequest(parameters: parameters as AnyObject, success: { (session: URLSessionDataTask, responseObject: Any?) in
+			DKLog(Verbose.Manager.API, "APIManager: did Receive \(coordinates.count) coordinates for route name: \(routeCode)\n")
+			success(coordinates)
+		}, failure: { (error: Error) in
+			failure(error)
+		})
+	}
 
-            if
-                let jsonObject      = responseObject as? [String:AnyObject],
-                let rows            = jsonObject[API.Response.Key.Rows] as? [[[String:AnyObject]]],
-                let row             = rows.first?.first,
-                let geometry        = row[API.Response.Key.Geometry] as? [String:AnyObject],
-                let coordinates     = geometry[API.Response.Key.Coordinates] as? [[Double]] {
-
-                    DKLog(Verbose.Manager.API, "APIManager: did Receive \(coordinates.count) coordinates for route name: \(routeCode)\n")
-                    completion?(coordinates, nil)
-                    return
-            }
-
-            DKLog(Verbose.Manager.API, "APIManager: parsing 'geometry' list failed for route name: \(routeCode)\n")
-            completion?([], nil)
-            }, failure: { (operation: URLSessionTask?, error: Error) in
-                completion?([], error)
-        })
-    }
-
-    static func routes(aroundLocation location: CLLocation, radius: Double = Map.DefaultSearchRadius, completion: ((_ routes: [Route], _ error: Error?) -> Void)?) {
-
-        /*
-        BaseURL + "?sql=SELECT Nombre_Rut,CODIGO_RUT FROM " + idFusionTable + " WHERE ST_INTERSECTS(geometry,CIRCLE(LATLNG(" + lat + "," + lng + ")," + radius + "))&key=" + keyFusionTable
-
-        // swiftlint:disable line_length
-        https://www.googleapis.com/fusiontables/v1/query?sql=SELECT%20Nombre_Rut,CODIGO_RUT%20FROM%201_ihDJT-_zFRLXb526aaS0Ct3TiXTlcPDy_BlAz0%20WHERE%20ST_INTERSECTS(geometry,CIRCLE(LATLNG(6.207853406405264,-75.58648771697993),500))&key=AIzaSyC59BP_KRtQDLeb5XM_x0eQNT_tdlBbHZc&callback=jQuery180014487654335838962_1476318703876&_=1476328479515
-        // swiftlint:enable line_length
-        */
-        let identifier = Bundle.stringEntryInPList(forKey:BMPlist.FusionTable.Identifier)
-        let key = Bundle.stringEntryInPList(forKey:BMPlist.FusionTable.Key)
+	/// Fetch all available routes around a specific location.
+	///
+	/// Base URL + "?sql=SELECT Nombre_Rut,CODIGO_RUT FROM " + idFusionTable + " WHERE ST_INTERSECTS(geometry,CIRCLE(LATLNG(" + lat + "," + lng + ")," + radius + "))&key=" + keyFusionTable
+	/// https://www.googleapis.com/fusiontables/v1/query?sql=SELECT%20Nombre_Rut,CODIGO_RUT%20FROM%20<Google Fusion Table ID>%20WHERE%20ST_INTERSECTS(geometry,CIRCLE(LATLNG(6.207853406405264,-75.58648771697993),500))&key=<Google API Key>
+	static func routes(aroundLocation location: CLLocation, success: @escaping (_ routes: [Route]) -> Void, failure: @escaping (_ error: Error) -> Void) {
+        let google = APIManager.GoogleIdentifiers
         let lat = location.coordinate.latitude
         let lng = location.coordinate.longitude
-        let parameters = ["sql":"SELECT Nombre_Rut,CODIGO_RUT,NomBar,NomCom FROM \(identifier) WHERE ST_INTERSECTS(geometry,CIRCLE(LATLNG(\(lat),\(lng)),\(radius)))", "key" : key]
+		let radius = Map.DefaultSearchRadius
+        let parameters = [
+			"key": google.key,
+			"sql": "SELECT Nombre_Rut,CODIGO_RUT,NomBar,NomCom FROM \(google.identifier) WHERE ST_INTERSECTS(geometry,CIRCLE(LATLNG(\(lat),\(lng)),\(radius)))"
+		]
 
-        self.GETRequest(parameters: parameters as AnyObject, success: { (session: URLSessionDataTask, responseObject: Any?) in
-            if
-                let jsonObject  = responseObject as? [String: AnyObject],
-                let routeData   = jsonObject[API.Response.Key.Rows] as? [[String]] {
+		let manager = APIManager(staticURLWithParameters: parameters)
+		manager.get(success: { (json: [AnyHashable: Any]) in
+            guard
+                let jsonObject  = json as? [String: Any],
+                let routeData   = jsonObject[API.Response.Key.Rows] as? [[String]] else {
+					let message = "Parsing route list failed for routes around location: \(lat),\(lng)"
+					let error = NSError(domain: "BusPaisa", code: 300, userInfo: [NSLocalizedDescriptionKey: message])
+					failure(error)
+					return
+			}
 
-                let routes = Route.createRoutes(data: routeData)
-                DKLog(Verbose.Manager.API, "APIManager: did Receive \(routes.count) routes around: \(lat),\(lng)\n")
-                completion?(routes, nil)
-                return
-            }
+			let routes = Route.createRoutes(data: routeData)
+			DKLog(Verbose.Manager.API, "APIManager: did Receive \(routes.count) routes around: \(lat),\(lng)\n")
+			success(routes)
 
-            DKLog(Verbose.Manager.API, "APIManager: parsing 'routes' list failed for routes around: \(lat),\(lng)\n")
-            completion?([], nil)
-            }, failure: { (operation: URLSessionTask?, error: Error) in
-                completion?([], error)
+		}, failure: { (error: Error) in
+			failure(error)
         })
     }
 }

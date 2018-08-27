@@ -8,7 +8,6 @@
 
 import UIKit
 import MapKit
-import DKHelper
 import CSStickyHeaderFlowLayout
 import MBProgressHUD
 import Reachability
@@ -73,7 +72,7 @@ class BMMapView                                         : UIView {
     
     /// Default city center location
     private var cityCenterLocation : CLLocation {
-        let info = Bundle.entryInPList(forKey: BMPlist.MapDefault) as? [String:String]
+        let info = Bundle.main.entryInPList(for: BMPlist.MapDefault) as [String: String]?
         let latitude = (Double(info?[BMPlist.CityCenter.Latitude] ?? "0") ?? 0)
         let longitude = (Double(info?[BMPlist.CityCenter.Longitude] ?? "0") ?? 0)
         return CLLocation(latitude: latitude, longitude: longitude)
@@ -81,7 +80,7 @@ class BMMapView                                         : UIView {
     
     /// Default zoom radius of the mapView.
     private var defaultZoomRadius : CLLocationDistance {
-        let info = Bundle.entryInPList(forKey: BMPlist.MapDefault) as? [String:String]
+        let info = Bundle.main.entryInPList(for: BMPlist.MapDefault) as [String: String]?
         let radius = Double(info?[BMPlist.CityCenter.Radius] ?? "0")
         return (radius ?? 0)
     }
@@ -281,7 +280,7 @@ extension BMMapView {
             self.pickUpInfoView?.update(withAddress: nil)
             // Show the destination address view.
             self.destinationInfoView?.backgroundColor = BMColor.viewBorder
-            self.destinationInfoViewTopConstraint?.constant -= ((self.destinationInfoView?.frameHeight ?? 0) * 0.5)
+            self.destinationInfoViewTopConstraint?.constant -= ((self.destinationInfoView?.frame.height ?? 0) * 0.5)
             self.linkBetweenDots?.alpha = 0
             // Reset map
             self.removeDrawnRoutes()
@@ -396,7 +395,7 @@ extension BMMapView {
                         self.cancelPickUpButton?.alpha = 1
                         // Show the destination address view.
                         self.destinationInfoView?.backgroundColor = .white
-                        self.destinationInfoViewTopConstraint?.constant += ((self.destinationInfoView?.frameHeight ?? 0) * 0.5)
+                        self.destinationInfoViewTopConstraint?.constant += ((self.destinationInfoView?.frame.height ?? 0) * 0.5)
                         self.linkBetweenDots?.alpha = 1
                         // Move the map up North a bit.
                         self.moveMapViewNorthFromCoordinate(coordinate: centerCoordinate)
@@ -522,20 +521,20 @@ extension BMMapView {
 // MARK: - Waiting HUD
 
 extension BMMapView {
-    
-    /**
-     Show Waiting HUD on MapView.
-     */
+
+	/// Show Waiting HUD on MapView.
     private func showWaitingHUD() {
-        let hud = MBProgressHUD.showAdded(to: self, animated: true)
-        hud.bezelView.color = UIColor.black
-        hud.contentColor = UIColor.white
+		DispatchQueue.main.async {
+			let hud = MBProgressHUD.showAdded(to: self, animated: true)
+			hud.bezelView.color = UIColor.black
+			hud.contentColor = UIColor.white
+		}
     }
-    
-    /**
-     Hide Waiting HUD on MapView.
-     */
+
+    /// Hide Waiting HUD on MapView.
     private func hideWaitingHUD() {
-        MBProgressHUD.hide(for: self, animated: true)
+		DispatchQueue.main.async {
+			MBProgressHUD.hide(for: self, animated: true)
+		}
     }
 }

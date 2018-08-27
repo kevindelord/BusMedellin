@@ -40,14 +40,16 @@ extension BMMapView {
      - parameter completion: Closure called when the route has been fetched and displayed on the map.
      */
     func fetchAndDrawRoute(routeCode: String, completion: (() -> Void)?) {
-        APIManager.coordinates(forRouteCode: routeCode, completion: { (coordinates: [[Double]], error: Error?) in
-            UIAlertController.showErrorPopup(error as NSError?)
-            let locationCoordinates = self.createLocations(fromCoordinates: coordinates)
-            self.drawRouteForCoordinates(coordinates: locationCoordinates)
-            // Analytics
-            Analytics.Route.didDrawRoute.send(routeCode: routeCode, rounteCount: 1)
-            completion?()
-        })
+		APIManager.coordinates(forRouteCode: routeCode, success: { (coordinates: [[Double]]) in
+			let locationCoordinates = self.createLocations(fromCoordinates: coordinates)
+			self.drawRouteForCoordinates(coordinates: locationCoordinates)
+			// Analytics
+			Analytics.Route.didDrawRoute.send(routeCode: routeCode, rounteCount: 1)
+			completion?()
+		}, failure: { (error: Error) in
+			UIAlertController.showErrorPopup(error as NSError?)
+			completion?()
+		})
     }
     
     /**
@@ -67,11 +69,13 @@ extension BMMapView {
      - parameter location:   The location to search for routes around it.
      - parameter completion: Block having as parameter an array of routes passing by the given location.
      */
-    private func fetchRoutes(forLocation location: CLLocation, completion: ((_ routes: [Route]) -> Void)?) {
-        APIManager.routes(aroundLocation: location) { (routes: [Route], error: Error?) in
-            UIAlertController.showErrorPopup(error as NSError?)
-            completion?(routes)
-        }
+	private func fetchRoutes(forLocation location: CLLocation, completion: ((_ routes: [Route]) -> Void)?) {
+		APIManager.routes(aroundLocation: location, success: { (routes: [Route]) in
+			completion?(routes)
+		}, failure: { (error: Error) in
+			UIAlertController.showErrorPopup(error as NSError?)
+			completion?([])
+		})
     }
     
     /**

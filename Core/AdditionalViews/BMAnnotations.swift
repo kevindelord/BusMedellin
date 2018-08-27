@@ -9,34 +9,34 @@
 import Foundation
 import MapKit
 
-class BMAnnotation  : NSObject, MKAnnotation {
+class BMAnnotation	: NSObject, MKAnnotation {
 
-    let title       : String?
-    let subtitle    : String?
-    var coordinate  : CLLocationCoordinate2D
-    let reuseId     : String
-    let pinColor    : MKPinAnnotationColor
+	let title		: String?
+	let subtitle	: String?
+	var coordinate	: CLLocationCoordinate2D
+	let reuseId		: String
+	let pinColor	: MKPinAnnotationColor
 
-    init(coordinate: CLLocationCoordinate2D, reuseId: String, pinColor: MKPinAnnotationColor) {
-        self.title = nil
-        self.subtitle = nil
-        self.coordinate = coordinate
-        self.reuseId = reuseId
-        self.pinColor = pinColor
-        super.init()
-    }
+	init(coordinate: CLLocationCoordinate2D, reuseId: String, pinColor: MKPinAnnotationColor) {
+		self.title = nil
+		self.subtitle = nil
+		self.coordinate = coordinate
+		self.reuseId = reuseId
+		self.pinColor = pinColor
+		super.init()
+	}
 }
 
 class BMStartAnnotation : BMAnnotation {
 
-    static func create(withCoordinates coordinates: CLLocationCoordinate2D) -> BMStartAnnotation {
-        return BMStartAnnotation(coordinate: coordinates, reuseId: ReuseId.PickUpPin, pinColor: .green)
-    }
+	static func create(withCoordinates coordinates: CLLocationCoordinate2D) -> BMStartAnnotation {
+		return BMStartAnnotation(coordinate: coordinates, reuseId: ReuseId.PickUpPin, pinColor: .green)
+	}
 }
 
 class BMDestinationAnnotation : BMAnnotation {
 
-    static func create(withCoordinates coordinates: CLLocationCoordinate2D) -> BMStartAnnotation {
-        return BMStartAnnotation(coordinate: coordinates, reuseId: ReuseId.DestinationPin, pinColor: .red)
-    }
+	static func create(withCoordinates coordinates: CLLocationCoordinate2D) -> BMStartAnnotation {
+		return BMStartAnnotation(coordinate: coordinates, reuseId: ReuseId.DestinationPin, pinColor: .red)
+	}
 }

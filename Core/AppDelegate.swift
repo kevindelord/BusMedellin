@@ -13,14 +13,14 @@ import Buglife
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
+	var window: UIWindow?
 
-    private func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        Appirater.setup()
+	private func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+		Appirater.setup()
 		HockeySDK.setup()
 		Analytics.setup()
 		Buglife.shared().start(withAPIKey: Configuration().buglifeIdentifier)
 
-        return true
-    }
+		return true
+	}
 }

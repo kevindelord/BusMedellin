@@ -13,14 +13,15 @@ extension UIAlertController {
 		// Log error
 		error?.log()
 		// Find a valid message to display
-		var msg : String? = nil
+		var msg : String?
 		if let errorMessage : String = error?.userInfo["error"] as? String {
 			msg = errorMessage
 		} else if let errorMessage = error?.localizedFailureReason {
 			msg = errorMessage
-		} else if let errorMessage = error?.localizedDescription , (errorMessage.isEmpty == false) {
+		} else if let errorMessage = error?.localizedDescription, (errorMessage.isEmpty == false) {
 			msg = errorMessage
 		}
+
 		// Show a popup
 		if let _msg = msg {
 			self.showErrorMessage(_msg, presentingViewController: presentingViewController)
@@ -32,8 +33,8 @@ extension UIAlertController {
 	}
 
 	class func showInfoMessage(_ title: String, message: String, presentingViewController: UIViewController? = UIApplication.shared.windows.first?.rootViewController) {
-		let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
-		ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-		presentingViewController?.present(ac, animated: true, completion: nil)
+		let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+		alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+		presentingViewController?.present(alertController, animated: true, completion: nil)
 	}
 }

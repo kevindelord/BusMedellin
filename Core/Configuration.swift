@@ -9,11 +9,11 @@
 import Foundation
 
 #if DEBUG
-    private let isDebug     = true
-    private let isRelease   = false
+private let isDebug     = true
+private let isRelease   = false
 #else
-    private let isDebug     = false
-    private let isRelease   = true
+private let isDebug     = false
+private let isRelease   = true
 #endif
 
 struct Configuration: Decodable {
@@ -28,7 +28,6 @@ struct Configuration: Decodable {
 		case defaultLatitude
 		case defaultLongitude
 		case defaultRadius
-
 	}
 
 	let apiBaseUrl				: String
@@ -42,8 +41,8 @@ struct Configuration: Decodable {
 	let defaultRadius			: String
 
 
-    static let debugAppirater	: Bool = (false && isDebug)
-    static let analyticsEnabled	: Bool = (true && isRelease)
+	static let debugAppirater	: Bool = (false && isDebug)
+	static let analyticsEnabled	: Bool = (true && isRelease)
 
 	init() {
 		guard
@@ -59,11 +58,11 @@ struct Configuration: Decodable {
 
 struct Verbose {
 
-    static let PinAddress           : Bool = false
+	static let PinAddress           : Bool = false
 
-    struct Manager {
+	struct Manager {
 
-        static let API              : Bool = false
-        static let Analytics        : Bool = false
-    }
+		static let API              : Bool = false
+		static let Analytics		: Bool = false
+	}
 }

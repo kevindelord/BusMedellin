@@ -22,12 +22,14 @@ extension BMMapView {
 	*/
 	private func createLocations(fromCoordinates coordinates: [[Double]]) -> [CLLocationCoordinate2D] {
 		var pointsToUse = [CLLocationCoordinate2D]()
-		coordinates.forEach { (values: [Double]) in
-			if
+		for values in coordinates {
+			guard
 				let y = values[safe: 0],
-				let x = values[safe: 1] {
-				pointsToUse += [CLLocationCoordinate2DMake(CLLocationDegrees(x), CLLocationDegrees(y))]
+				let x = values[safe: 1] else {
+					continue
 			}
+
+			pointsToUse += [CLLocationCoordinate2DMake(CLLocationDegrees(x), CLLocationDegrees(y))]
 		}
 
 		return pointsToUse
@@ -87,8 +89,8 @@ extension BMMapView {
 	func fetchAddress(forLocation location: CLLocation, completion: ((_ address: String?) -> Void)?) {
 		let handler = { (placemarks: [CLPlacemark]?, error: Error?) in
 			for placemark in (placemarks ?? []) {
-				DKLog(Verbose.PinAddress, "Address found: \(placemark.addressDictionary ?? [:])")
-				let street = placemark.addressDictionary?[Map.Address.Street] as? String
+				DKLog(Verbose.pinAddress, "Address found: \(placemark.addressDictionary ?? [:])")
+				let street = placemark.addressDictionary?[Map.Address.street] as? String
 				completion?(street)
 			}
 		}

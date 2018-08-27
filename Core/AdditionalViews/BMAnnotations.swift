@@ -30,13 +30,13 @@ class BMAnnotation	: NSObject, MKAnnotation {
 class BMStartAnnotation : BMAnnotation {
 
 	static func create(withCoordinates coordinates: CLLocationCoordinate2D) -> BMStartAnnotation {
-		return BMStartAnnotation(coordinate: coordinates, reuseId: ReuseId.PickUpPin, pinColor: .green)
+		return BMStartAnnotation(coordinate: coordinates, reuseId: ReuseId.pickUpPin, pinColor: .green)
 	}
 }
 
 class BMDestinationAnnotation : BMAnnotation {
 
 	static func create(withCoordinates coordinates: CLLocationCoordinate2D) -> BMStartAnnotation {
-		return BMStartAnnotation(coordinate: coordinates, reuseId: ReuseId.DestinationPin, pinColor: .red)
+		return BMStartAnnotation(coordinate: coordinates, reuseId: ReuseId.destinationPin, pinColor: .red)
 	}
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BMHeaderView                                      : UIView {
+class BMHeaderView										: UIView {
 
 	// MARK: - Outlets
 
@@ -59,6 +59,7 @@ class BMHeaderView                                      : UIView {
 			if (route.area != "") {
 				subtitleString += ", \(route.area)"
 			}
+
 			self.subtitle?.text = subtitleString
 			self.titleBottomConstraint?.constant = 40
 		} else {
@@ -78,7 +79,7 @@ class BMHeaderView                                      : UIView {
 
 	// MARK: - Interface actions
 
-	@IBAction func infoButtonPressed() {
+	@IBAction private func infoButtonPressed() {
 		self.openSettingsBlock?()
 	}
 }

@@ -8,9 +8,9 @@
 
 import Foundation
 
-class BMCollectionViewSectionHeader     : UICollectionReusableView {
+class BMCollectionViewSectionHeader		: UICollectionReusableView {
 
-	var headerContainer                 : BMHeaderView?
+	var headerContainer					: BMHeaderView?
 
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -26,7 +26,7 @@ class BMCollectionViewSectionHeader     : UICollectionReusableView {
 	}
 
 	private func interfaceInitialisation() {
-		self.headerContainer = UIView.load(from: XibFile.BMHeaderView) as? BMHeaderView
+		self.headerContainer = UIView.load(from: XibFile.headerView) as? BMHeaderView
 		self.headerContainer?.frame = self.bounds
 		self.headerContainer?.layer.borderWidth = 1
 		self.headerContainer?.layer.borderColor = BMColor.viewBorder.cgColor

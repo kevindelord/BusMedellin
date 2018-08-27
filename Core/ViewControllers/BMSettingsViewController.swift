@@ -11,7 +11,7 @@ import Foundation
 class BMSettingsViewController					: UIViewController {
 
 	@IBOutlet private weak var versionLabel		: UILabel?
-	@IBOutlet private weak var aboutTitleLabel  : UILabel?
+	@IBOutlet private weak var aboutTitleLabel	: UILabel?
 	@IBOutlet private weak var aboutTextView	: UITextView?
 	@IBOutlet private weak var bugTitleLabel	: UILabel?
 	@IBOutlet private weak var bugTextLabel		: UILabel?
@@ -71,10 +71,10 @@ class BMSettingsViewController					: UIViewController {
 		let attrStr = NSMutableAttributedString(string: L("SETTINGS_ABOUT_TEXT"))
 
 		let anchors : [(text: String, url: String)] = [
-			(L("SETTINGS_ABOUT_ANCHOR_1"), BMExternalLink.Project),
-			(L("SETTINGS_ABOUT_ANCHOR_2"), BMExternalLink.ThibaultDurand),
-			(L("SETTINGS_ABOUT_ANCHOR_3"), BMExternalLink.TwitterTDurand),
-			(L("SETTINGS_ABOUT_ANCHOR_4"), BMExternalLink.WebVersion)
+			(L("SETTINGS_ABOUT_ANCHOR_1"), BMExternalLink.project),
+			(L("SETTINGS_ABOUT_ANCHOR_2"), BMExternalLink.thibaultDurand),
+			(L("SETTINGS_ABOUT_ANCHOR_3"), BMExternalLink.twitterTDurand),
+			(L("SETTINGS_ABOUT_ANCHOR_4"), BMExternalLink.webVersion)
 		]
 
 		for anchor in anchors {
@@ -89,7 +89,7 @@ class BMSettingsViewController					: UIViewController {
 		let str = L("SETTINGS_MADE_BY")
 		let attrStr = NSMutableAttributedString(string: L("SETTINGS_MADE_BY"))
 
-		let tuple = (anchor: L("SETTINGS_MADE_BY_ANCHOR"), url: BMExternalLink.KevinDelord)
+		let tuple = (anchor: L("SETTINGS_MADE_BY_ANCHOR"), url: BMExternalLink.kevinDelord)
 		attrStr.addAttribute(.link, value: tuple.url, range: (str as NSString).range(of: tuple.anchor))
 		attrStr.addAttribute(.link, value: self.textViewFont, range: NSRange(location: 0, length: str.count))
 		// Center text

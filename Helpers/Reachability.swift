@@ -11,9 +11,9 @@ import Reachability
 
 extension Reachability {
 
-    static var isConnected : Bool {
-        let reachability = Reachability.forInternetConnection()
-        let networkStatus = reachability?.currentReachabilityStatus()
-        return (networkStatus == .ReachableViaWiFi || networkStatus == .ReachableViaWWAN)
-    }
+	static var isConnected : Bool {
+		let reachability = Reachability.forInternetConnection()
+		let networkStatus = reachability?.currentReachabilityStatus()
+		return (networkStatus == .ReachableViaWiFi || networkStatus == .ReachableViaWWAN)
+	}
 }

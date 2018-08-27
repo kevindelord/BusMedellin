@@ -56,13 +56,13 @@ struct Analytics {
 
 	enum Screen								: String {
 
-		case mapView                        = "Screen_MapView"
-		case settings                       = "Screen_Settings"
+		case mapView						= "Screen_MapView"
+		case settings						= "Screen_Settings"
 	}
 
-	enum PinLocation                        : String {
+	enum PinLocation						: String {
 
-		static let categoryId               = "PinLocation"
+		static let categoryId				= "PinLocation"
 
 		case didSetStart					= "Pin_DidSetStart"
 		case didSetDestination				= "Pin_DidSetDestination"
@@ -77,7 +77,7 @@ struct Analytics {
 
 	enum UserLocation						: String {
 
-		static let categoryId               = "UserLocation"
+		static let categoryId				= "UserLocation"
 
 		case didLocateUser					= "UserLocation_DidLocateUser"
 		case didLocateUserTooFar			= "UserLocation_DidLocateUserTooFar"
@@ -90,10 +90,10 @@ struct Analytics {
 		}
 	}
 
-	enum Route                              : String {
+	enum Route								: String {
 
 		static let categoryId				= "Route"
-		static let labelSearch              = "Search"
+		static let labelSearch				= "Search"
 
 		case didDrawRoute					= "Route_DidDrawRoute"
 		case didSelectRoute					= "Route_DidSelectRoute"
@@ -134,7 +134,7 @@ private struct GoogleAnalytics {
 		#if RELEASE
 		gai?.logger.logLevel = .Error
 		#else
-		gai?.logger.logLevel = (Verbose.Manager.Analytics == true ? .verbose : .none)
+		gai?.logger.logLevel = (Verbose.Manager.analytics == true ? .verbose : .none)
 		#endif
 	}
 

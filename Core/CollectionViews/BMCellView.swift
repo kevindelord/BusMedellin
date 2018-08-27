@@ -6,11 +6,11 @@
 //  Copyright © 2018 Kevin Delord. All rights reserved.
 //
 
-class BMCellView                                : UICollectionViewCell {
+class BMCellView										: UICollectionViewCell {
 
-	@IBOutlet private weak var titleLabel       : UILabel?
-	@IBOutlet private weak var subtitleLabel    : UILabel?
-	@IBOutlet private weak var titleBottomConstraint : NSLayoutConstraint?
+	@IBOutlet private weak var titleLabel				: UILabel?
+	@IBOutlet private weak var subtitleLabel			: UILabel?
+	@IBOutlet private weak var titleBottomConstraint	: NSLayoutConstraint?
 
 	func updateContent(route: Route) {
 		// Title

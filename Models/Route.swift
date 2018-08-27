@@ -9,31 +9,32 @@
 import Foundation
 
 enum RouteData : Int {
-    case Route = 0
-    case Code
-    case District
-    case Area
+	case route = 0
+	case code
+	case district
+	case area
 }
 
 struct Route {
+	var name		: String
+	var code		: String
+	var district	: String
+	var area		: String
 
-    var name        : String
-    var code        : String
-    var district    : String
-    var area        : String
+	static func createRoutes(data: [[String]]) -> [Route] {
+		var routes = [Route]()
+		for values in data {
+			guard
+				let name = values[safe: RouteData.route.rawValue],
+				let code = values[safe: RouteData.code.rawValue],
+				let district = values[safe: RouteData.district.rawValue],
+				let area = values[safe: RouteData.area.rawValue] else {
+					continue
+			}
 
-    static func createRoutes(data: [[String]]) -> [Route] {
-        var routes = [Route]()
-        data.forEach { (values: [String]) in
-            if
-                let name = values[safe: RouteData.Route.rawValue],
-                let code = values[safe: RouteData.Code.rawValue],
-                let district = values[safe: RouteData.District.rawValue],
-                let area = values[safe: RouteData.Area.rawValue] {
-                    routes.append(Route(name: name, code: code, district: district, area: area))
-            }
-        }
+			routes.append(Route(name: name, code: code, district: district, area: area))
+		}
 
-        return routes
-    }
+		return routes
+	}
 }

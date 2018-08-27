@@ -27,16 +27,16 @@ class BMCollectionViewController: UICollectionViewController {
 		self.collectionView?.backgroundColor = .white
 
 		// Setup Cells: list of bus lines
-		self.collectionView?.register(BMCollectionViewCell.self, forCellWithReuseIdentifier: ReuseId.ResultCell)
-		self.layout?.itemSize = CGSize(width: self.view.frame.size.width, height: StaticHeight.CollectionView.Cell)
+		self.collectionView?.register(BMCollectionViewCell.self, forCellWithReuseIdentifier: ReuseId.resultCell)
+		self.layout?.itemSize = CGSize(width: self.view.frame.size.width, height: StaticHeight.CollectionView.cell)
 
 		// Setup Header: map view
-		self.collectionView?.register(BMCollectionMapView.self, forSupplementaryViewOfKind: CSStickyHeaderParallaxHeader, withReuseIdentifier: ReuseId.ParallaxHeader)
-		self.layout?.parallaxHeaderReferenceSize = CGSize(width: self.view.frame.size.width, height: (self.view.frame.size.height - StaticHeight.CollectionView.SectionHeader))
+		self.collectionView?.register(BMCollectionMapView.self, forSupplementaryViewOfKind: CSStickyHeaderParallaxHeader, withReuseIdentifier: ReuseId.parallaxHeader)
+		self.layout?.parallaxHeaderReferenceSize = CGSize(width: self.view.frame.size.width, height: (self.view.frame.size.height - StaticHeight.CollectionView.sectionHeader))
 
 		// Setup Section Header: header with title "number of lines"
-		self.collectionView?.register(BMCollectionViewSectionHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: ReuseId.SectionHeader)
-		self.layout?.headerReferenceSize = CGSize(width: self.view.frame.size.width, height: StaticHeight.CollectionView.SectionHeader)
+		self.collectionView?.register(BMCollectionViewSectionHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: ReuseId.sectionHeader)
+		self.layout?.headerReferenceSize = CGSize(width: self.view.frame.size.width, height: StaticHeight.CollectionView.sectionHeader)
 		self.layout?.minimumLineSpacing = 0
 	}
 
@@ -67,7 +67,7 @@ extension BMCollectionViewController {
 
 	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		guard
-			let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReuseId.ResultCell, for: indexPath) as? BMCollectionViewCell,
+			let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReuseId.resultCell, for: indexPath) as? BMCollectionViewCell,
 			let route = self.availableRoutes?[safe: indexPath.row] else {
 				return UICollectionViewCell()
 		}
@@ -98,7 +98,7 @@ extension BMCollectionViewController {
 
 	override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
 		if (kind == CSStickyHeaderParallaxHeader) {
-			guard let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ReuseId.ParallaxHeader, for: indexPath) as? BMCollectionMapView else {
+			guard let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ReuseId.parallaxHeader, for: indexPath) as? BMCollectionMapView else {
 				return UICollectionReusableView()
 			}
 
@@ -107,13 +107,13 @@ extension BMCollectionViewController {
 			return view
 
 		} else if (kind == UICollectionElementKindSectionHeader) {
-			guard let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ReuseId.SectionHeader, for: indexPath) as? BMCollectionViewSectionHeader else {
+			guard let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ReuseId.sectionHeader, for: indexPath) as? BMCollectionViewSectionHeader else {
 				return UICollectionReusableView()
 			}
 
 			view.headerContainer?.updateContent(availableRoutes: self.availableRoutes, drawnRoute: self.drawnRoute)
 			view.headerContainer?.openSettingsBlock = {
-				self.performSegue(withIdentifier: Segue.Settings, sender: nil)
+				self.performSegue(withIdentifier: Segue.settings, sender: nil)
 			}
 
 			return view
@@ -123,7 +123,7 @@ extension BMCollectionViewController {
 	}
 
 	override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-		let limitHeight = (scrollView.contentOffset.y + StaticHeight.CollectionView.SectionHeader + UIApplication.shared.statusBarFrame.size.height)
+		let limitHeight = (scrollView.contentOffset.y + StaticHeight.CollectionView.sectionHeader + UIApplication.shared.statusBarFrame.size.height)
 		let isCurrentlyHidden = self.statusBarHidden
 
 		if (self.statusBarHidden == false && limitHeight >= self.view.frame.height) {

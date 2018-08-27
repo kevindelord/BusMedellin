@@ -8,6 +8,7 @@
 
 import Foundation
 
+// swiftlint:disable identifier_name
 func L(_ key: String) -> String {
 	let defaultValue = "__Unique_Default_String__"
 	let localizedString = NSLocalizedString(key, tableName: nil, bundle: Bundle.main, value: defaultValue, comment: "")
@@ -18,3 +19,5 @@ func L(_ key: String) -> String {
 
 	return localizedString
 }
+
+// swiftlint:enable identifier_name

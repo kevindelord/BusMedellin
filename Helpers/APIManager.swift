@@ -59,8 +59,8 @@ class APIManager {
 			APIManager.didCompleteSessionTask(data: data, success: success, failure: failure)
 		}
 
-		DKLog(Verbose.Manager.API, "Request: \(request)")
-		DKLog(Verbose.Manager.API, "HTTP header fields: \(request.allHTTPHeaderFields ?? [:])")
+		DKLog(Verbose.Manager.api, "Request: \(request)")
+		DKLog(Verbose.Manager.api, "HTTP header fields: \(request.allHTTPHeaderFields ?? [:])")
 		task.resume()
 	}
 
@@ -109,17 +109,17 @@ extension APIManager {
 		manager.get(success: { (json: [AnyHashable: Any]) in
 			guard
 				let jsonObject = json as? [String: Any],
-				let rows = jsonObject[API.Response.Key.Rows] as? [[[String: Any]]],
+				let rows = jsonObject[API.Response.Key.rows] as? [[[String: Any]]],
 				let row = rows.first?.first,
-				let geometry = row[API.Response.Key.Geometry] as? [String: Any],
-				let coordinates = geometry[API.Response.Key.Coordinates] as? [[Double]] else {
+				let geometry = row[API.Response.Key.geometry] as? [String: Any],
+				let coordinates = geometry[API.Response.Key.coordinates] as? [[Double]] else {
 					let message = "Parsing geometry list failed for route name: \(routeCode)"
 					let error = NSError(domain: "BusPaisa", code: 300, userInfo: [NSLocalizedDescriptionKey: message])
 					failure(error)
 					return
 			}
 
-			DKLog(Verbose.Manager.API, "APIManager: did Receive \(coordinates.count) coordinates for route name: \(routeCode)\n")
+			DKLog(Verbose.Manager.api, "APIManager: did Receive \(coordinates.count) coordinates for route name: \(routeCode)\n")
 			success(coordinates)
 		}, failure: { (error: Error) in
 			failure(error)
@@ -134,7 +134,7 @@ extension APIManager {
 		let google = APIManager.GoogleIdentifiers
 		let lat = location.coordinate.latitude
 		let lng = location.coordinate.longitude
-		let radius = Map.DefaultSearchRadius
+		let radius = Map.defaultSearchRadius
 		let parameters = [
 			"key": google.key,
 			"sql": "SELECT Nombre_Rut,CODIGO_RUT,NomBar,NomCom FROM \(google.identifier) WHERE ST_INTERSECTS(geometry,CIRCLE(LATLNG(\(lat),\(lng)),\(radius)))"
@@ -144,7 +144,7 @@ extension APIManager {
 		manager.get(success: { (json: [AnyHashable: Any]) in
 			guard
 				let jsonObject = json as? [String: Any],
-				let routeData = jsonObject[API.Response.Key.Rows] as? [[String]] else {
+				let routeData = jsonObject[API.Response.Key.rows] as? [[String]] else {
 					let message = "Parsing route list failed for routes around location: \(lat),\(lng)"
 					let error = NSError(domain: "BusPaisa", code: 300, userInfo: [NSLocalizedDescriptionKey: message])
 					failure(error)
@@ -152,7 +152,7 @@ extension APIManager {
 			}
 
 			let routes = Route.createRoutes(data: routeData)
-			DKLog(Verbose.Manager.API, "APIManager: did Receive \(routes.count) routes around: \(lat),\(lng)\n")
+			DKLog(Verbose.Manager.api, "APIManager: did Receive \(routes.count) routes around: \(lat),\(lng)\n")
 			success(routes)
 
 		}, failure: { (error: Error) in

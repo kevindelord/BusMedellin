@@ -42,15 +42,16 @@ class BMMapView											: UIView {
 		super.init(coder: aDecoder)
 	}
 
-	//    private static var _onceToken: dispatch_once_t = 0
 	private static var isInitialized = false
 
 	override func layoutSubviews() {
 		super.layoutSubviews()
 
 		// Initialise the interface that way only once.
-		// TODO: use dispatch_once?
-		//        dispatch_once(&BMMapView._onceToken) {
+		/* TODO: use dispatch_once?
+		private static var _onceToken: dispatch_once_t = 0
+		dispatch_once(&BMMapView._onceToken) {
+		*/
 		if (BMMapView.isInitialized == false) {
 			BMMapView.isInitialized = true
 
@@ -78,7 +79,7 @@ class BMMapView											: UIView {
 
 	/// Default zoom radius of the mapView.
 	private var defaultZoomRadius : CLLocationDistance {
-		return (Double(Configuration().defaultRadius) ?? 0)
+		return Map.defaultZoomRadius
 	}
 }
 
@@ -89,7 +90,7 @@ extension BMMapView: MKMapViewDelegate {
 	func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
 		let mapCenter = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
 		// Force the map to stay close to the city center.
-		if (self.cityCenterLocation.distance(from: mapCenter) > Map.MaxScrollDistance) {
+		if (self.cityCenterLocation.distance(from: mapCenter) > Map.maxScrollDistance) {
 			self.centerMap(on: self.cityCenterLocation)
 		}
 	}
@@ -125,12 +126,12 @@ extension BMMapView: MKMapViewDelegate {
 		if (overlay is MKGeodesicPolyline) {
 			let lineView = MKPolylineRenderer(overlay: overlay)
 			lineView.strokeColor = BMColor.blue
-			lineView.lineWidth = Map.PolylineWidth
+			lineView.lineWidth = Map.polylineWidth
 			return lineView
 
 		} else if let circle = overlay as? BMMapCircle {
 			let circleRenderer = MKCircleRenderer(overlay: overlay)
-			circleRenderer.fillColor = (circle.color ?? UIColor.blue).withAlphaComponent(Map.CircleColorAlpha)
+			circleRenderer.fillColor = (circle.color ?? UIColor.blue).withAlphaComponent(Map.circleColorAlpha)
 			circleRenderer.strokeColor = (circle.color ?? UIColor.blue)
 			circleRenderer.lineWidth = 1
 			return circleRenderer
@@ -255,7 +256,7 @@ extension BMMapView {
 	- parameter coordinate: Coordinate from where to move/scroll north.
 	- parameter delta:      Delta to move the map.
 	*/
-	private func moveMapViewNorthFromCoordinate(coordinate: CLLocationCoordinate2D, delta: Double = Map.DeltaAfterSearch) {
+	private func moveMapViewNorthFromCoordinate(coordinate: CLLocationCoordinate2D, delta: Double = Map.deltaAfterSearch) {
 		let newLocation = CLLocation(latitude: coordinate.latitude + delta, longitude: coordinate.longitude)
 		let regionRadius: CLLocationDistance = self.defaultZoomRadius
 		let coordinateRegion = MKCoordinateRegionMakeWithDistance(newLocation.coordinate, regionRadius, regionRadius)
@@ -344,7 +345,7 @@ extension BMMapView {
 	@IBAction private func locateMeButtonPressed() {
 		if let userLocation = self.checkLocationAuthorizationStatus() {
 			// Disable the locate me feature if the user is too far away from the city center.
-			if (self.cityCenterLocation.distance(from: userLocation) < Map.MaxScrollDistance) {
+			if (self.cityCenterLocation.distance(from: userLocation) < Map.maxScrollDistance) {
 				self.centerMap(on: userLocation)
 				Analytics.UserLocation.didLocateUser.send()
 			} else {

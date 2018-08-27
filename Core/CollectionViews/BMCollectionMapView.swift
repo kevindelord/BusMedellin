@@ -26,7 +26,7 @@ class BMCollectionMapView	: UICollectionReusableView {
 	}
 
 	private func interfaceInitialisation() {
-		self.mapContainer = UIView.load(from: XibFile.BMMapView) as? BMMapView
+		self.mapContainer = UIView.load(from: XibFile.mapView) as? BMMapView
 		self.mapContainer?.frame = self.bounds
 		self.addSubview(safe: self.mapContainer)
 	}

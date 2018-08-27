@@ -28,9 +28,8 @@ class APIManager {
 
 	fileprivate init(staticURLWithParameters parameters: [String: String?]) {
 		guard
-			let fullPath = Bundle.main.stringEntryInPList(for: BMPlist.APIBaseURL),
 			let bundleIdentifier = Bundle.main.bundleIdentifier,
-			var urlComponents = URLComponents(string: fullPath) else {
+			var urlComponents = URLComponents(string: Configuration().apiBaseUrl) else {
 				return
 		}
 
@@ -91,12 +90,8 @@ class APIManager {
 extension APIManager {
 
 	private static var GoogleIdentifiers: (identifier: String, key: String) {
-		guard
-			let identifier = Bundle.main.stringEntryInPList(for: BMPlist.FusionTable.Identifier),
-			let key = Bundle.main.stringEntryInPList(for: BMPlist.FusionTable.Key) else {
-				return ("", "")
-		}
-
+		let identifier = Configuration().fusionTableKey
+		let key = Configuration().fusionTableKey
 		return (identifier, key)
 	}
 

@@ -19,10 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Appirater.setup()
 		HockeySDK.setup()
 		Analytics.setup()
-
-		if let buglifeIdentifier = Bundle.main.stringEntryInPList(for: BMPlist.BuglifeID) {
-        	Buglife.shared().start(withAPIKey: buglifeIdentifier)
-		}
+		Buglife.shared().start(withAPIKey: Configuration().buglifeIdentifier)
 
         return true
     }

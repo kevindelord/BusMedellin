@@ -5,11 +5,11 @@ use_frameworks!
 
 def corePods
     pod 'Reachability', '~> 3.2'
-	pod 'Appirater', '~> 2.0.5'
+	pod 'Appirater', '~> 2.3.1'
 	pod 'MBProgressHUD', '~> 1.1.0'
     pod 'CSStickyHeaderFlowLayout', '~> 0.2.11'
-    pod 'Buglife', '~> 1.3.3'
-    pod 'HockeySDK', '~> 4.1.2'
+    pod 'Buglife', '~> 1.9.5'
+    pod 'HockeySDK', '~> 5.1.2'
     pod 'Google/Analytics'
     pod 'Firebase/Core'
 end

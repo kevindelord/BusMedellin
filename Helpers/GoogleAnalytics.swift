@@ -12,9 +12,8 @@ import Firebase
 struct Analytics {
 
      static func setup() {
-
         // Check if the analytics is enabled
-        if (Configuration.AnalyticsEnabled == false) {
+        if (Configuration.analyticsEnabled == false) {
             return
         }
 
@@ -28,9 +27,8 @@ struct Analytics {
     // MARK: - Send Actions
 
     private static func send(category: String, action: String, label: String?, value: NSNumber?) {
-
         // Check if the analytics is enabled
-        if (Configuration.AnalyticsEnabled == false) {
+        if (Configuration.analyticsEnabled == false) {
             return
         }
 
@@ -42,9 +40,8 @@ struct Analytics {
     }
 
     static func send(screenView screen: Analytics.Screen) {
-
         // Check if the analytics is enabled
-        if (Configuration.AnalyticsEnabled == false) {
+        if (Configuration.analyticsEnabled == false) {
             return
         }
 

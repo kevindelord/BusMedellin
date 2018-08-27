@@ -12,13 +12,13 @@ import Appirater
 extension Appirater {
 
     class func setup() {
-        Appirater.setAppId(Bundle.main.entryInPList(for: BMPlist.AppId) as String?)
+        Appirater.setAppId(Configuration().appIdentifier)
         Appirater.setAlwaysUseMainBundle(true)
         Appirater.setDaysUntilPrompt(7)
         Appirater.setUsesUntilPrompt(7)
         Appirater.setSignificantEventsUntilPrompt(0)
         Appirater.setTimeBeforeReminding(7)
-        Appirater.setDebug(Configuration.DebugAppirater)
+        Appirater.setDebug(Configuration.debugAppirater)
         Appirater.appLaunched(true)
     }
 }

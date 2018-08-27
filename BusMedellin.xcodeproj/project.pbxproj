@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7546C99D21300A6E00F80153 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546C99C21300A6E00F80153 /* UIColor.swift */; };
+		7546C99E21300A6E00F80153 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546C99C21300A6E00F80153 /* UIColor.swift */; };
+		754A25242132C6A400B3B083 /* MBButtonState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A25232132C6A400B3B083 /* MBButtonState.swift */; };
+		754A25252132C6A400B3B083 /* MBButtonState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A25232132C6A400B3B083 /* MBButtonState.swift */; };
+		754A25272132C70300B3B083 /* BMHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A25262132C70300B3B083 /* BMHeaderView.swift */; };
+		754A25282132C70300B3B083 /* BMHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A25262132C70300B3B083 /* BMHeaderView.swift */; };
+		754A252B2132C81200B3B083 /* BMMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A252A2132C81200B3B083 /* BMMapView.swift */; };
+		754A252C2132C81200B3B083 /* BMMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A252A2132C81200B3B083 /* BMMapView.swift */; };
+		754A252E2132C88400B3B083 /* BMCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A252D2132C88400B3B083 /* BMCellView.swift */; };
+		754A252F2132C88400B3B083 /* BMCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A252D2132C88400B3B083 /* BMCellView.swift */; };
 		75513BE01DB019C600957F40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75513BDF1DB019C600957F40 /* Assets.xcassets */; };
 		75513BE31DB01ED900957F40 /* BMButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75513BE21DB01ED900957F40 /* BMButtons.swift */; };
 		75513BE51DB02D2300957F40 /* BMAnnotations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75513BE41DB02D2300957F40 /* BMAnnotations.swift */; };
@@ -20,8 +30,8 @@
 		756493741DBD6F68007811A6 /* BMMapCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756493731DBD6F68007811A6 /* BMMapCircle.swift */; };
 		75679F161DBE77AF0066DF0F /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75679F151DBE77AF0066DF0F /* iAd.framework */; };
 		75679F171DBE77B50066DF0F /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75679F151DBE77AF0066DF0F /* iAd.framework */; };
-		75679F191DBEDB550066DF0F /* BMCollectionMapView+Fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679F181DBEDB550066DF0F /* BMCollectionMapView+Fetch.swift */; };
-		75679F1A1DBEDB550066DF0F /* BMCollectionMapView+Fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679F181DBEDB550066DF0F /* BMCollectionMapView+Fetch.swift */; };
+		75679F191DBEDB550066DF0F /* BMMapView+Fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679F181DBEDB550066DF0F /* BMMapView+Fetch.swift */; };
+		75679F1A1DBEDB550066DF0F /* BMMapView+Fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679F181DBEDB550066DF0F /* BMMapView+Fetch.swift */; };
 		757F31621DBE5E16002BB03F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 757F31611DBE5E16002BB03F /* GoogleService-Info.plist */; };
 		757F31631DBE5E16002BB03F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 757F31611DBE5E16002BB03F /* GoogleService-Info.plist */; };
 		757F31651DBE5F14002BB03F /* GoogleAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757F31641DBE5F14002BB03F /* GoogleAnalytics.swift */; };
@@ -81,6 +91,11 @@
 		303C336AEDCC072779B8226E /* Pods_BusMedellin_Alpha.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BusMedellin_Alpha.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DEA8EFDB7D60226162490B7 /* Pods-BusMedellin-Live-AppStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusMedellin-Live-AppStore.release.xcconfig"; path = "Pods/Target Support Files/Pods-BusMedellin-Live-AppStore/Pods-BusMedellin-Live-AppStore.release.xcconfig"; sourceTree = "<group>"; };
 		4301C8C80BE111EDA26F55FC /* Pods_BusMedellin_Live_AppStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BusMedellin_Live_AppStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7546C99C21300A6E00F80153 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		754A25232132C6A400B3B083 /* MBButtonState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBButtonState.swift; sourceTree = "<group>"; };
+		754A25262132C70300B3B083 /* BMHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMHeaderView.swift; sourceTree = "<group>"; };
+		754A252A2132C81200B3B083 /* BMMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMMapView.swift; sourceTree = "<group>"; };
+		754A252D2132C88400B3B083 /* BMCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMCellView.swift; sourceTree = "<group>"; };
 		75513BDF1DB019C600957F40 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
 		75513BE21DB01ED900957F40 /* BMButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BMButtons.swift; path = Core/AdditionalViews/BMButtons.swift; sourceTree = "<group>"; };
 		75513BE41DB02D2300957F40 /* BMAnnotations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BMAnnotations.swift; path = Core/AdditionalViews/BMAnnotations.swift; sourceTree = "<group>"; };
@@ -95,7 +110,7 @@
 		75640BFD1DAF1B11002B4A56 /* DMDefines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DMDefines.swift; path = Core/DMDefines.swift; sourceTree = "<group>"; };
 		756493731DBD6F68007811A6 /* BMMapCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BMMapCircle.swift; path = Core/AdditionalViews/BMMapCircle.swift; sourceTree = "<group>"; };
 		75679F151DBE77AF0066DF0F /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
-		75679F181DBEDB550066DF0F /* BMCollectionMapView+Fetch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BMCollectionMapView+Fetch.swift"; sourceTree = "<group>"; };
+		75679F181DBEDB550066DF0F /* BMMapView+Fetch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BMMapView+Fetch.swift"; sourceTree = "<group>"; };
 		757F31611DBE5E16002BB03F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		757F31641DBE5F14002BB03F /* GoogleAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleAnalytics.swift; sourceTree = "<group>"; };
 		757F31671DBE5FD4002BB03F /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -150,10 +165,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		754A25292132C80300B3B083 /* MapView */ = {
+			isa = PBXGroup;
+			children = (
+				754A252A2132C81200B3B083 /* BMMapView.swift */,
+				75679F181DBEDB550066DF0F /* BMMapView+Fetch.swift */,
+			);
+			path = MapView;
+			sourceTree = "<group>";
+		};
 		75513BE11DB01ECD00957F40 /* AdditionalViews */ = {
 			isa = PBXGroup;
 			children = (
 				75513BE21DB01ED900957F40 /* BMButtons.swift */,
+				754A25232132C6A400B3B083 /* MBButtonState.swift */,
 				75513BE41DB02D2300957F40 /* BMAnnotations.swift */,
 				75C5E95A1DBD697900FCE9D0 /* BMAddressView.swift */,
 				756493731DBD6F68007811A6 /* BMMapCircle.swift */,
@@ -206,6 +231,7 @@
 			children = (
 				75FEDCF71DB1DDA700D692C4 /* Header */,
 				75640BEF1DAF19FB002B4A56 /* APIManager.swift */,
+				7546C99C21300A6E00F80153 /* UIColor.swift */,
 				758E105C1DBD96D000D872BC /* HockeySDK.swift */,
 				75640BF01DAF19FB002B4A56 /* Appirater.swift */,
 				757F31641DBE5F14002BB03F /* GoogleAnalytics.swift */,
@@ -228,6 +254,7 @@
 		75640BF81DAF1A8C002B4A56 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				754A25292132C80300B3B083 /* MapView */,
 				75F8B4C31DB9772A00F43109 /* CollectionViews */,
 				75513BE11DB01ECD00957F40 /* AdditionalViews */,
 				75F8B4CC1DB9774600F43109 /* ViewControllers */,
@@ -268,7 +295,8 @@
 				75F8B4C41DB9772A00F43109 /* BMCollectionSectionHeader.swift */,
 				75F8B4C51DB9772A00F43109 /* BMCollectionViewCell.swift */,
 				75F8B4C61DB9772A00F43109 /* BMCollectionMapView.swift */,
-				75679F181DBEDB550066DF0F /* BMCollectionMapView+Fetch.swift */,
+				754A25262132C70300B3B083 /* BMHeaderView.swift */,
+				754A252D2132C88400B3B083 /* BMCellView.swift */,
 			);
 			name = CollectionViews;
 			path = Core/CollectionViews;
@@ -443,13 +471,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BusMedellin-Alpha-AdHoc-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		54FC4BD789233E736E681BEA /* [CP] Embed Pods Frameworks */ = {
@@ -458,9 +489,22 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-BusMedellin-Alpha-AdHoc/Pods-BusMedellin-Alpha-AdHoc-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/Appirater/Appirater.framework",
+				"${BUILT_PRODUCTS_DIR}/CSStickyHeaderFlowLayout/CSStickyHeaderFlowLayout.framework",
+				"${BUILT_PRODUCTS_DIR}/DKHelper/DKHelper.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/Reachability/Reachability.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Appirater.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CSStickyHeaderFlowLayout.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DKHelper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -488,13 +532,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BusMedellin-Live-AppStore-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		758E10531DBD92D000D872BC /* [CP] Embed Pods Frameworks */ = {
@@ -503,9 +550,22 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-BusMedellin-Live-AppStore/Pods-BusMedellin-Live-AppStore-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/Appirater/Appirater.framework",
+				"${BUILT_PRODUCTS_DIR}/CSStickyHeaderFlowLayout/CSStickyHeaderFlowLayout.framework",
+				"${BUILT_PRODUCTS_DIR}/DKHelper/DKHelper.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/Reachability/Reachability.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Appirater.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CSStickyHeaderFlowLayout.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DKHelper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -518,9 +578,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-BusMedellin-Live-AppStore/Pods-BusMedellin-Live-AppStore-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/HockeySDK/HockeySDKResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/HockeySDKResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -548,9 +611,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-BusMedellin-Alpha-AdHoc/Pods-BusMedellin-Alpha-AdHoc-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/HockeySDK/HockeySDKResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/HockeySDKResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -569,7 +635,11 @@
 				758E105D1DBD96D000D872BC /* HockeySDK.swift in Sources */,
 				75805BC41DAF5B7E00DACFF5 /* Route.swift in Sources */,
 				75F8B4C71DB9772A00F43109 /* BMCollectionSectionHeader.swift in Sources */,
+				7546C99D21300A6E00F80153 /* UIColor.swift in Sources */,
+				754A25242132C6A400B3B083 /* MBButtonState.swift in Sources */,
 				75640BF21DAF19FB002B4A56 /* APIManager.swift in Sources */,
+				754A25272132C70300B3B083 /* BMHeaderView.swift in Sources */,
+				754A252E2132C88400B3B083 /* BMCellView.swift in Sources */,
 				75513BE71DB02E5700957F40 /* MKMapView.swift in Sources */,
 				75513BE31DB01ED900957F40 /* BMButtons.swift in Sources */,
 				75640BF31DAF19FB002B4A56 /* Appirater.swift in Sources */,
@@ -580,8 +650,9 @@
 				75C5E95B1DBD697900FCE9D0 /* BMAddressView.swift in Sources */,
 				75C5E9521DBD637400FCE9D0 /* BMSettingsViewController.swift in Sources */,
 				75F8B4CE1DB9774600F43109 /* BMCollectionViewController.swift in Sources */,
+				754A252B2132C81200B3B083 /* BMMapView.swift in Sources */,
 				75805BBD1DAF1D9700DACFF5 /* DKExtensions.swift in Sources */,
-				75679F191DBEDB550066DF0F /* BMCollectionMapView+Fetch.swift in Sources */,
+				75679F191DBEDB550066DF0F /* BMMapView+Fetch.swift in Sources */,
 				75640BFC1DAF1AAD002B4A56 /* BMConstants.swift in Sources */,
 				75640BFE1DAF1B11002B4A56 /* DMDefines.swift in Sources */,
 				75F8B4C81DB9772A00F43109 /* BMCollectionViewCell.swift in Sources */,
@@ -597,7 +668,11 @@
 				758E105E1DBD96D000D872BC /* HockeySDK.swift in Sources */,
 				758E10371DBD92D000D872BC /* Route.swift in Sources */,
 				758E10381DBD92D000D872BC /* BMCollectionSectionHeader.swift in Sources */,
+				7546C99E21300A6E00F80153 /* UIColor.swift in Sources */,
+				754A25252132C6A400B3B083 /* MBButtonState.swift in Sources */,
 				758E10391DBD92D000D872BC /* APIManager.swift in Sources */,
+				754A25282132C70300B3B083 /* BMHeaderView.swift in Sources */,
+				754A252F2132C88400B3B083 /* BMCellView.swift in Sources */,
 				758E103A1DBD92D000D872BC /* MKMapView.swift in Sources */,
 				758E103B1DBD92D000D872BC /* BMButtons.swift in Sources */,
 				758E103C1DBD92D000D872BC /* Appirater.swift in Sources */,
@@ -608,8 +683,9 @@
 				758E10411DBD92D000D872BC /* BMAddressView.swift in Sources */,
 				758E10421DBD92D000D872BC /* BMSettingsViewController.swift in Sources */,
 				758E10431DBD92D000D872BC /* BMCollectionViewController.swift in Sources */,
+				754A252C2132C81200B3B083 /* BMMapView.swift in Sources */,
 				758E10441DBD92D000D872BC /* DKExtensions.swift in Sources */,
-				75679F1A1DBEDB550066DF0F /* BMCollectionMapView+Fetch.swift in Sources */,
+				75679F1A1DBEDB550066DF0F /* BMMapView+Fetch.swift in Sources */,
 				758E10451DBD92D000D872BC /* BMConstants.swift in Sources */,
 				758E10461DBD92D000D872BC /* DMDefines.swift in Sources */,
 				758E10471DBD92D000D872BC /* BMCollectionViewCell.swift in Sources */,
@@ -674,6 +750,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -712,6 +789,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};

@@ -15,8 +15,8 @@ enum BMAddressViewState {
 
     func dotColor() -> UIColor {
         switch self {
-        case .PickUp:       return BMColor.Green
-        case .Destination:  return BMColor.Red
+        case .PickUp:       return BMColor.green
+        case .Destination:  return BMColor.red
         }
     }
 
@@ -33,7 +33,7 @@ class BMAddressView                         : UIView {
     @IBOutlet private weak var addressLabel : UILabel?
     @IBOutlet private weak var dotIndicator : UIView?
 
-    private var state : BMAddressViewState = .PickUp
+    private var state                       : BMAddressViewState = .PickUp
 
     func setupWithState(state: BMAddressViewState) {
         self.state = state
@@ -43,12 +43,12 @@ class BMAddressView                         : UIView {
 
         // Borders
         self.layer.borderWidth = 1
-        self.layer.borderColor = BMColor.ViewBorder.CGColor
+        self.layer.borderColor = BMColor.viewBorder.cgColor
         self.dotIndicator?.layer.borderWidth = 1
-        self.dotIndicator?.layer.borderColor = BMColor.DotBorder.CGColor
+        self.dotIndicator?.layer.borderColor = BMColor.dotBorder.cgColor
     }
 
-    func updateWithAddress(address: String?) {
+    func update(withAddress address: String?) {
         self.addressLabel?.text = (address ?? self.state.defaultText())
     }
 }

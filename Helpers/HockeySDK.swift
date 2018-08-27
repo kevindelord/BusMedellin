@@ -32,13 +32,13 @@ struct HockeySDK {
 
 	- parameter crashManagerStatus: The `BITCrashManagerStatus` which determines whether crashes should be send to HockeyApp and whether it should be done automatically or manually by the user. The default value is `AutoSend`.
 	*/
-	static func setup(crashManagerStatus: BITCrashManagerStatus = .AutoSend) {
-		if let _identifier = NSBundle.mainBundle().objectForInfoDictionaryKey(IdentifierKey) as? String {
+	static func setup(crashManagerStatus: BITCrashManagerStatus = .autoSend) {
+        if let _identifier = Bundle.main.object(forInfoDictionaryKey: IdentifierKey) as? String {
 			if (self.isReleaseBuild == true) {
-				BITHockeyManager.sharedHockeyManager().configureWithIdentifier(_identifier)
-				BITHockeyManager.sharedHockeyManager().startManager()
-				BITHockeyManager.sharedHockeyManager().authenticator.authenticateInstallation()
-				BITHockeyManager.sharedHockeyManager().crashManager.crashManagerStatus = crashManagerStatus
+                BITHockeyManager.shared().configure(withIdentifier:_identifier)
+				BITHockeyManager.shared().start()
+				BITHockeyManager.shared().authenticator.authenticateInstallation()
+				BITHockeyManager.shared().crashManager.crashManagerStatus = crashManagerStatus
 			}
 		} else {
 			print("Warning: You have to set the `\(IdentifierKey)` key in the info plist.")

@@ -35,13 +35,13 @@ struct Analytics {
         }
 
         // Google Analytics
-        GoogleAnalytics.send(category, action: action, label: label, value: value)
+        GoogleAnalytics.send(category: category, action: action, label: label, value: value)
 
         // Firebase
-        Firebase.send(category, action: action, label: label, value: value)
+        Firebase.send(category: category, action: action, label: label, value: value)
     }
 
-    static func sendScreenView(screen: Analytics.Screen) {
+    static func send(screenView screen: Analytics.Screen) {
 
         // Check if the analytics is enabled
         if (Configuration.AnalyticsEnabled == false) {
@@ -49,67 +49,73 @@ struct Analytics {
         }
 
         // Google Analytics
-        GoogleAnalytics.sendScreenView(screen)
+        GoogleAnalytics.send(screenView: screen)
 
         // Firebase
-        Firebase.sendScreenView(screen)
+        Firebase.send(screenView: screen)
     }
 
     // MARK: - Actions type
 
     enum Screen                             : String {
 
-        case MapView                        = "Screen_MapView"
-        case Settings                       = "Screen_Settings"
+        case mapView                        = "Screen_MapView"
+        case settings                       = "Screen_Settings"
     }
 
     enum PinLocation                        : String {
 
-        static let CategoryId               = "PinLocation"
-        case DidSetStart                    = "Pin_DidSetStart"
-        case DidSetDestination              = "Pin_DidSetDestination"
-        case DidCancelStart                 = "Pin_DidCancelStart"
-        case DidCancelDestination           = "Pin_DidCancelDestination"
+        static let categoryId               = "PinLocation"
+
+        case didSetStart                    = "Pin_DidSetStart"
+        case didSetDestination              = "Pin_DidSetDestination"
+        case didCancelStart                 = "Pin_DidCancelStart"
+        case didCancelDestination           = "Pin_DidCancelDestination"
 
         func send() {
-            let category = Analytics.PinLocation.CategoryId
-            Analytics.send(category, action: self.rawValue, label: nil, value: nil)
+            let category = Analytics.PinLocation.categoryId
+            Analytics.send(category: category, action: self.rawValue, label: nil, value: nil)
         }
     }
 
     enum UserLocation                       : String {
 
-        static let CategoryId               = "UserLocation"
-        case DidLocateUser                  = "UserLocation_DidLocateUser"
-        case DidLocateUserTooFar            = "UserLocation_DidLocateUserTooFar"
-        case DidAskForSettings              = "UserLocation_DidAskForSettings"
-        case DidAskForUserLocation          = "UserLocation_DidAskForUserLocation"
+        static let categoryId               = "UserLocation"
+
+        case didLocateUser                  = "UserLocation_DidLocateUser"
+        case didLocateUserTooFar            = "UserLocation_DidLocateUserTooFar"
+        case didAskForSettings              = "UserLocation_DidAskForSettings"
+        case didAskForUserLocation          = "UserLocation_DidAskForUserLocation"
 
         func send() {
-            let category = Analytics.UserLocation.CategoryId
-            Analytics.send(category, action: self.rawValue, label: nil, value: nil)
+            let category = Analytics.UserLocation.categoryId
+            Analytics.send(category: category, action: self.rawValue, label: nil, value: nil)
         }
     }
 
     enum Route                              : String {
 
-        static let CategoryId               = "Route"
-        static let LabelSearch              = "Search"
+        static let categoryId               = "Route"
+        static let labelSearch              = "Search"
 
-        case DidDrawRoute                   = "Route_DidDrawRoute"
-        case DidSelectRoute                 = "Route_DidSelectRoute"
+        case didDrawRoute                   = "Route_DidDrawRoute"
+        case didSelectRoute                 = "Route_DidSelectRoute"
+        case didSearchForMatchingRoutes     = "Route_DidSearchForMatchingRoutes"
+        case didSearchForStartRoutes        = "Route_DidSearchForStartRoutes"
+        case didSearchForDestinationRoutes  = "Route_DidSearchForDestinationRoutes"
 
-        case DidSearchForMatchingRoutes     = "Route_DidSearchForMatchingRoutes"
-        case DidSearchForStartRoutes        = "Route_DidSearchForStartRoutes"
-        case DidSearchForDestinationRoutes  = "Route_DidSearchForDestinationRoutes"
+        func send(routeCode: String? = nil, rounteCount: Int? = 0) {
+            let category = Analytics.Route.categoryId
+            var value: NSNumber?
+            if let rounteCount = rounteCount {
+                value = NSNumber(value: rounteCount)
+            }
 
-        func send(routeCode routeCode: String? = nil, rounteCount: Int? = 0) {
-            let category = Analytics.Route.CategoryId
             switch self {
-            case .DidDrawRoute, .DidSelectRoute:
-                Analytics.send(category, action: self.rawValue, label: routeCode, value: rounteCount)
-            case .DidSearchForMatchingRoutes, .DidSearchForStartRoutes, .DidSearchForDestinationRoutes:
-                Analytics.send(category, action: self.rawValue, label: Analytics.Route.LabelSearch, value: rounteCount)
+            case .didDrawRoute, .didSelectRoute:
+                Analytics.send(category: category, action: self.rawValue, label: routeCode, value: value)
+            case .didSearchForMatchingRoutes, .didSearchForStartRoutes, .didSearchForDestinationRoutes:
+                Analytics.send(category: category, action: self.rawValue, label: Analytics.Route.labelSearch, value: value)
             }
         }
     }
@@ -119,35 +125,44 @@ struct Analytics {
 
 private struct GoogleAnalytics {
 
-    static func setup() {
+    fileprivate static func setup() {
         // Configure tracker from GoogleService-Info.plist.
         var configureError:NSError?
         GGLContext.sharedInstance().configureWithError(&configureError)
-        assert(configureError == nil, "Error configuring Google services: \(configureError)")
+        assert(configureError == nil, "Error configuring Google services: \(String(describing: configureError))")
 
         // Optional: configure GAI options.
         let gai = GAI.sharedInstance()
-        gai.trackUncaughtExceptions = true // Report uncaught exceptions
+        gai?.trackUncaughtExceptions = true // Report uncaught exceptions
         #if RELEASE
-            gai.logger.logLevel = .Error
+            gai?.logger.logLevel = .Error
         #else
-            gai.logger.logLevel = (Verbose.Manager.Analytics == true ? .Verbose : .None)
+            gai?.logger.logLevel = (Verbose.Manager.Analytics == true ? .verbose : .none)
         #endif
     }
 
     // MARK: - Send Actions
 
-    private static func send(category: String, action: String, label: String?, value: NSNumber?) {
-        let event = GAIDictionaryBuilder.createEventWithCategory(category, action: action, label: label, value: value)
-        let dictionary = event.build() as [NSObject:AnyObject]
+    fileprivate static func send(category: String, action: String, label: String?, value: NSNumber?) {
+        guard
+            let event = GAIDictionaryBuilder.createEvent(withCategory: category, action: action, label: label, value: value),
+            let dictionary = event.build() as? [AnyHashable: Any] else {
+                return
+        }
+
         GAI.sharedInstance().defaultTracker.send(dictionary)
     }
 
-    static func sendScreenView(screen: Analytics.Screen) {
-        let tracker = GAI.sharedInstance().defaultTracker
+    static func send(screenView screen: Analytics.Screen) {
+        guard
+            let builder = GAIDictionaryBuilder.createScreenView(),
+            let tracker = GAI.sharedInstance().defaultTracker,
+            let info = builder.build() as? [AnyHashable: Any] else {
+                return
+        }
+        
         tracker.set(kGAIScreenName, value: screen.rawValue)
-        let builder = GAIDictionaryBuilder.createScreenView()
-        tracker.send(builder.build() as [NSObject : AnyObject])
+        tracker.send(info)
     }
 }
 
@@ -155,24 +170,24 @@ private struct GoogleAnalytics {
 
 private struct Firebase {
 
-    private static func setup() {
+    fileprivate static func setup() {
         // Use Firebase library to configure APIs
         FIRApp.configure()
     }
 
-    private static func send(category: String, action: String, label: String?, value: NSNumber?) {
-        var params : [String : NSObject] = [kFIRParameterContentType: action, kFIRParameterItemCategory: category]
+    fileprivate static func send(category: String, action: String, label: String?, value: NSNumber?) {
+        var params = [kFIRParameterContentType: action as NSObject, kFIRParameterItemCategory: category as NSObject]
         if let _label = label {
-            params[kFIRParameterItemName] = _label
+            params[kFIRParameterItemName] = _label as NSObject
         }
         if let _value = value {
-            params[kFIRParameterValue] = _value
+            params[kFIRParameterValue] = _value as NSObject
         }
-        FIRAnalytics.logEventWithName(kFIREventSelectContent, parameters: params)
+        FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: params)
     }
 
-    static func sendScreenView(screen: Analytics.Screen) {
-        let params = [kFIRParameterItemName: screen.rawValue, kFIRParameterItemCategory: kGAIScreenName]
-        FIRAnalytics.logEventWithName(kFIREventSelectContent, parameters: params)
+    static func send(screenView screen: Analytics.Screen) {
+        let params = [kFIRParameterItemName: screen.rawValue as NSObject, kFIRParameterItemCategory: kGAIScreenName as NSObject]
+        FIRAnalytics.logEvent(withName:kFIREventSelectContent, parameters: params)
     }
 }

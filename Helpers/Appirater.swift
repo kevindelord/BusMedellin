@@ -12,7 +12,7 @@ import Appirater
 extension Appirater {
 
     class func setup() {
-        Appirater.setAppId(NSBundle.entryInPListForKey(BMPlist.AppId) as? String)
+        Appirater.setAppId(Bundle.entryInPList(forKey: BMPlist.AppId) as? String)
         Appirater.setAlwaysUseMainBundle(true)
         Appirater.setDaysUntilPrompt(7)
         Appirater.setUsesUntilPrompt(7)

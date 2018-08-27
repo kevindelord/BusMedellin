@@ -59,6 +59,26 @@ DEPENDENCIES:
   - MBProgressHUD (~> 1.0.0)
   - Reachability (~> 3.2)
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AFNetworking
+    - Appirater
+    - Buglife
+    - CSStickyHeaderFlowLayout
+    - DKHelper
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseCore
+    - FirebaseInstanceID
+    - Google
+    - GoogleAnalytics
+    - GoogleInterchangeUtilities
+    - GoogleSymbolUtilities
+    - GoogleUtilities
+    - HockeySDK
+    - MBProgressHUD
+    - Reachability
+
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   Appirater: e7c0a47fb67ee5041ce8479e6ba960927fb40264
@@ -69,7 +89,7 @@ SPEC CHECKSUMS:
   FirebaseAnalytics: 0533a00b681e08fd0b2cd0444b7ddf0ef9fd7a1a
   FirebaseCore: 5a885548bbc5f0c410b04f8e9ac9d73ff1221907
   FirebaseInstanceID: ba1e640935235e5fac39dfa816fe7660e72e1a8a
-  Google: 813c467362eabc11385f5a5cc9ad0cb651a58f4e
+  Google: cd92fab98f800f509da88c1e0c570275713bc9d5
   GoogleAnalytics: f42cc53a87a51fe94334821868d9c8481ff47a7b
   GoogleInterchangeUtilities: d5bc4d88d5b661ab72f9d70c58d02ca8c27ad1f7
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
@@ -80,4 +100,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 46084348092a01ac4b0962c097a462fa7e07ab35
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.5.3

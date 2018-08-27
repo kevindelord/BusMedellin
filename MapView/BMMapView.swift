@@ -521,20 +521,20 @@ extension BMMapView {
 // MARK: - Waiting HUD
 
 extension BMMapView {
-    
-    /**
-     Show Waiting HUD on MapView.
-     */
+
+	/// Show Waiting HUD on MapView.
     private func showWaitingHUD() {
-        let hud = MBProgressHUD.showAdded(to: self, animated: true)
-        hud.bezelView.color = UIColor.black
-        hud.contentColor = UIColor.white
+		DispatchQueue.main.async {
+			let hud = MBProgressHUD.showAdded(to: self, animated: true)
+			hud.bezelView.color = UIColor.black
+			hud.contentColor = UIColor.white
+		}
     }
-    
-    /**
-     Hide Waiting HUD on MapView.
-     */
+
+    /// Hide Waiting HUD on MapView.
     private func hideWaitingHUD() {
-        MBProgressHUD.hide(for: self, animated: true)
+		DispatchQueue.main.async {
+			MBProgressHUD.hide(for: self, animated: true)
+		}
     }
 }

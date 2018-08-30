@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Firebase
 
 struct Analytics {
 
@@ -19,9 +18,6 @@ struct Analytics {
 
 		// Firebase
 		Firebase.setup()
-
-		// Google Analytics
-		GoogleAnalytics.setup()
 	}
 
 	// MARK: - Send Actions
@@ -31,9 +27,6 @@ struct Analytics {
 		if (Configuration.analyticsEnabled == false) {
 			return
 		}
-
-		// Google Analytics
-		GoogleAnalytics.send(category: category, action: action, label: label, value: value)
 
 		// Firebase
 		Firebase.send(category: category, action: action, label: label, value: value)
@@ -45,19 +38,30 @@ struct Analytics {
 			return
 		}
 
-		// Google Analytics
-		GoogleAnalytics.send(screenView: screen)
-
 		// Firebase
 		Firebase.send(screenView: screen)
 	}
 
 	// MARK: - Actions type
 
-	enum Screen								: String {
+	enum Screen {
 
-		case mapView						= "Screen_MapView"
-		case settings						= "Screen_Settings"
+		case mapView
+		case settings
+
+		var name: String {
+			switch self {
+			case .mapView					: return "Screen_MapView"
+			case .settings					: return "Screen_Settings"
+			}
+		}
+
+		var screenClass: String {
+			switch self {
+			case .mapView					: return "BMCollectionViewController"
+			case .settings					: return "BMSettingsViewController"
+			}
+		}
 	}
 
 	enum PinLocation						: String {
@@ -115,78 +119,5 @@ struct Analytics {
 				Analytics.send(category: category, action: self.rawValue, label: Analytics.Route.labelSearch, value: value)
 			}
 		}
-	}
-}
-
-// MARK: - Google Analytics
-
-private struct GoogleAnalytics {
-
-	fileprivate static func setup() {
-		// Configure tracker from GoogleService-Info.plist.
-		// Optional: configure GAI options.
-		guard let gai = GAI.sharedInstance() else {
-			assert(false, "Google Analytics not configured correctly")
-		}
-
-		gai.tracker(withTrackingId: "YOUR_TRACKING_ID")
-		gai.trackUncaughtExceptions = true // Report uncaught exceptions
-		#if RELEASE
-		gai.logger.logLevel = .Error
-		#else
-		gai.logger.logLevel = (Configuration.Verbose.analytics == true ? .verbose : .none)
-		#endif
-	}
-
-	// MARK: - Send Actions
-
-	fileprivate static func send(category: String, action: String, label: String?, value: NSNumber?) {
-		guard
-			let event = GAIDictionaryBuilder.createEvent(withCategory: category, action: action, label: label, value: value),
-			let dictionary = event.build() as? [AnyHashable: Any] else {
-				return
-		}
-
-		GAI.sharedInstance().defaultTracker.send(dictionary)
-	}
-
-	static func send(screenView screen: Analytics.Screen) {
-		guard
-			let builder = GAIDictionaryBuilder.createScreenView(),
-			let tracker = GAI.sharedInstance().defaultTracker,
-			let info = builder.build() as? [AnyHashable: Any] else {
-				return
-		}
-
-		tracker.set(kGAIScreenName, value: screen.rawValue)
-		tracker.send(info)
-	}
-}
-
-// MARK: - Firebase
-
-private struct Firebase {
-
-	fileprivate static func setup() {
-		// Use Firebase library to configure APIs
-		FirebaseApp.configure()
-	}
-
-	fileprivate static func send(category: String, action: String, label: String?, value: NSNumber?) {
-		var params = [AnalyticsParameterContentType: action as NSObject, kFIRParameterItemCategory: category as NSObject]
-		if let _label = label {
-			params[AnalyticsParameterItemName] = _label as NSObject
-		}
-
-		if let _value = value {
-			params[AnalyticsParameterValue] = _value as NSObject
-		}
-
-		Analytics.logEvent(withName: kFIREventSelectContent, parameters: params)
-	}
-
-	static func send(screenView screen: Analytics.Screen) {
-		let params = [kFIRParameterItemName: screen.rawValue as NSObject, kFIRParameterItemCategory: kGAIScreenName as NSObject]
-		FIRAnalytics.logEvent(withName:kFIREventSelectContent, parameters: params)
 	}
 }

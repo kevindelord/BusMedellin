@@ -137,7 +137,9 @@ extension APIManager {
 		return geometry?[API.Response.Key.coordinates] as? [[Double]]
 	}
 
+	/// Route with geometries require a sum up of all coordinates to complete the bezier path.
 	private static func parseRoute(for geometries: [[AnyHashable: Any]]?) -> [[Double]]? {
+		var route = [[Double]]()
 		for geometry in (geometries ?? []) {
 			guard
 				let coordinates = geometry[API.Response.Key.coordinates] as? [[Double]],
@@ -145,10 +147,10 @@ extension APIManager {
 					continue
 			}
 
-			return coordinates
+			route += coordinates
 		}
 
-		return nil
+		return (route.isEmpty == false ? route : nil)
 	}
 
 	/// Fetch all available routes around a specific location.

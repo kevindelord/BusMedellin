@@ -34,7 +34,7 @@ PODS:
 
 DEPENDENCIES:
   - Appirater (~> 2.3.1)
-  - Buglife (~> 1.9.5)
+  - Buglife
   - CSStickyHeaderFlowLayout (~> 0.2.11)
   - Firebase/Core
   - Google/Analytics
@@ -80,6 +80,6 @@ SPEC CHECKSUMS:
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
 
-PODFILE CHECKSUM: 1db09af3173d0ce588016584a8b17c161aca6376
+PODFILE CHECKSUM: 13476efe5c3cd7301cd63e2607f82e072153151f
 
 COCOAPODS: 1.5.3

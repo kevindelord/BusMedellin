@@ -30,3 +30,4 @@
 "SETTINGS_MADE_BY"          = "Hecho con ❤️ por Kevin Delord.";
 "SETTINGS_MADE_BY_ANCHOR"   = "Kevin Delord";
 "NO_INTERNET_CONNECTION"    = "No hay conexión a internet.";
+"APP_VERSION"				= "Versión %@ (%@)";

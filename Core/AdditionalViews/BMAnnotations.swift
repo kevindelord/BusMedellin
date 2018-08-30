@@ -15,9 +15,9 @@ class BMAnnotation	: NSObject, MKAnnotation {
 	let subtitle	: String?
 	var coordinate	: CLLocationCoordinate2D
 	let reuseId		: String
-	let pinColor	: MKPinAnnotationColor
+	let pinColor	: UIColor
 
-	init(coordinate: CLLocationCoordinate2D, reuseId: String, pinColor: MKPinAnnotationColor) {
+	init(coordinate: CLLocationCoordinate2D, reuseId: String, pinColor: UIColor) {
 		self.title = nil
 		self.subtitle = nil
 		self.coordinate = coordinate

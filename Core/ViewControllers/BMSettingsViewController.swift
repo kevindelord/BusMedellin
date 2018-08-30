@@ -53,16 +53,12 @@ class BMSettingsViewController					: UIViewController {
 				return
 		}
 
-		// TODO: localize
-		self.versionLabel?.text = "Version \(shortVersion) (\(bundleVersion))"
+		self.versionLabel?.text = String(format: L("APP_VERSION"), shortVersion, bundleVersion)
 	}
 
 	private var textViewFont : UIFont {
 		var font = (UIFont(name: "Helvetica Neue Light", size: 15) ?? UIFont.systemFont(ofSize: 15))
-		if #available(iOS 8.2, *) {
-			font = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.light)
-		}
-
+		font = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.light)
 		return font
 	}
 

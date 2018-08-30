@@ -107,23 +107,50 @@ extension APIManager {
 		]
 		let manager = APIManager(staticURLWithParameters: parameters)
 		manager.get(success: { (json: [AnyHashable: Any]) in
-			guard
-				let jsonObject = json as? [String: Any],
-				let rows = jsonObject[API.Response.Key.rows] as? [[[String: Any]]],
-				let row = rows.first?.first,
-				let geometry = row[API.Response.Key.geometry] as? [String: Any],
-				let coordinates = geometry[API.Response.Key.coordinates] as? [[Double]] else {
-					let message = "Parsing geometry list failed for route name: \(routeCode)"
-					let error = NSError(domain: "BusPaisa", code: 300, userInfo: [NSLocalizedDescriptionKey: message])
-					failure(error)
-					return
+			let rows = (json[API.Response.Key.rows] as? [[[AnyHashable: Any]]] ?? [])
+			var coordinates = [[Double]]()
+			for row in rows {
+				for geometryData in row {
+					// Use the working data structure
+					let multipleGeometries = geometryData[API.Response.Key.geometries] as? [[AnyHashable: Any]]
+					coordinates = (APIManager.parseRoute(for: multipleGeometries) ?? coordinates)
+					let singleGeometry = geometryData[API.Response.Key.geometry] as? [AnyHashable: Any]
+					coordinates = (APIManager.parseRoute(for: singleGeometry) ?? coordinates)
+				}
 			}
 
-			DKLog(Configuration.Verbose.api, "APIManager: did Receive \(coordinates.count) coordinates for route name: \(routeCode)\n")
-			success(coordinates)
+			if (coordinates.isEmpty == false) {
+				DKLog(Configuration.Verbose.api, "APIManager: did Receive \(coordinates.count) coordinates for route name: \(routeCode)\n")
+				success(coordinates)
+			} else {
+				let message = "Parsing geometry list failed for route name: \(routeCode)"
+				let error = NSError(domain: "BusPaisa", code: 300, userInfo: [NSLocalizedDescriptionKey: message])
+				failure(error)
+			}
+
 		}, failure: { (error: Error) in
 			failure(error)
 		})
+	}
+
+	private static func parseRoute(for geometry: [AnyHashable: Any]?) -> [[Double]]? {
+		return geometry?[API.Response.Key.coordinates] as? [[Double]]
+	}
+
+	/// Route with geometries require a sum up of all coordinates to complete the bezier path.
+	private static func parseRoute(for geometries: [[AnyHashable: Any]]?) -> [[Double]]? {
+		var route = [[Double]]()
+		for geometry in (geometries ?? []) {
+			guard
+				let coordinates = geometry[API.Response.Key.coordinates] as? [[Double]],
+				(coordinates.isEmpty == false) else {
+					continue
+			}
+
+			route += coordinates
+		}
+
+		return (route.isEmpty == false ? route : nil)
 	}
 
 	/// Fetch all available routes around a specific location.

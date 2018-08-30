@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		75052AC921381C510063AE05 /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75052AC821381C510063AE05 /* Firebase.swift */; };
 		75052ACA21381C510063AE05 /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75052AC821381C510063AE05 /* Firebase.swift */; };
+		75052ACC213833AE0063AE05 /* APIManager+Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75052ACB213833AE0063AE05 /* APIManager+Errors.swift */; };
+		75052ACD213833AE0063AE05 /* APIManager+Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75052ACB213833AE0063AE05 /* APIManager+Errors.swift */; };
 		7546C99D21300A6E00F80153 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546C99C21300A6E00F80153 /* UIColor.swift */; };
 		7546C99E21300A6E00F80153 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546C99C21300A6E00F80153 /* UIColor.swift */; };
 		754A25242132C6A400B3B083 /* MBButtonState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A25232132C6A400B3B083 /* MBButtonState.swift */; };
@@ -42,8 +44,6 @@
 		75640BFC1DAF1AAD002B4A56 /* BMConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75640BFB1DAF1AAD002B4A56 /* BMConstants.swift */; };
 		75640BFE1DAF1B11002B4A56 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75640BFD1DAF1B11002B4A56 /* Configuration.swift */; };
 		756493741DBD6F68007811A6 /* BMMapCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756493731DBD6F68007811A6 /* BMMapCircle.swift */; };
-		75679F161DBE77AF0066DF0F /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75679F151DBE77AF0066DF0F /* iAd.framework */; };
-		75679F171DBE77B50066DF0F /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75679F151DBE77AF0066DF0F /* iAd.framework */; };
 		75679F191DBEDB550066DF0F /* BMMapView+Fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679F181DBEDB550066DF0F /* BMMapView+Fetch.swift */; };
 		75679F1A1DBEDB550066DF0F /* BMMapView+Fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679F181DBEDB550066DF0F /* BMMapView+Fetch.swift */; };
 		757F31621DBE5E16002BB03F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 757F31611DBE5E16002BB03F /* GoogleService-Info.plist */; };
@@ -106,6 +106,7 @@
 		3DEA8EFDB7D60226162490B7 /* Pods-BusMedellin-Live-AppStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusMedellin-Live-AppStore.release.xcconfig"; path = "Pods/Target Support Files/Pods-BusMedellin-Live-AppStore/Pods-BusMedellin-Live-AppStore.release.xcconfig"; sourceTree = "<group>"; };
 		4301C8C80BE111EDA26F55FC /* Pods_BusMedellin_Live_AppStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BusMedellin_Live_AppStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75052AC821381C510063AE05 /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
+		75052ACB213833AE0063AE05 /* APIManager+Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIManager+Errors.swift"; sourceTree = "<group>"; };
 		7546C99C21300A6E00F80153 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		754A25232132C6A400B3B083 /* MBButtonState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBButtonState.swift; sourceTree = "<group>"; };
 		754A25262132C70300B3B083 /* BMHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMHeaderView.swift; sourceTree = "<group>"; };
@@ -167,7 +168,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75679F161DBE77AF0066DF0F /* iAd.framework in Frameworks */,
 				757F31681DBE5FD4002BB03F /* AdSupport.framework in Frameworks */,
 				C18EF7B9E2C22F4A87042BDB /* Pods_BusMedellin_Alpha_AdHoc.framework in Frameworks */,
 			);
@@ -177,7 +177,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75679F171DBE77B50066DF0F /* iAd.framework in Frameworks */,
 				757F31691DBE5FDC002BB03F /* AdSupport.framework in Frameworks */,
 				784CAD72F52AE0B32F011F1E /* Pods_BusMedellin_Live_AppStore.framework in Frameworks */,
 			);
@@ -265,6 +264,7 @@
 				754A25302132CA5E00B3B083 /* Extensions */,
 				75FEDCF71DB1DDA700D692C4 /* Header */,
 				75640BEF1DAF19FB002B4A56 /* APIManager.swift */,
+				75052ACB213833AE0063AE05 /* APIManager+Errors.swift */,
 				758E105C1DBD96D000D872BC /* HockeySDK.swift */,
 				75640BF01DAF19FB002B4A56 /* Appirater.swift */,
 				754A25312132CA8B00B3B083 /* DKLog.swift */,
@@ -688,6 +688,7 @@
 				75640BFE1DAF1B11002B4A56 /* Configuration.swift in Sources */,
 				75F8B4C81DB9772A00F43109 /* BMCollectionViewCell.swift in Sources */,
 				754A253B2132CB5D00B3B083 /* NSError.swift in Sources */,
+				75052ACC213833AE0063AE05 /* APIManager+Errors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -727,6 +728,7 @@
 				758E10461DBD92D000D872BC /* Configuration.swift in Sources */,
 				758E10471DBD92D000D872BC /* BMCollectionViewCell.swift in Sources */,
 				754A253C2132CB5D00B3B083 /* NSError.swift in Sources */,
+				75052ACD213833AE0063AE05 /* APIManager+Errors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

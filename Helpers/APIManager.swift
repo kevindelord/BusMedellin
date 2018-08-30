@@ -70,7 +70,7 @@ class APIManager {
 				let data = data,
 				let json = try JSONSerialization.jsonObject(with: data, options: []) as? [AnyHashable: Any] else {
 					DispatchQueue.main.async {
-						failure(NSError(domain: "BusPaisa", code: 300, userInfo: [NSLocalizedDescriptionKey: "Can't deserialize response."]))
+						failure(APIManager.Invalid.json.localizedError)
 					}
 
 					return
@@ -123,9 +123,7 @@ extension APIManager {
 				DKLog(Configuration.Verbose.api, "APIManager: did Receive \(coordinates.count) coordinates for route name: \(routeCode)\n")
 				success(coordinates)
 			} else {
-				let message = "Parsing geometry list failed for route name: \(routeCode)"
-				let error = NSError(domain: "BusPaisa", code: 300, userInfo: [NSLocalizedDescriptionKey: message])
-				failure(error)
+				failure(APIManager.Invalid.coordinates.localizedError)
 			}
 
 		}, failure: { (error: Error) in
@@ -172,9 +170,7 @@ extension APIManager {
 			guard
 				let jsonObject = json as? [String: Any],
 				let routeData = jsonObject[API.Response.Key.rows] as? [[String]] else {
-					let message = "Parsing route list failed for routes around location: \(lat),\(lng)"
-					let error = NSError(domain: "BusPaisa", code: 300, userInfo: [NSLocalizedDescriptionKey: message])
-					failure(error)
+					failure(APIManager.Invalid.routes.localizedError)
 					return
 			}
 

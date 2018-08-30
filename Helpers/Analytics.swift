@@ -124,17 +124,17 @@ private struct GoogleAnalytics {
 
 	fileprivate static func setup() {
 		// Configure tracker from GoogleService-Info.plist.
-		var configureError:NSError?
-		GGLContext.sharedInstance().configureWithError(&configureError)
-		assert(configureError == nil, "Error configuring Google services: \(String(describing: configureError))")
-
 		// Optional: configure GAI options.
-		let gai = GAI.sharedInstance()
-		gai?.trackUncaughtExceptions = true // Report uncaught exceptions
+		guard let gai = GAI.sharedInstance() else {
+			assert(false, "Google Analytics not configured correctly")
+		}
+
+		gai.tracker(withTrackingId: "YOUR_TRACKING_ID")
+		gai.trackUncaughtExceptions = true // Report uncaught exceptions
 		#if RELEASE
-		gai?.logger.logLevel = .Error
+		gai.logger.logLevel = .Error
 		#else
-		gai?.logger.logLevel = (Configuration.Verbose.analytics == true ? .verbose : .none)
+		gai.logger.logLevel = (Configuration.Verbose.analytics == true ? .verbose : .none)
 		#endif
 	}
 
@@ -169,20 +169,20 @@ private struct Firebase {
 
 	fileprivate static func setup() {
 		// Use Firebase library to configure APIs
-		FIRApp.configure()
+		FirebaseApp.configure()
 	}
 
 	fileprivate static func send(category: String, action: String, label: String?, value: NSNumber?) {
-		var params = [kFIRParameterContentType: action as NSObject, kFIRParameterItemCategory: category as NSObject]
+		var params = [AnalyticsParameterContentType: action as NSObject, kFIRParameterItemCategory: category as NSObject]
 		if let _label = label {
-			params[kFIRParameterItemName] = _label as NSObject
+			params[AnalyticsParameterItemName] = _label as NSObject
 		}
 
 		if let _value = value {
-			params[kFIRParameterValue] = _value as NSObject
+			params[AnalyticsParameterValue] = _value as NSObject
 		}
 
-		FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: params)
+		Analytics.logEvent(withName: kFIREventSelectContent, parameters: params)
 	}
 
 	static func send(screenView screen: Analytics.Screen) {

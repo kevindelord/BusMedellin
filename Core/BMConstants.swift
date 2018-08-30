@@ -18,6 +18,7 @@ struct API {
 			static let rows			= "rows"
 			static let coordinates	= "coordinates"
 			static let geometry		= "geometry"
+			static let geometries	= "geometries"
 		}
 	}
 }

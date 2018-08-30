@@ -53,8 +53,7 @@ class BMSettingsViewController					: UIViewController {
 				return
 		}
 
-		// TODO: localize
-		self.versionLabel?.text = "Version \(shortVersion) (\(bundleVersion))"
+		self.versionLabel?.text = String(format: L("APP_VERSION"), shortVersion, bundleVersion)
 	}
 
 	private var textViewFont : UIFont {

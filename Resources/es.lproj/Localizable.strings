@@ -5,6 +5,10 @@
   Created by Kevin Delord on 23/10/16.
   Copyright © 2016 Kevin Delord. All rights reserved.
 */
+
+//
+// Dashboard
+//
 "APP_TITLE"                 = "Bus Paisa";
 "NUMBER_ROUTES_AVAILABLE"   = "%d rutas de bus disponibles.";
 "PIN_PICKUP_LOCATION"       = "PUNTO DE PARTIDA";
@@ -19,6 +23,11 @@
 "LOCATION_ERROR_CANCEL"     = "Cancelar";
 "USER_LOCATION_TOO_FAR"     = "Usted se encuentra muy lejos del centro de la ciudad, no es posible usar su ubicación.";
 "POPUP_OK"                  = "OK";
+"POPUP_ERROR"				= "Error";
+
+//
+// Settings View Controller
+//
 "SETTINGS_ABOUT_TITLE"      = "Acerca de Bus Paisa";
 "SETTINGS_ABOUT_TEXT"       = "Esta aplicación es un proyecto open-source que facilita y mejora el uso del bus a los usuarios de Medellín, Colombia.\n\nEstá basado en el trabajo de Thibault Durand (@tibbb). Puede encontrar su versión web aquí.\n\nLa información mostrada fue proporcionada por la Secretaría de Transportes y Tránsito de Medellín. Las rutas no se actualizan automáticamente.";
 "SETTINGS_ABOUT_ANCHOR_1"   = "proyecto open-source";

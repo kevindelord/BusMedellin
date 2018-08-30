@@ -51,12 +51,6 @@ class BMCollectionViewController: UICollectionViewController {
 		self.layout?.disableStickyHeaders = true
 	}
 
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
-
-		Analytics.send(screenView: .mapView)
-	}
-
 	override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
 		return .slide
 	}
@@ -99,6 +93,7 @@ extension BMCollectionViewController {
 			return
 		}
 
+		Analytics.Route.didSelectRoute.send(routeCode: route.code, rounteCount: 1)
 		self.drawnRoute = route
 		self.displayRouteOnMap?(route.code, nil)
 		collectionView.setContentOffset(CGPoint.zero, animated: true)

@@ -1,6 +1,6 @@
-source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/cocoapods/specs.git'
 
-platform :ios, '8.0'
+platform :ios, '9.3'
 use_frameworks!
 
 def corePods
@@ -8,14 +8,13 @@ def corePods
 	pod 'Appirater', '~> 2.3.1'
 	pod 'MBProgressHUD', '~> 1.1.0'
     pod 'CSStickyHeaderFlowLayout', '~> 0.2.11'
-	pod 'Buglife'
+	pod 'Buglife', '~> 2.8.1'
     pod 'HockeySDK', '~> 5.1.2'
 	pod 'SwiftLint', '~> 0.27.0'
 end
 
 def analytics
-    pod 'Google/Analytics'
-    pod 'Firebase/Core'
+    pod 'Firebase/Core', '~> 5.6.0'
 end
 
 target 'BusMedellin-Alpha-AdHoc' do

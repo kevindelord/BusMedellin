@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		75052AC921381C510063AE05 /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75052AC821381C510063AE05 /* Firebase.swift */; };
+		75052ACA21381C510063AE05 /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75052AC821381C510063AE05 /* Firebase.swift */; };
+		75052ACC213833AE0063AE05 /* APIManager+Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75052ACB213833AE0063AE05 /* APIManager+Errors.swift */; };
+		75052ACD213833AE0063AE05 /* APIManager+Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75052ACB213833AE0063AE05 /* APIManager+Errors.swift */; };
 		7546C99D21300A6E00F80153 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546C99C21300A6E00F80153 /* UIColor.swift */; };
 		7546C99E21300A6E00F80153 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546C99C21300A6E00F80153 /* UIColor.swift */; };
 		754A25242132C6A400B3B083 /* MBButtonState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A25232132C6A400B3B083 /* MBButtonState.swift */; };
@@ -40,14 +44,12 @@
 		75640BFC1DAF1AAD002B4A56 /* BMConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75640BFB1DAF1AAD002B4A56 /* BMConstants.swift */; };
 		75640BFE1DAF1B11002B4A56 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75640BFD1DAF1B11002B4A56 /* Configuration.swift */; };
 		756493741DBD6F68007811A6 /* BMMapCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756493731DBD6F68007811A6 /* BMMapCircle.swift */; };
-		75679F161DBE77AF0066DF0F /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75679F151DBE77AF0066DF0F /* iAd.framework */; };
-		75679F171DBE77B50066DF0F /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75679F151DBE77AF0066DF0F /* iAd.framework */; };
 		75679F191DBEDB550066DF0F /* BMMapView+Fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679F181DBEDB550066DF0F /* BMMapView+Fetch.swift */; };
 		75679F1A1DBEDB550066DF0F /* BMMapView+Fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679F181DBEDB550066DF0F /* BMMapView+Fetch.swift */; };
 		757F31621DBE5E16002BB03F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 757F31611DBE5E16002BB03F /* GoogleService-Info.plist */; };
 		757F31631DBE5E16002BB03F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 757F31611DBE5E16002BB03F /* GoogleService-Info.plist */; };
-		757F31651DBE5F14002BB03F /* GoogleAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757F31641DBE5F14002BB03F /* GoogleAnalytics.swift */; };
-		757F31661DBE5F14002BB03F /* GoogleAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757F31641DBE5F14002BB03F /* GoogleAnalytics.swift */; };
+		757F31651DBE5F14002BB03F /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757F31641DBE5F14002BB03F /* Analytics.swift */; };
+		757F31661DBE5F14002BB03F /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757F31641DBE5F14002BB03F /* Analytics.swift */; };
 		757F31681DBE5FD4002BB03F /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 757F31671DBE5FD4002BB03F /* AdSupport.framework */; };
 		757F31691DBE5FDC002BB03F /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 757F31671DBE5FD4002BB03F /* AdSupport.framework */; };
 		75805BC41DAF5B7E00DACFF5 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75805BC31DAF5B7E00DACFF5 /* Route.swift */; };
@@ -103,6 +105,8 @@
 		303C336AEDCC072779B8226E /* Pods_BusMedellin_Alpha.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BusMedellin_Alpha.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DEA8EFDB7D60226162490B7 /* Pods-BusMedellin-Live-AppStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusMedellin-Live-AppStore.release.xcconfig"; path = "Pods/Target Support Files/Pods-BusMedellin-Live-AppStore/Pods-BusMedellin-Live-AppStore.release.xcconfig"; sourceTree = "<group>"; };
 		4301C8C80BE111EDA26F55FC /* Pods_BusMedellin_Live_AppStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BusMedellin_Live_AppStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		75052AC821381C510063AE05 /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
+		75052ACB213833AE0063AE05 /* APIManager+Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIManager+Errors.swift"; sourceTree = "<group>"; };
 		7546C99C21300A6E00F80153 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		754A25232132C6A400B3B083 /* MBButtonState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBButtonState.swift; sourceTree = "<group>"; };
 		754A25262132C70300B3B083 /* BMHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMHeaderView.swift; sourceTree = "<group>"; };
@@ -130,7 +134,7 @@
 		75679F151DBE77AF0066DF0F /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		75679F181DBEDB550066DF0F /* BMMapView+Fetch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BMMapView+Fetch.swift"; sourceTree = "<group>"; };
 		757F31611DBE5E16002BB03F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		757F31641DBE5F14002BB03F /* GoogleAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleAnalytics.swift; sourceTree = "<group>"; };
+		757F31641DBE5F14002BB03F /* Analytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
 		757F31671DBE5FD4002BB03F /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		75805BC01DAF5B3A00DACFF5 /* medellin.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = medellin.gpx; path = Resources/medellin.gpx; sourceTree = "<group>"; };
 		75805BC31DAF5B7E00DACFF5 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Route.swift; path = Models/Route.swift; sourceTree = "<group>"; };
@@ -164,7 +168,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75679F161DBE77AF0066DF0F /* iAd.framework in Frameworks */,
 				757F31681DBE5FD4002BB03F /* AdSupport.framework in Frameworks */,
 				C18EF7B9E2C22F4A87042BDB /* Pods_BusMedellin_Alpha_AdHoc.framework in Frameworks */,
 			);
@@ -174,7 +177,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75679F171DBE77B50066DF0F /* iAd.framework in Frameworks */,
 				757F31691DBE5FDC002BB03F /* AdSupport.framework in Frameworks */,
 				784CAD72F52AE0B32F011F1E /* Pods_BusMedellin_Live_AppStore.framework in Frameworks */,
 			);
@@ -262,10 +264,12 @@
 				754A25302132CA5E00B3B083 /* Extensions */,
 				75FEDCF71DB1DDA700D692C4 /* Header */,
 				75640BEF1DAF19FB002B4A56 /* APIManager.swift */,
+				75052ACB213833AE0063AE05 /* APIManager+Errors.swift */,
 				758E105C1DBD96D000D872BC /* HockeySDK.swift */,
 				75640BF01DAF19FB002B4A56 /* Appirater.swift */,
 				754A25312132CA8B00B3B083 /* DKLog.swift */,
-				757F31641DBE5F14002BB03F /* GoogleAnalytics.swift */,
+				757F31641DBE5F14002BB03F /* Analytics.swift */,
+				75052AC821381C510063AE05 /* Firebase.swift */,
 				75640BF11DAF19FB002B4A56 /* Reachability.swift */,
 				754A25402132CC7300B3B083 /* Localization.swift */,
 			);
@@ -509,16 +513,22 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-BusMedellin-Alpha-AdHoc/Pods-BusMedellin-Alpha-AdHoc-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Appirater/Appirater.framework",
+				"${BUILT_PRODUCTS_DIR}/Buglife/Buglife.framework",
 				"${BUILT_PRODUCTS_DIR}/CSStickyHeaderFlowLayout/CSStickyHeaderFlowLayout.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Reachability/Reachability.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Appirater.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Buglife.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CSStickyHeaderFlowLayout.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -566,16 +576,22 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-BusMedellin-Live-AppStore/Pods-BusMedellin-Live-AppStore-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Appirater/Appirater.framework",
+				"${BUILT_PRODUCTS_DIR}/Buglife/Buglife.framework",
 				"${BUILT_PRODUCTS_DIR}/CSStickyHeaderFlowLayout/CSStickyHeaderFlowLayout.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Reachability/Reachability.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Appirater.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Buglife.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CSStickyHeaderFlowLayout.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -641,7 +657,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				75513BE51DB02D2300957F40 /* BMAnnotations.swift in Sources */,
-				757F31651DBE5F14002BB03F /* GoogleAnalytics.swift in Sources */,
+				757F31651DBE5F14002BB03F /* Analytics.swift in Sources */,
 				754A25412132CC7300B3B083 /* Localization.swift in Sources */,
 				758E105D1DBD96D000D872BC /* HockeySDK.swift in Sources */,
 				75805BC41DAF5B7E00DACFF5 /* Route.swift in Sources */,
@@ -650,6 +666,7 @@
 				754A25242132C6A400B3B083 /* MBButtonState.swift in Sources */,
 				75640BF21DAF19FB002B4A56 /* APIManager.swift in Sources */,
 				754A25272132C70300B3B083 /* BMHeaderView.swift in Sources */,
+				75052AC921381C510063AE05 /* Firebase.swift in Sources */,
 				754A25352132CADC00B3B083 /* Array.swift in Sources */,
 				754A252E2132C88400B3B083 /* BMCellView.swift in Sources */,
 				75513BE71DB02E5700957F40 /* MKMapView.swift in Sources */,
@@ -671,6 +688,7 @@
 				75640BFE1DAF1B11002B4A56 /* Configuration.swift in Sources */,
 				75F8B4C81DB9772A00F43109 /* BMCollectionViewCell.swift in Sources */,
 				754A253B2132CB5D00B3B083 /* NSError.swift in Sources */,
+				75052ACC213833AE0063AE05 /* APIManager+Errors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -679,7 +697,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				758E10361DBD92D000D872BC /* BMAnnotations.swift in Sources */,
-				757F31661DBE5F14002BB03F /* GoogleAnalytics.swift in Sources */,
+				757F31661DBE5F14002BB03F /* Analytics.swift in Sources */,
 				754A25422132CC7300B3B083 /* Localization.swift in Sources */,
 				758E105E1DBD96D000D872BC /* HockeySDK.swift in Sources */,
 				758E10371DBD92D000D872BC /* Route.swift in Sources */,
@@ -688,6 +706,7 @@
 				754A25252132C6A400B3B083 /* MBButtonState.swift in Sources */,
 				758E10391DBD92D000D872BC /* APIManager.swift in Sources */,
 				754A25282132C70300B3B083 /* BMHeaderView.swift in Sources */,
+				75052ACA21381C510063AE05 /* Firebase.swift in Sources */,
 				754A25362132CADC00B3B083 /* Array.swift in Sources */,
 				754A252F2132C88400B3B083 /* BMCellView.swift in Sources */,
 				758E103A1DBD92D000D872BC /* MKMapView.swift in Sources */,
@@ -709,6 +728,7 @@
 				758E10461DBD92D000D872BC /* Configuration.swift in Sources */,
 				758E10471DBD92D000D872BC /* BMCollectionViewCell.swift in Sources */,
 				754A253C2132CB5D00B3B083 /* NSError.swift in Sources */,
+				75052ACD213833AE0063AE05 /* APIManager+Errors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

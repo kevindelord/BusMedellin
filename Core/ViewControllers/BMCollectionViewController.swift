@@ -24,24 +24,31 @@ class BMCollectionViewController: UICollectionViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
+		if #available(iOS 10.0, *) {
+			self.collectionView?.isPrefetchingEnabled = false
+		}
+
 		self.collectionView?.backgroundColor = .white
 
 		// Setup Cells: list of bus lines
 		self.collectionView?.register(BMCollectionViewCell.self, forCellWithReuseIdentifier: ReuseId.resultCell)
-		self.layout?.itemSize = CGSize(width: self.view.frame.size.width, height: StaticHeight.CollectionView.cell)
-
 		// Setup Header: map view
 		self.collectionView?.register(BMCollectionMapView.self, forSupplementaryViewOfKind: CSStickyHeaderParallaxHeader, withReuseIdentifier: ReuseId.parallaxHeader)
-		self.layout?.parallaxHeaderReferenceSize = CGSize(width: self.view.frame.size.width, height: (self.view.frame.size.height - StaticHeight.CollectionView.sectionHeader))
-
 		// Setup Section Header: header with title "number of lines"
 		self.collectionView?.register(BMCollectionViewSectionHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: ReuseId.sectionHeader)
+
+		var headerHeight = (self.view.frame.size.height - StaticHeight.CollectionView.sectionHeader)
+
+		if #available(iOS 11.0, *) {
+			let windowInsets = ((UIApplication.shared.delegate as? AppDelegate)?.window?.safeAreaInsets ?? UIEdgeInsets.zero)
+			headerHeight = (headerHeight - windowInsets.top - windowInsets.bottom)
+		}
+
+		self.layout?.itemSize = CGSize(width: self.view.frame.size.width, height: StaticHeight.CollectionView.cell)
+		self.layout?.parallaxHeaderReferenceSize = CGSize(width: self.view.frame.size.width, height: headerHeight)
 		self.layout?.headerReferenceSize = CGSize(width: self.view.frame.size.width, height: StaticHeight.CollectionView.sectionHeader)
 		self.layout?.minimumLineSpacing = 0
-
-		if #available(iOS 10.0, *) {
-			self.collectionView?.isPrefetchingEnabled = false
-		}
+		self.layout?.disableStickyHeaders = true
 	}
 
 	override func viewWillAppear(_ animated: Bool) {

@@ -418,10 +418,10 @@
 				TargetAttributes = {
 					7554E7751DAF16E400F1178C = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = VYFF455VZD;
+						DevelopmentTeam = QXY3J9PHW4;
 					};
 					758E10331DBD92D000D872BC = {
-						DevelopmentTeam = VYFF455VZD;
+						DevelopmentTeam = QXY3J9PHW4;
 					};
 				};
 			};
@@ -845,14 +845,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Kevin Delord (366NMB25XL)";
 				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = QXY3J9PHW4;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "PLists/BusMedellin-Alpha-Adhoc-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) -D ALPHA -D ADHOC -D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = io.kevindelord.buspaisa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "038a1001-670d-475b-a3e3-ed4aef1b6704";
+				PROVISIONING_PROFILE = "040574b2-ee41-4cf8-ba9c-ac8fcf580604";
+				PROVISIONING_PROFILE_SPECIFIER = "Bus Paisa Alpha AdHoc DEBUG";
 				SWIFT_OBJC_BRIDGING_HEADER = "Helpers/BusMedellin-Bridging-Header.h";
 			};
 			name = Debug;
@@ -864,14 +866,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Kevin Delord (QXY3J9PHW4)";
 				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = QXY3J9PHW4;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "PLists/BusMedellin-Alpha-Adhoc-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) -D ALPHA -D ADHOC -D RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = io.kevindelord.buspaisa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ec1edffb-2a92-477a-9ed5-27cc9a9ad34b";
+				PROVISIONING_PROFILE = "dd8adb14-b8f9-4e32-adf4-b134333c8ff1";
+				PROVISIONING_PROFILE_SPECIFIER = "Bus Paisa Alpha AdHoc RELEASE";
 				SWIFT_OBJC_BRIDGING_HEADER = "Helpers/BusMedellin-Bridging-Header.h";
 			};
 			name = Release;
@@ -883,14 +887,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Kevin Delord (QXY3J9PHW4)";
 				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = QXY3J9PHW4;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "PLists/BusMedellin-Live-AppStore-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) -D LIVE -D APPSTORE -D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = io.kevindelord.buspaisa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3b08d81d-6b41-4a2c-a639-45b2822b65b9";
+				PROVISIONING_PROFILE = "67ad3d28-55d4-4fa1-aedf-7363cd080d7f";
+				PROVISIONING_PROFILE_SPECIFIER = "Bus Paisa Live AppStore RELEASE";
 				SWIFT_OBJC_BRIDGING_HEADER = "Helpers/BusMedellin-Bridging-Header.h";
 			};
 			name = Debug;
@@ -902,14 +908,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Kevin Delord (QXY3J9PHW4)";
 				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = QXY3J9PHW4;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "PLists/BusMedellin-Live-AppStore-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) -D LIVE -D APPSTORE -D RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = io.kevindelord.buspaisa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3b08d81d-6b41-4a2c-a639-45b2822b65b9";
+				PROVISIONING_PROFILE = "67ad3d28-55d4-4fa1-aedf-7363cd080d7f";
+				PROVISIONING_PROFILE_SPECIFIER = "Bus Paisa Live AppStore RELEASE";
 				SWIFT_OBJC_BRIDGING_HEADER = "Helpers/BusMedellin-Bridging-Header.h";
 			};
 			name = Release;

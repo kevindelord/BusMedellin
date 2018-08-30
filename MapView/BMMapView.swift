@@ -105,7 +105,7 @@ extension BMMapView: MKMapViewDelegate {
 
 			annotationView?.annotation = annotation
 			annotationView?.animatesDrop = false
-			annotationView?.pinColor = annotation.pinColor
+			annotationView?.pinTintColor = annotation.pinColor
 			annotationView?.canShowCallout = false
 			return annotationView
 		}

@@ -6,7 +6,6 @@
 //  Copyright © 2018 Kevin Delord. All rights reserved.
 //
 
-@available(iOS 8.0, *)
 extension UIAlertController {
 
 	class func showErrorPopup(_ error: NSError?, presentingViewController: UIViewController? = UIApplication.shared.windows.first?.rootViewController) {

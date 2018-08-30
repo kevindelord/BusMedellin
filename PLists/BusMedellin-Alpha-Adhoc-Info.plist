@@ -17,22 +17,13 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.1</string>
+	<string>1.0.2</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>2</string>
+	<string>3</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>MapDefault</key>
-	<dict>
-		<key>Latitude</key>
-		<string>6.2442</string>
-		<key>Longitude</key>
-		<string>-75.5812</string>
-		<key>Radius</key>
-		<string>3300</string>
-	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Enable location to find buses nearby!</string>
 	<key>UILaunchStoryboardName</key>

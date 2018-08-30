@@ -10,8 +10,6 @@ import Foundation
 import CSStickyHeaderFlowLayout
 import Reachability
 
-// TODO: crash on iPhone Plus when scrollable content is at the top of the screen.
-
 class BMCollectionViewController: UICollectionViewController {
 
 	var availableRoutes			: [Route]?
@@ -40,6 +38,10 @@ class BMCollectionViewController: UICollectionViewController {
 		self.collectionView?.register(BMCollectionViewSectionHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: ReuseId.sectionHeader)
 		self.layout?.headerReferenceSize = CGSize(width: self.view.frame.size.width, height: StaticHeight.CollectionView.sectionHeader)
 		self.layout?.minimumLineSpacing = 0
+
+		if #available(iOS 10.0, *) {
+			self.collectionView?.isPrefetchingEnabled = false
+		}
 	}
 
 	override func viewWillAppear(_ animated: Bool) {

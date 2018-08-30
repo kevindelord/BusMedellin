@@ -864,7 +864,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Kevin Delord (366NMB25XL)";
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = QXY3J9PHW4;
 				INFOPLIST_FILE = "PLists/BusMedellin-Alpha-Adhoc-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
@@ -884,7 +884,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Kevin Delord (QXY3J9PHW4)";
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = QXY3J9PHW4;
 				INFOPLIST_FILE = "PLists/BusMedellin-Alpha-Adhoc-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
@@ -904,7 +904,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Kevin Delord (QXY3J9PHW4)";
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = QXY3J9PHW4;
 				INFOPLIST_FILE = "PLists/BusMedellin-Live-AppStore-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
@@ -924,7 +924,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Kevin Delord (QXY3J9PHW4)";
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = QXY3J9PHW4;
 				INFOPLIST_FILE = "PLists/BusMedellin-Live-AppStore-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;

@@ -13,8 +13,6 @@
 		75052ACD213833AE0063AE05 /* APIManager+Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75052ACB213833AE0063AE05 /* APIManager+Errors.swift */; };
 		7546C99D21300A6E00F80153 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546C99C21300A6E00F80153 /* UIColor.swift */; };
 		7546C99E21300A6E00F80153 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546C99C21300A6E00F80153 /* UIColor.swift */; };
-		754A25242132C6A400B3B083 /* MBButtonState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A25232132C6A400B3B083 /* MBButtonState.swift */; };
-		754A25252132C6A400B3B083 /* MBButtonState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A25232132C6A400B3B083 /* MBButtonState.swift */; };
 		754A25272132C70300B3B083 /* BMHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A25262132C70300B3B083 /* BMHeaderView.swift */; };
 		754A25282132C70300B3B083 /* BMHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A25262132C70300B3B083 /* BMHeaderView.swift */; };
 		754A252B2132C81200B3B083 /* BMMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A252A2132C81200B3B083 /* BMMapView.swift */; };
@@ -87,6 +85,8 @@
 		75C5E95B1DBD697900FCE9D0 /* BMAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C5E95A1DBD697900FCE9D0 /* BMAddressView.swift */; };
 		75C5E95E1DBD698100FCE9D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C5E95C1DBD698100FCE9D0 /* LaunchScreen.storyboard */; };
 		75C5E95F1DBD698100FCE9D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C5E95D1DBD698100FCE9D0 /* Main.storyboard */; };
+		75DBD71D21383AEB003184E8 /* MBButtonState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DBD71C21383AEB003184E8 /* MBButtonState.swift */; };
+		75DBD71E21383AEB003184E8 /* MBButtonState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DBD71C21383AEB003184E8 /* MBButtonState.swift */; };
 		75F8B4C01DB95E6200F43109 /* BMHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75F8B4BF1DB95E6200F43109 /* BMHeaderView.xib */; };
 		75F8B4C21DB9691200F43109 /* BMCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75F8B4C11DB9691200F43109 /* BMCellView.xib */; };
 		75F8B4C71DB9772A00F43109 /* BMCollectionSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F8B4C41DB9772A00F43109 /* BMCollectionSectionHeader.swift */; };
@@ -108,7 +108,6 @@
 		75052AC821381C510063AE05 /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
 		75052ACB213833AE0063AE05 /* APIManager+Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIManager+Errors.swift"; sourceTree = "<group>"; };
 		7546C99C21300A6E00F80153 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
-		754A25232132C6A400B3B083 /* MBButtonState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBButtonState.swift; sourceTree = "<group>"; };
 		754A25262132C70300B3B083 /* BMHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMHeaderView.swift; sourceTree = "<group>"; };
 		754A252A2132C81200B3B083 /* BMMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMMapView.swift; sourceTree = "<group>"; };
 		754A252D2132C88400B3B083 /* BMCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMCellView.swift; sourceTree = "<group>"; };
@@ -148,6 +147,7 @@
 		75C5E95A1DBD697900FCE9D0 /* BMAddressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BMAddressView.swift; path = Core/AdditionalViews/BMAddressView.swift; sourceTree = "<group>"; };
 		75C5E95C1DBD698100FCE9D0 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Resources/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		75C5E95D1DBD698100FCE9D0 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Resources/Main.storyboard; sourceTree = "<group>"; };
+		75DBD71C21383AEB003184E8 /* MBButtonState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MBButtonState.swift; path = Core/AdditionalViews/MBButtonState.swift; sourceTree = "<group>"; };
 		75F8B4BF1DB95E6200F43109 /* BMHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BMHeaderView.xib; path = Resources/BMHeaderView.xib; sourceTree = "<group>"; };
 		75F8B4C11DB9691200F43109 /* BMCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BMCellView.xib; path = Resources/BMCellView.xib; sourceTree = "<group>"; };
 		75F8B4C41DB9772A00F43109 /* BMCollectionSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BMCollectionSectionHeader.swift; sourceTree = "<group>"; };
@@ -211,7 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				75513BE21DB01ED900957F40 /* BMButtons.swift */,
-				754A25232132C6A400B3B083 /* MBButtonState.swift */,
+				75DBD71C21383AEB003184E8 /* MBButtonState.swift */,
 				75513BE41DB02D2300957F40 /* BMAnnotations.swift */,
 				75C5E95A1DBD697900FCE9D0 /* BMAddressView.swift */,
 				756493731DBD6F68007811A6 /* BMMapCircle.swift */,
@@ -663,7 +663,6 @@
 				75805BC41DAF5B7E00DACFF5 /* Route.swift in Sources */,
 				75F8B4C71DB9772A00F43109 /* BMCollectionSectionHeader.swift in Sources */,
 				7546C99D21300A6E00F80153 /* UIColor.swift in Sources */,
-				754A25242132C6A400B3B083 /* MBButtonState.swift in Sources */,
 				75640BF21DAF19FB002B4A56 /* APIManager.swift in Sources */,
 				754A25272132C70300B3B083 /* BMHeaderView.swift in Sources */,
 				75052AC921381C510063AE05 /* Firebase.swift in Sources */,
@@ -674,6 +673,7 @@
 				75640BF31DAF19FB002B4A56 /* Appirater.swift in Sources */,
 				75640BF41DAF19FB002B4A56 /* Reachability.swift in Sources */,
 				75F8B4CB1DB9773800F43109 /* AppDelegate.swift in Sources */,
+				75DBD71D21383AEB003184E8 /* MBButtonState.swift in Sources */,
 				754A25382132CB2300B3B083 /* UIAlertController.swift in Sources */,
 				754A253E2132CB8D00B3B083 /* UIView.swift in Sources */,
 				756493741DBD6F68007811A6 /* BMMapCircle.swift in Sources */,
@@ -703,7 +703,6 @@
 				758E10371DBD92D000D872BC /* Route.swift in Sources */,
 				758E10381DBD92D000D872BC /* BMCollectionSectionHeader.swift in Sources */,
 				7546C99E21300A6E00F80153 /* UIColor.swift in Sources */,
-				754A25252132C6A400B3B083 /* MBButtonState.swift in Sources */,
 				758E10391DBD92D000D872BC /* APIManager.swift in Sources */,
 				754A25282132C70300B3B083 /* BMHeaderView.swift in Sources */,
 				75052ACA21381C510063AE05 /* Firebase.swift in Sources */,
@@ -714,6 +713,7 @@
 				758E103C1DBD92D000D872BC /* Appirater.swift in Sources */,
 				758E103D1DBD92D000D872BC /* Reachability.swift in Sources */,
 				758E103E1DBD92D000D872BC /* AppDelegate.swift in Sources */,
+				75DBD71E21383AEB003184E8 /* MBButtonState.swift in Sources */,
 				754A25392132CB2300B3B083 /* UIAlertController.swift in Sources */,
 				754A253F2132CB8D00B3B083 /* UIView.swift in Sources */,
 				758E103F1DBD92D000D872BC /* BMMapCircle.swift in Sources */,

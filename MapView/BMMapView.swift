@@ -42,33 +42,27 @@ class BMMapView											: UIView {
 		super.init(coder: aDecoder)
 	}
 
-	private static var isInitialized = false
-
 	override func layoutSubviews() {
 		super.layoutSubviews()
 
 		// Initialise the interface that way only once.
-		/* TODO: use dispatch_once?
-		private static var _onceToken: dispatch_once_t = 0
-		dispatch_once(&BMMapView._onceToken) {
-		*/
-		if (BMMapView.isInitialized == false) {
-			BMMapView.isInitialized = true
-
-			// By default show Medellin city center
-			self.centerMap(on: self.cityCenterLocation)
-			// Setup 'locate me' button.
-			self.nearMeButton?.setup(mapView: self.mapView)
-			// Setup address views
-			self.pinDescriptionLabel?.text = L("PIN_PICKUP_LOCATION")
-			self.pickUpInfoView?.setupWithState(state: .PickUp)
-			self.destinationInfoView?.setupWithState(state: .Destination)
-			// Setup cancel buttons
-			let imageInset = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
-			self.cancelPickUpButton?.imageEdgeInsets = imageInset
-			self.cancelDestinationButton?.imageEdgeInsets = imageInset
-		}
+		_ = initializationProcess
 	}
+
+	private lazy var initializationProcess: Void = {
+		// By default show Medellin city center
+		self.centerMap(on: self.cityCenterLocation)
+		// Setup 'locate me' button.
+		self.nearMeButton?.setup(mapView: self.mapView)
+		// Setup address views
+		self.pinDescriptionLabel?.text = L("PIN_PICKUP_LOCATION")
+		self.pickUpInfoView?.setupWithState(state: .PickUp)
+		self.destinationInfoView?.setupWithState(state: .Destination)
+		// Setup cancel buttons
+		let imageInset = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
+		self.cancelPickUpButton?.imageEdgeInsets = imageInset
+		self.cancelDestinationButton?.imageEdgeInsets = imageInset
+	}()
 
 	/// Default city center location
 	private var cityCenterLocation : CLLocation {

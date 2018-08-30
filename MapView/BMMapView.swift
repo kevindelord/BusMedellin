@@ -167,13 +167,18 @@ extension BMMapView {
 	private func showPopupToRedirectToSettings() {
 		let presentingViewController = UIApplication.shared.windows.first?.rootViewController
 		let alertController = UIAlertController(title: L("LOCATION_ERROR_TITLE"), message: L("LOCATION_ERROR_MESSAGE"), preferredStyle: .alert)
-		alertController.addAction(UIAlertAction(title: L("LOCATION_ERROR_CANCEL"), style: .default, handler: nil))
+		// Cancel action button
+		alertController.addAction(UIAlertAction(title: L("LOCATION_ERROR_CANCEL"), style: .default, handler: { (action: UIAlertAction) in
+			Analytics.UserLocation.didCancelLocationPopup.send()
+		}))
+		// Open Settings action button
 		alertController.addAction(UIAlertAction(title: L("LOCATION_ERROR_SETTINGS"), style: .cancel, handler: { (action: UIAlertAction) in
 			if let url = URL(string: UIApplicationOpenSettingsURLString) {
+				Analytics.UserLocation.didOpenSettings.send()
 				UIApplication.shared.openURL(url)
 			}
 		}))
-
+		// Present Controller
 		presentingViewController?.present(alertController, animated: true, completion: nil)
 		Analytics.UserLocation.didAskForSettings.send()
 	}
@@ -449,13 +454,13 @@ extension BMMapView {
 			// Fetch all routes passing by the pick up location.
 			self.fetchRoutes(forCoordinates: pickUpCoordinate, completion: { (pickUpRoutes: [Route]) in
 				// Analytics
-				Analytics.Route.didSearchForStartRoutes.send(routeCode: nil, rounteCount: pickUpRoutes.count)
+				Analytics.Search.startRoutes.send(routeCode: nil, rounteCount: pickUpRoutes.count)
 
 				if let destinationCoordinate = self.destinationAnnotation?.coordinate {
 					// Fetch all routes passing by the destination location.
 					self.fetchRoutes(forCoordinates: destinationCoordinate, completion: { (destinationRoutes: [Route]) in
 						// Analytics
-						Analytics.Route.didSearchForDestinationRoutes.send(routeCode: nil, rounteCount: destinationRoutes.count)
+						Analytics.Search.destinationRoutes.send(routeCode: nil, rounteCount: destinationRoutes.count)
 
 						// Filter the routes to only the ones matching.
 						let matchingRoutes = self.findMatchingRoutes(pickUpRoutes: pickUpRoutes, destinationRoutes: destinationRoutes)
@@ -473,7 +478,7 @@ extension BMMapView {
 	*/
 	private func didFindMatchingRoutes(_ matchingRoutes: [Route]) {
 		// Analytics
-		Analytics.Route.didSearchForMatchingRoutes.send(routeCode: nil, rounteCount: matchingRoutes.count)
+		Analytics.Search.matchingRoutes.send(routeCode: nil, rounteCount: matchingRoutes.count)
 		// Draw the first route as example.
 		if let routeCode = matchingRoutes.first?.code {
 			self.fetchAndDrawRoute(routeCode: routeCode, completion: {

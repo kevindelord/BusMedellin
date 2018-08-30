@@ -36,12 +36,6 @@ class BMSettingsViewController					: UIViewController {
 		self.setupMadeByTextView()
 	}
 
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
-
-		Analytics.send(screenView: .settings)
-	}
-
 	// MARK: - UI Setup functions
 
 	private func configureVersionLabel() {

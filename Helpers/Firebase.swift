@@ -18,19 +18,20 @@ struct Firebase {
 	}
 
 	static func send(category: String, action: String, label: String?, value: NSNumber?) {
-		var params = [AnalyticsParameterContentType: action as NSObject, AnalyticsParameterItemCategory: category as NSObject]
+		var params : [String: Any] = [
+			AnalyticsParameterContentType: action,
+			AnalyticsParameterItemName: action,
+			AnalyticsParameterItemCategory: category
+		]
+
 		if let _label = label {
-			params[AnalyticsParameterItemName] = _label as NSObject
+			params[AnalyticsParameterItemVariant] = _label
 		}
 
 		if let _value = value {
-			params[AnalyticsParameterValue] = _value as NSObject
+			params[AnalyticsParameterValue] = _value
 		}
 
 		FirebaseAnalytics.Analytics.logEvent(AnalyticsEventSelectContent, parameters: params)
-	}
-
-	static func send(screenView screen: Analytics.Screen) {
-		FirebaseAnalytics.Analytics.setScreenName(screen.name, screenClass: screen.screenClass)
 	}
 }

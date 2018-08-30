@@ -28,12 +28,12 @@ extension UIAlertController {
 	}
 
 	class func showErrorMessage(_ message: String, presentingViewController: UIViewController? = UIApplication.shared.windows.first?.rootViewController) {
-		self.showInfoMessage("Error", message: message, presentingViewController: presentingViewController)
+		self.showInfoMessage(L("POPUP_ERROR"), message: message, presentingViewController: presentingViewController)
 	}
 
 	class func showInfoMessage(_ title: String, message: String, presentingViewController: UIViewController? = UIApplication.shared.windows.first?.rootViewController) {
 		let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-		alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+		alertController.addAction(UIAlertAction(title: L("POPUP_OK"), style: .default, handler: nil))
 		presentingViewController?.present(alertController, animated: true, completion: nil)
 	}
 }

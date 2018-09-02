@@ -7,8 +7,22 @@
 //
 
 import Foundation
-import Reachability
 import MBProgressHUD
+
+// TODO: add documentation for each protocol function.
+// TODO: re-integrate for connection internet required.
+
+protocol ViewContainer {
+
+	/// Coordinator object managing what is displayed on to the UI.
+	var coordinator: Coordinator { get }
+
+	/// Basic view presenting the contained content.
+	var view: UIView! { get }
+
+	/// Required override of the native SDK functions to load the embed views.
+	func performSegue(withIdentifier identifier: String, sender: Any?)
+}
 
 protocol ContentViewDelegate {
 
@@ -28,6 +42,7 @@ protocol ContentView {
 
 protocol Coordinator {
 
+	/// Redirect the user to the settings flow.
 	func openSettings()
 
 	/// Show Waiting HUD on MapView.
@@ -35,23 +50,27 @@ protocol Coordinator {
 
 	/// Hide Waiting HUD on MapView.
 	func hideWaitingHUD()
+
+	/// Initialize the segue's destination view controller depending on its type and the current state of the app.
+	func prepare(for segue: UIStoryboardSegue, on container: ViewContainer)
 }
 
 class MapCoordinator {
 
 	private let routeManager	= RouteManager()
-
 	private var container 		: ViewContainer?
 	private var mapView			: ContentView?
 	private var routeHeader		: ContentView?
+}
 
+extension MapCoordinator: Coordinator {
 
 	func prepare(for segue: UIStoryboardSegue, on container: ViewContainer) {
-		if (segue.identifier == "embedHeaderView"), let viewController = segue.destination as? BMHeaderViewController {
+		if (segue.identifier == Segue.Embed.headerView), let viewController = segue.destination as? BMHeaderViewController {
 			self.routeHeader = (viewController.view as? ContentView)
 			self.routeHeader?.coordinator = self
 
-		} else if (segue.identifier == "embedMapView"), let viewController = segue.destination as? BMMapViewController {
+		} else if (segue.identifier == Segue.Embed.MapView), let viewController = segue.destination as? BMMapViewController {
 			self.mapView = (viewController.view as? ContentView)
 			self.mapView?.coordinator = self
 			(self.mapView as? BMMapView)?.routeDataSource = self.routeManager
@@ -61,15 +80,11 @@ class MapCoordinator {
 		self.container = container
 		self.reloadContentView()
 	}
-}
-
-extension MapCoordinator: Coordinator {
 
 	func openSettings() {
-		self.container?.performSegue(withIdentifier: "openSettingsViewController", sender: nil)
+		self.container?.performSegue(withIdentifier: Segue.settings, sender: nil)
 	}
 
-	/// Show Waiting HUD on MapView.
 	func showWaitingHUD() {
 		guard let view = self.container?.view else {
 			return
@@ -82,7 +97,6 @@ extension MapCoordinator: Coordinator {
 		}
 	}
 
-	/// Hide Waiting HUD on MapView.
 	func hideWaitingHUD() {
 		guard let view = self.container?.view else {
 			return
@@ -114,19 +128,15 @@ extension MapCoordinator: ContentViewDelegate {
 	}
 }
 
-protocol ViewContainer {
-
-	var view: UIView! { get }
-
-	func performSegue(withIdentifier identifier: String, sender: Any?)
-}
-
 class BMMapContainerViewController	: UIViewController, ViewContainer {
 
-	private var coordinator			= MapCoordinator()
+	var coordinator					: Coordinator
 
-	override func viewDidLoad() {
-		super.viewDidLoad()
+	required init?(coder aDecoder: NSCoder) {
+		// Init coordinator depending on local needs.
+		self.coordinator = MapCoordinator()
+
+		super.init(coder: aDecoder)
 	}
 
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -141,4 +151,5 @@ class BMMapViewController : UIViewController {
 }
 
 class BMHeaderViewController : UIViewController {
+
 }

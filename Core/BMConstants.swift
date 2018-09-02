@@ -50,7 +50,12 @@ struct Map {
 struct Segue {
 
 	static let settings				= "openSettingsViewController"
-	static let routeSelection		= "openRouteSelectionViewController"
+
+	struct Embed {
+
+		static let headerView		= "embedHeaderView"
+		static let MapView			= "embedMapView"
+	}
 }
 
 struct XibFile {

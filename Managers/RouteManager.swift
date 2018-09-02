@@ -40,15 +40,55 @@ protocol RouteDataSource {
 	var selectedRoute			: Route? { get }
 }
 
-
 class RouteManager				: RouteDataSource {
 
 	var availableRoutes			= [Route]()
 	var selectedRoute			: Route?
+
+	func routes(between start: CLLocationCoordinate2D, and destination: CLLocationCoordinate2D, completion: @escaping (() -> Void)) {
+		// Fetch all routes passing by the pick up location.
+		self.fetchRoutes(forCoordinates: start, completion: { (pickUpRoutes: [Route]) in
+			// Analytics
+			Analytics.Search.startRoutes.send(routeCode: nil, rounteCount: pickUpRoutes.count)
+			// Fetch all routes passing by the destination location.
+			self.fetchRoutes(forCoordinates: destination, completion: { (destinationRoutes: [Route]) in
+				// Analytics
+				Analytics.Search.destinationRoutes.send(routeCode: nil, rounteCount: destinationRoutes.count)
+
+				// Filter the routes to only the ones matching.
+				self.availableRoutes = self.findMatchingRoutes(pickUpRoutes: pickUpRoutes, destinationRoutes: destinationRoutes)
+				self.selectedRoute = self.availableRoutes.first
+				// Analytics
+				Analytics.Search.matchingRoutes.send(routeCode: nil, rounteCount: self.availableRoutes.count)
+				completion()
+			})
+		})
+	}
+
+	func routeCoordinates(for routeCode: String, completion: @escaping ((_ coordinates: [CLLocationCoordinate2D]) -> Void)) {
+		APIManager.coordinates(forRouteCode: routeCode, success: { (coordinates: [[Double]]) in
+			let locationCoordinates = self.createLocations(fromCoordinates: coordinates)
+			completion(locationCoordinates)
+		}, failure: { (error: Error) in
+			UIAlertController.showErrorPopup(error as NSError?)
+			completion([])
+		})
+	}
+
+	func address(forLocation location: CLLocation, completion: @escaping ((_ address: String?) -> Void)) {
+		let handler = { (placemarks: [CLPlacemark]?, error: Error?) in
+			for placemark in (placemarks ?? []) {
+				DKLog(Configuration.Verbose.pinAddress, "Address found: \(placemark.addressDictionary ?? [:])")
+				let street = placemark.addressDictionary?[Map.Address.street] as? String
+				completion(street)
+			}
+		}
+
+		CLGeocoder().reverseGeocodeLocation(location, completionHandler: handler)
+	}
 }
 
-
-// MARK: - Route Data Management
+// MARK: - Private Functions
 
 extension RouteManager {
 
@@ -111,52 +151,5 @@ extension RouteManager {
 			UIAlertController.showErrorPopup(error as NSError?)
 			completion([])
 		})
-	}
-}
-
-// MARK: - Route Data Source
-
-extension RouteManager {
-
-	func routes(between start: CLLocationCoordinate2D, and destination: CLLocationCoordinate2D, completion: @escaping (() -> Void)) {
-		// Fetch all routes passing by the pick up location.
-		self.fetchRoutes(forCoordinates: start, completion: { (pickUpRoutes: [Route]) in
-			// Analytics
-			Analytics.Search.startRoutes.send(routeCode: nil, rounteCount: pickUpRoutes.count)
-			// Fetch all routes passing by the destination location.
-			self.fetchRoutes(forCoordinates: destination, completion: { (destinationRoutes: [Route]) in
-				// Analytics
-				Analytics.Search.destinationRoutes.send(routeCode: nil, rounteCount: destinationRoutes.count)
-
-				// Filter the routes to only the ones matching.
-				self.availableRoutes = self.findMatchingRoutes(pickUpRoutes: pickUpRoutes, destinationRoutes: destinationRoutes)
-				self.selectedRoute = self.availableRoutes.first
-				// Analytics
-				Analytics.Search.matchingRoutes.send(routeCode: nil, rounteCount: self.availableRoutes.count)
-				completion()
-			})
-		})
-	}
-
-	func routeCoordinates(for routeCode: String, completion: @escaping ((_ coordinates: [CLLocationCoordinate2D]) -> Void)) {
-		APIManager.coordinates(forRouteCode: routeCode, success: { (coordinates: [[Double]]) in
-			let locationCoordinates = self.createLocations(fromCoordinates: coordinates)
-			completion(locationCoordinates)
-		}, failure: { (error: Error) in
-			UIAlertController.showErrorPopup(error as NSError?)
-			completion([])
-		})
-	}
-
-	func address(forLocation location: CLLocation, completion: @escaping ((_ address: String?) -> Void)) {
-		let handler = { (placemarks: [CLPlacemark]?, error: Error?) in
-			for placemark in (placemarks ?? []) {
-				DKLog(Configuration.Verbose.pinAddress, "Address found: \(placemark.addressDictionary ?? [:])")
-				let street = placemark.addressDictionary?[Map.Address.street] as? String
-				completion(street)
-			}
-		}
-
-		CLGeocoder().reverseGeocodeLocation(location, completionHandler: handler)
 	}
 }

@@ -8,6 +8,23 @@
 
 import UIKit
 
+/**
+
+Old configuration:
+
+class BMCollectionViewSectionHeader		: UICollectionReusableView {
+	self.clipsToBounds = true
+}
+
+private func interfaceInitialisation() {
+	self.headerContainer = UIView.load(from: XibFile.headerView) as? BMHeaderView
+	self.headerContainer?.frame = self.bounds
+	self.headerContainer?.layer.borderWidth = 1
+	self.headerContainer?.layer.borderColor = BMColor.viewBorder.cgColor
+	self.addSubview(safe: self.headerContainer)
+}
+*/
+
 class BMHeaderView										: UIView {
 
 	// MARK: - Outlets

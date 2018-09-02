@@ -10,6 +10,10 @@ import UIKit
 import MapKit
 import Reachability
 
+// TODO: fully extract location Manager
+// TODO: fully extract top view
+// TODO: fix position of locationButton compared to annotations.
+
 class BMMapView											: UIView {
 
 	@IBOutlet weak private var mapView					: MKMapView?

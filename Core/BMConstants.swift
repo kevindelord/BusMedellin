@@ -50,6 +50,7 @@ struct Map {
 struct Segue {
 
 	static let settings				= "openSettingsViewController"
+	static let routeSelection		= "openRouteSelectionViewController"
 }
 
 struct XibFile {

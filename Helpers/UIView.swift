@@ -6,6 +6,8 @@
 //  Copyright © 2018 Kevin Delord. All rights reserved.
 //
 
+import UIKit
+
 extension UIView {
 
 	func roundRect(radius: CGFloat) {

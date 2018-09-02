@@ -6,6 +6,8 @@
 //  Copyright © 2018 Kevin Delord. All rights reserved.
 //
 
+import UIKit
+
 class BMCellView										: UICollectionViewCell {
 
 	@IBOutlet private weak var titleLabel				: UILabel?

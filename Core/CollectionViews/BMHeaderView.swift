@@ -22,25 +22,45 @@ class BMHeaderView										: UIView {
 
 	// MARK: - Attributes
 
-	var openSettingsBlock								: (() -> Void)?
+	var coordinator										: Coordinator?
 
-	// MARK: - Setup Functions
+	// MARK: - Interface actions
 
-	func updateContent(availableRoutes: [Route]?, drawnRoute: Route?) {
-		if (availableRoutes == nil || availableRoutes?.isEmpty == true) {
-			self.showAppTitle()
+	@IBAction private func infoButtonPressed() {
+		self.coordinator?.openSettings()
+	}
+}
 
-		} else if let route = drawnRoute {
-			// Title
-			self.routeTitle?.text = route.name
-			self.appTitle?.text = ""
-			self.infoButton?.alpha = 0
-			self.logoImageView?.alpha = 0
-			// Subtitle
-			self.configureSubtitle(route: route)
-			// Other Routes
-			self.configureOtherRoutes(availableRoutes: availableRoutes)
+// MARK: - ContentView
+
+extension BMHeaderView: ContentView {
+
+	func update(availableRoutes: [Route], selectedRoute: Route?) {
+		guard
+			let route = selectedRoute,
+			(availableRoutes.isEmpty == false) else {
+				self.showAppTitle()
+				return
 		}
+
+		self.showRouteDetail(availableRoutes, route: route)
+	}
+}
+
+// MARK: - UI Update
+
+extension BMHeaderView {
+
+	private func showRouteDetail(_ availableRoutes: [Route], route: Route) {
+		// Title
+		self.routeTitle?.text = route.name
+		self.appTitle?.text = ""
+		self.infoButton?.alpha = 0
+		self.logoImageView?.alpha = 0
+		// Subtitle
+		self.configureSubtitle(route: route)
+		// Other Routes
+		self.configureOtherRoutes(availableRoutes: availableRoutes)
 	}
 
 	private func configureOtherRoutes(availableRoutes: [Route]?) {
@@ -75,11 +95,5 @@ class BMHeaderView										: UIView {
 		self.routeTitle?.text = ""
 		self.subtitle?.text = ""
 		self.totalRoutes?.text = ""
-	}
-
-	// MARK: - Interface actions
-
-	@IBAction private func infoButtonPressed() {
-		self.openSettingsBlock?()
 	}
 }

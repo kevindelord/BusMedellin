@@ -6,6 +6,8 @@
 //  Copyright © 2018 Kevin Delord. All rights reserved.
 //
 
+import Foundation
+
 extension APIManager {
 
 	enum Invalid {

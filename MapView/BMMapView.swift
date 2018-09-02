@@ -8,8 +8,6 @@
 
 import UIKit
 import MapKit
-import CSStickyHeaderFlowLayout
-import MBProgressHUD
 import Reachability
 
 class BMMapView											: UIView {
@@ -23,7 +21,6 @@ class BMMapView											: UIView {
 	@IBOutlet weak private var cancelDestinationButton	: UIButton?
 	@IBOutlet weak private var cancelPickUpButton		: UIButton?
 	@IBOutlet weak private var destinationInfoViewTopConstraint : NSLayoutConstraint?
-	@IBOutlet weak private var linkBetweenDots			: UIView?
 
 	private let locationManager							= CLLocationManager()
 	private var startAnnotation							: BMAnnotation?
@@ -31,8 +28,9 @@ class BMMapView											: UIView {
 	private var startCircle								: BMMapCircle?
 	private var destinationCircle						: BMMapCircle?
 
-	var didFetchAvailableRoutesBlock					: ((_ routes: [Route]?) -> Void)?
-	var showErrorPopupBlock								: ((_ error: Error?) -> Void)?
+	var coordinator										: Coordinator?
+	var routeDataSource									: RouteDataSource?
+	var contentViewDelegate								: ContentViewDelegate?
 
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -45,7 +43,7 @@ class BMMapView											: UIView {
 	override func layoutSubviews() {
 		super.layoutSubviews()
 
-		// Initialise the interface that way only once.
+		// Initialize the interface that way only once.
 		_ = initializationProcess
 	}
 
@@ -63,17 +61,24 @@ class BMMapView											: UIView {
 		self.cancelPickUpButton?.imageEdgeInsets = imageInset
 		self.cancelDestinationButton?.imageEdgeInsets = imageInset
 	}()
+}
 
-	/// Default city center location
-	private var cityCenterLocation : CLLocation {
-		let latitude = (Double(Configuration().defaultLatitude) ?? 0)
-		let longitude = (Double(Configuration().defaultLongitude) ?? 0)
-		return CLLocation(latitude: latitude, longitude: longitude)
-	}
+// MARK: - ContentView
 
-	/// Default zoom radius of the mapView.
-	private var defaultZoomRadius : CLLocationDistance {
-		return Map.defaultZoomRadius
+extension BMMapView: ContentView {
+
+	func update(availableRoutes: [Route], selectedRoute: Route?) {
+		guard let routeCode = selectedRoute?.code else {
+			return
+		}
+
+		self.routeDataSource?.routeCoordinates(for: routeCode, completion: { [weak self] (coordinates: [CLLocationCoordinate2D]) in
+			self?.drawRouteForCoordinates(coordinates: coordinates)
+			// Analytics
+			Analytics.Route.didDrawRoute.send(routeCode: routeCode, rounteCount: 1)
+			// Hide waiting HUD
+			self?.coordinator?.hideWaitingHUD()
+		})
 	}
 }
 
@@ -139,6 +144,13 @@ extension BMMapView: MKMapViewDelegate {
 
 extension BMMapView {
 
+	/// Default city center location
+	private var cityCenterLocation : CLLocation {
+		let latitude = (Double(Configuration().defaultLatitude) ?? 0)
+		let longitude = (Double(Configuration().defaultLongitude) ?? 0)
+		return CLLocation(latitude: latitude, longitude: longitude)
+	}
+
 	private func checkLocationAuthorizationStatus() -> CLLocation? {
 		if (CLLocationManager.authorizationStatus() == .authorizedWhenInUse) {
 			self.mapView?.showsUserLocation = true
@@ -188,7 +200,7 @@ extension BMMapView {
 	- parameter location: Location to center the map to.
 	*/
 	private func centerMap(on location: CLLocation) {
-		let regionRadius: CLLocationDistance = self.defaultZoomRadius
+		let regionRadius: CLLocationDistance = Map.defaultZoomRadius
 		let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 2.0, regionRadius * 2.0)
 		self.mapView?.setRegion(coordinateRegion, animated: true)
 	}
@@ -200,7 +212,7 @@ extension BMMapView {
 
 	- parameter coordinates: Array of coordinates representing the route to display.
 	*/
-	func drawRouteForCoordinates(coordinates: [CLLocationCoordinate2D]) {
+	private func drawRouteForCoordinates(coordinates: [CLLocationCoordinate2D]) {
 		guard (coordinates.isEmpty == false) else {
 			return
 		}
@@ -257,7 +269,7 @@ extension BMMapView {
 	*/
 	private func moveMapViewNorthFromCoordinate(coordinate: CLLocationCoordinate2D, delta: Double = Map.deltaAfterSearch) {
 		let newLocation = CLLocation(latitude: coordinate.latitude + delta, longitude: coordinate.longitude)
-		let regionRadius: CLLocationDistance = self.defaultZoomRadius
+		let regionRadius: CLLocationDistance = Map.defaultZoomRadius
 		let coordinateRegion = MKCoordinateRegionMakeWithDistance(newLocation.coordinate, regionRadius, regionRadius)
 		self.mapView?.setRegion(coordinateRegion, animated: true)
 	}
@@ -267,9 +279,7 @@ extension BMMapView {
 
 extension BMMapView {
 
-	/**
-	Function called when the user presses the 'x' to cancel the PICKUP location.
-	*/
+	/// Function called when the user presses the 'x' to cancel the PICKUP location.
 	@IBAction private func cancelPickUpButtonPressed() {
 		UIView.animate(withDuration: 0.3, animations: {
 			// Hide UI elements
@@ -280,7 +290,6 @@ extension BMMapView {
 			// Show the destination address view.
 			self.destinationInfoView?.backgroundColor = BMColor.viewBorder
 			self.destinationInfoViewTopConstraint?.constant -= ((self.destinationInfoView?.frame.height ?? 0) * 0.5)
-			self.linkBetweenDots?.alpha = 0
 			// Reset map
 			self.removeDrawnRoutes()
 			self.mapView?.removeAnnotation(safe: self.startAnnotation)
@@ -290,15 +299,13 @@ extension BMMapView {
 			self.locationButton?.setImage(UIImage(named: "pickupLocation"), for: .normal)
 			self.pinDescriptionLabel?.text = L("PIN_PICKUP_LOCATION")
 			// Notify and reload the collection view.
-			self.didFetchAvailableRoutesBlock?(nil)
+			self.contentViewDelegate?.cancelSearch()
 			// Analytics
 			Analytics.PinLocation.didCancelStart.send()
 		})
 	}
 
-	/**
-	Function called when the user presses the 'x' to cancel the DESTINATION location.
-	*/
+	/// Function called when the user presses the 'x' to cancel the DESTINATION location.
 	@IBAction private func cancelDestinationButtonPressed() {
 		UIView.animate(withDuration: 0.3, animations: {
 			// Hide UI elements
@@ -316,16 +323,14 @@ extension BMMapView {
 			self.locationButton?.setImage(UIImage(named: "destinationLocation"), for: .normal)
 			self.pinDescriptionLabel?.text = L("PIN_DESTINATION_LOCATION")
 			// Notify and reload the collection view with the new results.
-			self.didFetchAvailableRoutesBlock?(nil)
+			self.contentViewDelegate?.cancelSearch()
 			// Analytics
 			Analytics.PinLocation.didCancelDestination.send()
 		})
 	}
 
-	/**
-	Function called when the user selects a pickup or destination location.
-	This function checks what needs to be set and forward the process to a more dedicated function.
-	*/
+	/// Function called when the user selects a pickup or destination location.
+	/// This function checks what needs to be set and forward the process to a more dedicated function.
 	@IBAction private func setLocationButtonPressed() {
 		if (Reachability.isConnected == true) {
 			if (self.startAnnotation == nil) {
@@ -338,9 +343,7 @@ extension BMMapView {
 		}
 	}
 
-	/**
-	Function called when the user presses the 'near me' (or aka 'locate me') button.
-	*/
+	/// Function called when the user presses the 'near me' (or aka 'locate me') button.
 	@IBAction private func locateMeButtonPressed() {
 		if let userLocation = self.checkLocationAuthorizationStatus() {
 			// Disable the locate me feature if the user is too far away from the city center.
@@ -376,12 +379,12 @@ extension BMMapView {
 
 			}, completion: { (finished: Bool) in
 				// Show waiting HUD
-				self.showWaitingHUD()
+				self.coordinator?.showWaitingHUD()
 				// Analytics
 				Analytics.PinLocation.didSetStart.send()
 				// Fetch the address of the location
 				let location = CLLocation(latitude: centerCoordinate.latitude, longitude: centerCoordinate.longitude)
-				self.fetchAddress(forLocation: location, completion: { (address: String?) in
+				self.routeDataSource?.address(forLocation: location, completion: { (address: String?) in
 					// Show the address in the dedicated view.
 					self.pickUpInfoView?.update(withAddress: address)
 					// Set the location button and text to the destination state.
@@ -395,11 +398,10 @@ extension BMMapView {
 						// Show the destination address view.
 						self.destinationInfoView?.backgroundColor = .white
 						self.destinationInfoViewTopConstraint?.constant += ((self.destinationInfoView?.frame.height ?? 0) * 0.5)
-						self.linkBetweenDots?.alpha = 1
 						// Move the map up North a bit.
 						self.moveMapViewNorthFromCoordinate(coordinate: centerCoordinate)
 						// Hide waiting HUD
-						self.hideWaitingHUD()
+						self.coordinator?.hideWaitingHUD()
 					})
 				})
 			})
@@ -425,115 +427,27 @@ extension BMMapView {
 
 			}, completion: { (finished: Bool) in
 				// Show waiting HUD
-				self.showWaitingHUD()
+				self.coordinator?.showWaitingHUD()
 				// Analytics
 				Analytics.PinLocation.didSetDestination.send()
 				// Fetch the address of the location
 				let location = CLLocation(latitude: centerCoordinate.latitude, longitude: centerCoordinate.longitude)
-				self.fetchAddress(forLocation: location, completion: { (address: String?) in
+				self.routeDataSource?.address(forLocation: location, completion: { [weak self] (address: String?) in
 					// Show the address in the dedicated view.
-					self.destinationInfoView?.update(withAddress: address)
+					self?.destinationInfoView?.update(withAddress: address)
+
 					// Search for all available routes between the two locations.
-					self.searchForRoutesBetweenAnnotations()
+					guard
+						let start = self?.startAnnotation?.coordinate,
+						let destination = self?.destinationAnnotation?.coordinate else {
+							return
+					}
+
+					self?.routeDataSource?.routes(between: start, and: destination, completion: { [weak self] in
+						self?.contentViewDelegate?.reloadContentView()
+					})
 				})
 			})
-		}
-	}
-
-	/**
-	Fetch routes around both PICKUP and DESTINATION annotations.
-	*/
-	private func searchForRoutesBetweenAnnotations() {
-		if let pickUpCoordinate = self.startAnnotation?.coordinate {
-			// Fetch all routes passing by the pick up location.
-			self.fetchRoutes(forCoordinates: pickUpCoordinate, completion: { (pickUpRoutes: [Route]) in
-				// Analytics
-				Analytics.Search.startRoutes.send(routeCode: nil, rounteCount: pickUpRoutes.count)
-
-				if let destinationCoordinate = self.destinationAnnotation?.coordinate {
-					// Fetch all routes passing by the destination location.
-					self.fetchRoutes(forCoordinates: destinationCoordinate, completion: { (destinationRoutes: [Route]) in
-						// Analytics
-						Analytics.Search.destinationRoutes.send(routeCode: nil, rounteCount: destinationRoutes.count)
-
-						// Filter the routes to only the ones matching.
-						let matchingRoutes = self.findMatchingRoutes(pickUpRoutes: pickUpRoutes, destinationRoutes: destinationRoutes)
-						self.didFindMatchingRoutes(matchingRoutes)
-					})
-				}
-			})
-		}
-	}
-
-	/**
-	If any draw the first matching route and send them all to the collection view to reload the list.
-
-	- parameter matchingRoutes: Array of routes that go through both PICKUP and DESTINATION annotation areas.
-	*/
-	private func didFindMatchingRoutes(_ matchingRoutes: [Route]) {
-		// Analytics
-		Analytics.Search.matchingRoutes.send(routeCode: nil, rounteCount: matchingRoutes.count)
-		// Draw the first route as example.
-		if let routeCode = matchingRoutes.first?.code {
-			self.fetchAndDrawRoute(routeCode: routeCode, completion: {
-				self.didFinishFetchingAndDrawingNewRoutes(routes: matchingRoutes)
-			})
-		} else {
-			self.didFinishFetchingAndDrawingNewRoutes(routes: matchingRoutes)
-		}
-	}
-
-	/**
-	Filter the available routes to only the ones going through both PICKUP and DESTINATION annotation areas.
-
-	- parameter pickUpRoutes:      All routes going through the PICKUP annotation area.
-	- parameter destinationRoutes: All routes going through the DESTINATION annotation area.
-
-	- returns: Array of matching routes that go through both PICKUP and DESTINATION annotation areas.
-	*/
-	private func findMatchingRoutes(pickUpRoutes: [Route], destinationRoutes: [Route]) -> [Route] {
-		var commonRoutes = [Route]()
-		for pickUpRoute in pickUpRoutes {
-			for destinationRoute in destinationRoutes
-				where (destinationRoute.code == pickUpRoute.code) {
-					commonRoutes.append(destinationRoute)
-			}
-		}
-
-		return commonRoutes
-	}
-
-	/**
-	Send all matching routes to the collection view to reload the list.
-	This function also Hides any waiting HUD on the mapView.
-
-	- parameter routes: Array of routes that go through both PICKUP and DESTINATION annotation areas.
-	*/
-	private func didFinishFetchingAndDrawingNewRoutes(routes: [Route]) {
-		// Notify and reload the collection view with the new results.
-		self.didFetchAvailableRoutesBlock?(routes)
-		// Hide waiting HUD
-		self.hideWaitingHUD()
-	}
-}
-
-// MARK: - Waiting HUD
-
-extension BMMapView {
-
-	/// Show Waiting HUD on MapView.
-	private func showWaitingHUD() {
-		DispatchQueue.main.async {
-			let hud = MBProgressHUD.showAdded(to: self, animated: true)
-			hud.bezelView.color = UIColor.black
-			hud.contentColor = UIColor.white
-		}
-	}
-
-	/// Hide Waiting HUD on MapView.
-	private func hideWaitingHUD() {
-		DispatchQueue.main.async {
-			MBProgressHUD.hide(for: self, animated: true)
 		}
 	}
 }

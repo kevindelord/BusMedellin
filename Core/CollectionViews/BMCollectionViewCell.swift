@@ -6,6 +6,8 @@
 //  Copyright © 2016 Kevin Delord. All rights reserved.
 //
 
+import UIKit
+
 class BMCollectionViewCell	: UICollectionViewCell {
 
 	var cellContainer		: BMCellView?

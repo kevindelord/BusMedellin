@@ -53,25 +53,17 @@ struct Segue {
 
 	struct Embed {
 
-		static let headerView		= "embedHeaderView"
+		static let FooterView		= "embedFooterView"
 		static let MapView			= "embedMapView"
+		static let RoutesView		= "embedRoutesView"
 	}
-}
-
-struct XibFile {
-
-	static let mapView				= "BMMapView"
-	static let headerView			= "BMHeaderView"
-	static let cellView				= "BMCellView"
 }
 
 struct ReuseId {
 
-	static let parallaxHeader		= "MapCollectionView_ParallaxHeader"
-	static let sectionHeader		= "CollectionView_SectionHeader"
-	static let resultCell			= "CollectionView_ResultCell"
 	static let pickUpPin			= "PickUpAnnotaion_Id"
 	static let destinationPin		= "DestinationAnnotaion_Id"
+	static let routeCell			= "CollectionView_RouteCell"
 }
 
 struct BMColor {

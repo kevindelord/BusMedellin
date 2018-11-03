@@ -34,7 +34,7 @@ class BMMapView											: UIView {
 
 	var coordinator										: Coordinator?
 	var routeDataSource									: RouteDataSource?
-	var contentViewDelegate								: ContentViewDelegate?
+	var delegate										: ContentViewDelegate?
 
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -303,7 +303,7 @@ extension BMMapView {
 			self.locationButton?.setImage(UIImage(named: "pickupLocation"), for: .normal)
 			self.pinDescriptionLabel?.text = L("PIN_PICKUP_LOCATION")
 			// Notify and reload the collection view.
-			self.contentViewDelegate?.cancelSearch()
+			self.delegate?.cancelSearch()
 			// Analytics
 			Analytics.PinLocation.didCancelStart.send()
 		})
@@ -327,7 +327,7 @@ extension BMMapView {
 			self.locationButton?.setImage(UIImage(named: "destinationLocation"), for: .normal)
 			self.pinDescriptionLabel?.text = L("PIN_DESTINATION_LOCATION")
 			// Notify and reload the collection view with the new results.
-			self.contentViewDelegate?.cancelSearch()
+			self.delegate?.cancelSearch()
 			// Analytics
 			Analytics.PinLocation.didCancelDestination.send()
 		})
@@ -448,7 +448,7 @@ extension BMMapView {
 					}
 
 					self?.routeDataSource?.routes(between: start, and: destination, completion: { [weak self] in
-						self?.contentViewDelegate?.reloadContentView()
+						self?.delegate?.reloadContentView()
 					})
 				})
 			})

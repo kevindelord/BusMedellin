@@ -38,6 +38,8 @@ protocol ContentView {
 	func update(availableRoutes: [Route], selectedRoute: Route?)
 
 	var coordinator: Coordinator? { get set }
+
+	var delegate: ContentViewDelegate? { get set }
 }
 
 protocol Coordinator {
@@ -60,21 +62,27 @@ class MapCoordinator {
 	private let routeManager	= RouteManager()
 	private var container 		: ViewContainer?
 	private var mapView			: ContentView?
-	private var routeHeader		: ContentView?
+	private var routesContainer	: ContentView?
 }
 
 extension MapCoordinator: Coordinator {
 
 	func prepare(for segue: UIStoryboardSegue, on container: ViewContainer) {
-		if (segue.identifier == Segue.Embed.headerView), let viewController = segue.destination as? BMHeaderViewController {
-			self.routeHeader = (viewController.view as? ContentView)
-			self.routeHeader?.coordinator = self
+		if (segue.identifier == Segue.Embed.FooterView), let _ = segue.destination as? BMFooterViewController {
+			// TODO: do nothing ?
+			return
 
 		} else if (segue.identifier == Segue.Embed.MapView), let viewController = segue.destination as? BMMapViewController {
 			self.mapView = (viewController.view as? ContentView)
 			self.mapView?.coordinator = self
+			self.mapView?.delegate = self
 			(self.mapView as? BMMapView)?.routeDataSource = self.routeManager
-			(self.mapView as? BMMapView)?.contentViewDelegate = self
+
+		} else if (segue.identifier == Segue.Embed.RoutesView), let viewController = segue.destination as? BMRoutesViewController {
+			self.routesContainer = (viewController.view as? ContentView)
+			self.routesContainer?.coordinator = self
+			self.routesContainer?.delegate = self
+
 		}
 
 		self.container = container
@@ -115,7 +123,7 @@ extension MapCoordinator: ContentViewDelegate {
 		let selectedRoute = self.routeManager.selectedRoute
 
 		self.mapView?.update(availableRoutes: availableRoutes, selectedRoute: selectedRoute)
-		self.routeHeader?.update(availableRoutes: availableRoutes, selectedRoute: selectedRoute)
+		self.routesContainer?.update(availableRoutes: availableRoutes, selectedRoute: selectedRoute)
 	}
 
 	func select(route: Route) {
@@ -150,6 +158,10 @@ class BMMapViewController : UIViewController {
 
 }
 
-class BMHeaderViewController : UIViewController {
+class BMRoutesViewController : UIViewController {
+
+}
+
+class BMFooterViewController : UIViewController {
 
 }

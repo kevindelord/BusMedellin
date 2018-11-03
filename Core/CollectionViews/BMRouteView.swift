@@ -1,5 +1,5 @@
 //
-//  BMCellView.swift
+//  BMRouteView.swift
 //  BusMedellin
 //
 //  Created by kevindelord on 26/08/2018.
@@ -8,11 +8,12 @@
 
 import UIKit
 
-class BMCellView										: UICollectionViewCell {
+class BMRouteView										: UICollectionViewCell {
 
 	@IBOutlet private weak var titleLabel				: UILabel?
 	@IBOutlet private weak var subtitleLabel			: UILabel?
 	@IBOutlet private weak var titleBottomConstraint	: NSLayoutConstraint?
+	// TODO: connect `titleBottomConstraint` ?
 
 	func updateContent(route: Route) {
 		// Title

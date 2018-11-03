@@ -1,5 +1,5 @@
 //
-//  BMRouteView.swift
+//  RouteViewController.swift
 //  BusMedellin
 //
 //  Created by kevindelord on 26/08/2018.
@@ -8,14 +8,26 @@
 
 import UIKit
 
-class BMRouteView										: UICollectionViewCell {
+class RouteViewController								: UIViewController {
 
 	@IBOutlet private weak var titleLabel				: UILabel?
 	@IBOutlet private weak var subtitleLabel			: UILabel?
 	@IBOutlet private weak var titleBottomConstraint	: NSLayoutConstraint?
 	// TODO: connect `titleBottomConstraint` ?
 
-	func updateContent(route: Route) {
+	var route											: Route?
+
+	override func viewDidLoad() {
+		super.viewDidLoad()
+
+		self.updateContent()
+	}
+
+	private func updateContent() {
+		guard let route = self.route else {
+			return
+		}
+
 		// Title
 		self.titleLabel?.text = route.name
 

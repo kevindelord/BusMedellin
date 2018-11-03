@@ -78,7 +78,7 @@ extension MapCoordinator: Coordinator {
 			self.mapView?.delegate = self
 			(self.mapView as? BMMapView)?.routeDataSource = self.routeManager
 
-		} else if (segue.identifier == Segue.Embed.RoutesView), let viewController = segue.destination as? BMRoutesViewController {
+		} else if (segue.identifier == Segue.Embed.RoutesView), let viewController = segue.destination as? RoutesViewController {
 			self.routesContainer = (viewController.view as? ContentView)
 			self.routesContainer?.coordinator = self
 			self.routesContainer?.delegate = self
@@ -127,11 +127,12 @@ extension MapCoordinator: ContentViewDelegate {
 	}
 
 	func select(route: Route) {
+		// TODO: Is this needed anyway ?
 		print("TODO: display new selected route on map view")
 	}
 
 	func cancelSearch() {
-		self.routeManager.selectedRoute = nil
+		self.routeManager.cancelSearch()
 		self.reloadContentView()
 	}
 }
@@ -152,16 +153,4 @@ class BMMapContainerViewController	: UIViewController, ViewContainer {
 
 		self.coordinator.prepare(for: segue, on: self)
 	}
-}
-
-class BMMapViewController : UIViewController {
-
-}
-
-class BMRoutesViewController : UIViewController {
-
-}
-
-class BMFooterViewController : UIViewController {
-
 }

@@ -23,15 +23,6 @@ struct API {
 	}
 }
 
-struct StaticHeight {
-
-	struct CollectionView {
-
-		static let cell				: CGFloat = 80
-		static let sectionHeader	: CGFloat = 80
-	}
-}
-
 struct Map {
 
 	static let defaultSearchRadius	= 500.0
@@ -56,6 +47,17 @@ struct Segue {
 		static let FooterView		= "embedFooterView"
 		static let MapView			= "embedMapView"
 		static let RoutesView		= "embedRoutesView"
+		static let PageController	= "embedPageController"
+	}
+}
+
+struct Storyboard {
+
+	static let Routes				= "Routes"
+
+	struct Controller {
+
+		static let Route 			= "RouteViewController"
 	}
 }
 
@@ -63,7 +65,6 @@ struct ReuseId {
 
 	static let pickUpPin			= "PickUpAnnotaion_Id"
 	static let destinationPin		= "DestinationAnnotaion_Id"
-	static let routeCell			= "CollectionView_RouteCell"
 }
 
 struct BMColor {

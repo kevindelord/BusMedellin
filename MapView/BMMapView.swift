@@ -33,8 +33,8 @@ class BMMapView											: UIView {
 	private var destinationCircle						: BMMapCircle?
 
 	var coordinator										: Coordinator?
-	var routeDataSource									: RouteDataSource?
-	var delegate										: ContentViewDelegate?
+	var routeDataSource									: RouteManagerDataSource?
+	var delegate										: (RouteManagerDelegate & ContentViewDelegate)?
 
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -448,7 +448,7 @@ extension BMMapView {
 					}
 
 					self?.routeDataSource?.routes(between: start, and: destination, completion: { [weak self] in
-						self?.delegate?.reloadContentView()
+						self?.delegate?.reloadContentViews()
 					})
 				})
 			})

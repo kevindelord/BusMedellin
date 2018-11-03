@@ -16,7 +16,7 @@ class RoutePageController 	: UIPageViewController {
 		super.viewDidLoad()
 
 		self.dataSource = self
-		self.delegate = self.handler
+		self.delegate = self
 
 		self.configurePageControl()
 	}
@@ -40,7 +40,23 @@ class RoutePageController 	: UIPageViewController {
 	}
 }
 
+// MARK: - UIPageViewControllerDelegate
+// To be consistent with the DataSource, RoutePageController should also conform to UIPageViewControllerDelegate.
+
+extension RoutePageController : UIPageViewControllerDelegate {
+
+	func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+
+		guard let routeController = pageViewController.viewControllers?.first as? RouteViewController else {
+			return
+		}
+
+		self.handler?.didMove(to: routeController)
+	}
+}
+
 // MARK: - UIPageViewControllerDataSource
+// The RoutePageController must conform to UIPageViewControllerDataSource to support the PageControl dots interface.
 
 extension RoutePageController : UIPageViewControllerDataSource {
 

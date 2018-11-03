@@ -8,6 +8,8 @@
 
 import UIKit
 
+// TODO: Document protocols
+
 protocol RoutePageControllerDataSource {
 
 	var initialRouteController 		: RouteViewController?  { get }
@@ -15,22 +17,26 @@ protocol RoutePageControllerDataSource {
 	var numberOfRouteControllers	: Int { get }
 
 	func index(of routeController: RouteViewController) -> Int?
+
+	func viewController(before viewController: RouteViewController?) -> RouteViewController?
+
+	func viewController(after viewController: RouteViewController?) -> RouteViewController?
 }
 
-class RoutePageControllerHandler 	: NSObject {
+protocol RoutePageControllerDelegate {
+
+	func didMove(to routeController: RouteViewController)
+}
+
+class RoutePageControllerHandler {
 
 	private var routeControllers	: [RouteViewController]
+	private var delegate			: RouteManagerDelegate?
 
-	override init() {
+	init(availableRoutes routes: [Route], delegate: RouteManagerDelegate?) {
+		self.delegate = delegate
 		self.routeControllers = []
 
-		super.init()
-	}
-
-	convenience init(availableRoutes routes: [Route]) {
-		self.init()
-
-		self.routeControllers = []
 		for route in routes {
 			let storyboard = UIStoryboard(name: Storyboard.Routes, bundle: nil)
 			let controller = storyboard.instantiateViewController(withIdentifier: Storyboard.Controller.Route)
@@ -59,15 +65,14 @@ extension RoutePageControllerHandler	: RoutePageControllerDataSource {
 
 // MARK: Delegate
 
-extension RoutePageControllerHandler: UIPageViewControllerDelegate {
+extension RoutePageControllerHandler {
 
-	func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-
-		if let firstViewController = pageViewController.viewControllers?.first as? RouteViewController,
-			let index = self.index(of: firstViewController) {
-			print("new index: \(index)")
-			//				tutorialDelegate?.tutorialPageViewController(self, didUpdatePageIndex: index)
+	func didMove(to routeController: RouteViewController) {
+		guard let route = routeController.route else {
+			return
 		}
+
+		self.delegate?.select(route: route)
 	}
 }
 
@@ -77,7 +82,7 @@ extension RoutePageControllerHandler {
 
 	func viewController(before viewController: RouteViewController?) -> RouteViewController? {
 		guard
-			(self.routeControllers.count > 1),
+			(self.numberOfRouteControllers > 1),
 			let routeViewController = viewController,
 			let index = self.index(of: routeViewController) else {
 				return nil
@@ -90,7 +95,7 @@ extension RoutePageControllerHandler {
 			return self.routeControllers.last
 		}
 
-		guard (self.routeControllers.count > previousIndex) else {
+		guard (self.numberOfRouteControllers > previousIndex) else {
 			return nil
 		}
 
@@ -99,7 +104,7 @@ extension RoutePageControllerHandler {
 
 	func viewController(after viewController: RouteViewController?) -> RouteViewController? {
 		guard
-			(self.routeControllers.count > 1),
+			(self.numberOfRouteControllers > 1),
 			let routeViewController = viewController,
 			let index = self.index(of: routeViewController) else {
 				return nil
@@ -108,11 +113,11 @@ extension RoutePageControllerHandler {
 		let nextIndex = (index + 1)
 
 		// User is on the last view controller and swiped right to loop to the first view controller.
-		guard (self.routeControllers.count != nextIndex) else {
+		guard (self.numberOfRouteControllers != nextIndex) else {
 			return self.routeControllers.first
 		}
 
-		guard (self.routeControllers.count > nextIndex) else {
+		guard (self.numberOfRouteControllers > nextIndex) else {
 			return nil
 		}
 

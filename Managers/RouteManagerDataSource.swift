@@ -1,5 +1,5 @@
 //
-//  RouteDataSource.swift
+//  RouteManagerDataSource.swift
 //  BusMedellin
 //
 //  Created by kevindelord on 03/11/2018.
@@ -8,7 +8,7 @@
 
 import CoreLocation
 
-protocol RouteDataSource {
+protocol RouteManagerDataSource {
 
 	/// Fetch the real address of a location using the CLGeocoder.
 	///
@@ -31,9 +31,6 @@ protocol RouteDataSource {
 	///   - destination: Coordinates of the destination annotation.
 	///   - completion: Closure called when the matching routes have been fetched.
 	func routes(between start: CLLocationCoordinate2D, and destination: CLLocationCoordinate2D, completion: @escaping (() -> Void))
-
-	/// Cancel the search and reset the attributes.
-	func cancelSearch()
 
 	/// Array of all matching round found for the active search (active start and destination annotations).
 	var availableRoutes			: [Route] { get }

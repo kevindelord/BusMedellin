@@ -9,7 +9,6 @@
 import Foundation
 import MBProgressHUD
 
-// TODO: add documentation for each protocol function.
 // TODO: re-integrate for connection internet required.
 
 protocol ViewContainer {
@@ -26,20 +25,24 @@ protocol ViewContainer {
 
 protocol ContentViewDelegate {
 
-	func reloadContentView()
+	/// Tells the delegate to reload all content views.
+	func reloadContentViews()
 
-	func select(route: Route)
-
-	func cancelSearch()
+	/// Tells the delegate to reload all content views with a specific selected route.
+	func reloadContentViewsForSelectedRoute()
 }
 
+/// Define basic structure for displayed Content Views.
 protocol ContentView {
 
+	/// Function called when a search result has been processed and need to be displayed.
 	func update(availableRoutes: [Route], selectedRoute: Route?)
 
+	/// Action coordinator.
 	var coordinator: Coordinator? { get set }
 
-	var delegate: ContentViewDelegate? { get set }
+	/// Delegate to reload displayed content.
+	var delegate: (RouteManagerDelegate & ContentViewDelegate)? { get set }
 }
 
 protocol Coordinator {
@@ -57,16 +60,18 @@ protocol Coordinator {
 	func prepare(for segue: UIStoryboardSegue, on container: ViewContainer)
 }
 
+// TODO: RENAME into AppCoordinator
 class MapCoordinator {
 
 	private let routeManager	= RouteManager()
-	private var container 		: ViewContainer?
+	private var container 		: ViewContainer? // TODO: what is this ?
 	private var mapView			: ContentView?
 	private var routesContainer	: ContentView?
 }
 
 extension MapCoordinator: Coordinator {
 
+	// TODO: refactor and improve this function.
 	func prepare(for segue: UIStoryboardSegue, on container: ViewContainer) {
 		if (segue.identifier == Segue.Embed.FooterView), let _ = segue.destination as? BMFooterViewController {
 			// TODO: do nothing ?
@@ -82,11 +87,11 @@ extension MapCoordinator: Coordinator {
 			self.routesContainer = (viewController.view as? ContentView)
 			self.routesContainer?.coordinator = self
 			self.routesContainer?.delegate = self
-
 		}
 
 		self.container = container
-		self.reloadContentView()
+		// TODO: what is this reload content for?
+		self.reloadContentViews()
 	}
 
 	func openSettings() {
@@ -116,9 +121,12 @@ extension MapCoordinator: Coordinator {
 	}
 }
 
+// MARK: - ContentViewDelegate
+
 extension MapCoordinator: ContentViewDelegate {
 
-	func reloadContentView() {
+	/// Update/Reload all content views (Map and Routes Containers)
+	func reloadContentViews() {
 		let availableRoutes = self.routeManager.availableRoutes
 		let selectedRoute = self.routeManager.selectedRoute
 
@@ -126,17 +134,32 @@ extension MapCoordinator: ContentViewDelegate {
 		self.routesContainer?.update(availableRoutes: availableRoutes, selectedRoute: selectedRoute)
 	}
 
+	/// Only update/reload the map content view.
+	/// The routesContainer should not be updated as it is the input view for the user to select a new route.
+	func reloadContentViewsForSelectedRoute() {
+		let availableRoutes = self.routeManager.availableRoutes
+		let selectedRoute = self.routeManager.selectedRoute
+
+		self.mapView?.update(availableRoutes: availableRoutes, selectedRoute: selectedRoute)
+	}
+}
+
+// MARK: - RouteManagerDelegate
+
+extension MapCoordinator: RouteManagerDelegate {
+
 	func select(route: Route) {
-		// TODO: Is this needed anyway ?
-		print("TODO: display new selected route on map view")
+		self.routeManager.select(route: route)
+		self.reloadContentViewsForSelectedRoute()
 	}
 
 	func cancelSearch() {
 		self.routeManager.cancelSearch()
-		self.reloadContentView()
+		self.reloadContentViews()
 	}
 }
 
+// TODO: Rename into AppCoordinatorViewController
 class BMMapContainerViewController	: UIViewController, ViewContainer {
 
 	var coordinator					: Coordinator

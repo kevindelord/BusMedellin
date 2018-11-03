@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class RouteManager				: RouteDataSource {
+class RouteManager				: RouteManagerDataSource {
 
 	var availableRoutes			= [Route]()
 	var selectedRoute			: Route?
@@ -55,10 +55,19 @@ class RouteManager				: RouteDataSource {
 
 		CLGeocoder().reverseGeocodeLocation(location, completionHandler: handler)
 	}
+}
+
+// MARK: - RouteDataSourceHandler
+
+extension RouteManager: RouteManagerDelegate {
 
 	func cancelSearch() {
 		self.selectedRoute = nil
 		self.availableRoutes = []
+	}
+
+	func select(route: Route) {
+		self.selectedRoute = route
 	}
 }
 

@@ -12,8 +12,6 @@ protocol RouteContainer {
 
 	var routePageController						: RoutePageController? { get set }
 
-//	var routePageControllerHandler				: RoutePageControllerHandler? { get set }
-
 	func reloadAvailableRoutes(_ availableRoutes: [Route])
 }
 
@@ -23,11 +21,10 @@ class RoutesContainerView						: UIView {
 
 	// RouteContainer Protocol
 	var routePageController						: RoutePageController?
-//	var availableRoutes							= [Route]()
 
 	// ContentView Protocol
 	var coordinator								: Coordinator?
-	var delegate								: ContentViewDelegate?
+	var delegate								: (RouteManagerDelegate & ContentViewDelegate)?
 
 	private func configureViewTitle(routeCount: Int) {
 		guard (routeCount > 0) else {
@@ -48,7 +45,7 @@ extension RoutesContainerView : RouteContainer {
 			return
 		}
 
-		let handler = RoutePageControllerHandler(availableRoutes: availableRoutes)
+		let handler = RoutePageControllerHandler(availableRoutes: availableRoutes, delegate: self.delegate)
 		self.routePageController?.reload(with: handler)
 	}
 }

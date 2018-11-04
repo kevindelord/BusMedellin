@@ -23,6 +23,8 @@
 		752B317E218F4FE200A1DE0D /* CoordinatorContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B317C218F4FE200A1DE0D /* CoordinatorContainer.swift */; };
 		752B3180218F503F00A1DE0D /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B317F218F503F00A1DE0D /* Coordinator.swift */; };
 		752B3181218F503F00A1DE0D /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B317F218F503F00A1DE0D /* Coordinator.swift */; };
+		752B3183218F517E00A1DE0D /* RouteContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B3182218F517E00A1DE0D /* RouteContainer.swift */; };
+		752B3184218F517E00A1DE0D /* RouteContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B3182218F517E00A1DE0D /* RouteContainer.swift */; };
 		7546C99D21300A6E00F80153 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546C99C21300A6E00F80153 /* UIColor.swift */; };
 		7546C99E21300A6E00F80153 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546C99C21300A6E00F80153 /* UIColor.swift */; };
 		754A25272132C70300B3B083 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A25262132C70300B3B083 /* FooterView.swift */; };
@@ -137,6 +139,7 @@
 		752B3179218F4F2F00A1DE0D /* SearchResultCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCoordinator.swift; sourceTree = "<group>"; };
 		752B317C218F4FE200A1DE0D /* CoordinatorContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorContainer.swift; sourceTree = "<group>"; };
 		752B317F218F503F00A1DE0D /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		752B3182218F517E00A1DE0D /* RouteContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteContainer.swift; sourceTree = "<group>"; };
 		7546C99C21300A6E00F80153 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		754A25262132C70300B3B083 /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		754A252A2132C81200B3B083 /* BMMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMMapView.swift; sourceTree = "<group>"; };
@@ -387,6 +390,7 @@
 			isa = PBXGroup;
 			children = (
 				75C0E640218E12B900C988C5 /* RoutesViewController.swift */,
+				752B3182218F517E00A1DE0D /* RouteContainer.swift */,
 				75C0E62E218DEA8900C988C5 /* RoutesContainerView.swift */,
 				75C0E637218E115D00C988C5 /* RoutePageController.swift */,
 				75C0E63A218E11A000C988C5 /* RoutePageControllerHandler.swift */,
@@ -762,6 +766,7 @@
 				75640BFC1DAF1AAD002B4A56 /* BMConstants.swift in Sources */,
 				75640BFE1DAF1B11002B4A56 /* Configuration.swift in Sources */,
 				754A253B2132CB5D00B3B083 /* NSError.swift in Sources */,
+				752B3183218F517E00A1DE0D /* RouteContainer.swift in Sources */,
 				75C0E638218E115D00C988C5 /* RoutePageController.swift in Sources */,
 				752B3174218F4EBB00A1DE0D /* ContentViewDelegate.swift in Sources */,
 				75C0E647218E263900C988C5 /* RouteManagerDelegate.swift in Sources */,
@@ -813,6 +818,7 @@
 				758E10451DBD92D000D872BC /* BMConstants.swift in Sources */,
 				758E10461DBD92D000D872BC /* Configuration.swift in Sources */,
 				754A253C2132CB5D00B3B083 /* NSError.swift in Sources */,
+				752B3184218F517E00A1DE0D /* RouteContainer.swift in Sources */,
 				75C0E639218E115D00C988C5 /* RoutePageController.swift in Sources */,
 				752B3175218F4EBB00A1DE0D /* ContentViewDelegate.swift in Sources */,
 				75C0E648218E263900C988C5 /* RouteManagerDelegate.swift in Sources */,

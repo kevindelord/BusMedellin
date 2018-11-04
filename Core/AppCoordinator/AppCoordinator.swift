@@ -55,10 +55,6 @@ extension AppCoordinator {
 			self.routesContainer?.coordinator = self
 			self.routesContainer?.delegate = self
 		}
-
-
-		// TODO: what is this reload content for?
-		self.reloadContentViews()
 	}
 
 	func openSettings() {

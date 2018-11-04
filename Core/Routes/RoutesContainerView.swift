@@ -8,18 +8,10 @@
 
 import UIKit
 
-// TODO: extract + documentation
-
-protocol RouteContainer {
-
-	var routePageController						: RoutePageController? { get set }
-
-	func reloadAvailableRoutes(_ availableRoutes: [Route])
-}
-
-class RoutesContainerView						: UIView {
+class RoutesContainerView						: UIView, RouteContainer, ContentView {
 
 	@IBOutlet private weak var totalRoutes		: UILabel?
+	// TODO: integrate custom page control to deal with too many search results.
 
 	// RouteContainer Protocol
 	var routePageController						: RoutePageController?
@@ -27,18 +19,11 @@ class RoutesContainerView						: UIView {
 	// ContentView Protocol
 	var coordinator								: Coordinator?
 	var delegate								: (RouteManagerDelegate & ContentViewDelegate)?
-
-	private func configureViewTitle(routeCount: Int) {
-		guard (routeCount > 0) else {
-			self.totalRoutes?.text = "TODO"
-			return
-		}
-
-		self.totalRoutes?.text = String(format: L("NUMBER_ROUTES_AVAILABLE"), routeCount)
-	}
 }
 
-extension RoutesContainerView : RouteContainer {
+// MARK: - RouteContainer
+
+extension RoutesContainerView {
 
 	func reloadAvailableRoutes(_ availableRoutes: [Route]) {
 		self.routePageController?.handler = nil
@@ -52,10 +37,23 @@ extension RoutesContainerView : RouteContainer {
 	}
 }
 
-extension RoutesContainerView : ContentView {
+// MARK: - ContentView
+
+extension RoutesContainerView {
 
 	func update(availableRoutes: [Route], selectedRoute: Route?) {
 		self.configureViewTitle(routeCount: availableRoutes.count)
 		self.reloadAvailableRoutes(availableRoutes)
+	}
+
+	private func configureViewTitle(routeCount: Int) {
+		guard (routeCount > 0) else {
+			// At this stage there has been no search but the RoutesContainer is nonetheless already initialized.
+			// Therefore this view also gets initialized with empty values.
+			self.totalRoutes?.text = ""
+			return
+		}
+
+		self.totalRoutes?.text = String(format: L("NUMBER_ROUTES_AVAILABLE"), routeCount)
 	}
 }

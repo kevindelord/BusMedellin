@@ -1,88 +1,27 @@
 //
-//  AppCoordinatorViewController.swift
+//  AppCoordinator.swift
 //  BusMedellin
 //
-//  Created by Kevin Delord on 15/10/16.
-//  Copyright © 2016 Kevin Delord. All rights reserved.
+//  Created by kevindelord on 04/11/2018.
+//  Copyright © 2018 Kevin Delord. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import MBProgressHUD
 
-// TODO: re-integrate for connection internet required.
-
-protocol ViewContainer {
-
-	/// Coordinator object managing what is displayed on to the UI.
-	var coordinator: Coordinator { get }
-
-	/// Basic view presenting the contained content.
-	var view: UIView! { get }
-
-	/// Required override of the native SDK functions to load the embed views.
-	func performSegue(withIdentifier identifier: String, sender: Any?)
-}
-
-protocol ContentViewDelegate {
-
-	/// Tells the delegate to reload all content views.
-	func reloadContentViews()
-
-	/// Tells the delegate to reload all content views with a specific selected route.
-	func reloadContentViewsForSelectedRoute()
-}
-
-/// Define basic structure for displayed Content Views.
-protocol ContentView {
-
-	/// Function called when a search result has been processed and need to be displayed.
-	func update(availableRoutes: [Route], selectedRoute: Route?)
-
-	/// Action coordinator.
-	var coordinator: Coordinator? { get set }
-
-	/// Delegate to reload displayed content.
-	var delegate: (RouteManagerDelegate & ContentViewDelegate)? { get set }
-}
-
-protocol Coordinator {
-
-	/// Redirect the user to the settings flow.
-	func openSettings()
-
-	/// Show Waiting HUD on MapView.
-	func showWaitingHUD()
-
-	/// Hide Waiting HUD on MapView.
-	func hideWaitingHUD()
-
-	/// Initialize the segue's destination view controller depending on its type and the current state of the app.
-	func prepare(for segue: UIStoryboardSegue, on container: ViewContainer)
-}
-
-protocol SearchResultCoordinator {
-
-	/// View Height Constraint
-	var searchResultConstraint: NSLayoutConstraint? { get set }
-
-	/// Show the container view displaying the search results.
-	func showSearchResults()
-
-	/// Hide the container view displaying the search results.
-	func hideSearchResults()
-}
-
-class AppCoordinator {
+class AppCoordinator			: SearchResultCoordinator, Coordinator, ContentViewDelegate, RouteManagerDelegate {
 
 	var searchResultConstraint	: NSLayoutConstraint?
 
 	private let routeManager	= RouteManager()
-	private var container 		: ViewContainer? // TODO: what is this ?
+	private var container 		: CoordinatorContainer?
 	private var mapView			: ContentView?
 	private var routesContainer	: ContentView?
 }
 
-extension AppCoordinator: SearchResultCoordinator {
+// MARK: - SearchResultCoordinator
+
+extension AppCoordinator {
 
 	func showSearchResults() {
 		self.searchResultConstraint?.constant = 150
@@ -93,10 +32,14 @@ extension AppCoordinator: SearchResultCoordinator {
 	}
 }
 
-extension AppCoordinator: Coordinator {
+// MARK: - Coordinator
+
+extension AppCoordinator {
 
 	// TODO: refactor and improve this function.
-	func prepare(for segue: UIStoryboardSegue, on container: ViewContainer) {
+	func prepare(for segue: UIStoryboardSegue, on container: CoordinatorContainer) {
+		self.container = container
+
 		if (segue.identifier == Segue.Embed.FooterView), let controller = segue.destination as? FooterViewController {
 			var footerView = controller.view as? ContentView
 			footerView?.coordinator = self
@@ -113,7 +56,7 @@ extension AppCoordinator: Coordinator {
 			self.routesContainer?.delegate = self
 		}
 
-		self.container = container
+
 		// TODO: what is this reload content for?
 		self.reloadContentViews()
 	}
@@ -147,7 +90,7 @@ extension AppCoordinator: Coordinator {
 
 // MARK: - ContentViewDelegate
 
-extension AppCoordinator: ContentViewDelegate {
+extension AppCoordinator {
 
 	/// Update/Reload all content views (Map and Routes Containers)
 	func reloadContentViews() {
@@ -177,7 +120,7 @@ extension AppCoordinator: ContentViewDelegate {
 
 // MARK: - RouteManagerDelegate
 
-extension AppCoordinator: RouteManagerDelegate {
+extension AppCoordinator {
 
 	func select(route: Route) {
 		self.routeManager.select(route: route)
@@ -188,26 +131,5 @@ extension AppCoordinator: RouteManagerDelegate {
 		self.routeManager.cancelSearch()
 		self.reloadContentViews()
 		self.hideSearchResults()
-	}
-}
-
-class AppCoordinatorViewController	: UIViewController, ViewContainer {
-
-	var coordinator					: Coordinator
-
-	@IBOutlet private weak var searchResultHeight : NSLayoutConstraint?
-
-	required init?(coder aDecoder: NSCoder) {
-		// Init coordinator depending on local needs.
-		self.coordinator = AppCoordinator()
-
-		super.init(coder: aDecoder)
-	}
-
-	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		super.prepare(for: segue, sender: sender)
-
-		(self.coordinator as? AppCoordinator)?.searchResultConstraint = self.searchResultHeight
-		self.coordinator.prepare(for: segue, on: self)
 	}
 }

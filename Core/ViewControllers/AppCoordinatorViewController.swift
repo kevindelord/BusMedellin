@@ -97,18 +97,18 @@ extension AppCoordinator: Coordinator {
 
 	// TODO: refactor and improve this function.
 	func prepare(for segue: UIStoryboardSegue, on container: ViewContainer) {
-		if (segue.identifier == Segue.Embed.FooterView), let _ = segue.destination as? BMFooterViewController {
-			// TODO: do nothing ?
-			return
+		if (segue.identifier == Segue.Embed.FooterView), let controller = segue.destination as? FooterViewController {
+			var footerView = controller.view as? ContentView
+			footerView?.coordinator = self
 
-		} else if (segue.identifier == Segue.Embed.MapView), let viewController = segue.destination as? BMMapViewController {
-			self.mapView = (viewController.view as? ContentView)
+		} else if (segue.identifier == Segue.Embed.MapView), let controller = segue.destination as? BMMapViewController {
+			self.mapView = (controller.view as? ContentView)
 			self.mapView?.coordinator = self
 			self.mapView?.delegate = self
 			(self.mapView as? BMMapView)?.routeDataSource = self.routeManager
 
-		} else if (segue.identifier == Segue.Embed.RoutesView), let viewController = segue.destination as? RoutesViewController {
-			self.routesContainer = (viewController.view as? ContentView)
+		} else if (segue.identifier == Segue.Embed.RoutesView), let controller = segue.destination as? RoutesViewController {
+			self.routesContainer = (controller.view as? ContentView)
 			self.routesContainer?.coordinator = self
 			self.routesContainer?.delegate = self
 		}
@@ -209,6 +209,5 @@ class AppCoordinatorViewController	: UIViewController, ViewContainer {
 
 		(self.coordinator as? AppCoordinator)?.searchResultConstraint = self.searchResultHeight
 		self.coordinator.prepare(for: segue, on: self)
-
 	}
 }

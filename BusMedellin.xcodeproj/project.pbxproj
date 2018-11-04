@@ -13,8 +13,8 @@
 		75052ACD213833AE0063AE05 /* APIManager+Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75052ACB213833AE0063AE05 /* APIManager+Errors.swift */; };
 		7546C99D21300A6E00F80153 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546C99C21300A6E00F80153 /* UIColor.swift */; };
 		7546C99E21300A6E00F80153 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546C99C21300A6E00F80153 /* UIColor.swift */; };
-		754A25272132C70300B3B083 /* BMFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A25262132C70300B3B083 /* BMFooterView.swift */; };
-		754A25282132C70300B3B083 /* BMFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A25262132C70300B3B083 /* BMFooterView.swift */; };
+		754A25272132C70300B3B083 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A25262132C70300B3B083 /* FooterView.swift */; };
+		754A25282132C70300B3B083 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A25262132C70300B3B083 /* FooterView.swift */; };
 		754A252B2132C81200B3B083 /* BMMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A252A2132C81200B3B083 /* BMMapView.swift */; };
 		754A252C2132C81200B3B083 /* BMMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A252A2132C81200B3B083 /* BMMapView.swift */; };
 		754A252E2132C88400B3B083 /* RouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A252D2132C88400B3B083 /* RouteViewController.swift */; };
@@ -84,8 +84,8 @@
 		75C0E62D218DE3B300C988C5 /* Routes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C0E62B218DE3B300C988C5 /* Routes.storyboard */; };
 		75C0E62F218DEA8900C988C5 /* RoutesContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C0E62E218DEA8900C988C5 /* RoutesContainerView.swift */; };
 		75C0E630218DEA8900C988C5 /* RoutesContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C0E62E218DEA8900C988C5 /* RoutesContainerView.swift */; };
-		75C0E634218E104F00C988C5 /* BMFooterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C0E633218E104F00C988C5 /* BMFooterViewController.swift */; };
-		75C0E635218E104F00C988C5 /* BMFooterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C0E633218E104F00C988C5 /* BMFooterViewController.swift */; };
+		75C0E634218E104F00C988C5 /* FooterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C0E633218E104F00C988C5 /* FooterViewController.swift */; };
+		75C0E635218E104F00C988C5 /* FooterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C0E633218E104F00C988C5 /* FooterViewController.swift */; };
 		75C0E638218E115D00C988C5 /* RoutePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C0E637218E115D00C988C5 /* RoutePageController.swift */; };
 		75C0E639218E115D00C988C5 /* RoutePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C0E637218E115D00C988C5 /* RoutePageController.swift */; };
 		75C0E63B218E11A000C988C5 /* RoutePageControllerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C0E63A218E11A000C988C5 /* RoutePageControllerHandler.swift */; };
@@ -120,7 +120,7 @@
 		75052AC821381C510063AE05 /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
 		75052ACB213833AE0063AE05 /* APIManager+Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIManager+Errors.swift"; sourceTree = "<group>"; };
 		7546C99C21300A6E00F80153 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
-		754A25262132C70300B3B083 /* BMFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMFooterView.swift; sourceTree = "<group>"; };
+		754A25262132C70300B3B083 /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		754A252A2132C81200B3B083 /* BMMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMMapView.swift; sourceTree = "<group>"; };
 		754A252D2132C88400B3B083 /* RouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteViewController.swift; sourceTree = "<group>"; };
 		754A25312132CA8B00B3B083 /* DKLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DKLog.swift; sourceTree = "<group>"; };
@@ -158,7 +158,7 @@
 		75B41C5521343D8500588CE8 /* Configuration.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Configuration.plist; sourceTree = "<group>"; };
 		75C0E62B218DE3B300C988C5 /* Routes.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Routes.storyboard; path = Resources/Routes.storyboard; sourceTree = "<group>"; };
 		75C0E62E218DEA8900C988C5 /* RoutesContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesContainerView.swift; sourceTree = "<group>"; };
-		75C0E633218E104F00C988C5 /* BMFooterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMFooterViewController.swift; sourceTree = "<group>"; };
+		75C0E633218E104F00C988C5 /* FooterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterViewController.swift; sourceTree = "<group>"; };
 		75C0E637218E115D00C988C5 /* RoutePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutePageController.swift; sourceTree = "<group>"; };
 		75C0E63A218E11A000C988C5 /* RoutePageControllerHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutePageControllerHandler.swift; sourceTree = "<group>"; };
 		75C0E63D218E126900C988C5 /* BMMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMMapViewController.swift; sourceTree = "<group>"; };
@@ -350,8 +350,8 @@
 		75C0E632218E102A00C988C5 /* Footer */ = {
 			isa = PBXGroup;
 			children = (
-				754A25262132C70300B3B083 /* BMFooterView.swift */,
-				75C0E633218E104F00C988C5 /* BMFooterViewController.swift */,
+				754A25262132C70300B3B083 /* FooterView.swift */,
+				75C0E633218E104F00C988C5 /* FooterViewController.swift */,
 			);
 			path = Footer;
 			sourceTree = "<group>";
@@ -703,7 +703,7 @@
 				7546C99D21300A6E00F80153 /* UIColor.swift in Sources */,
 				75640BF21DAF19FB002B4A56 /* APIManager.swift in Sources */,
 				75C0E641218E12B900C988C5 /* RoutesViewController.swift in Sources */,
-				754A25272132C70300B3B083 /* BMFooterView.swift in Sources */,
+				754A25272132C70300B3B083 /* FooterView.swift in Sources */,
 				755DB8D8213C207B0092756E /* RouteManager.swift in Sources */,
 				75052AC921381C510063AE05 /* Firebase.swift in Sources */,
 				75C0E644218E15A900C988C5 /* RouteManagerDataSource.swift in Sources */,
@@ -716,7 +716,7 @@
 				75F8B4CB1DB9773800F43109 /* AppDelegate.swift in Sources */,
 				75DBD71D21383AEB003184E8 /* MBButtonState.swift in Sources */,
 				754A25382132CB2300B3B083 /* UIAlertController.swift in Sources */,
-				75C0E634218E104F00C988C5 /* BMFooterViewController.swift in Sources */,
+				75C0E634218E104F00C988C5 /* FooterViewController.swift in Sources */,
 				754A253E2132CB8D00B3B083 /* UIView.swift in Sources */,
 				756493741DBD6F68007811A6 /* BMMapCircle.swift in Sources */,
 				75C5E95B1DBD697900FCE9D0 /* BMAddressView.swift in Sources */,
@@ -748,7 +748,7 @@
 				7546C99E21300A6E00F80153 /* UIColor.swift in Sources */,
 				758E10391DBD92D000D872BC /* APIManager.swift in Sources */,
 				75C0E642218E12B900C988C5 /* RoutesViewController.swift in Sources */,
-				754A25282132C70300B3B083 /* BMFooterView.swift in Sources */,
+				754A25282132C70300B3B083 /* FooterView.swift in Sources */,
 				755DB8D9213C207B0092756E /* RouteManager.swift in Sources */,
 				75052ACA21381C510063AE05 /* Firebase.swift in Sources */,
 				75C0E645218E15A900C988C5 /* RouteManagerDataSource.swift in Sources */,
@@ -761,7 +761,7 @@
 				758E103E1DBD92D000D872BC /* AppDelegate.swift in Sources */,
 				75DBD71E21383AEB003184E8 /* MBButtonState.swift in Sources */,
 				754A25392132CB2300B3B083 /* UIAlertController.swift in Sources */,
-				75C0E635218E104F00C988C5 /* BMFooterViewController.swift in Sources */,
+				75C0E635218E104F00C988C5 /* FooterViewController.swift in Sources */,
 				754A253F2132CB8D00B3B083 /* UIView.swift in Sources */,
 				758E103F1DBD92D000D872BC /* BMMapCircle.swift in Sources */,
 				758E10411DBD92D000D872BC /* BMAddressView.swift in Sources */,

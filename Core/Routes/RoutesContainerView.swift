@@ -8,6 +8,8 @@
 
 import UIKit
 
+// TODO: extract + documentation
+
 protocol RouteContainer {
 
 	var routePageController						: RoutePageController? { get set }

@@ -1,5 +1,5 @@
 //
-//  BMFooterViewController.swift
+//  FooterViewController.swift
 //  BusMedellin
 //
 //  Created by kevindelord on 03/11/2018.
@@ -8,6 +8,6 @@
 
 import UIKit
 
-class BMFooterViewController : UIViewController {
+class FooterViewController : UIViewController {
 
 }

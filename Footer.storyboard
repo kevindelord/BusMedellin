@@ -13,12 +13,12 @@
         <!--Footer View Controller-->
         <scene sceneID="3LP-LH-xbj">
             <objects>
-                <viewController id="WjZ-hn-sbz" customClass="BMFooterViewController" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="eG2-6H-BVc" customClass="BMFooterView" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target">
+                <viewController id="WjZ-hn-sbz" customClass="FooterViewController" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eG2-6H-BVc" customClass="FooterView" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bus Paisa" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x3H-oT-s2I">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x3H-oT-s2I">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -31,7 +31,7 @@
                                     <constraint firstAttribute="height" constant="22" id="dmQ-2Q-d2a"/>
                                 </constraints>
                                 <connections>
-                                    <action selector="infoButtonPressed" destination="eG2-6H-BVc" eventType="touchUpInside" id="yWe-fd-Vhc"/>
+                                    <action selector="infoButtonPressed" destination="eG2-6H-BVc" eventType="touchUpInside" id="UnL-zZ-ckH"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="colored_bus" translatesAutoresizingMaskIntoConstraints="NO" id="gcs-rt-f69">

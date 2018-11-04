@@ -1,5 +1,5 @@
 //
-//  BMFooterView.swift
+//  FooterView.swift
 //  BusMedellin
 //
 //  Created by kevindelord on 26/08/2018.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BMFooterView										: UIView {
+class FooterView										: UIView {
 
 	// MARK: - Outlets
 
@@ -17,16 +17,25 @@ class BMFooterView										: UIView {
 	// MARK: - Attributes
 
 	var coordinator										: Coordinator?
+	var delegate										: (ContentViewDelegate & RouteManagerDelegate)?
 
 	override func awakeFromNib() {
 		super.awakeFromNib()
 
 		self.appTitle?.text = L("APP_TITLE")
 	}
+}
 
-	// MARK: - Interface actions
+extension FooterView {
 
 	@IBAction private func infoButtonPressed() {
 		self.coordinator?.openSettings()
+	}
+}
+
+extension FooterView : ContentView {
+
+	// Conforming to protocol. No feature to implement in this footer.
+	func update(availableRoutes: [Route], selectedRoute: Route?) {
 	}
 }

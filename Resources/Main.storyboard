@@ -124,16 +124,16 @@
             </objects>
             <point key="canvasLocation" x="1386" y="1920"/>
         </scene>
-        <!--Map Container View Controller-->
+        <!--App Coordinator View Controller-->
         <scene sceneID="fFh-7S-ENO">
             <objects>
-                <viewController id="AFy-zb-brL" customClass="BMMapContainerViewController" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="AFy-zb-brL" customClass="AppCoordinatorViewController" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VRG-dx-K1K">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MuQ-MQ-mhZ" userLabel="MapView Container">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="578"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MuQ-MQ-mhZ" userLabel="Map">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="698"/>
                                 <connections>
                                     <segue destination="LJG-pO-0Xv" kind="embed" identifier="embedMapView" id="uo6-Sd-0Ws"/>
                                 </connections>
@@ -148,9 +148,9 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7DQ-8Z-yCl" userLabel="Routes">
-                                <rect key="frame" x="0.0" y="578" width="375" height="200"/>
+                                <rect key="frame" x="0.0" y="778" width="375" height="0.0"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="iWD-H0-ztM"/>
+                                    <constraint firstAttribute="height" id="iWD-H0-ztM"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="DwQ-nU-pUH" kind="embed" identifier="embedRoutesView" id="QeD-Ca-lK5"/>
@@ -159,13 +159,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="bBv-pr-e78" firstAttribute="top" relation="greaterThanOrEqual" secondItem="MuQ-MQ-mhZ" secondAttribute="bottom" id="0B9-j8-rwH"/>
                             <constraint firstItem="MuQ-MQ-mhZ" firstAttribute="top" secondItem="VRG-dx-K1K" secondAttribute="top" id="7jJ-Am-k5Z"/>
                             <constraint firstItem="bBv-pr-e78" firstAttribute="leading" secondItem="VRG-dx-K1K" secondAttribute="leading" id="CkK-AL-WFP"/>
                             <constraint firstItem="7DQ-8Z-yCl" firstAttribute="bottom" secondItem="S71-kb-WvW" secondAttribute="bottom" id="SLm-La-5X6"/>
                             <constraint firstItem="S71-kb-WvW" firstAttribute="bottom" secondItem="bBv-pr-e78" secondAttribute="bottom" id="WsS-0r-eop"/>
                             <constraint firstAttribute="trailing" secondItem="7DQ-8Z-yCl" secondAttribute="trailing" id="aBA-KQ-0w8"/>
                             <constraint firstItem="bBv-pr-e78" firstAttribute="trailing" secondItem="VRG-dx-K1K" secondAttribute="trailing" id="eIa-D5-1dE"/>
-                            <constraint firstItem="7DQ-8Z-yCl" firstAttribute="top" secondItem="MuQ-MQ-mhZ" secondAttribute="bottom" id="g4n-Uk-sLP"/>
+                            <constraint firstItem="7DQ-8Z-yCl" firstAttribute="top" secondItem="MuQ-MQ-mhZ" secondAttribute="bottom" priority="750" id="g4n-Uk-sLP"/>
                             <constraint firstItem="MuQ-MQ-mhZ" firstAttribute="leading" secondItem="VRG-dx-K1K" secondAttribute="leading" id="h1L-HN-HKm"/>
                             <constraint firstItem="7DQ-8Z-yCl" firstAttribute="leading" secondItem="VRG-dx-K1K" secondAttribute="leading" id="sBA-y4-YTh"/>
                             <constraint firstAttribute="trailing" secondItem="MuQ-MQ-mhZ" secondAttribute="trailing" id="xSb-2O-gMj"/>
@@ -173,6 +174,7 @@
                         <viewLayoutGuide key="safeArea" id="S71-kb-WvW"/>
                     </view>
                     <connections>
+                        <outlet property="searchResultHeight" destination="iWD-H0-ztM" id="K5w-W5-V9r"/>
                         <segue destination="nAg-kv-iPc" kind="presentation" identifier="openSettingsViewController" id="vAL-0O-eB0"/>
                     </connections>
                 </viewController>

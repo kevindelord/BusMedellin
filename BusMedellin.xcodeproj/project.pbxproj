@@ -68,7 +68,7 @@
 		758E103F1DBD92D000D872BC /* BMMapCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756493731DBD6F68007811A6 /* BMMapCircle.swift */; };
 		758E10411DBD92D000D872BC /* BMAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C5E95A1DBD697900FCE9D0 /* BMAddressView.swift */; };
 		758E10421DBD92D000D872BC /* BMSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C5E9511DBD637400FCE9D0 /* BMSettingsViewController.swift */; };
-		758E10431DBD92D000D872BC /* BMMapContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F8B4CD1DB9774600F43109 /* BMMapContainerViewController.swift */; };
+		758E10431DBD92D000D872BC /* AppCoordinatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F8B4CD1DB9774600F43109 /* AppCoordinatorViewController.swift */; };
 		758E10451DBD92D000D872BC /* BMConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75640BFB1DAF1AAD002B4A56 /* BMConstants.swift */; };
 		758E10461DBD92D000D872BC /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75640BFD1DAF1B11002B4A56 /* Configuration.swift */; };
 		758E104B1DBD92D000D872BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C5E95C1DBD698100FCE9D0 /* LaunchScreen.storyboard */; };
@@ -106,7 +106,7 @@
 		75DBD71D21383AEB003184E8 /* MBButtonState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DBD71C21383AEB003184E8 /* MBButtonState.swift */; };
 		75DBD71E21383AEB003184E8 /* MBButtonState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DBD71C21383AEB003184E8 /* MBButtonState.swift */; };
 		75F8B4CB1DB9773800F43109 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F8B4CA1DB9773800F43109 /* AppDelegate.swift */; };
-		75F8B4CE1DB9774600F43109 /* BMMapContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F8B4CD1DB9774600F43109 /* BMMapContainerViewController.swift */; };
+		75F8B4CE1DB9774600F43109 /* AppCoordinatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F8B4CD1DB9774600F43109 /* AppCoordinatorViewController.swift */; };
 		784CAD72F52AE0B32F011F1E /* Pods_BusMedellin_Live_AppStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4301C8C80BE111EDA26F55FC /* Pods_BusMedellin_Live_AppStore.framework */; };
 		C18EF7B9E2C22F4A87042BDB /* Pods_BusMedellin_Alpha_AdHoc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0669351D7212F380D200E0BA /* Pods_BusMedellin_Alpha_AdHoc.framework */; };
 /* End PBXBuildFile section */
@@ -173,7 +173,7 @@
 		75C5E95D1DBD698100FCE9D0 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Resources/Main.storyboard; sourceTree = "<group>"; };
 		75DBD71C21383AEB003184E8 /* MBButtonState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MBButtonState.swift; path = Core/AdditionalViews/MBButtonState.swift; sourceTree = "<group>"; };
 		75F8B4CA1DB9773800F43109 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Core/AppDelegate.swift; sourceTree = "<group>"; };
-		75F8B4CD1DB9774600F43109 /* BMMapContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BMMapContainerViewController.swift; sourceTree = "<group>"; };
+		75F8B4CD1DB9774600F43109 /* AppCoordinatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinatorViewController.swift; sourceTree = "<group>"; };
 		A7499BBE73A1F9A15DE3B84B /* Pods-BusMedellin-Alpha-AdHoc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusMedellin-Alpha-AdHoc.release.xcconfig"; path = "Pods/Target Support Files/Pods-BusMedellin-Alpha-AdHoc/Pods-BusMedellin-Alpha-AdHoc.release.xcconfig"; sourceTree = "<group>"; };
 		BCAAEAB40516B6059850CA36 /* Pods-BusMedellin-Alpha.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusMedellin-Alpha.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BusMedellin-Alpha/Pods-BusMedellin-Alpha.debug.xcconfig"; sourceTree = "<group>"; };
 		C5083B8EF7A8C636C7DDB3DB /* Pods-BusMedellin-Alpha.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusMedellin-Alpha.release.xcconfig"; path = "Pods/Target Support Files/Pods-BusMedellin-Alpha/Pods-BusMedellin-Alpha.release.xcconfig"; sourceTree = "<group>"; };
@@ -372,7 +372,7 @@
 		75F8B4CC1DB9774600F43109 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				75F8B4CD1DB9774600F43109 /* BMMapContainerViewController.swift */,
+				75F8B4CD1DB9774600F43109 /* AppCoordinatorViewController.swift */,
 				75C5E9511DBD637400FCE9D0 /* BMSettingsViewController.swift */,
 			);
 			name = ViewControllers;
@@ -722,7 +722,7 @@
 				75C5E95B1DBD697900FCE9D0 /* BMAddressView.swift in Sources */,
 				754A25322132CA8B00B3B083 /* DKLog.swift in Sources */,
 				75C5E9521DBD637400FCE9D0 /* BMSettingsViewController.swift in Sources */,
-				75F8B4CE1DB9774600F43109 /* BMMapContainerViewController.swift in Sources */,
+				75F8B4CE1DB9774600F43109 /* AppCoordinatorViewController.swift in Sources */,
 				754A252B2132C81200B3B083 /* BMMapView.swift in Sources */,
 				75640BFC1DAF1AAD002B4A56 /* BMConstants.swift in Sources */,
 				75640BFE1DAF1B11002B4A56 /* Configuration.swift in Sources */,
@@ -767,7 +767,7 @@
 				758E10411DBD92D000D872BC /* BMAddressView.swift in Sources */,
 				754A25332132CA8B00B3B083 /* DKLog.swift in Sources */,
 				758E10421DBD92D000D872BC /* BMSettingsViewController.swift in Sources */,
-				758E10431DBD92D000D872BC /* BMMapContainerViewController.swift in Sources */,
+				758E10431DBD92D000D872BC /* AppCoordinatorViewController.swift in Sources */,
 				754A252C2132C81200B3B083 /* BMMapView.swift in Sources */,
 				758E10451DBD92D000D872BC /* BMConstants.swift in Sources */,
 				758E10461DBD92D000D872BC /* Configuration.swift in Sources */,

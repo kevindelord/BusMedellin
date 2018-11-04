@@ -13,7 +13,7 @@ class RouteViewController								: UIViewController {
 	@IBOutlet private weak var titleLabel				: UILabel?
 	@IBOutlet private weak var subtitleLabel			: UILabel?
 	@IBOutlet private weak var titleBottomConstraint	: NSLayoutConstraint?
-	// TODO: connect `titleBottomConstraint` ?
+	// TODO: connect `titleBottomConstraint` and add shade box.
 
 	var route											: Route?
 

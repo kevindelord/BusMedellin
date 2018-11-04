@@ -14,7 +14,12 @@ class AppCoordinator			: SearchResultCoordinator, Coordinator, ContentViewDelega
 	var searchResultConstraint	: NSLayoutConstraint?
 
 	private let routeManager	= RouteManager()
+
+	// Main App View Container owning the different UI elements.
 	private var container 		: CoordinatorContainer?
+
+	// Contained Content Views that must be retained in order to coordinate the app.
+	// Depending on user actions the retained content views must be regurlarly updated.
 	private var mapView			: ContentView?
 	private var routesContainer	: ContentView?
 }
@@ -36,24 +41,22 @@ extension AppCoordinator {
 
 extension AppCoordinator {
 
-	// TODO: refactor and improve this function.
 	func prepare(for segue: UIStoryboardSegue, on container: CoordinatorContainer) {
 		self.container = container
 
-		if (segue.identifier == Segue.Embed.FooterView), let controller = segue.destination as? FooterViewController {
-			var footerView = controller.view as? ContentView
-			footerView?.coordinator = self
+		// All containers view should conform to the ContentView protocol.
+		var contentView = (segue.destination.view as? ContentView)
+		contentView?.coordinator = self
+		contentView?.delegate = self
 
-		} else if (segue.identifier == Segue.Embed.MapView), let controller = segue.destination as? BMMapViewController {
-			self.mapView = (controller.view as? ContentView)
-			self.mapView?.coordinator = self
-			self.mapView?.delegate = self
-			(self.mapView as? BMMapView)?.routeDataSource = self.routeManager
+		// Retain the map and routes containers
+		if (segue.identifier == Segue.Embed.MapView) {
+			(contentView as? BMMapView)?.routeDataSource = self.routeManager
+			self.mapView = contentView
+		}
 
-		} else if (segue.identifier == Segue.Embed.RoutesView), let controller = segue.destination as? RoutesViewController {
-			self.routesContainer = (controller.view as? ContentView)
-			self.routesContainer?.coordinator = self
-			self.routesContainer?.delegate = self
+		if (segue.identifier == Segue.Embed.RoutesView) {
+			self.routesContainer = contentView
 		}
 	}
 

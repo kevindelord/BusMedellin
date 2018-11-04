@@ -9,6 +9,7 @@
 import UIKit
 
 // TODO: re-integrate for connection internet required.
+// TODO: review localised strings
 
 class AppCoordinatorViewController					: UIViewController, CoordinatorContainer {
 

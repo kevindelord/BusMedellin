@@ -8,7 +8,7 @@
 
 import UIKit
 
-// TODO: Document protocols
+// TODO: Document and extract protocols.
 
 protocol RoutePageControllerDataSource {
 
@@ -28,7 +28,7 @@ protocol RoutePageControllerDelegate {
 	func didMove(to routeController: RouteViewController)
 }
 
-class RoutePageControllerHandler {
+class RoutePageControllerHandler	: RoutePageControllerDataSource, RoutePageControllerDelegate {
 
 	private var routeControllers	: [RouteViewController]
 	private var delegate			: RouteManagerDelegate?
@@ -48,7 +48,9 @@ class RoutePageControllerHandler {
 	}
 }
 
-extension RoutePageControllerHandler	: RoutePageControllerDataSource {
+// MARK: - RoutePageController DataSource
+
+extension RoutePageControllerHandler {
 
 	var initialRouteController 			: RouteViewController? {
 		return self.routeControllers.first
@@ -61,24 +63,6 @@ extension RoutePageControllerHandler	: RoutePageControllerDataSource {
 	func index(of routeController		: RouteViewController) -> Int? {
 		return self.routeControllers.index(of: routeController)
 	}
-}
-
-// MARK: Delegate
-
-extension RoutePageControllerHandler {
-
-	func didMove(to routeController: RouteViewController) {
-		guard let route = routeController.route else {
-			return
-		}
-
-		self.delegate?.select(route: route)
-	}
-}
-
-// MARK: DataSource
-
-extension RoutePageControllerHandler {
 
 	func viewController(before viewController: RouteViewController?) -> RouteViewController? {
 		guard
@@ -122,5 +106,18 @@ extension RoutePageControllerHandler {
 		}
 
 		return self.routeControllers[nextIndex]
+	}
+}
+
+// MARK: RoutePageController Delegate
+
+extension RoutePageControllerHandler {
+
+	func didMove(to routeController: RouteViewController) {
+		guard let route = routeController.route else {
+			return
+		}
+
+		self.delegate?.select(route: route)
 	}
 }

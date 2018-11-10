@@ -61,7 +61,7 @@
 		75640BF21DAF19FB002B4A56 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75640BEF1DAF19FB002B4A56 /* APIManager.swift */; };
 		75640BF31DAF19FB002B4A56 /* Appirater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75640BF01DAF19FB002B4A56 /* Appirater.swift */; };
 		75640BF41DAF19FB002B4A56 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75640BF11DAF19FB002B4A56 /* Reachability.swift */; };
-		75640BFC1DAF1AAD002B4A56 /* BMConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75640BFB1DAF1AAD002B4A56 /* BMConstants.swift */; };
+		75640BFC1DAF1AAD002B4A56 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75640BFB1DAF1AAD002B4A56 /* Constants.swift */; };
 		75640BFE1DAF1B11002B4A56 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75640BFD1DAF1B11002B4A56 /* Configuration.swift */; };
 		756493741DBD6F68007811A6 /* BMMapCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756493731DBD6F68007811A6 /* BMMapCircle.swift */; };
 		757F31621DBE5E16002BB03F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 757F31611DBE5E16002BB03F /* GoogleService-Info.plist */; };
@@ -83,7 +83,7 @@
 		758E10411DBD92D000D872BC /* BMAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C5E95A1DBD697900FCE9D0 /* BMAddressView.swift */; };
 		758E10421DBD92D000D872BC /* BMSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C5E9511DBD637400FCE9D0 /* BMSettingsViewController.swift */; };
 		758E10431DBD92D000D872BC /* AppCoordinatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F8B4CD1DB9774600F43109 /* AppCoordinatorViewController.swift */; };
-		758E10451DBD92D000D872BC /* BMConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75640BFB1DAF1AAD002B4A56 /* BMConstants.swift */; };
+		758E10451DBD92D000D872BC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75640BFB1DAF1AAD002B4A56 /* Constants.swift */; };
 		758E10461DBD92D000D872BC /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75640BFD1DAF1B11002B4A56 /* Configuration.swift */; };
 		758E104B1DBD92D000D872BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C5E95C1DBD698100FCE9D0 /* LaunchScreen.storyboard */; };
 		758E104C1DBD92D000D872BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C5E95D1DBD698100FCE9D0 /* Main.storyboard */; };
@@ -164,7 +164,7 @@
 		75640BF01DAF19FB002B4A56 /* Appirater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appirater.swift; sourceTree = "<group>"; };
 		75640BF11DAF19FB002B4A56 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		75640BF61DAF1A5F002B4A56 /* BusMedellin-Alpha-Adhoc-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "BusMedellin-Alpha-Adhoc-Info.plist"; sourceTree = "<group>"; };
-		75640BFB1DAF1AAD002B4A56 /* BMConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BMConstants.swift; path = Core/BMConstants.swift; sourceTree = "<group>"; };
+		75640BFB1DAF1AAD002B4A56 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Core/Constants.swift; sourceTree = "<group>"; };
 		75640BFD1DAF1B11002B4A56 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Configuration.swift; path = Core/Configuration.swift; sourceTree = "<group>"; };
 		756493731DBD6F68007811A6 /* BMMapCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BMMapCircle.swift; path = Core/AdditionalViews/BMMapCircle.swift; sourceTree = "<group>"; };
 		75679F151DBE77AF0066DF0F /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
@@ -350,7 +350,7 @@
 				75F8B4C31DB9772A00F43109 /* Routes */,
 				75513BE11DB01ECD00957F40 /* AdditionalViews */,
 				75F8B4CC1DB9774600F43109 /* AppCoordinator */,
-				75640BFB1DAF1AAD002B4A56 /* BMConstants.swift */,
+				75640BFB1DAF1AAD002B4A56 /* Constants.swift */,
 				75640BFD1DAF1B11002B4A56 /* Configuration.swift */,
 				75F8B4CA1DB9773800F43109 /* AppDelegate.swift */,
 			);
@@ -763,7 +763,7 @@
 				75C5E9521DBD637400FCE9D0 /* BMSettingsViewController.swift in Sources */,
 				75F8B4CE1DB9774600F43109 /* AppCoordinatorViewController.swift in Sources */,
 				754A252B2132C81200B3B083 /* BMMapView.swift in Sources */,
-				75640BFC1DAF1AAD002B4A56 /* BMConstants.swift in Sources */,
+				75640BFC1DAF1AAD002B4A56 /* Constants.swift in Sources */,
 				75640BFE1DAF1B11002B4A56 /* Configuration.swift in Sources */,
 				754A253B2132CB5D00B3B083 /* NSError.swift in Sources */,
 				752B3183218F517E00A1DE0D /* RouteContainer.swift in Sources */,
@@ -815,7 +815,7 @@
 				758E10421DBD92D000D872BC /* BMSettingsViewController.swift in Sources */,
 				758E10431DBD92D000D872BC /* AppCoordinatorViewController.swift in Sources */,
 				754A252C2132C81200B3B083 /* BMMapView.swift in Sources */,
-				758E10451DBD92D000D872BC /* BMConstants.swift in Sources */,
+				758E10451DBD92D000D872BC /* Constants.swift in Sources */,
 				758E10461DBD92D000D872BC /* Configuration.swift in Sources */,
 				754A253C2132CB5D00B3B083 /* NSError.swift in Sources */,
 				752B3184218F517E00A1DE0D /* RouteContainer.swift in Sources */,

@@ -10,7 +10,7 @@
 // Dashboard
 //
 "APP_TITLE"                 = "Bus Paisa";
-"NUMBER_ROUTES_AVAILABLE"   = "%d bus routes available.";
+"NUMBER_ROUTES_AVAILABLE"   = "%d 🚐 available!";
 "PIN_PICKUP_LOCATION"       = "SET PICKUP LOCATION";
 "PIN_DESTINATION_LOCATION"  = "SET DESTINATION";
 "LOCATION_VIEW_PICKUP"      = "Choose pickup location";

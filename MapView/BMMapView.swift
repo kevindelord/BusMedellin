@@ -292,7 +292,7 @@ extension BMMapView {
 			self.cancelPickUpButton?.alpha = 0
 			self.pickUpInfoView?.update(withAddress: nil)
 			// Show the destination address view.
-			self.destinationInfoView?.backgroundColor = BMColor.viewBorder
+			self.destinationInfoView?.backgroundColor = BMColor.lightGray
 			self.destinationInfoViewTopConstraint?.constant -= ((self.destinationInfoView?.frame.height ?? 0) * 0.5)
 			// Reset map
 			self.removeDrawnRoutes()

@@ -10,15 +10,18 @@ import UIKit
 
 class RouteViewController								: UIViewController {
 
+	@IBOutlet private weak var containerView			: UIView?
 	@IBOutlet private weak var titleLabel				: UILabel?
 	@IBOutlet private weak var subtitleLabel			: UILabel?
-	@IBOutlet private weak var titleBottomConstraint	: NSLayoutConstraint?
-	// TODO: connect `titleBottomConstraint` and add shade box.
 
 	var route											: Route?
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+
+		self.containerView?.layer.borderWidth = 1.0
+		self.containerView?.layer.borderColor = BMColor.darkGray.cgColor
+		self.containerView?.roundRect(radius: 5)
 
 		self.updateContent()
 	}
@@ -39,10 +42,10 @@ class RouteViewController								: UIViewController {
 			}
 
 			self.subtitleLabel?.text = subtitleString
-			self.titleBottomConstraint?.constant = 20
+			self.subtitleLabel?.isHidden = false
 		} else {
 			self.subtitleLabel?.text = ""
-			self.titleBottomConstraint?.constant = 0
+			self.subtitleLabel?.isHidden = true
 		}
 	}
 }

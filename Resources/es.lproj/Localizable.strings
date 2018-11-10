@@ -10,7 +10,7 @@
 // Dashboard
 //
 "APP_TITLE"                 = "Bus Paisa";
-"NUMBER_ROUTES_AVAILABLE"   = "%d rutas de bus disponibles.";
+"NUMBER_ROUTES_AVAILABLE"   = "%d 🚐 disponibles!";
 "PIN_PICKUP_LOCATION"       = "PUNTO DE PARTIDA";
 "PIN_DESTINATION_LOCATION"  = "PUNTO DE DESTINO";
 "LOCATION_VIEW_PICKUP"      = "Elija el punto de partida";

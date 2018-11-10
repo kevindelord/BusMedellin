@@ -19,8 +19,8 @@
 		752B3178218F4ED300A1DE0D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B3176218F4ED300A1DE0D /* ContentView.swift */; };
 		752B317A218F4F2F00A1DE0D /* SearchResultCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B3179218F4F2F00A1DE0D /* SearchResultCoordinator.swift */; };
 		752B317B218F4F2F00A1DE0D /* SearchResultCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B3179218F4F2F00A1DE0D /* SearchResultCoordinator.swift */; };
-		752B317D218F4FE200A1DE0D /* CoordinatorContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B317C218F4FE200A1DE0D /* CoordinatorContainer.swift */; };
-		752B317E218F4FE200A1DE0D /* CoordinatorContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B317C218F4FE200A1DE0D /* CoordinatorContainer.swift */; };
+		752B317D218F4FE200A1DE0D /* AppCoordinatorContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B317C218F4FE200A1DE0D /* AppCoordinatorContainer.swift */; };
+		752B317E218F4FE200A1DE0D /* AppCoordinatorContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B317C218F4FE200A1DE0D /* AppCoordinatorContainer.swift */; };
 		752B3180218F503F00A1DE0D /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B317F218F503F00A1DE0D /* Coordinator.swift */; };
 		752B3181218F503F00A1DE0D /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B317F218F503F00A1DE0D /* Coordinator.swift */; };
 		752B3183218F517E00A1DE0D /* RouteContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B3182218F517E00A1DE0D /* RouteContainer.swift */; };
@@ -137,7 +137,7 @@
 		752B3173218F4EBB00A1DE0D /* ContentViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewDelegate.swift; sourceTree = "<group>"; };
 		752B3176218F4ED300A1DE0D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		752B3179218F4F2F00A1DE0D /* SearchResultCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCoordinator.swift; sourceTree = "<group>"; };
-		752B317C218F4FE200A1DE0D /* CoordinatorContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorContainer.swift; sourceTree = "<group>"; };
+		752B317C218F4FE200A1DE0D /* AppCoordinatorContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorContainer.swift; sourceTree = "<group>"; };
 		752B317F218F503F00A1DE0D /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		752B3182218F517E00A1DE0D /* RouteContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteContainer.swift; sourceTree = "<group>"; };
 		7546C99C21300A6E00F80153 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
@@ -408,7 +408,7 @@
 				752B3173218F4EBB00A1DE0D /* ContentViewDelegate.swift */,
 				752B3176218F4ED300A1DE0D /* ContentView.swift */,
 				752B3179218F4F2F00A1DE0D /* SearchResultCoordinator.swift */,
-				752B317C218F4FE200A1DE0D /* CoordinatorContainer.swift */,
+				752B317C218F4FE200A1DE0D /* AppCoordinatorContainer.swift */,
 				752B317F218F503F00A1DE0D /* Coordinator.swift */,
 			);
 			name = AppCoordinator;
@@ -772,7 +772,7 @@
 				75C0E647218E263900C988C5 /* RouteManagerDelegate.swift in Sources */,
 				75052ACC213833AE0063AE05 /* APIManager+Errors.swift in Sources */,
 				752B317A218F4F2F00A1DE0D /* SearchResultCoordinator.swift in Sources */,
-				752B317D218F4FE200A1DE0D /* CoordinatorContainer.swift in Sources */,
+				752B317D218F4FE200A1DE0D /* AppCoordinatorContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -824,7 +824,7 @@
 				75C0E648218E263900C988C5 /* RouteManagerDelegate.swift in Sources */,
 				75052ACD213833AE0063AE05 /* APIManager+Errors.swift in Sources */,
 				752B317B218F4F2F00A1DE0D /* SearchResultCoordinator.swift in Sources */,
-				752B317E218F4FE200A1DE0D /* CoordinatorContainer.swift in Sources */,
+				752B317E218F4FE200A1DE0D /* AppCoordinatorContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

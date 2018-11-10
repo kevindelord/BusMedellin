@@ -11,11 +11,13 @@ import UIKit
 // TODO: re-integrate for connection internet required.
 // TODO: review localised strings
 
-class AppCoordinatorViewController					: UIViewController, CoordinatorContainer {
+class AppCoordinatorViewController					: UIViewController, AppCoordinatorContainer {
 
 	var coordinator									: Coordinator
 
-	@IBOutlet private weak var searchResultHeight 	: NSLayoutConstraint?
+	@IBOutlet internal weak var stackView			: UIStackView!
+	@IBOutlet internal weak var routesContainer		: UIView!
+	@IBOutlet internal weak var footerContainer		: UIView!
 
 	required init?(coder aDecoder: NSCoder) {
 		self.coordinator = AppCoordinator()
@@ -26,7 +28,15 @@ class AppCoordinatorViewController					: UIViewController, CoordinatorContainer 
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		super.prepare(for: segue, sender: sender)
 
-		(self.coordinator as? AppCoordinator)?.searchResultConstraint = self.searchResultHeight
 		self.coordinator.prepare(for: segue, on: self)
+	}
+}
+
+// MARK: - AppCoordinatorContainer
+
+extension AppCoordinatorViewController {
+
+	func layoutIfNeeded() {
+		self.view.layoutIfNeeded()
 	}
 }

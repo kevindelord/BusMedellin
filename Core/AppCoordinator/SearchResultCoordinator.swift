@@ -10,9 +10,6 @@ import UIKit
 
 protocol SearchResultCoordinator {
 
-	/// View Height Constraint
-	var searchResultConstraint: NSLayoutConstraint? { get set }
-
 	/// Show the container view displaying the search results.
 	func showSearchResults()
 

@@ -20,5 +20,5 @@ protocol Coordinator {
 	func hideWaitingHUD()
 
 	/// Initialize the segue's destination view controller depending on its type and the current state of the app.
-	func prepare(for segue: UIStoryboardSegue, on container: CoordinatorContainer)
+	func prepare(for segue: UIStoryboardSegue, on container: AppCoordinatorContainer)
 }

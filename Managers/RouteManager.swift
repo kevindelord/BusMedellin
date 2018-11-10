@@ -16,11 +16,11 @@ class RouteManager				: RouteManagerDataSource {
 
 	func routes(between start: CLLocationCoordinate2D, and destination: CLLocationCoordinate2D, completion: @escaping (() -> Void)) {
 		// Fetch all routes passing by the pick up location.
-		self.fetchRoutes(forCoordinates: start, completion: { (pickUpRoutes: [Route]) in
+		self.fetchRoutes(forCoordinates: start, completion: { (pickUpRoutes: [Route], error: Error?) in
 			// Analytics
 			Analytics.Search.startRoutes.send(routeCode: nil, rounteCount: pickUpRoutes.count)
 			// Fetch all routes passing by the destination location.
-			self.fetchRoutes(forCoordinates: destination, completion: { (destinationRoutes: [Route]) in
+			self.fetchRoutes(forCoordinates: destination, completion: { (destinationRoutes: [Route], error: Error?) in
 				// Analytics
 				Analytics.Search.destinationRoutes.send(routeCode: nil, rounteCount: destinationRoutes.count)
 
@@ -34,13 +34,12 @@ class RouteManager				: RouteManagerDataSource {
 		})
 	}
 
-	func routeCoordinates(for routeCode: String, completion: @escaping ((_ coordinates: [CLLocationCoordinate2D]) -> Void)) {
+	func routeCoordinates(for routeCode: String, completion: @escaping ((_ coordinates: [CLLocationCoordinate2D], _ error: Error?) -> Void)) {
 		APIManager.coordinates(forRouteCode: routeCode, success: { (coordinates: [[Double]]) in
 			let locationCoordinates = self.createLocations(fromCoordinates: coordinates)
-			completion(locationCoordinates)
+			completion(locationCoordinates, nil)
 		}, failure: { (error: Error) in
-			UIAlertController.showErrorPopup(error as NSError?)
-			completion([])
+			completion([], error)
 		})
 	}
 
@@ -116,8 +115,8 @@ extension RouteManager {
 	///
 	/// - Parameters:
 	///   - coordinates: The coordinates to search for routes around.
-	///   - completion: Block having as parameter an array of routes passing by the given coordinates.
-	private func fetchRoutes(forCoordinates coordinates: CLLocationCoordinate2D, completion: @escaping ((_ routes: [Route]) -> Void)) {
+	///   - completion: Completion closure with the available routes at specific coordinates and an optional error object.
+	private func fetchRoutes(forCoordinates coordinates: CLLocationCoordinate2D, completion: @escaping ((_ routes: [Route], _ error: Error?) -> Void)) {
 		let location = CLLocation(latitude: coordinates.latitude, longitude: coordinates.longitude)
 		self.fetchRoutes(forLocation: location, completion: completion)
 	}
@@ -126,13 +125,12 @@ extension RouteManager {
 	///
 	/// - Parameters:
 	///   - location: The location to search for routes around it.
-	///   - completion: Block having as parameter an array of routes passing by the given location.
-	private func fetchRoutes(forLocation location: CLLocation, completion: @escaping ((_ routes: [Route]) -> Void)) {
+	///   - completion: Completion closure with the available routes at a specific location and an optional error object.
+	private func fetchRoutes(forLocation location: CLLocation, completion: @escaping ((_ routes: [Route], _ error: Error?) -> Void)) {
 		APIManager.routes(aroundLocation: location, success: { (routes: [Route]) in
-			completion(routes)
+			completion(routes, nil)
 		}, failure: { (error: Error) in
-			UIAlertController.showErrorPopup(error as NSError?)
-			completion([])
+			completion([], error)
 		})
 	}
 }

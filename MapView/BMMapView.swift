@@ -76,7 +76,7 @@ extension BMMapView: ContentView {
 			return
 		}
 
-		self.routeDataSource?.routeCoordinates(for: routeCode, completion: { [weak self] (coordinates: [CLLocationCoordinate2D]) in
+		self.routeDataSource?.routeCoordinates(for: routeCode, completion: { [weak self] (coordinates: [CLLocationCoordinate2D], _ error: Error?) in
 			self?.drawRouteForCoordinates(coordinates: coordinates)
 			// Analytics
 			Analytics.Route.didDrawRoute.send(routeCode: routeCode, rounteCount: 1)
@@ -368,7 +368,7 @@ extension BMMapView {
 
 	/**
 	Function called when the user did select a new PICKUP location.
-	This function add a new annotation on the map, display the views to set the destination.
+	This function adds a new annotation on the map, display the views to set the destination.
 	It also fetch the address of the current pickup location and displays it.
 	*/
 	private func didSetPickUpLocation() {

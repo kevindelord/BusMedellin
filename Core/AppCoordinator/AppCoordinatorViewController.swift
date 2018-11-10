@@ -8,9 +8,7 @@
 
 import UIKit
 
-// TODO: Integrate Time-Out in APIManager.
 // TODO: Is localised strings 'USER_LOCATION_TOO_FAR' used?
-// TODO: Is localised strings 'NO_ROUTE_FOUND' used?
 
 class AppCoordinatorViewController					: UIViewController, AppCoordinatorContainer, SearchResultCoordinator {
 

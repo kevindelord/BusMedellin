@@ -7,3 +7,16 @@
 //
 
 import Foundation
+
+extension URLComponents {
+
+	mutating func addQueryItems(from parameters: [String: String?]) {
+		self.queryItems = parameters.compactMap { (key: String, value: String?) -> URLQueryItem? in
+			guard let value = value else {
+				return nil
+			}
+
+			return URLQueryItem(name: key, value: value)
+		}
+	}
+}

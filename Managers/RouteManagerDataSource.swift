@@ -22,7 +22,7 @@ protocol RouteManagerDataSource {
 	/// - Parameters:
 	///   - routeCode: The route identifier used to fetch the coordinates.
 	///   - completion: Closure called when the route has been fetched.
-	func routeCoordinates(for routeCode: String, completion: @escaping ((_ coordinates: [CLLocationCoordinate2D]) -> Void))
+	func routeCoordinates(for routeCode: String, completion: @escaping ((_ coordinates: [CLLocationCoordinate2D], _ error: Error?) -> Void))
 
 	/// Fetch routes between start and desitnation coordinates.
 	///

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MBProgressHUD
 
 class AppCoordinator			: Coordinator, ContentViewDelegate, RouteManagerDelegate {
 
@@ -47,30 +46,6 @@ extension AppCoordinator {
 
 	func openSettings() {
 		self.container?.performSegue(withIdentifier: Segue.settings, sender: nil)
-	}
-
-	func showWaitingHUD() {
-		// TODO: remove this logic from here.
-
-//		guard let view = self.container?.view else {
-//			return
-//		}
-//
-//		DispatchQueue.main.async {
-//			let hud = MBProgressHUD.showAdded(to: view, animated: true)
-//			hud.bezelView.color = UIColor.black
-//			hud.contentColor = UIColor.white
-//		}
-	}
-
-	func hideWaitingHUD() {
-//		guard let view = self.container?.view else {
-//			return
-//		}
-//
-//		DispatchQueue.main.async {
-//			MBProgressHUD.hide(for: view, animated: true)
-//		}
 	}
 }
 

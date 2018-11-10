@@ -14,7 +14,7 @@ import Reachability
 // TODO: fully extract top view
 // TODO: fix position of locationButton compared to annotations.
 
-class BMMapView											: UIView {
+class BMMapView											: UIView, HUDContainer {
 
 	@IBOutlet weak private var mapView					: MKMapView?
 	@IBOutlet weak private var nearMeButton				: BMLocateButton?
@@ -81,7 +81,7 @@ extension BMMapView: ContentView {
 			// Analytics
 			Analytics.Route.didDrawRoute.send(routeCode: routeCode, rounteCount: 1)
 			// Hide waiting HUD
-			self?.coordinator?.hideWaitingHUD()
+			self?.hideWaitingHUD()
 		})
 	}
 }
@@ -383,7 +383,7 @@ extension BMMapView {
 
 			}, completion: { (finished: Bool) in
 				// Show waiting HUD
-				self.coordinator?.showWaitingHUD()
+				self.showWaitingHUD()
 				// Analytics
 				Analytics.PinLocation.didSetStart.send()
 				// Fetch the address of the location
@@ -405,7 +405,7 @@ extension BMMapView {
 						// Move the map up North a bit.
 						self.moveMapViewNorthFromCoordinate(coordinate: centerCoordinate)
 						// Hide waiting HUD
-						self.coordinator?.hideWaitingHUD()
+						self.hideWaitingHUD()
 					})
 				})
 			})
@@ -431,7 +431,7 @@ extension BMMapView {
 
 			}, completion: { (finished: Bool) in
 				// Show waiting HUD
-				self.coordinator?.showWaitingHUD()
+				self.showWaitingHUD()
 				// Analytics
 				Analytics.PinLocation.didSetDestination.send()
 				// Fetch the address of the location

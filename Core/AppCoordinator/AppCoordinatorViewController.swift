@@ -11,11 +11,10 @@ import UIKit
 // TODO: re-integrate for connection internet required.
 // TODO: review localised strings
 
-class AppCoordinatorViewController					: UIViewController, AppCoordinatorContainer {
+class AppCoordinatorViewController					: UIViewController, AppCoordinatorContainer, SearchResultCoordinator {
 
 	var coordinator									: Coordinator
 
-	@IBOutlet internal weak var stackView			: UIStackView!
 	@IBOutlet internal weak var routesContainer		: UIView!
 	@IBOutlet internal weak var footerContainer		: UIView!
 
@@ -32,11 +31,23 @@ class AppCoordinatorViewController					: UIViewController, AppCoordinatorContain
 	}
 }
 
-// MARK: - AppCoordinatorContainer
+// MARK: - SearchResultCoordinator
 
 extension AppCoordinatorViewController {
 
-	func layoutIfNeeded() {
-		self.view.layoutIfNeeded()
+	func showSearchResults() {
+		UIView.animate(withDuration: 0.3) {
+			self.footerContainer.isHidden = true
+			self.routesContainer.isHidden = false
+			self.view.layoutIfNeeded()
+		}
+	}
+
+	func hideSearchResults() {
+		UIView.animate(withDuration: 0.3) {
+			self.footerContainer.isHidden = false
+			self.routesContainer.isHidden = true
+			self.view.layoutIfNeeded()
+		}
 	}
 }

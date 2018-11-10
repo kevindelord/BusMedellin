@@ -15,14 +15,5 @@ protocol AppCoordinatorContainer {
 
 	/// Required override of the native SDK functions to load the embed views.
 	func performSegue(withIdentifier identifier: String, sender: Any?)
-
-	func layoutIfNeeded()
-
-	/// Footer view container element.
-	var footerContainer: UIView! { get }
-
-	/// Footer view container element.
-	var routesContainer: UIView! { get }
-
 }
 

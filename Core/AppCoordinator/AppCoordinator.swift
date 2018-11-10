@@ -9,12 +9,12 @@
 import UIKit
 import MBProgressHUD
 
-class AppCoordinator			: Coordinator, SearchResultCoordinator, ContentViewDelegate, RouteManagerDelegate {
+class AppCoordinator			: Coordinator, ContentViewDelegate, RouteManagerDelegate {
 
 	private let routeManager	= RouteManager()
 
 	// Main App View Container owning the different UI elements.
-	private var container 		: AppCoordinatorContainer?
+	private var container 		: (AppCoordinatorContainer & SearchResultCoordinator)?
 
 	// Contained Content Views that must be retained in order to coordinate the app.
 	// Depending on user actions the retained content views must be regurlarly updated.
@@ -22,32 +22,11 @@ class AppCoordinator			: Coordinator, SearchResultCoordinator, ContentViewDelega
 	private var routesContainer	: ContentView?
 }
 
-// MARK: - SearchResultCoordinator
-
-extension AppCoordinator {
-
-	func showSearchResults() {
-		UIView.animate(withDuration: 0.3) {
-			self.container?.footerContainer.isHidden = true
-			self.container?.routesContainer.isHidden = false
-			self.container?.layoutIfNeeded()
-		}
-	}
-
-	func hideSearchResults() {
-		UIView.animate(withDuration: 0.3) {
-			self.container?.footerContainer.isHidden = false
-			self.container?.routesContainer.isHidden = true
-			self.container?.layoutIfNeeded()
-		}
-	}
-}
-
 // MARK: - Coordinator
 
 extension AppCoordinator {
 
-	func prepare(for segue: UIStoryboardSegue, on container: AppCoordinatorContainer) {
+	func prepare(for segue: UIStoryboardSegue, on container: (AppCoordinatorContainer & SearchResultCoordinator)) {
 		self.container = container
 
 		// All containers view should conform to the ContentView protocol.
@@ -71,6 +50,8 @@ extension AppCoordinator {
 	}
 
 	func showWaitingHUD() {
+		// TODO: remove this logic from here.
+
 //		guard let view = self.container?.view else {
 //			return
 //		}
@@ -106,9 +87,9 @@ extension AppCoordinator {
 		self.routesContainer?.update(availableRoutes: availableRoutes, selectedRoute: selectedRoute)
 
 		if (availableRoutes.isEmpty == false) {
-			self.showSearchResults()
+			self.container?.showSearchResults()
 		} else {
-			self.hideSearchResults()
+			self.container?.hideSearchResults()
 		}
 	}
 
@@ -135,6 +116,6 @@ extension AppCoordinator {
 	func cancelSearch() {
 		self.routeManager.cancelSearch()
 		self.reloadContentViews()
-		self.hideSearchResults()
+		self.container?.hideSearchResults()
 	}
 }

@@ -20,13 +20,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="foS-th-g6H">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="25"/>
+                                <rect key="frame" x="0.0" y="4" width="320" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="g4r-8P-HyJ"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MPR-04-Q4n">
-                                <rect key="frame" x="0.0" y="25" width="320" height="455"/>
+                                <rect key="frame" x="0.0" y="34" width="320" height="446"/>
                                 <connections>
                                     <segue destination="Qpa-Zo-pDH" kind="embed" identifier="embedPageController" id="Uts-vV-oc6"/>
                                 </connections>
@@ -39,8 +42,7 @@
                             <constraint firstAttribute="trailing" secondItem="MPR-04-Q4n" secondAttribute="trailing" id="eNb-eD-RUu"/>
                             <constraint firstItem="MPR-04-Q4n" firstAttribute="leading" secondItem="GhH-8R-Ffb" secondAttribute="leading" id="k1S-n8-haa"/>
                             <constraint firstItem="foS-th-g6H" firstAttribute="leading" secondItem="GhH-8R-Ffb" secondAttribute="leading" id="nTk-2d-07r"/>
-                            <constraint firstItem="MPR-04-Q4n" firstAttribute="top" secondItem="GhH-8R-Ffb" secondAttribute="top" priority="750" constant="25" id="qCs-7c-siR"/>
-                            <constraint firstItem="foS-th-g6H" firstAttribute="top" secondItem="GhH-8R-Ffb" secondAttribute="top" id="tGW-gz-Veh"/>
+                            <constraint firstItem="foS-th-g6H" firstAttribute="top" secondItem="GhH-8R-Ffb" secondAttribute="top" constant="4" id="tGW-gz-Veh"/>
                             <constraint firstItem="MPR-04-Q4n" firstAttribute="top" secondItem="foS-th-g6H" secondAttribute="bottom" id="tYZ-Ad-sKG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="h6Q-yn-A20"/>
@@ -70,13 +72,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1A0-8i-53V">
-                                <rect key="frame" x="8" y="8" width="304" height="464"/>
+                                <rect key="frame" x="8" y="4" width="304" height="468"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="bT2-JW-ZR8">
-                                        <rect key="frame" x="8" y="8" width="288" height="448"/>
+                                        <rect key="frame" x="8" y="8" width="288" height="452"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="41l-rs-Ow2">
-                                                <rect key="frame" x="0.0" y="205" width="288" height="38.5"/>
+                                                <rect key="frame" x="0.0" y="207" width="288" height="38.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CIRCULAR INTERMEDIA RECORRIDO 1 CIRCULAR INTERMEDIA RECORRIDO 1" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwH-4R-cwP">
                                                         <rect key="frame" x="5" y="0.0" width="278.5" height="38.5"/>
@@ -85,7 +87,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xUj-l3-8QO">
-                                                        <rect key="frame" x="-404" y="-221" width="1096" height="0.0"/>
+                                                        <rect key="frame" x="-404" y="-219" width="1096" height="0.0"/>
                                                         <string key="text">Área de Expanción San Cristóbal, Corregimiento de San Cristóbal Área de Expanción San Cristóbal, Corregimiento de San Cristóbal Área de Expanción San Cristóbal, Corregimiento de San Cristóbal</string>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -110,7 +112,7 @@
                             <constraint firstAttribute="trailing" secondItem="1A0-8i-53V" secondAttribute="trailing" constant="8" id="WWt-qb-EiF"/>
                             <constraint firstItem="1A0-8i-53V" firstAttribute="leading" secondItem="Sjp-o6-1Fm" secondAttribute="leading" constant="8" id="XRa-so-e5M"/>
                             <constraint firstAttribute="bottom" secondItem="1A0-8i-53V" secondAttribute="bottom" constant="8" id="d1n-bh-yDJ"/>
-                            <constraint firstItem="1A0-8i-53V" firstAttribute="top" secondItem="Sjp-o6-1Fm" secondAttribute="top" constant="8" id="vK7-x0-kyU"/>
+                            <constraint firstItem="1A0-8i-53V" firstAttribute="top" secondItem="Sjp-o6-1Fm" secondAttribute="top" constant="4" id="vK7-x0-kyU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WVg-fx-P3a"/>
                     </view>

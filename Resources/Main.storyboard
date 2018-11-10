@@ -133,16 +133,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cmA-ZG-tYT">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MuQ-MQ-mhZ" userLabel="Map">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="732"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="698"/>
                                         <connections>
                                             <segue destination="LJG-pO-0Xv" kind="embed" identifier="embedMapView" id="uo6-Sd-0Ws"/>
                                         </connections>
                                     </containerView>
                                     <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7DQ-8Z-yCl" userLabel="Routes">
-                                        <rect key="frame" x="0.0" y="732" width="375" height="150"/>
+                                        <rect key="frame" x="0.0" y="698" width="375" height="150"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="150" id="gvW-rc-omN"/>
                                         </constraints>
@@ -151,7 +151,7 @@
                                         </connections>
                                     </containerView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bBv-pr-e78" userLabel="Footer">
-                                        <rect key="frame" x="0.0" y="732" width="375" height="80"/>
+                                        <rect key="frame" x="0.0" y="698" width="375" height="80"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="80" id="zd9-e8-0PP"/>
                                         </constraints>
@@ -164,10 +164,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="cmA-ZG-tYT" secondAttribute="bottom" id="Jh2-bB-UtX"/>
                             <constraint firstItem="cmA-ZG-tYT" firstAttribute="top" secondItem="VRG-dx-K1K" secondAttribute="top" id="M3t-Ac-nf8"/>
                             <constraint firstAttribute="trailing" secondItem="cmA-ZG-tYT" secondAttribute="trailing" id="R8A-vg-Hfz"/>
                             <constraint firstItem="cmA-ZG-tYT" firstAttribute="leading" secondItem="VRG-dx-K1K" secondAttribute="leading" id="iFm-YM-UhM"/>
+                            <constraint firstItem="S71-kb-WvW" firstAttribute="bottom" secondItem="cmA-ZG-tYT" secondAttribute="bottom" id="q6M-lB-lwc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="S71-kb-WvW"/>
                     </view>

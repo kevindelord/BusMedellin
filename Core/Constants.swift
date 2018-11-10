@@ -52,6 +52,11 @@ struct Segue {
 	}
 }
 
+extension UIPageControl {
+
+	static let maximumPageCount		= 10
+}
+
 struct Storyboard {
 
 	static let Routes				= "Routes"

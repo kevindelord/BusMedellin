@@ -149,24 +149,27 @@
         <scene sceneID="SmP-Hk-BVm">
             <objects>
                 <viewController id="k0e-BD-soo" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KVS-9D-ocq"/>
+                        <viewControllerLayoutGuide type="bottom" id="k9u-L6-aFu"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Qaj-Md-Tds" customClass="RoutePageControlView" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="37"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EUM-4A-cSz" customClass="FlexiblePageControl" customModule="FlexiblePageControl">
+                            <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="hTF-ZR-fgi">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="37"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
+                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="EUM-4A-cSz" firstAttribute="top" secondItem="Qaj-Md-Tds" secondAttribute="top" id="D4A-U0-ZhU"/>
-                            <constraint firstItem="EUM-4A-cSz" firstAttribute="leading" secondItem="Qaj-Md-Tds" secondAttribute="leading" id="MUR-wU-JNB"/>
-                            <constraint firstAttribute="trailing" secondItem="EUM-4A-cSz" secondAttribute="trailing" id="VRq-vS-bnL"/>
-                            <constraint firstAttribute="bottom" secondItem="EUM-4A-cSz" secondAttribute="bottom" id="pz0-Be-Edf"/>
+                            <constraint firstItem="k9u-L6-aFu" firstAttribute="top" secondItem="hTF-ZR-fgi" secondAttribute="bottom" id="00g-Zr-56s"/>
+                            <constraint firstItem="hTF-ZR-fgi" firstAttribute="top" secondItem="KVS-9D-ocq" secondAttribute="bottom" id="QDB-oa-zLW"/>
+                            <constraint firstItem="hTF-ZR-fgi" firstAttribute="leading" secondItem="Qaj-Md-Tds" secondAttribute="leading" id="U58-eh-Aur"/>
+                            <constraint firstAttribute="trailing" secondItem="hTF-ZR-fgi" secondAttribute="trailing" id="z3H-Wi-oul"/>
                         </constraints>
                         <connections>
-                            <outlet property="pageControl" destination="EUM-4A-cSz" id="Kee-by-Q0t"/>
+                            <outlet property="pageControl" destination="hTF-ZR-fgi" id="pxo-sd-fd8"/>
                         </connections>
                     </view>
                 </viewController>

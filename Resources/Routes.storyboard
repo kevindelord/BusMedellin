@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iYE-dl-uyP">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,17 +16,17 @@
             <objects>
                 <viewController id="iYE-dl-uyP" customClass="RoutesViewController" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GhH-8R-Ffb" customClass="RoutesContainerView" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="foS-th-g6H">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="25"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="25"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MPR-04-Q4n">
-                                <rect key="frame" x="0.0" y="25" width="375" height="642"/>
+                                <rect key="frame" x="0.0" y="25" width="320" height="455"/>
                                 <connections>
                                     <segue destination="Qpa-Zo-pDH" kind="embed" identifier="embedPageController" id="Uts-vV-oc6"/>
                                 </connections>
@@ -66,45 +66,52 @@
             <objects>
                 <viewController storyboardIdentifier="RouteViewController" id="b3I-sv-vke" customClass="RouteViewController" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Sjp-o6-1Fm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ShuttleFilled" translatesAutoresizingMaskIntoConstraints="NO" id="IFD-fQ-pX4">
-                                <rect key="frame" x="16" y="321" width="25" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="hyn-ke-GhW"/>
-                                    <constraint firstAttribute="width" constant="25" id="t4E-lh-MpS"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwH-4R-cwP">
-                                <rect key="frame" x="49" y="36" width="310" height="19.5"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xUj-l3-8QO">
-                                <rect key="frame" x="49" y="630" width="310" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="6jm-dP-Fn1"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="bT2-JW-ZR8">
+                                <rect key="frame" x="16" y="0.0" width="288" height="480"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ShuttleFilled" translatesAutoresizingMaskIntoConstraints="NO" id="IFD-fQ-pX4">
+                                        <rect key="frame" x="0.0" y="227.5" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="hyn-ke-GhW"/>
+                                            <constraint firstAttribute="width" constant="25" id="t4E-lh-MpS"/>
+                                        </constraints>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="41l-rs-Ow2">
+                                        <rect key="frame" x="33" y="211.5" width="255" height="57.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CIRCULAR INTERMEDIA RECORRIDO 1 CIRCULAR INTERMEDIA RECORRIDO 1" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwH-4R-cwP">
+                                                <rect key="frame" x="0.0" y="0.0" width="195" height="57.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xUj-l3-8QO">
+                                                <rect key="frame" x="0.0" y="-211.5" width="1096" height="0.0"/>
+                                                <string key="text">Área de Expanción San Cristóbal, Corregimiento de San Cristóbal Área de Expanción San Cristóbal, Corregimiento de San Cristóbal Área de Expanción San Cristóbal, Corregimiento de San Cristóbal</string>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="cwH-4R-cwP" secondAttribute="trailing" constant="16" id="28Y-XN-3NN"/>
-                            <constraint firstItem="IFD-fQ-pX4" firstAttribute="centerY" secondItem="Sjp-o6-1Fm" secondAttribute="centerY" id="7iH-FN-jjc"/>
-                            <constraint firstItem="xUj-l3-8QO" firstAttribute="trailing" secondItem="cwH-4R-cwP" secondAttribute="trailing" id="E14-Lh-E6m"/>
-                            <constraint firstItem="cwH-4R-cwP" firstAttribute="top" secondItem="Sjp-o6-1Fm" secondAttribute="topMargin" constant="16" id="Wil-k3-bu4"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="xUj-l3-8QO" secondAttribute="bottom" constant="16" id="aDu-yZ-iwF"/>
-                            <constraint firstItem="xUj-l3-8QO" firstAttribute="leading" secondItem="cwH-4R-cwP" secondAttribute="leading" id="m7Y-Mx-fFo"/>
-                            <constraint firstItem="xUj-l3-8QO" firstAttribute="leading" secondItem="IFD-fQ-pX4" secondAttribute="trailing" constant="8" id="oh3-Gy-k7e"/>
-                            <constraint firstItem="IFD-fQ-pX4" firstAttribute="leading" secondItem="Sjp-o6-1Fm" secondAttribute="leading" constant="16" id="tFS-xl-0HG"/>
+                            <constraint firstAttribute="trailing" secondItem="bT2-JW-ZR8" secondAttribute="trailing" constant="16" id="2kw-ub-XgS"/>
+                            <constraint firstAttribute="bottom" secondItem="bT2-JW-ZR8" secondAttribute="bottom" id="KAB-mv-4J4"/>
+                            <constraint firstItem="bT2-JW-ZR8" firstAttribute="leading" secondItem="Sjp-o6-1Fm" secondAttribute="leading" constant="16" id="r6A-25-Vsa"/>
+                            <constraint firstItem="bT2-JW-ZR8" firstAttribute="top" secondItem="Sjp-o6-1Fm" secondAttribute="top" id="szk-gh-qaQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WVg-fx-P3a"/>
                     </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="subtitleLabel" destination="xUj-l3-8QO" id="YuJ-fB-nfn"/>
                         <outlet property="titleLabel" destination="cwH-4R-cwP" id="XxC-1f-TQD"/>

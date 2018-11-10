@@ -1,5 +1,5 @@
 //
-//  RouteViewController.swift
+//  RouteDetailViewController.swift
 //  BusMedellin
 //
 //  Created by kevindelord on 26/08/2018.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RouteViewController								: UIViewController {
+class RouteDetailViewController							: UIViewController, RouteDetailPage {
 
 	@IBOutlet private weak var containerView			: UIView?
 	@IBOutlet private weak var titleLabel				: UILabel?

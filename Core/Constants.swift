@@ -48,6 +48,7 @@ struct Segue {
 		static let MapView			= "embedMapView"
 		static let RoutesView		= "embedRoutesView"
 		static let PageController	= "embedPageController"
+		static let PageControl		= "embedPageControl"
 	}
 }
 

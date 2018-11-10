@@ -15,19 +15,28 @@
 "PIN_DESTINATION_LOCATION"  = "SET DESTINATION";
 "LOCATION_VIEW_PICKUP"      = "Choose pickup location";
 "LOCATION_VIEW_DESTINATION" = "Choose destination";
-"NO_ROUTE_FOUND"            = "No routes available for the chosen locations.";
-"SETTINGS_VC_TITLE"         = "Information";
+"USER_LOCATION_TOO_FAR"     = "You are too far away from the city center to use your location.";
+
+//
+// User Location
+//
 "LOCATION_ERROR_TITLE"      = "Location services needed";
 "LOCATION_ERROR_MESSAGE"    = "Please go to Settings to let the app locate you on the map.";
 "LOCATION_ERROR_SETTINGS"   = "Settings";
 "LOCATION_ERROR_CANCEL"     = "Cancel";
-"USER_LOCATION_TOO_FAR"     = "You are too far away from the city center to use your location.";
+
+//
+// Error Alerts
+//
 "POPUP_OK"                  = "OK";
 "POPUP_ERROR"				= "Error";
+"NO_INTERNET_CONNECTION"    = "The Internet connection appears to be offline.";
+"NO_ROUTE_FOUND"            = "No routes available for the chosen locations.";
 
 //
 // Settings View Controller
 //
+"SETTINGS_VC_TITLE"         = "Information";
 "SETTINGS_ABOUT_TITLE"      = "About Bus Paisa";
 "SETTINGS_ABOUT_TEXT"       = "This application is an open-source project that helps users using the buses in Medellin, Colombia.\n\nIt is based on the work of Thibault Durand (@tibbb), you can find his web version here.\n\nThe displayed information are provided by the Ministry of Transport and Traffic of Medellin. The routes are not automatically updated.";
 "SETTINGS_ABOUT_ANCHOR_1"   = "open-source project";
@@ -38,5 +47,4 @@
 "SETTINGS_BUG_TEXT"         = "Shake your device to report a problem!";
 "SETTINGS_MADE_BY"          = "Made with ❤️ by Kevin Delord.";
 "SETTINGS_MADE_BY_ANCHOR"   = "Kevin Delord";
-"NO_INTERNET_CONNECTION"    = "The Internet connection appears to be offline.";
 "APP_VERSION"				= "Version %@ (%@)";

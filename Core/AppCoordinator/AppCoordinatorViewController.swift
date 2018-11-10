@@ -8,7 +8,7 @@
 
 import UIKit
 
-// TODO: re-integrate for connection internet required.
+// TODO: Integrate Time-Out in APIManager.
 // TODO: review localised strings
 
 class AppCoordinatorViewController					: UIViewController, AppCoordinatorContainer, SearchResultCoordinator {

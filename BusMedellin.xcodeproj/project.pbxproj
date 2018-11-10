@@ -23,16 +23,16 @@
 		752B317E218F4FE200A1DE0D /* AppCoordinatorContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B317C218F4FE200A1DE0D /* AppCoordinatorContainer.swift */; };
 		752B3180218F503F00A1DE0D /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B317F218F503F00A1DE0D /* Coordinator.swift */; };
 		752B3181218F503F00A1DE0D /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B317F218F503F00A1DE0D /* Coordinator.swift */; };
-		752B3183218F517E00A1DE0D /* RouteContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B3182218F517E00A1DE0D /* RouteContainer.swift */; };
-		752B3184218F517E00A1DE0D /* RouteContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B3182218F517E00A1DE0D /* RouteContainer.swift */; };
+		752B3183218F517E00A1DE0D /* RoutesContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B3182218F517E00A1DE0D /* RoutesContainer.swift */; };
+		752B3184218F517E00A1DE0D /* RoutesContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B3182218F517E00A1DE0D /* RoutesContainer.swift */; };
 		7546C99D21300A6E00F80153 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546C99C21300A6E00F80153 /* UIColor.swift */; };
 		7546C99E21300A6E00F80153 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546C99C21300A6E00F80153 /* UIColor.swift */; };
 		754A25272132C70300B3B083 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A25262132C70300B3B083 /* FooterView.swift */; };
 		754A25282132C70300B3B083 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A25262132C70300B3B083 /* FooterView.swift */; };
 		754A252B2132C81200B3B083 /* BMMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A252A2132C81200B3B083 /* BMMapView.swift */; };
 		754A252C2132C81200B3B083 /* BMMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A252A2132C81200B3B083 /* BMMapView.swift */; };
-		754A252E2132C88400B3B083 /* RouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A252D2132C88400B3B083 /* RouteViewController.swift */; };
-		754A252F2132C88400B3B083 /* RouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A252D2132C88400B3B083 /* RouteViewController.swift */; };
+		754A252E2132C88400B3B083 /* RouteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A252D2132C88400B3B083 /* RouteDetailViewController.swift */; };
+		754A252F2132C88400B3B083 /* RouteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A252D2132C88400B3B083 /* RouteDetailViewController.swift */; };
 		754A25322132CA8B00B3B083 /* DKLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A25312132CA8B00B3B083 /* DKLog.swift */; };
 		754A25332132CA8B00B3B083 /* DKLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A25312132CA8B00B3B083 /* DKLog.swift */; };
 		754A25352132CADC00B3B083 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A25342132CADC00B3B083 /* Array.swift */; };
@@ -49,10 +49,16 @@
 		75513BE31DB01ED900957F40 /* BMButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75513BE21DB01ED900957F40 /* BMButtons.swift */; };
 		75513BE51DB02D2300957F40 /* BMAnnotations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75513BE41DB02D2300957F40 /* BMAnnotations.swift */; };
 		75513BE71DB02E5700957F40 /* MKMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75513BE61DB02E5700957F40 /* MKMapView.swift */; };
-		755DB8D2213C0B510092756E /* MapView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755DB8D1213C0B510092756E /* MapView.storyboard */; };
-		755DB8D3213C0B510092756E /* MapView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755DB8D1213C0B510092756E /* MapView.storyboard */; };
-		755DB8D5213C0BCB0092756E /* Footer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755DB8D4213C0BCB0092756E /* Footer.storyboard */; };
-		755DB8D6213C0BCB0092756E /* Footer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755DB8D4213C0BCB0092756E /* Footer.storyboard */; };
+		7559450B2196FD8D00AC0A98 /* RoutePageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7559450A2196FD8D00AC0A98 /* RoutePageControl.swift */; };
+		7559450C2196FD8D00AC0A98 /* RoutePageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7559450A2196FD8D00AC0A98 /* RoutePageControl.swift */; };
+		7559450E2196FDA900AC0A98 /* RoutePageControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7559450D2196FDA900AC0A98 /* RoutePageControlView.swift */; };
+		7559450F2196FDA900AC0A98 /* RoutePageControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7559450D2196FDA900AC0A98 /* RoutePageControlView.swift */; };
+		755945132196FEBE00AC0A98 /* RoutePageControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755945122196FEBE00AC0A98 /* RoutePageControllerDataSource.swift */; };
+		755945142196FEBE00AC0A98 /* RoutePageControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755945122196FEBE00AC0A98 /* RoutePageControllerDataSource.swift */; };
+		755945162196FED600AC0A98 /* RoutePageControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755945152196FED600AC0A98 /* RoutePageControllerDelegate.swift */; };
+		755945172196FED600AC0A98 /* RoutePageControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755945152196FED600AC0A98 /* RoutePageControllerDelegate.swift */; };
+		755945192196FFB700AC0A98 /* RoutePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755945182196FFB700AC0A98 /* RoutePageController.swift */; };
+		7559451A2196FFB700AC0A98 /* RoutePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755945182196FFB700AC0A98 /* RoutePageController.swift */; };
 		755DB8D8213C207B0092756E /* RouteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755DB8D7213C207B0092756E /* RouteManager.swift */; };
 		755DB8D9213C207B0092756E /* RouteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755DB8D7213C207B0092756E /* RouteManager.swift */; };
 		755DB8DC213C5C390092756E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 755DB8DB213C5C390092756E /* StoreKit.framework */; };
@@ -85,8 +91,6 @@
 		758E10431DBD92D000D872BC /* AppCoordinatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F8B4CD1DB9774600F43109 /* AppCoordinatorViewController.swift */; };
 		758E10451DBD92D000D872BC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75640BFB1DAF1AAD002B4A56 /* Constants.swift */; };
 		758E10461DBD92D000D872BC /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75640BFD1DAF1B11002B4A56 /* Configuration.swift */; };
-		758E104B1DBD92D000D872BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C5E95C1DBD698100FCE9D0 /* LaunchScreen.storyboard */; };
-		758E104C1DBD92D000D872BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C5E95D1DBD698100FCE9D0 /* Main.storyboard */; };
 		758E104E1DBD92D000D872BC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 75640BEC1DAF19C5002B4A56 /* Settings.bundle */; };
 		758E10501DBD92D000D872BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75513BDF1DB019C600957F40 /* Assets.xcassets */; };
 		758E10511DBD92D000D872BC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 75C5E9571DBD673700FCE9D0 /* Localizable.strings */; };
@@ -94,14 +98,12 @@
 		758E105E1DBD96D000D872BC /* HockeySDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758E105C1DBD96D000D872BC /* HockeySDK.swift */; };
 		75B41C5621343D8500588CE8 /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75B41C5521343D8500588CE8 /* Configuration.plist */; };
 		75B41C5721343D8500588CE8 /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75B41C5521343D8500588CE8 /* Configuration.plist */; };
-		75C0E62C218DE3B300C988C5 /* Routes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C0E62B218DE3B300C988C5 /* Routes.storyboard */; };
-		75C0E62D218DE3B300C988C5 /* Routes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C0E62B218DE3B300C988C5 /* Routes.storyboard */; };
 		75C0E62F218DEA8900C988C5 /* RoutesContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C0E62E218DEA8900C988C5 /* RoutesContainerView.swift */; };
 		75C0E630218DEA8900C988C5 /* RoutesContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C0E62E218DEA8900C988C5 /* RoutesContainerView.swift */; };
 		75C0E634218E104F00C988C5 /* FooterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C0E633218E104F00C988C5 /* FooterViewController.swift */; };
 		75C0E635218E104F00C988C5 /* FooterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C0E633218E104F00C988C5 /* FooterViewController.swift */; };
-		75C0E638218E115D00C988C5 /* RoutePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C0E637218E115D00C988C5 /* RoutePageController.swift */; };
-		75C0E639218E115D00C988C5 /* RoutePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C0E637218E115D00C988C5 /* RoutePageController.swift */; };
+		75C0E638218E115D00C988C5 /* RoutePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C0E637218E115D00C988C5 /* RoutePageViewController.swift */; };
+		75C0E639218E115D00C988C5 /* RoutePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C0E637218E115D00C988C5 /* RoutePageViewController.swift */; };
 		75C0E63B218E11A000C988C5 /* RoutePageControllerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C0E63A218E11A000C988C5 /* RoutePageControllerHandler.swift */; };
 		75C0E63C218E11A000C988C5 /* RoutePageControllerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C0E63A218E11A000C988C5 /* RoutePageControllerHandler.swift */; };
 		75C0E63E218E126900C988C5 /* BMMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C0E63D218E126900C988C5 /* BMMapViewController.swift */; };
@@ -115,10 +117,22 @@
 		75C5E9521DBD637400FCE9D0 /* BMSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C5E9511DBD637400FCE9D0 /* BMSettingsViewController.swift */; };
 		75C5E9551DBD673700FCE9D0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 75C5E9571DBD673700FCE9D0 /* Localizable.strings */; };
 		75C5E95B1DBD697900FCE9D0 /* BMAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C5E95A1DBD697900FCE9D0 /* BMAddressView.swift */; };
-		75C5E95E1DBD698100FCE9D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C5E95C1DBD698100FCE9D0 /* LaunchScreen.storyboard */; };
-		75C5E95F1DBD698100FCE9D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C5E95D1DBD698100FCE9D0 /* Main.storyboard */; };
 		75C811F22196C7CA009BAD79 /* HUDContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C811F12196C7CA009BAD79 /* HUDContainer.swift */; };
 		75C811F32196C7CA009BAD79 /* HUDContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C811F12196C7CA009BAD79 /* HUDContainer.swift */; };
+		75C812012196CDD2009BAD79 /* Footer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C811FB2196CDD2009BAD79 /* Footer.storyboard */; };
+		75C812022196CDD2009BAD79 /* Footer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C811FB2196CDD2009BAD79 /* Footer.storyboard */; };
+		75C812032196CDD2009BAD79 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C811FC2196CDD2009BAD79 /* Settings.storyboard */; };
+		75C812042196CDD2009BAD79 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C811FC2196CDD2009BAD79 /* Settings.storyboard */; };
+		75C812052196CDD2009BAD79 /* App.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C811FD2196CDD2009BAD79 /* App.storyboard */; };
+		75C812062196CDD2009BAD79 /* App.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C811FD2196CDD2009BAD79 /* App.storyboard */; };
+		75C812072196CDD2009BAD79 /* MapView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C811FE2196CDD2009BAD79 /* MapView.storyboard */; };
+		75C812082196CDD2009BAD79 /* MapView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C811FE2196CDD2009BAD79 /* MapView.storyboard */; };
+		75C812092196CDD2009BAD79 /* Routes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C811FF2196CDD2009BAD79 /* Routes.storyboard */; };
+		75C8120A2196CDD2009BAD79 /* Routes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C811FF2196CDD2009BAD79 /* Routes.storyboard */; };
+		75C8120B2196CDD2009BAD79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C812002196CDD2009BAD79 /* LaunchScreen.storyboard */; };
+		75C8120C2196CDD2009BAD79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C812002196CDD2009BAD79 /* LaunchScreen.storyboard */; };
+		75C8120E2196E831009BAD79 /* RouteDetailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8120D2196E831009BAD79 /* RouteDetailPage.swift */; };
+		75C8120F2196E831009BAD79 /* RouteDetailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8120D2196E831009BAD79 /* RouteDetailPage.swift */; };
 		75DBD71D21383AEB003184E8 /* MBButtonState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DBD71C21383AEB003184E8 /* MBButtonState.swift */; };
 		75DBD71E21383AEB003184E8 /* MBButtonState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DBD71C21383AEB003184E8 /* MBButtonState.swift */; };
 		75F8B4CB1DB9773800F43109 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F8B4CA1DB9773800F43109 /* AppDelegate.swift */; };
@@ -141,11 +155,11 @@
 		752B3179218F4F2F00A1DE0D /* SearchResultCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCoordinator.swift; sourceTree = "<group>"; };
 		752B317C218F4FE200A1DE0D /* AppCoordinatorContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorContainer.swift; sourceTree = "<group>"; };
 		752B317F218F503F00A1DE0D /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		752B3182218F517E00A1DE0D /* RouteContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteContainer.swift; sourceTree = "<group>"; };
+		752B3182218F517E00A1DE0D /* RoutesContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesContainer.swift; sourceTree = "<group>"; };
 		7546C99C21300A6E00F80153 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		754A25262132C70300B3B083 /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		754A252A2132C81200B3B083 /* BMMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMMapView.swift; sourceTree = "<group>"; };
-		754A252D2132C88400B3B083 /* RouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteViewController.swift; sourceTree = "<group>"; };
+		754A252D2132C88400B3B083 /* RouteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDetailViewController.swift; sourceTree = "<group>"; };
 		754A25312132CA8B00B3B083 /* DKLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DKLog.swift; sourceTree = "<group>"; };
 		754A25342132CADC00B3B083 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		754A25372132CB2300B3B083 /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
@@ -157,8 +171,11 @@
 		75513BE41DB02D2300957F40 /* BMAnnotations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BMAnnotations.swift; path = Core/AdditionalViews/BMAnnotations.swift; sourceTree = "<group>"; };
 		75513BE61DB02E5700957F40 /* MKMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKMapView.swift; sourceTree = "<group>"; };
 		7554E7761DAF16E400F1178C /* BusMedellin-Alpha-AdHoc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BusMedellin-Alpha-AdHoc.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		755DB8D1213C0B510092756E /* MapView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = MapView.storyboard; path = Resources/MapView.storyboard; sourceTree = "<group>"; };
-		755DB8D4213C0BCB0092756E /* Footer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Footer.storyboard; sourceTree = "<group>"; };
+		7559450A2196FD8D00AC0A98 /* RoutePageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutePageControl.swift; sourceTree = "<group>"; };
+		7559450D2196FDA900AC0A98 /* RoutePageControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutePageControlView.swift; sourceTree = "<group>"; };
+		755945122196FEBE00AC0A98 /* RoutePageControllerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutePageControllerDataSource.swift; sourceTree = "<group>"; };
+		755945152196FED600AC0A98 /* RoutePageControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutePageControllerDelegate.swift; sourceTree = "<group>"; };
+		755945182196FFB700AC0A98 /* RoutePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutePageController.swift; sourceTree = "<group>"; };
 		755DB8D7213C207B0092756E /* RouteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteManager.swift; sourceTree = "<group>"; };
 		755DB8DB213C5C390092756E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		75640BEC1DAF19C5002B4A56 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Resources/Settings.bundle; sourceTree = "<group>"; };
@@ -179,10 +196,9 @@
 		758E105B1DBD930A00D872BC /* BusMedellin-Live-AppStore-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BusMedellin-Live-AppStore-Info.plist"; sourceTree = "<group>"; };
 		758E105C1DBD96D000D872BC /* HockeySDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HockeySDK.swift; sourceTree = "<group>"; };
 		75B41C5521343D8500588CE8 /* Configuration.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Configuration.plist; sourceTree = "<group>"; };
-		75C0E62B218DE3B300C988C5 /* Routes.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Routes.storyboard; path = Resources/Routes.storyboard; sourceTree = "<group>"; };
 		75C0E62E218DEA8900C988C5 /* RoutesContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesContainerView.swift; sourceTree = "<group>"; };
 		75C0E633218E104F00C988C5 /* FooterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterViewController.swift; sourceTree = "<group>"; };
-		75C0E637218E115D00C988C5 /* RoutePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutePageController.swift; sourceTree = "<group>"; };
+		75C0E637218E115D00C988C5 /* RoutePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutePageViewController.swift; sourceTree = "<group>"; };
 		75C0E63A218E11A000C988C5 /* RoutePageControllerHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutePageControllerHandler.swift; sourceTree = "<group>"; };
 		75C0E63D218E126900C988C5 /* BMMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMMapViewController.swift; sourceTree = "<group>"; };
 		75C0E640218E12B900C988C5 /* RoutesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesViewController.swift; sourceTree = "<group>"; };
@@ -192,9 +208,14 @@
 		75C5E9561DBD673700FCE9D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		75C5E9591DBD675200FCE9D0 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		75C5E95A1DBD697900FCE9D0 /* BMAddressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BMAddressView.swift; path = Core/AdditionalViews/BMAddressView.swift; sourceTree = "<group>"; };
-		75C5E95C1DBD698100FCE9D0 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Resources/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		75C5E95D1DBD698100FCE9D0 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Resources/Main.storyboard; sourceTree = "<group>"; };
 		75C811F12196C7CA009BAD79 /* HUDContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUDContainer.swift; sourceTree = "<group>"; };
+		75C811FB2196CDD2009BAD79 /* Footer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Footer.storyboard; path = Resources/Storyboards/Footer.storyboard; sourceTree = "<group>"; };
+		75C811FC2196CDD2009BAD79 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Settings.storyboard; path = Resources/Storyboards/Settings.storyboard; sourceTree = "<group>"; };
+		75C811FD2196CDD2009BAD79 /* App.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = App.storyboard; path = Resources/Storyboards/App.storyboard; sourceTree = "<group>"; };
+		75C811FE2196CDD2009BAD79 /* MapView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MapView.storyboard; path = Resources/Storyboards/MapView.storyboard; sourceTree = "<group>"; };
+		75C811FF2196CDD2009BAD79 /* Routes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Routes.storyboard; path = Resources/Storyboards/Routes.storyboard; sourceTree = "<group>"; };
+		75C812002196CDD2009BAD79 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Resources/Storyboards/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		75C8120D2196E831009BAD79 /* RouteDetailPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDetailPage.swift; sourceTree = "<group>"; };
 		75DBD71C21383AEB003184E8 /* MBButtonState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MBButtonState.swift; path = Core/AdditionalViews/MBButtonState.swift; sourceTree = "<group>"; };
 		75F8B4CA1DB9773800F43109 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Core/AppDelegate.swift; sourceTree = "<group>"; };
 		75F8B4CD1DB9774600F43109 /* AppCoordinatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinatorViewController.swift; sourceTree = "<group>"; };
@@ -297,13 +318,43 @@
 		7554E78B1DAF18BE00F1178C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				75C0E631218DF3F400C988C5 /* Storyboards */,
+				75C811FA2196CDB7009BAD79 /* Storyboards */,
 				75513BDF1DB019C600957F40 /* Assets.xcassets */,
 				75805BC01DAF5B3A00DACFF5 /* medellin.gpx */,
 				75640BEC1DAF19C5002B4A56 /* Settings.bundle */,
 				75C5E9571DBD673700FCE9D0 /* Localizable.strings */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		755945092196FD7A00AC0A98 /* PageControl */ = {
+			isa = PBXGroup;
+			children = (
+				7559450A2196FD8D00AC0A98 /* RoutePageControl.swift */,
+				7559450D2196FDA900AC0A98 /* RoutePageControlView.swift */,
+			);
+			path = PageControl;
+			sourceTree = "<group>";
+		};
+		755945102196FE5700AC0A98 /* PageController */ = {
+			isa = PBXGroup;
+			children = (
+				755945182196FFB700AC0A98 /* RoutePageController.swift */,
+				755945122196FEBE00AC0A98 /* RoutePageControllerDataSource.swift */,
+				755945152196FED600AC0A98 /* RoutePageControllerDelegate.swift */,
+				75C0E637218E115D00C988C5 /* RoutePageViewController.swift */,
+				75C0E63A218E11A000C988C5 /* RoutePageControllerHandler.swift */,
+			);
+			path = PageController;
+			sourceTree = "<group>";
+		};
+		755945112196FE9D00AC0A98 /* RouteDetail */ = {
+			isa = PBXGroup;
+			children = (
+				75C8120D2196E831009BAD79 /* RouteDetailPage.swift */,
+				754A252D2132C88400B3B083 /* RouteDetailViewController.swift */,
+			);
+			path = RouteDetail;
 			sourceTree = "<group>";
 		};
 		755DB8DA213C208A0092756E /* Managers */ = {
@@ -369,18 +420,6 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
-		75C0E631218DF3F400C988C5 /* Storyboards */ = {
-			isa = PBXGroup;
-			children = (
-				75C5E95C1DBD698100FCE9D0 /* LaunchScreen.storyboard */,
-				75C5E95D1DBD698100FCE9D0 /* Main.storyboard */,
-				755DB8D1213C0B510092756E /* MapView.storyboard */,
-				755DB8D4213C0BCB0092756E /* Footer.storyboard */,
-				75C0E62B218DE3B300C988C5 /* Routes.storyboard */,
-			);
-			name = Storyboards;
-			sourceTree = "<group>";
-		};
 		75C0E632218E102A00C988C5 /* Footer */ = {
 			isa = PBXGroup;
 			children = (
@@ -390,15 +429,28 @@
 			path = Footer;
 			sourceTree = "<group>";
 		};
+		75C811FA2196CDB7009BAD79 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				75C811FD2196CDD2009BAD79 /* App.storyboard */,
+				75C811FB2196CDD2009BAD79 /* Footer.storyboard */,
+				75C812002196CDD2009BAD79 /* LaunchScreen.storyboard */,
+				75C811FE2196CDD2009BAD79 /* MapView.storyboard */,
+				75C811FF2196CDD2009BAD79 /* Routes.storyboard */,
+				75C811FC2196CDD2009BAD79 /* Settings.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
 		75F8B4C31DB9772A00F43109 /* Routes */ = {
 			isa = PBXGroup;
 			children = (
+				755945112196FE9D00AC0A98 /* RouteDetail */,
+				755945102196FE5700AC0A98 /* PageController */,
+				755945092196FD7A00AC0A98 /* PageControl */,
 				75C0E640218E12B900C988C5 /* RoutesViewController.swift */,
-				752B3182218F517E00A1DE0D /* RouteContainer.swift */,
+				752B3182218F517E00A1DE0D /* RoutesContainer.swift */,
 				75C0E62E218DEA8900C988C5 /* RoutesContainerView.swift */,
-				75C0E637218E115D00C988C5 /* RoutePageController.swift */,
-				75C0E63A218E11A000C988C5 /* RoutePageControllerHandler.swift */,
-				754A252D2132C88400B3B083 /* RouteViewController.swift */,
 			);
 			name = Routes;
 			path = Core/Routes;
@@ -534,16 +586,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75C5E95E1DBD698100FCE9D0 /* LaunchScreen.storyboard in Resources */,
-				75C0E62C218DE3B300C988C5 /* Routes.storyboard in Resources */,
-				755DB8D5213C0BCB0092756E /* Footer.storyboard in Resources */,
 				75B41C5621343D8500588CE8 /* Configuration.plist in Resources */,
-				75C5E95F1DBD698100FCE9D0 /* Main.storyboard in Resources */,
 				757F31621DBE5E16002BB03F /* GoogleService-Info.plist in Resources */,
-				755DB8D2213C0B510092756E /* MapView.storyboard in Resources */,
 				75640BED1DAF19C5002B4A56 /* Settings.bundle in Resources */,
+				75C812012196CDD2009BAD79 /* Footer.storyboard in Resources */,
 				75513BE01DB019C600957F40 /* Assets.xcassets in Resources */,
+				75C812072196CDD2009BAD79 /* MapView.storyboard in Resources */,
+				75C812092196CDD2009BAD79 /* Routes.storyboard in Resources */,
 				75C5E9551DBD673700FCE9D0 /* Localizable.strings in Resources */,
+				75C812052196CDD2009BAD79 /* App.storyboard in Resources */,
+				75C8120B2196CDD2009BAD79 /* LaunchScreen.storyboard in Resources */,
+				75C812032196CDD2009BAD79 /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -551,16 +604,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				758E104B1DBD92D000D872BC /* LaunchScreen.storyboard in Resources */,
-				75C0E62D218DE3B300C988C5 /* Routes.storyboard in Resources */,
-				755DB8D6213C0BCB0092756E /* Footer.storyboard in Resources */,
 				75B41C5721343D8500588CE8 /* Configuration.plist in Resources */,
-				758E104C1DBD92D000D872BC /* Main.storyboard in Resources */,
 				757F31631DBE5E16002BB03F /* GoogleService-Info.plist in Resources */,
-				755DB8D3213C0B510092756E /* MapView.storyboard in Resources */,
 				758E104E1DBD92D000D872BC /* Settings.bundle in Resources */,
+				75C812022196CDD2009BAD79 /* Footer.storyboard in Resources */,
 				758E10501DBD92D000D872BC /* Assets.xcassets in Resources */,
+				75C812082196CDD2009BAD79 /* MapView.storyboard in Resources */,
+				75C8120A2196CDD2009BAD79 /* Routes.storyboard in Resources */,
 				758E10511DBD92D000D872BC /* Localizable.strings in Resources */,
+				75C812062196CDD2009BAD79 /* App.storyboard in Resources */,
+				75C8120C2196CDD2009BAD79 /* LaunchScreen.storyboard in Resources */,
+				75C812042196CDD2009BAD79 /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -743,36 +797,42 @@
 				7546C99D21300A6E00F80153 /* UIColor.swift in Sources */,
 				75640BF21DAF19FB002B4A56 /* APIManager.swift in Sources */,
 				75C0E641218E12B900C988C5 /* RoutesViewController.swift in Sources */,
+				7559450E2196FDA900AC0A98 /* RoutePageControlView.swift in Sources */,
+				755945192196FFB700AC0A98 /* RoutePageController.swift in Sources */,
 				754A25272132C70300B3B083 /* FooterView.swift in Sources */,
 				755DB8D8213C207B0092756E /* RouteManager.swift in Sources */,
 				75052AC921381C510063AE05 /* Firebase.swift in Sources */,
+				75C8120E2196E831009BAD79 /* RouteDetailPage.swift in Sources */,
 				75C0E644218E15A900C988C5 /* RouteManagerDataSource.swift in Sources */,
 				752B3171218F4D1E00A1DE0D /* AppCoordinator.swift in Sources */,
 				754A25352132CADC00B3B083 /* Array.swift in Sources */,
-				754A252E2132C88400B3B083 /* RouteViewController.swift in Sources */,
+				754A252E2132C88400B3B083 /* RouteDetailViewController.swift in Sources */,
 				75513BE71DB02E5700957F40 /* MKMapView.swift in Sources */,
 				75513BE31DB01ED900957F40 /* BMButtons.swift in Sources */,
 				75640BF31DAF19FB002B4A56 /* Appirater.swift in Sources */,
 				75640BF41DAF19FB002B4A56 /* Reachability.swift in Sources */,
 				75F8B4CB1DB9773800F43109 /* AppDelegate.swift in Sources */,
+				755945132196FEBE00AC0A98 /* RoutePageControllerDataSource.swift in Sources */,
 				75DBD71D21383AEB003184E8 /* MBButtonState.swift in Sources */,
 				754A25382132CB2300B3B083 /* UIAlertController.swift in Sources */,
 				75C0E634218E104F00C988C5 /* FooterViewController.swift in Sources */,
 				754A253E2132CB8D00B3B083 /* UIView.swift in Sources */,
 				752B3177218F4ED300A1DE0D /* ContentView.swift in Sources */,
 				752B3180218F503F00A1DE0D /* Coordinator.swift in Sources */,
+				7559450B2196FD8D00AC0A98 /* RoutePageControl.swift in Sources */,
 				756493741DBD6F68007811A6 /* BMMapCircle.swift in Sources */,
 				75C5E95B1DBD697900FCE9D0 /* BMAddressView.swift in Sources */,
 				754A25322132CA8B00B3B083 /* DKLog.swift in Sources */,
 				75C5E9521DBD637400FCE9D0 /* BMSettingsViewController.swift in Sources */,
+				755945162196FED600AC0A98 /* RoutePageControllerDelegate.swift in Sources */,
 				75F8B4CE1DB9774600F43109 /* AppCoordinatorViewController.swift in Sources */,
 				754A252B2132C81200B3B083 /* BMMapView.swift in Sources */,
 				75C811F22196C7CA009BAD79 /* HUDContainer.swift in Sources */,
 				75640BFC1DAF1AAD002B4A56 /* Constants.swift in Sources */,
 				75640BFE1DAF1B11002B4A56 /* Configuration.swift in Sources */,
 				754A253B2132CB5D00B3B083 /* NSError.swift in Sources */,
-				752B3183218F517E00A1DE0D /* RouteContainer.swift in Sources */,
-				75C0E638218E115D00C988C5 /* RoutePageController.swift in Sources */,
+				752B3183218F517E00A1DE0D /* RoutesContainer.swift in Sources */,
+				75C0E638218E115D00C988C5 /* RoutePageViewController.swift in Sources */,
 				752B3174218F4EBB00A1DE0D /* ContentViewDelegate.swift in Sources */,
 				75C0E647218E263900C988C5 /* RouteManagerDelegate.swift in Sources */,
 				75052ACC213833AE0063AE05 /* APIManager+Errors.swift in Sources */,
@@ -796,36 +856,42 @@
 				7546C99E21300A6E00F80153 /* UIColor.swift in Sources */,
 				758E10391DBD92D000D872BC /* APIManager.swift in Sources */,
 				75C0E642218E12B900C988C5 /* RoutesViewController.swift in Sources */,
+				7559450F2196FDA900AC0A98 /* RoutePageControlView.swift in Sources */,
+				7559451A2196FFB700AC0A98 /* RoutePageController.swift in Sources */,
 				754A25282132C70300B3B083 /* FooterView.swift in Sources */,
 				755DB8D9213C207B0092756E /* RouteManager.swift in Sources */,
 				75052ACA21381C510063AE05 /* Firebase.swift in Sources */,
+				75C8120F2196E831009BAD79 /* RouteDetailPage.swift in Sources */,
 				75C0E645218E15A900C988C5 /* RouteManagerDataSource.swift in Sources */,
 				752B3172218F4D1E00A1DE0D /* AppCoordinator.swift in Sources */,
 				754A25362132CADC00B3B083 /* Array.swift in Sources */,
-				754A252F2132C88400B3B083 /* RouteViewController.swift in Sources */,
+				754A252F2132C88400B3B083 /* RouteDetailViewController.swift in Sources */,
 				758E103A1DBD92D000D872BC /* MKMapView.swift in Sources */,
 				758E103B1DBD92D000D872BC /* BMButtons.swift in Sources */,
 				758E103C1DBD92D000D872BC /* Appirater.swift in Sources */,
 				758E103D1DBD92D000D872BC /* Reachability.swift in Sources */,
 				758E103E1DBD92D000D872BC /* AppDelegate.swift in Sources */,
+				755945142196FEBE00AC0A98 /* RoutePageControllerDataSource.swift in Sources */,
 				75DBD71E21383AEB003184E8 /* MBButtonState.swift in Sources */,
 				754A25392132CB2300B3B083 /* UIAlertController.swift in Sources */,
 				75C0E635218E104F00C988C5 /* FooterViewController.swift in Sources */,
 				754A253F2132CB8D00B3B083 /* UIView.swift in Sources */,
 				752B3178218F4ED300A1DE0D /* ContentView.swift in Sources */,
 				752B3181218F503F00A1DE0D /* Coordinator.swift in Sources */,
+				7559450C2196FD8D00AC0A98 /* RoutePageControl.swift in Sources */,
 				758E103F1DBD92D000D872BC /* BMMapCircle.swift in Sources */,
 				758E10411DBD92D000D872BC /* BMAddressView.swift in Sources */,
 				754A25332132CA8B00B3B083 /* DKLog.swift in Sources */,
 				758E10421DBD92D000D872BC /* BMSettingsViewController.swift in Sources */,
+				755945172196FED600AC0A98 /* RoutePageControllerDelegate.swift in Sources */,
 				758E10431DBD92D000D872BC /* AppCoordinatorViewController.swift in Sources */,
 				754A252C2132C81200B3B083 /* BMMapView.swift in Sources */,
 				75C811F32196C7CA009BAD79 /* HUDContainer.swift in Sources */,
 				758E10451DBD92D000D872BC /* Constants.swift in Sources */,
 				758E10461DBD92D000D872BC /* Configuration.swift in Sources */,
 				754A253C2132CB5D00B3B083 /* NSError.swift in Sources */,
-				752B3184218F517E00A1DE0D /* RouteContainer.swift in Sources */,
-				75C0E639218E115D00C988C5 /* RoutePageController.swift in Sources */,
+				752B3184218F517E00A1DE0D /* RoutesContainer.swift in Sources */,
+				75C0E639218E115D00C988C5 /* RoutePageViewController.swift in Sources */,
 				752B3175218F4EBB00A1DE0D /* ContentViewDelegate.swift in Sources */,
 				75C0E648218E263900C988C5 /* RouteManagerDelegate.swift in Sources */,
 				75052ACD213833AE0063AE05 /* APIManager+Errors.swift in Sources */,

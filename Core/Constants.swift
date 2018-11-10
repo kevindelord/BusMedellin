@@ -20,6 +20,9 @@ struct API {
 			static let geometry		= "geometry"
 			static let geometries	= "geometries"
 		}
+
+		// 'Sin Nombre' and 'sn' are known invalid values coming from the API.
+		static let invalidValues	= ["Sin Nombre", "sn"]
 	}
 }
 
@@ -40,7 +43,7 @@ struct Map {
 
 struct Segue {
 
-	static let settings				= "openSettingsViewController"
+	static let settings				= "openSettings"
 
 	struct Embed {
 
@@ -48,7 +51,13 @@ struct Segue {
 		static let MapView			= "embedMapView"
 		static let RoutesView		= "embedRoutesView"
 		static let PageController	= "embedPageController"
+		static let PageControl		= "embedPageControl"
 	}
+}
+
+extension UIPageControl {
+
+	static let maximumPageCount		= 15
 }
 
 struct Storyboard {

@@ -91,6 +91,5 @@ extension AppCoordinator {
 	func cancelSearch() {
 		self.routeManager.cancelSearch()
 		self.reloadContentViews()
-		self.container?.hideSearchResults()
 	}
 }

@@ -1,5 +1,5 @@
 //
-//  RouteViewController.swift
+//  RouteDetailViewController.swift
 //  BusMedellin
 //
 //  Created by kevindelord on 26/08/2018.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RouteViewController								: UIViewController {
+class RouteDetailViewController							: UIViewController, RouteDetailPage {
 
 	@IBOutlet private weak var containerView			: UIView?
 	@IBOutlet private weak var titleLabel				: UILabel?
@@ -19,10 +19,15 @@ class RouteViewController								: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
+		// Add a rounded box.
 		self.containerView?.layer.borderWidth = 1.0
 		self.containerView?.layer.borderColor = BMColor.darkGray.cgColor
 		self.containerView?.roundRect(radius: 5)
 
+		// Hide the subtitle by default.
+		self.subtitleLabel?.isHidden = true
+
+		// Display the Route name.
 		self.updateContent()
 	}
 
@@ -33,19 +38,8 @@ class RouteViewController								: UIViewController {
 
 		// Title
 		self.titleLabel?.text = route.name
-
 		// Subtitle
-		if (route.district != "") {
-			var subtitleString = route.district
-			if (route.area != "") {
-				subtitleString += ", \(route.area)"
-			}
-
-			self.subtitleLabel?.text = subtitleString
-			self.subtitleLabel?.isHidden = false
-		} else {
-			self.subtitleLabel?.text = ""
-			self.subtitleLabel?.isHidden = true
-		}
+		self.subtitleLabel?.text = route.description
+		self.subtitleLabel?.isHidden = (route.description.isEmpty == true)
 	}
 }

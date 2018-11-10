@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AFy-zb-brL">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--App Coordinator View Controller-->
+        <scene sceneID="fFh-7S-ENO">
+            <objects>
+                <viewController id="AFy-zb-brL" customClass="AppCoordinatorViewController" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VRG-dx-K1K">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cmA-ZG-tYT">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
+                                <subviews>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MuQ-MQ-mhZ" userLabel="Map">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="698"/>
+                                        <connections>
+                                            <segue destination="LJG-pO-0Xv" kind="embed" identifier="embedMapView" id="uo6-Sd-0Ws"/>
+                                        </connections>
+                                    </containerView>
+                                    <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7DQ-8Z-yCl" userLabel="Routes">
+                                        <rect key="frame" x="0.0" y="698" width="375" height="150"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="150" id="gvW-rc-omN"/>
+                                        </constraints>
+                                        <connections>
+                                            <segue destination="DwQ-nU-pUH" kind="embed" identifier="embedRoutesView" id="QeD-Ca-lK5"/>
+                                        </connections>
+                                    </containerView>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bBv-pr-e78" userLabel="Footer">
+                                        <rect key="frame" x="0.0" y="698" width="375" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="zd9-e8-0PP"/>
+                                        </constraints>
+                                        <connections>
+                                            <segue destination="oQ6-zH-lnD" kind="embed" identifier="embedFooterView" id="92m-vM-MPQ"/>
+                                        </connections>
+                                    </containerView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="cmA-ZG-tYT" firstAttribute="top" secondItem="VRG-dx-K1K" secondAttribute="top" id="M3t-Ac-nf8"/>
+                            <constraint firstAttribute="trailing" secondItem="cmA-ZG-tYT" secondAttribute="trailing" id="R8A-vg-Hfz"/>
+                            <constraint firstItem="cmA-ZG-tYT" firstAttribute="leading" secondItem="VRG-dx-K1K" secondAttribute="leading" id="iFm-YM-UhM"/>
+                            <constraint firstItem="S71-kb-WvW" firstAttribute="bottom" secondItem="cmA-ZG-tYT" secondAttribute="bottom" id="q6M-lB-lwc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="S71-kb-WvW"/>
+                    </view>
+                    <connections>
+                        <outlet property="footerContainer" destination="bBv-pr-e78" id="gwv-Wq-Pgf"/>
+                        <outlet property="routesContainer" destination="7DQ-8Z-yCl" id="YdV-tG-dom"/>
+                        <segue destination="MF9-zv-YIQ" kind="presentation" identifier="openSettings" id="7Lc-oX-bFo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D9x-RJ-nRt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="552.79999999999995" y="891.87192118226608"/>
+        </scene>
+        <!--MapView-->
+        <scene sceneID="qWy-Fx-0KE">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MapView" id="LJG-pO-0Xv" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PBB-mw-0Mp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1223" y="733"/>
+        </scene>
+        <!--Footer-->
+        <scene sceneID="syo-Rc-QYB">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Footer" id="oQ6-zH-lnD" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HuY-3h-82O" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1217" y="892"/>
+        </scene>
+        <!--Routes-->
+        <scene sceneID="F7M-Q0-qzn">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Routes" id="DwQ-nU-pUH" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GxA-7A-rXu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1217" y="1037"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="dfX-3S-MYh">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Settings" id="MF9-zv-YIQ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Df7-Om-syu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="553" y="1418"/>
+        </scene>
+    </scenes>
+</document>

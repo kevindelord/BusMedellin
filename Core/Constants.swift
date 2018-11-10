@@ -54,7 +54,7 @@ struct Segue {
 
 extension UIPageControl {
 
-	static let maximumPageCount		= 10
+	static let maximumPageCount		= 15
 }
 
 struct Storyboard {

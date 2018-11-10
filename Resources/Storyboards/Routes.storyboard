@@ -89,23 +89,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1A0-8i-53V">
-                                <rect key="frame" x="8" y="4" width="304" height="468"/>
+                                <rect key="frame" x="8" y="4" width="304" height="472"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="bT2-JW-ZR8">
-                                        <rect key="frame" x="8" y="8" width="288" height="452"/>
+                                        <rect key="frame" x="8" y="8" width="288" height="456"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="41l-rs-Ow2">
-                                                <rect key="frame" x="0.0" y="207" width="288" height="38.5"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="41l-rs-Ow2">
+                                                <rect key="frame" x="0.0" y="208.5" width="288" height="39.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CIRCULAR INTERMEDIA RECORRIDO 1 CIRCULAR INTERMEDIA RECORRIDO 1" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwH-4R-cwP">
-                                                        <rect key="frame" x="5" y="0.0" width="278.5" height="38.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwH-4R-cwP">
+                                                        <rect key="frame" x="128.5" y="0.0" width="31" height="19.5"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xUj-l3-8QO">
-                                                        <rect key="frame" x="-404" y="-219" width="1096" height="0.0"/>
-                                                        <string key="text">Área de Expanción San Cristóbal, Corregimiento de San Cristóbal Área de Expanción San Cristóbal, Corregimiento de San Cristóbal Área de Expanción San Cristóbal, Corregimiento de San Cristóbal</string>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xUj-l3-8QO">
+                                                        <rect key="frame" x="122.5" y="23.5" width="43" height="16"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="16" id="Zbi-Ow-Pb6"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
@@ -128,7 +130,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="1A0-8i-53V" secondAttribute="trailing" constant="8" id="WWt-qb-EiF"/>
                             <constraint firstItem="1A0-8i-53V" firstAttribute="leading" secondItem="Sjp-o6-1Fm" secondAttribute="leading" constant="8" id="XRa-so-e5M"/>
-                            <constraint firstAttribute="bottom" secondItem="1A0-8i-53V" secondAttribute="bottom" constant="8" id="d1n-bh-yDJ"/>
+                            <constraint firstAttribute="bottom" secondItem="1A0-8i-53V" secondAttribute="bottom" constant="4" id="d1n-bh-yDJ"/>
                             <constraint firstItem="1A0-8i-53V" firstAttribute="top" secondItem="Sjp-o6-1Fm" secondAttribute="top" constant="4" id="vK7-x0-kyU"/>
                         </constraints>
                     </view>

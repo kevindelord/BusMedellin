@@ -19,10 +19,15 @@ class RouteDetailViewController							: UIViewController, RouteDetailPage {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
+		// Add a rounded box.
 		self.containerView?.layer.borderWidth = 1.0
 		self.containerView?.layer.borderColor = BMColor.darkGray.cgColor
 		self.containerView?.roundRect(radius: 5)
 
+		// Hide the subtitle by default.
+		self.subtitleLabel?.isHidden = true
+
+		// Display the Route name.
 		self.updateContent()
 	}
 

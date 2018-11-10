@@ -38,19 +38,8 @@ class RouteDetailViewController							: UIViewController, RouteDetailPage {
 
 		// Title
 		self.titleLabel?.text = route.name
-
 		// Subtitle
-		if (route.district != "") {
-			var subtitleString = route.district
-			if (route.area != "") {
-				subtitleString += ", \(route.area)"
-			}
-
-			self.subtitleLabel?.text = subtitleString
-			self.subtitleLabel?.isHidden = false
-		} else {
-			self.subtitleLabel?.text = ""
-			self.subtitleLabel?.isHidden = true
-		}
+		self.subtitleLabel?.text = route.description
+		self.subtitleLabel?.isHidden = (route.description.isEmpty == true)
 	}
 }

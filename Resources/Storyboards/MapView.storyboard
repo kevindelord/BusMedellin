@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YNG-ob-itT">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Map View Controller-->
+        <scene sceneID="ALl-DY-zWs">
+            <objects>
+                <viewController id="YNG-ob-itT" customClass="BMMapViewController" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Uxb-H2-SLU" customClass="BMMapView" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qmd-rN-5Wp">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Uxb-H2-SLU" id="QnA-vV-gU0"/>
+                                </connections>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OVk-Zd-1Po" customClass="BMLocateButton" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target">
+                                <rect key="frame" x="319" y="722" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="dPg-hn-eut"/>
+                                    <constraint firstAttribute="width" constant="40" id="w6S-8B-FE6"/>
+                                </constraints>
+                                <color key="tintColor" red="0.61176470589999998" green="0.019607843140000001" blue="0.1137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="NearMe"/>
+                                <connections>
+                                    <action selector="locateMeButtonPressed" destination="Uxb-H2-SLU" eventType="touchUpInside" id="IGE-Sd-WOr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IAO-ua-htI" userLabel="setLocationButton">
+                                <rect key="frame" x="54" y="344.66666666666669" width="267" height="59"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="59" id="6C4-7V-LoN"/>
+                                    <constraint firstAttribute="width" constant="267" id="nHc-30-Hbi"/>
+                                </constraints>
+                                <state key="normal" image="pickupLocation"/>
+                                <connections>
+                                    <action selector="setLocationButtonPressed" destination="Uxb-H2-SLU" eventType="touchUpInside" id="pDb-KH-IQz"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SET PICKUP LOCATION" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5oW-Sw-5Mb" userLabel="pinDescriptionText">
+                                <rect key="frame" x="53.999999999999986" y="349.66666666666669" width="247.66666666666663" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Iwv-IQ-pk8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FCv-SS-JWV" userLabel="DestinationInfoView" customClass="BMAddressView" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target">
+                                <rect key="frame" x="20" y="71" width="335" height="40"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MD0-W2-4Cw">
+                                        <rect key="frame" x="15" y="15" width="10" height="10"/>
+                                        <color key="backgroundColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="10" id="Ulz-cC-Iim"/>
+                                            <constraint firstAttribute="width" constant="10" id="XJg-Bw-ujQ"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yaK-3N-cWT">
+                                        <rect key="frame" x="41" y="0.0" width="254" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VQC-Mr-gDN">
+                                        <rect key="frame" x="295" y="0.0" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="VQC-Mr-gDN" secondAttribute="height" multiplier="1:1" id="pdu-3S-XNp"/>
+                                        </constraints>
+                                        <state key="normal" image="cross"/>
+                                        <connections>
+                                            <action selector="cancelDestinationButtonPressed" destination="Uxb-H2-SLU" eventType="touchUpInside" id="2Ht-pW-5nU"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="VQC-Mr-gDN" secondAttribute="bottom" id="5I7-En-2zY"/>
+                                    <constraint firstItem="MD0-W2-4Cw" firstAttribute="top" secondItem="FCv-SS-JWV" secondAttribute="top" constant="15" id="722-dH-sak"/>
+                                    <constraint firstItem="VQC-Mr-gDN" firstAttribute="leading" secondItem="yaK-3N-cWT" secondAttribute="trailing" id="9fG-Bd-aF5"/>
+                                    <constraint firstAttribute="height" constant="40" id="O66-yf-ECw"/>
+                                    <constraint firstItem="MD0-W2-4Cw" firstAttribute="leading" secondItem="FCv-SS-JWV" secondAttribute="leading" constant="15" id="RTH-E4-6Zj"/>
+                                    <constraint firstAttribute="bottom" secondItem="yaK-3N-cWT" secondAttribute="bottom" id="Wga-6x-Boa"/>
+                                    <constraint firstAttribute="trailing" secondItem="yaK-3N-cWT" secondAttribute="trailing" constant="70" id="XoA-dB-GeA"/>
+                                    <constraint firstItem="VQC-Mr-gDN" firstAttribute="top" secondItem="FCv-SS-JWV" secondAttribute="top" id="aLc-x2-KgY"/>
+                                    <constraint firstAttribute="trailing" secondItem="VQC-Mr-gDN" secondAttribute="trailing" id="aRE-7c-pzU"/>
+                                    <constraint firstItem="yaK-3N-cWT" firstAttribute="leading" secondItem="MD0-W2-4Cw" secondAttribute="trailing" constant="16" id="b9k-Nw-GLk"/>
+                                    <constraint firstItem="yaK-3N-cWT" firstAttribute="top" secondItem="FCv-SS-JWV" secondAttribute="top" id="bBY-Hi-OL4"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="ike-Ed-pkT"/>
+                                    <constraint firstAttribute="bottom" secondItem="MD0-W2-4Cw" secondAttribute="bottom" constant="15" id="nRt-JJ-GwR"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="ike-Ed-pkT"/>
+                                        <exclude reference="XoA-dB-GeA"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <outlet property="addressLabel" destination="yaK-3N-cWT" id="U61-zP-ltt"/>
+                                    <outlet property="dotIndicator" destination="MD0-W2-4Cw" id="jvw-ew-zVu"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hLb-Pt-UpG" userLabel="PickUpInfoView" customClass="BMAddressView" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target">
+                                <rect key="frame" x="20" y="52" width="335" height="40"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qJ8-oQ-PQr">
+                                        <rect key="frame" x="15" y="15" width="10" height="10"/>
+                                        <color key="backgroundColor" red="0.29803921570000003" green="0.85098039219999999" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="10" id="RNz-zy-Vhw"/>
+                                            <constraint firstAttribute="height" constant="10" id="Xbw-cb-bzj"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rPZ-Ed-MvA">
+                                        <rect key="frame" x="41" y="0.0" width="254" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G2C-If-RAd">
+                                        <rect key="frame" x="295" y="0.0" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="G2C-If-RAd" secondAttribute="height" multiplier="1:1" id="Loz-f6-KGN"/>
+                                        </constraints>
+                                        <state key="normal" image="cross"/>
+                                        <connections>
+                                            <action selector="cancelPickUpButtonPressed" destination="Uxb-H2-SLU" eventType="touchUpInside" id="YUv-4s-SMu"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="G2C-If-RAd" firstAttribute="top" secondItem="hLb-Pt-UpG" secondAttribute="top" id="3k7-eC-NAw"/>
+                                    <constraint firstItem="qJ8-oQ-PQr" firstAttribute="leading" secondItem="hLb-Pt-UpG" secondAttribute="leading" constant="15" id="5hQ-gC-OB6"/>
+                                    <constraint firstItem="qJ8-oQ-PQr" firstAttribute="top" secondItem="hLb-Pt-UpG" secondAttribute="top" constant="15" id="G75-zW-XJK"/>
+                                    <constraint firstAttribute="trailing" secondItem="rPZ-Ed-MvA" secondAttribute="trailing" constant="48" id="IdX-Aa-aLi"/>
+                                    <constraint firstAttribute="bottom" secondItem="G2C-If-RAd" secondAttribute="bottom" id="Mng-wT-cM7"/>
+                                    <constraint firstAttribute="bottom" secondItem="rPZ-Ed-MvA" secondAttribute="bottom" id="art-9p-qzo"/>
+                                    <constraint firstItem="rPZ-Ed-MvA" firstAttribute="leading" secondItem="qJ8-oQ-PQr" secondAttribute="trailing" constant="16" id="eEb-yH-Lce"/>
+                                    <constraint firstItem="rPZ-Ed-MvA" firstAttribute="top" secondItem="hLb-Pt-UpG" secondAttribute="top" id="hXl-rV-bIP"/>
+                                    <constraint firstAttribute="bottom" secondItem="qJ8-oQ-PQr" secondAttribute="bottom" constant="15" id="rSj-TX-Bjg"/>
+                                    <constraint firstAttribute="trailing" secondItem="G2C-If-RAd" secondAttribute="trailing" id="t5f-V4-9kI"/>
+                                    <constraint firstItem="G2C-If-RAd" firstAttribute="leading" secondItem="rPZ-Ed-MvA" secondAttribute="trailing" id="tWE-W3-Sit"/>
+                                    <constraint firstAttribute="height" constant="40" id="xe5-lc-9BM"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="IdX-Aa-aLi"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <outlet property="addressLabel" destination="rPZ-Ed-MvA" id="Rtw-yx-mcj"/>
+                                    <outlet property="dotIndicator" destination="qJ8-oQ-PQr" id="Xei-TA-Rfa"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="5oW-Sw-5Mb" firstAttribute="top" secondItem="IAO-ua-htI" secondAttribute="top" constant="5" id="4Du-y0-lSg"/>
+                            <constraint firstItem="IAO-ua-htI" firstAttribute="centerY" secondItem="Uxb-H2-SLU" secondAttribute="centerY" constant="-32" id="5sG-cB-8g9"/>
+                            <constraint firstAttribute="trailing" secondItem="OVk-Zd-1Po" secondAttribute="trailing" constant="16" id="6sq-lk-3SE"/>
+                            <constraint firstItem="T7Q-4b-QUV" firstAttribute="bottom" secondItem="OVk-Zd-1Po" secondAttribute="bottom" constant="16" id="ADZ-pN-oce"/>
+                            <constraint firstItem="qmd-rN-5Wp" firstAttribute="top" secondItem="Uxb-H2-SLU" secondAttribute="top" id="I88-5v-00D"/>
+                            <constraint firstItem="FCv-SS-JWV" firstAttribute="top" secondItem="T7Q-4b-QUV" secondAttribute="top" constant="27" id="KKA-MW-xXk"/>
+                            <constraint firstItem="hLb-Pt-UpG" firstAttribute="top" secondItem="T7Q-4b-QUV" secondAttribute="top" constant="8" id="Xgd-h4-vwx"/>
+                            <constraint firstItem="IAO-ua-htI" firstAttribute="centerX" secondItem="Uxb-H2-SLU" secondAttribute="centerX" id="abI-w8-cte"/>
+                            <constraint firstItem="5oW-Sw-5Mb" firstAttribute="trailing" secondItem="IAO-ua-htI" secondAttribute="trailing" constant="-20" id="ah4-hY-UWT"/>
+                            <constraint firstItem="hLb-Pt-UpG" firstAttribute="leading" secondItem="Uxb-H2-SLU" secondAttribute="leading" constant="20" id="d5d-qn-BDU"/>
+                            <constraint firstItem="FCv-SS-JWV" firstAttribute="leading" secondItem="Uxb-H2-SLU" secondAttribute="leading" constant="20" id="gdO-pF-d98"/>
+                            <constraint firstItem="5oW-Sw-5Mb" firstAttribute="leading" secondItem="IAO-ua-htI" secondAttribute="leading" id="oHD-Qc-cEa"/>
+                            <constraint firstAttribute="trailing" secondItem="hLb-Pt-UpG" secondAttribute="trailing" constant="20" id="p3K-5d-1Hy"/>
+                            <constraint firstItem="qmd-rN-5Wp" firstAttribute="leading" secondItem="Uxb-H2-SLU" secondAttribute="leading" id="r5D-lJ-Q6q"/>
+                            <constraint firstAttribute="trailing" secondItem="qmd-rN-5Wp" secondAttribute="trailing" id="u3b-dr-UAZ"/>
+                            <constraint firstAttribute="trailing" secondItem="FCv-SS-JWV" secondAttribute="trailing" constant="20" id="wsf-XQ-i2g"/>
+                            <constraint firstAttribute="bottom" secondItem="qmd-rN-5Wp" secondAttribute="bottom" id="xJe-0f-XyD"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="T7Q-4b-QUV"/>
+                        <connections>
+                            <outlet property="cancelDestinationButton" destination="VQC-Mr-gDN" id="JRY-UH-qnp"/>
+                            <outlet property="cancelPickUpButton" destination="G2C-If-RAd" id="raK-h9-ARW"/>
+                            <outlet property="destinationInfoView" destination="FCv-SS-JWV" id="AgS-n8-dWf"/>
+                            <outlet property="destinationInfoViewTopConstraint" destination="KKA-MW-xXk" id="Ubc-zj-Dfl"/>
+                            <outlet property="locationButton" destination="IAO-ua-htI" id="8fG-hB-LhQ"/>
+                            <outlet property="mapView" destination="qmd-rN-5Wp" id="QAv-Pk-fX6"/>
+                            <outlet property="nearMeButton" destination="OVk-Zd-1Po" id="Eyg-NL-gL9"/>
+                            <outlet property="pickUpInfoView" destination="hLb-Pt-UpG" id="WzI-HE-i0E"/>
+                            <outlet property="pinDescriptionLabel" destination="5oW-Sw-5Mb" id="9Pn-zN-Znj"/>
+                        </connections>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JYh-nH-HkF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="114" y="134"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="NearMe" width="50" height="50"/>
+        <image name="cross" width="50" height="50"/>
+        <image name="pickupLocation" width="267" height="59"/>
+    </resources>
+</document>

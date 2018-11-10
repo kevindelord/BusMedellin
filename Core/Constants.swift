@@ -1,5 +1,5 @@
 //
-//  BMConstants.swift
+//  Constants.swift
 //  BusMedellin
 //
 //  Created by Kevin Delord on 13/10/16.
@@ -20,15 +20,9 @@ struct API {
 			static let geometry		= "geometry"
 			static let geometries	= "geometries"
 		}
-	}
-}
 
-struct StaticHeight {
-
-	struct CollectionView {
-
-		static let cell				: CGFloat = 80
-		static let sectionHeader	: CGFloat = 80
+		// 'Sin Nombre' and 'sn' are known invalid values coming from the API.
+		static let invalidValues	= ["Sin Nombre", "sn"]
 	}
 }
 
@@ -49,21 +43,35 @@ struct Map {
 
 struct Segue {
 
-	static let settings				= "openSettingsViewController"
+	static let settings				= "openSettings"
+
+	struct Embed {
+
+		static let FooterView		= "embedFooterView"
+		static let MapView			= "embedMapView"
+		static let RoutesView		= "embedRoutesView"
+		static let PageController	= "embedPageController"
+		static let PageControl		= "embedPageControl"
+	}
 }
 
-struct XibFile {
+extension UIPageControl {
 
-	static let mapView				= "BMMapView"
-	static let headerView			= "BMHeaderView"
-	static let cellView				= "BMCellView"
+	static let maximumPageCount		= 15
+}
+
+struct Storyboard {
+
+	static let Routes				= "Routes"
+
+	struct Controller {
+
+		static let Route 			= "RouteViewController"
+	}
 }
 
 struct ReuseId {
 
-	static let parallaxHeader		= "MapCollectionView_ParallaxHeader"
-	static let sectionHeader		= "CollectionView_SectionHeader"
-	static let resultCell			= "CollectionView_ResultCell"
 	static let pickUpPin			= "PickUpAnnotaion_Id"
 	static let destinationPin		= "DestinationAnnotaion_Id"
 }
@@ -75,8 +83,8 @@ struct BMColor {
 	static let blue					= (UIColor(red: 33, green: 150, blue: 243) ?? .blue)
 	static let gray					= (UIColor(red: 149, green: 165, blue: 166) ?? .gray)
 	static let black				= UIColor.black
-	static let viewBorder			= (UIColor(red: 230, green: 230, blue: 230) ?? .lightGray)
-	static let dotBorder			= (UIColor(red: 150, green: 150, blue: 150) ?? .darkGray)
+	static let lightGray			= (UIColor(red: 230, green: 230, blue: 230) ?? .lightGray)
+	static let darkGray				= (UIColor(red: 150, green: 150, blue: 150) ?? .darkGray)
 }
 
 struct BMExternalLink {

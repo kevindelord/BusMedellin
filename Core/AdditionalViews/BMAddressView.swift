@@ -6,7 +6,7 @@
 //  Copyright © 2016 Kevin Delord. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum BMAddressViewState {
 	case PickUp
@@ -42,9 +42,9 @@ class BMAddressView			: UIView {
 
 		// Borders
 		self.layer.borderWidth = 1
-		self.layer.borderColor = BMColor.viewBorder.cgColor
+		self.layer.borderColor = BMColor.lightGray.cgColor
 		self.dotIndicator?.layer.borderWidth = 1
-		self.dotIndicator?.layer.borderColor = BMColor.dotBorder.cgColor
+		self.dotIndicator?.layer.borderColor = BMColor.darkGray.cgColor
 	}
 
 	func update(withAddress address: String?) {

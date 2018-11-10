@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WjZ-hn-sbz">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Footer View Controller-->
+        <scene sceneID="3LP-LH-xbj">
+            <objects>
+                <viewController id="WjZ-hn-sbz" customClass="FooterViewController" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eG2-6H-BVc" customClass="FooterView" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="VLm-1p-h1Y">
+                                <rect key="frame" x="16" y="0.0" width="343" height="667"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="colored_bus" translatesAutoresizingMaskIntoConstraints="NO" id="gcs-rt-f69">
+                                        <rect key="frame" x="0.0" y="313.5" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="0F0-wW-we3"/>
+                                            <constraint firstAttribute="width" constant="40" id="t6s-E5-xNd"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x3H-oT-s2I">
+                                        <rect key="frame" x="40" y="321.5" width="281" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8m4-SC-Lml">
+                                        <rect key="frame" x="321" y="322.5" width="22" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="22" id="PCr-lA-Y2R"/>
+                                            <constraint firstAttribute="height" constant="22" id="dmQ-2Q-d2a"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="infoButtonPressed" destination="eG2-6H-BVc" eventType="touchUpInside" id="UnL-zZ-ckH"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="VLm-1p-h1Y" secondAttribute="trailing" constant="16" id="HEa-OD-ET7"/>
+                            <constraint firstAttribute="bottom" secondItem="VLm-1p-h1Y" secondAttribute="bottom" id="Kci-VN-Qxb"/>
+                            <constraint firstItem="VLm-1p-h1Y" firstAttribute="top" secondItem="eG2-6H-BVc" secondAttribute="top" id="Wrl-3W-tlI"/>
+                            <constraint firstItem="VLm-1p-h1Y" firstAttribute="leading" secondItem="eG2-6H-BVc" secondAttribute="leading" constant="16" id="jUq-Yr-2rY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="fWB-C1-7jK"/>
+                        <connections>
+                            <outlet property="appTitle" destination="x3H-oT-s2I" id="jhn-CM-Xae"/>
+                        </connections>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vKx-u6-Eue" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="154" y="124"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="colored_bus" width="40" height="40"/>
+    </resources>
+</document>

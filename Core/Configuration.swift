@@ -8,6 +8,8 @@
 
 import Foundation
 
+// TODO: remove all #if debug #else #endif
+
 #if DEBUG
 private let isDebug		= true
 private let isRelease	= false

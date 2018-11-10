@@ -10,24 +10,32 @@
 // Dashboard
 //
 "APP_TITLE"                 = "Bus Paisa";
-"NUMBER_ROUTES_AVAILABLE"   = "%d rutas de bus disponibles.";
+"NUMBER_ROUTES_AVAILABLE"   = "%d 🚐 disponibles!";
 "PIN_PICKUP_LOCATION"       = "PUNTO DE PARTIDA";
 "PIN_DESTINATION_LOCATION"  = "PUNTO DE DESTINO";
 "LOCATION_VIEW_PICKUP"      = "Elija el punto de partida";
 "LOCATION_VIEW_DESTINATION" = "Elija el un destino";
-"NO_ROUTE_FOUND"            = "No hay rutas disponibles para las ubicaciones seleccionadas.";
-"SETTINGS_VC_TITLE"         = "Información";
+"USER_LOCATION_TOO_FAR"     = "Usted se encuentra muy lejos del centro de la ciudad, no es posible usar su ubicación.";
+
+//
+// User Location
+//
 "LOCATION_ERROR_TITLE"      = "Se requiere servicio de localización";
 "LOCATION_ERROR_MESSAGE"    = "Por favor vaya a Ajustes para permitir que la aplicación lo localice en el mapa.";
 "LOCATION_ERROR_SETTINGS"   = "Ajustes";
 "LOCATION_ERROR_CANCEL"     = "Cancelar";
-"USER_LOCATION_TOO_FAR"     = "Usted se encuentra muy lejos del centro de la ciudad, no es posible usar su ubicación.";
+
+//
+// Error Alerts
+//
 "POPUP_OK"                  = "OK";
-"POPUP_ERROR"				= "Error";
+"NO_INTERNET_CONNECTION"    = "No hay conexión a internet.";
+"NO_ROUTE_FOUND"            = "No hay rutas disponibles para las ubicaciones seleccionadas.";
 
 //
 // Settings View Controller
 //
+"SETTINGS_VC_TITLE"         = "Información";
 "SETTINGS_ABOUT_TITLE"      = "Acerca de Bus Paisa";
 "SETTINGS_ABOUT_TEXT"       = "Esta aplicación es un proyecto open-source que facilita y mejora el uso del bus a los usuarios de Medellín, Colombia.\n\nEstá basado en el trabajo de Thibault Durand (@tibbb). Puede encontrar su versión web aquí.\n\nLa información mostrada fue proporcionada por la Secretaría de Transportes y Tránsito de Medellín. Las rutas no se actualizan automáticamente.";
 "SETTINGS_ABOUT_ANCHOR_1"   = "proyecto open-source";
@@ -38,5 +46,4 @@
 "SETTINGS_BUG_TEXT"         = "Agite su dispositivo para reportar problemas!";
 "SETTINGS_MADE_BY"          = "Hecho con ❤️ por Kevin Delord.";
 "SETTINGS_MADE_BY_ANCHOR"   = "Kevin Delord";
-"NO_INTERNET_CONNECTION"    = "No hay conexión a internet.";
 "APP_VERSION"				= "Versión %@ (%@)";

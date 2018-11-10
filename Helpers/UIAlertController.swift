@@ -6,6 +6,8 @@
 //  Copyright © 2018 Kevin Delord. All rights reserved.
 //
 
+import UIKit
+
 extension UIAlertController {
 
 	class func showErrorPopup(_ error: NSError?, presentingViewController: UIViewController? = UIApplication.shared.windows.first?.rootViewController) {
@@ -28,7 +30,7 @@ extension UIAlertController {
 	}
 
 	class func showErrorMessage(_ message: String, presentingViewController: UIViewController? = UIApplication.shared.windows.first?.rootViewController) {
-		self.showInfoMessage(L("POPUP_ERROR"), message: message, presentingViewController: presentingViewController)
+		self.showInfoMessage("", message: message, presentingViewController: presentingViewController)
 	}
 
 	class func showInfoMessage(_ title: String, message: String, presentingViewController: UIViewController? = UIApplication.shared.windows.first?.rootViewController) {

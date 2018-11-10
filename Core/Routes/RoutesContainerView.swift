@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RoutesContainerView						: UIView, RoutesContainer, ContentView, RoutePageControllerDelegate {
+class RoutesContainerView						: UIView, RoutesContainer, ContentView, RoutePageViewControllerDelegate {
 
 	@IBOutlet private weak var totalRoutes		: UILabel?
 
@@ -21,7 +21,7 @@ class RoutesContainerView						: UIView, RoutesContainer, ContentView, RoutePage
 	var delegate								: (RouteManagerDelegate & ContentViewDelegate)?
 }
 
-// MARK: - RoutePageControllerDelegate
+// MARK: - RoutePageViewControllerDelegate
 
 extension RoutesContainerView {
 

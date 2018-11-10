@@ -29,7 +29,6 @@
 // Error Alerts
 //
 "POPUP_OK"                  = "OK";
-"POPUP_ERROR"				= "Error";
 "NO_INTERNET_CONNECTION"    = "The Internet connection appears to be offline.";
 "NO_ROUTE_FOUND"            = "No routes available for the chosen locations.";
 

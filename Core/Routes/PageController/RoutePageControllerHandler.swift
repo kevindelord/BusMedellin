@@ -11,9 +11,9 @@ import UIKit
 class RoutePageControllerHandler	: RoutePageControllerDataSource {
 
 	private var routeDetailPages	: [RouteDetailPage]
-	private(set) var delegate		: RoutePageControllerDelegate?
+	private(set) var delegate		: RoutePageViewControllerDelegate?
 
-	init(availableRouteDetailPages routeDetailPages: [RouteDetailPage], delegate: RoutePageControllerDelegate?) {
+	init(availableRouteDetailPages routeDetailPages: [RouteDetailPage], delegate: RoutePageViewControllerDelegate?) {
 		self.delegate = delegate
 		self.routeDetailPages = routeDetailPages
 	}

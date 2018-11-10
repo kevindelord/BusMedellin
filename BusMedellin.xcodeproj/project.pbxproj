@@ -59,6 +59,8 @@
 		755945172196FED600AC0A98 /* RoutePageControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755945152196FED600AC0A98 /* RoutePageControllerDelegate.swift */; };
 		755945192196FFB700AC0A98 /* RoutePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755945182196FFB700AC0A98 /* RoutePageController.swift */; };
 		7559451A2196FFB700AC0A98 /* RoutePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755945182196FFB700AC0A98 /* RoutePageController.swift */; };
+		755994B92197790C00FCE602 /* URLComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755994B82197790C00FCE602 /* URLComponents.swift */; };
+		755994BA2197790C00FCE602 /* URLComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755994B82197790C00FCE602 /* URLComponents.swift */; };
 		755DB8D8213C207B0092756E /* RouteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755DB8D7213C207B0092756E /* RouteManager.swift */; };
 		755DB8D9213C207B0092756E /* RouteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755DB8D7213C207B0092756E /* RouteManager.swift */; };
 		755DB8DC213C5C390092756E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 755DB8DB213C5C390092756E /* StoreKit.framework */; };
@@ -176,6 +178,7 @@
 		755945122196FEBE00AC0A98 /* RoutePageControllerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutePageControllerDataSource.swift; sourceTree = "<group>"; };
 		755945152196FED600AC0A98 /* RoutePageControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutePageControllerDelegate.swift; sourceTree = "<group>"; };
 		755945182196FFB700AC0A98 /* RoutePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutePageController.swift; sourceTree = "<group>"; };
+		755994B82197790C00FCE602 /* URLComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLComponents.swift; sourceTree = "<group>"; };
 		755DB8D7213C207B0092756E /* RouteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteManager.swift; sourceTree = "<group>"; };
 		755DB8DB213C5C390092756E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		75640BEC1DAF19C5002B4A56 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Resources/Settings.bundle; sourceTree = "<group>"; };
@@ -276,6 +279,7 @@
 				754A253D2132CB8D00B3B083 /* UIView.swift */,
 				754A253A2132CB5C00B3B083 /* NSError.swift */,
 				754A25372132CB2300B3B083 /* UIAlertController.swift */,
+				755994B82197790C00FCE602 /* URLComponents.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -362,9 +366,9 @@
 			children = (
 				75640BEF1DAF19FB002B4A56 /* APIManager.swift */,
 				75052ACB213833AE0063AE05 /* APIManager+Errors.swift */,
-				755DB8D7213C207B0092756E /* RouteManager.swift */,
 				75C0E643218E15A900C988C5 /* RouteManagerDataSource.swift */,
 				75C0E646218E263900C988C5 /* RouteManagerDelegate.swift */,
+				755DB8D7213C207B0092756E /* RouteManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -826,6 +830,7 @@
 				75C5E9521DBD637400FCE9D0 /* BMSettingsViewController.swift in Sources */,
 				755945162196FED600AC0A98 /* RoutePageControllerDelegate.swift in Sources */,
 				75F8B4CE1DB9774600F43109 /* AppCoordinatorViewController.swift in Sources */,
+				755994B92197790C00FCE602 /* URLComponents.swift in Sources */,
 				754A252B2132C81200B3B083 /* BMMapView.swift in Sources */,
 				75C811F22196C7CA009BAD79 /* HUDContainer.swift in Sources */,
 				75640BFC1DAF1AAD002B4A56 /* Constants.swift in Sources */,
@@ -885,6 +890,7 @@
 				758E10421DBD92D000D872BC /* BMSettingsViewController.swift in Sources */,
 				755945172196FED600AC0A98 /* RoutePageControllerDelegate.swift in Sources */,
 				758E10431DBD92D000D872BC /* AppCoordinatorViewController.swift in Sources */,
+				755994BA2197790C00FCE602 /* URLComponents.swift in Sources */,
 				754A252C2132C81200B3B083 /* BMMapView.swift in Sources */,
 				75C811F32196C7CA009BAD79 /* HUDContainer.swift in Sources */,
 				758E10451DBD92D000D872BC /* Constants.swift in Sources */,

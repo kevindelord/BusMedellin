@@ -40,7 +40,7 @@ struct Map {
 
 struct Segue {
 
-	static let settings				= "openSettingsViewController"
+	static let settings				= "openSettings"
 
 	struct Embed {
 

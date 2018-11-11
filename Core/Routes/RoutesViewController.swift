@@ -14,12 +14,12 @@ class RoutesViewController : UIViewController {
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		super.prepare(for: segue, sender: sender)
 
-		if (segue.identifier == Segue.Embed.PageController), let pageController = segue.destination as? RoutePageController {
+		if (segue.identifier == Segue.Embed.ViewController.Page), let pageController = segue.destination as? RoutePageController {
 			var routeContainer = (self.view as? RoutesContainer)
 			routeContainer?.routePageController = pageController
 		}
 
-		if (segue.identifier == Segue.Embed.PageControl), let pageControl = segue.destination.view as? RoutePageControl {
+		if (segue.identifier == Segue.Embed.View.PageControl), let pageControl = segue.destination.view as? RoutePageControl {
 			var routeContainer = (self.view as? RoutesContainer)
 			routeContainer?.routePageControl = pageControl
 		}

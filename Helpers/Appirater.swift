@@ -10,6 +10,7 @@ import Foundation
 import Appirater
 
 // TODO: Test Appirater+Storekit on iOS 10.3 and newer. https://github.com/arashpayan/appirater
+// TODO: Migrate logic to 3 significant events until prompt.
 
 extension Appirater {
 

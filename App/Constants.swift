@@ -26,21 +26,6 @@ struct API {
 	}
 }
 
-struct Map {
-
-	static let defaultSearchRadius	= 500.0
-	static let defaultZoomRadius	: Double = 3300
-	static let deltaAfterSearch		= 0.007
-	static let maxScrollDistance	: Double = 12000.0
-	static let circleColorAlpha		: CGFloat = 0.3
-	static let polylineWidth		: CGFloat = 2
-
-	struct Address {
-
-		static let Street			= "Street"
-	}
-}
-
 struct Segue {
 
 	static let settings				= "openSettings"
@@ -60,6 +45,7 @@ struct Segue {
 			static let Address 		= "embedAddressViewController"
 			static let Map 			= "embedMapViewController"
 			static let ActionPin	= "embedPinLocationViewController"
+			static let UserLocation	= "embedUserLocationViewController"
 		}
 
 		struct View {

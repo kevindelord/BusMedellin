@@ -18,9 +18,10 @@ class MapContainerView			: UIView, ContentView, MapContainer, MapActionDelegate 
 
 	// Map Container
 	var routeDataSource			: RouteManagerDataSource?
-	var map						: (MapContainedElement & MapViewContainer)?
+	var map						: (MapContainedElement & MapViewContainer & UserLocationDataSource)?
 	var pinLocation				: (MapContainedElement & PinLocationContainer)?
 	var addressLocation			: (MapContainedElement & AddressViewContainer)?
+	var userLocation			: (MapContainedElement & UserLocationContainer)?
 
 	private var locationCoordinates = [Location: CLLocationCoordinate2D]()
 }
@@ -29,10 +30,19 @@ class MapContainerView			: UIView, ContentView, MapContainer, MapActionDelegate 
 
 extension MapContainerView {
 
+	func updateUserLocation(_ location: MKUserLocation) {
+		self.userLocation?.update(userLocation: location)
+	}
+
+	func centerMap(on location: CLLocation) {
+		self.map?.centerMap(on: location)
+	}
+
 	func cancel(location: Location) {
 		self.map?.didCancel(location: location)
 		self.pinLocation?.didCancel(location: location)
 		self.addressLocation?.didCancel(location: location)
+		self.userLocation?.didCancel(location: location)
 		// Notify the app coordinator.
 		self.delegate?.cancelSearch()
 		// Analytics

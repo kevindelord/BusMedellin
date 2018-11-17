@@ -108,6 +108,12 @@
 		758E105E1DBD96D000D872BC /* HockeySDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758E105C1DBD96D000D872BC /* HockeySDK.swift */; };
 		75B41C5621343D8500588CE8 /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75B41C5521343D8500588CE8 /* Configuration.plist */; };
 		75B41C5721343D8500588CE8 /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75B41C5521343D8500588CE8 /* Configuration.plist */; };
+		75BE184621A0938C008F2DC4 /* AddressViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BE184521A0938C008F2DC4 /* AddressViewContainer.swift */; };
+		75BE184721A0938C008F2DC4 /* AddressViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BE184521A0938C008F2DC4 /* AddressViewContainer.swift */; };
+		75BE184921A094C8008F2DC4 /* PinLocationContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BE184821A094C8008F2DC4 /* PinLocationContainer.swift */; };
+		75BE184A21A094C8008F2DC4 /* PinLocationContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BE184821A094C8008F2DC4 /* PinLocationContainer.swift */; };
+		75BE184C21A095A0008F2DC4 /* MapActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BE184B21A095A0008F2DC4 /* MapActionDelegate.swift */; };
+		75BE184D21A095A0008F2DC4 /* MapActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BE184B21A095A0008F2DC4 /* MapActionDelegate.swift */; };
 		75C0E62F218DEA8900C988C5 /* RoutesContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C0E62E218DEA8900C988C5 /* RoutesContainerView.swift */; };
 		75C0E630218DEA8900C988C5 /* RoutesContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C0E62E218DEA8900C988C5 /* RoutesContainerView.swift */; };
 		75C0E634218E104F00C988C5 /* FooterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C0E633218E104F00C988C5 /* FooterViewController.swift */; };
@@ -211,6 +217,9 @@
 		758E105B1DBD930A00D872BC /* BusMedellin-Live-AppStore-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BusMedellin-Live-AppStore-Info.plist"; sourceTree = "<group>"; };
 		758E105C1DBD96D000D872BC /* HockeySDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HockeySDK.swift; sourceTree = "<group>"; };
 		75B41C5521343D8500588CE8 /* Configuration.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Configuration.plist; sourceTree = "<group>"; };
+		75BE184521A0938C008F2DC4 /* AddressViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressViewContainer.swift; sourceTree = "<group>"; };
+		75BE184821A094C8008F2DC4 /* PinLocationContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinLocationContainer.swift; sourceTree = "<group>"; };
+		75BE184B21A095A0008F2DC4 /* MapActionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapActionDelegate.swift; sourceTree = "<group>"; };
 		75C0E62E218DEA8900C988C5 /* RoutesContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesContainerView.swift; sourceTree = "<group>"; };
 		75C0E633218E104F00C988C5 /* FooterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterViewController.swift; sourceTree = "<group>"; };
 		75C0E637218E115D00C988C5 /* RoutePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutePageViewController.swift; sourceTree = "<group>"; };
@@ -282,6 +291,7 @@
 				75C0E63D218E126900C988C5 /* MapContainerViewController.swift */,
 				755994C62197C43100FCE602 /* MapCoordinator.swift */,
 				75C811F12196C7CA009BAD79 /* HUDContainer.swift */,
+				75BE184B21A095A0008F2DC4 /* MapActionDelegate.swift */,
 			);
 			path = MapView;
 			sourceTree = "<group>";
@@ -380,6 +390,7 @@
 			isa = PBXGroup;
 			children = (
 				75C5E95A1DBD697900FCE9D0 /* AddressView.swift */,
+				75BE184521A0938C008F2DC4 /* AddressViewContainer.swift */,
 				755994BC219795B100FCE602 /* AddressViewController.swift */,
 			);
 			path = AddressViews;
@@ -389,6 +400,7 @@
 			isa = PBXGroup;
 			children = (
 				755994C32197B6A800FCE602 /* PinLocationViewController.swift */,
+				75BE184821A094C8008F2DC4 /* PinLocationContainer.swift */,
 			);
 			path = PinLocation;
 			sourceTree = "<group>";
@@ -825,12 +837,14 @@
 				75C0E63B218E11A000C988C5 /* RoutePageControllerHandler.swift in Sources */,
 				75C0E63E218E126900C988C5 /* MapContainerViewController.swift in Sources */,
 				75513BE51DB02D2300957F40 /* BMAnnotations.swift in Sources */,
+				75BE184621A0938C008F2DC4 /* AddressViewContainer.swift in Sources */,
 				757F31651DBE5F14002BB03F /* Analytics.swift in Sources */,
 				754A25412132CC7300B3B083 /* Localization.swift in Sources */,
 				758E105D1DBD96D000D872BC /* HockeySDK.swift in Sources */,
 				75805BC41DAF5B7E00DACFF5 /* Route.swift in Sources */,
 				75C0E62F218DEA8900C988C5 /* RoutesContainerView.swift in Sources */,
 				7546C99D21300A6E00F80153 /* UIColor.swift in Sources */,
+				75BE184921A094C8008F2DC4 /* PinLocationContainer.swift in Sources */,
 				75640BF21DAF19FB002B4A56 /* APIManager.swift in Sources */,
 				75C0E641218E12B900C988C5 /* RoutesViewController.swift in Sources */,
 				7559450E2196FDA900AC0A98 /* RoutePageControlView.swift in Sources */,
@@ -853,6 +867,7 @@
 				755945132196FEBE00AC0A98 /* RoutePageControllerDataSource.swift in Sources */,
 				755994BD219795B100FCE602 /* AddressViewController.swift in Sources */,
 				75DBD71D21383AEB003184E8 /* MBButtonState.swift in Sources */,
+				75BE184C21A095A0008F2DC4 /* MapActionDelegate.swift in Sources */,
 				754A25382132CB2300B3B083 /* UIAlertController.swift in Sources */,
 				75C0E634218E104F00C988C5 /* FooterViewController.swift in Sources */,
 				754A253E2132CB8D00B3B083 /* UIView.swift in Sources */,
@@ -889,12 +904,14 @@
 				75C0E63C218E11A000C988C5 /* RoutePageControllerHandler.swift in Sources */,
 				75C0E63F218E126900C988C5 /* MapContainerViewController.swift in Sources */,
 				758E10361DBD92D000D872BC /* BMAnnotations.swift in Sources */,
+				75BE184721A0938C008F2DC4 /* AddressViewContainer.swift in Sources */,
 				757F31661DBE5F14002BB03F /* Analytics.swift in Sources */,
 				754A25422132CC7300B3B083 /* Localization.swift in Sources */,
 				758E105E1DBD96D000D872BC /* HockeySDK.swift in Sources */,
 				758E10371DBD92D000D872BC /* Route.swift in Sources */,
 				75C0E630218DEA8900C988C5 /* RoutesContainerView.swift in Sources */,
 				7546C99E21300A6E00F80153 /* UIColor.swift in Sources */,
+				75BE184A21A094C8008F2DC4 /* PinLocationContainer.swift in Sources */,
 				758E10391DBD92D000D872BC /* APIManager.swift in Sources */,
 				75C0E642218E12B900C988C5 /* RoutesViewController.swift in Sources */,
 				7559450F2196FDA900AC0A98 /* RoutePageControlView.swift in Sources */,
@@ -917,6 +934,7 @@
 				755945142196FEBE00AC0A98 /* RoutePageControllerDataSource.swift in Sources */,
 				755994BE219795B100FCE602 /* AddressViewController.swift in Sources */,
 				75DBD71E21383AEB003184E8 /* MBButtonState.swift in Sources */,
+				75BE184D21A095A0008F2DC4 /* MapActionDelegate.swift in Sources */,
 				754A25392132CB2300B3B083 /* UIAlertController.swift in Sources */,
 				75C0E635218E104F00C988C5 /* FooterViewController.swift in Sources */,
 				754A253F2132CB8D00B3B083 /* UIView.swift in Sources */,

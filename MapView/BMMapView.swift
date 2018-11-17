@@ -11,8 +11,9 @@ import MapKit
 
 // TODO: extract & document protocols
 // TODO: fully extract location Manager
-// TODO: fix with successful search but address not displayed in addressView
-// TODO: fix with successful search but routes list not displayed.
+// TODO: if search is cancelled while fetching data -> cancel all ongoing requests.
+// TODO: fix successful search but address not displayed in addressView
+// TODO: fix successful search but routes list not displayed.
 
 protocol MapContainer {
 
@@ -23,13 +24,6 @@ protocol MapContainer {
 	var addressLocation			: (MapCoordinatedElement & AddressViewContainer)? { get set }
 
 	var pinLocation				: (MapCoordinatedElement & PinLocationContainer)? { get set }
-}
-
-protocol MapActionDelegate {
-
-	func cancel(location: Location)
-
-	func pinPoint(location: Location)
 }
 
 protocol MapCoordinatedElement {
@@ -44,22 +38,6 @@ protocol MapViewContainer: HUDContainer {
 	func addAnnotation(forLocation location: Location) -> CLLocationCoordinate2D?
 
 	func draw(selectedRoute: Route, routeDataSource: RouteManagerDataSource)
-}
-
-protocol AddressViewContainer {
-
-	func update(location: Location, withAddress address: String?)
-
-	func show(viewForLocation location: Location)
-}
-
-protocol PinLocationContainer {
-
-	func configureInterface(forLocation location: Location)
-
-	func show()
-
-	func hide()
 }
 
 class BMMapView											: UIView, MKMapViewDelegate, MapCoordinatedElement, MapViewContainer, HUDContainer {
@@ -112,7 +90,7 @@ extension BMMapView {
 		case .PickUp:
 			self.addPickupAnnotation(coordinate: coordinate)
 			// Move the map up North a bit.
-			self.moveMapViewNorthFromCoordinate(coordinate: coordinate)
+			self.moveMapView(from: coordinate)
 		case .Destination:
 			self.addDestinationAnnotation(coordinate: coordinate)
 		}
@@ -334,11 +312,14 @@ extension BMMapView {
 	/// - Parameters:
 	///   - coordinate: Coordinate from where to move/scroll north.
 	///   - delta: Delta to move the map.
-	private func moveMapViewNorthFromCoordinate(coordinate: CLLocationCoordinate2D, delta: Double = Map.deltaAfterSearch) {
-		let newLocation = CLLocation(latitude: coordinate.latitude + delta, longitude: coordinate.longitude)
-		let regionRadius: CLLocationDistance = Map.defaultZoomRadius
-		let coordinateRegion = MKCoordinateRegionMakeWithDistance(newLocation.coordinate, regionRadius, regionRadius)
-		self.mapView?.setRegion(coordinateRegion, animated: true)
+	private func moveMapView(from coordinate: CLLocationCoordinate2D, delta: Double = Map.deltaAfterSearch) {
+		guard var region = self.mapView?.region else {
+			return
+		}
+
+		let northCoordinate = CLLocationCoordinate2D(latitude: coordinate.latitude + delta, longitude: coordinate.longitude)
+		region.center = northCoordinate
+		self.mapView?.setRegion(region, animated: true)
 	}
 }
 

@@ -10,6 +10,8 @@ import Foundation
 import MapKit
 import Reachability
 
+// TODO: Fix bug when using the cancel buttons.
+
 class MapCoordinator			: UIView, ContentView, MapContainer, MapActionDelegate {
 
 	// ContentView

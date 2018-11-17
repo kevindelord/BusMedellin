@@ -8,18 +8,20 @@
 
 import UIKit
 
-class AddressView							: UIView {
+class AddressView									: UIView, UITextFieldDelegate {
 
-	@IBOutlet private weak var addressLabel : UILabel?
-	@IBOutlet private weak var dotIndicator : UIView?
+	@IBOutlet private weak var addressTextField 	: UITextField?
+	@IBOutlet private weak var dotIndicator 		: UIView?
 
-	private var location					: Location = .PickUp
+	private var location							: Location = .PickUp
+	private var delegate							: MapActionDelegate?
 
-	func setup(as location: Location) {
+	func setup(as location: Location, delegate: MapActionDelegate?) {
 		self.location = location
-		self.addressLabel?.text = self.location.localizedPlaceholder
+		self.delegate = delegate
+		self.addressTextField?.placeholder = self.location.localizedPlaceholder
 		self.dotIndicator?.backgroundColor = self.location.dotColor
-		self.dotIndicator?.roundRect(radius: 5)
+		self.dotIndicator?.roundRect(radius: 8)
 
 		// Borders
 		self.layer.borderWidth = 1
@@ -29,6 +31,31 @@ class AddressView							: UIView {
 	}
 
 	func update(withAddress address: String?) {
-		self.addressLabel?.text = (address ?? self.location.localizedPlaceholder)
+		self.addressTextField?.text = address
+		self.addressTextField?.clearButtonMode = (address?.isEmpty == false ? .always : .never)
+	}
+}
+
+// MARK: - IBActions
+
+extension AddressView {
+
+	@IBAction private func clearSearch() {
+		// Notify the delegate to coordinate other elements.
+		self.delegate?.cancel(location: self.location)
+	}
+}
+
+// MARK: - UITextFieldDelegate
+
+extension AddressView {
+
+	func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+		return false
+	}
+
+	func textFieldShouldClear(_ textField: UITextField) -> Bool {
+		self.delegate?.cancel(location: self.location)
+		return true
 	}
 }

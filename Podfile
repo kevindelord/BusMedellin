@@ -9,11 +9,11 @@ def corePods
 	pod 'MBProgressHUD', '~> 1.1.0'
 	pod 'Buglife', '~> 2.8.1'
     pod 'HockeySDK', '~> 5.1.2'
-	pod 'SwiftLint', '~> 0.27.0'
+	pod 'SwiftLint', '~> 0.28.0'
 end
 
 def analytics
-    pod 'Firebase/Core', '~> 5.6.0'
+    pod 'Firebase/Core', '~> 5.12.0'
 end
 
 target 'BusMedellin-Alpha-AdHoc' do

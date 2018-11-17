@@ -284,9 +284,9 @@
 		754A25292132C80300B3B083 /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				75BE184E21A096AF008F2DC4 /* MapView */,
 				755994C22197B6A000FCE602 /* PinLocation */,
 				755994BB219795A000FCE602 /* AddressViews */,
-				754A252A2132C81200B3B083 /* BMMapView.swift */,
 				755994BF2197A3DB00FCE602 /* Location.swift */,
 				75C0E63D218E126900C988C5 /* MapContainerViewController.swift */,
 				755994C62197C43100FCE602 /* MapCoordinator.swift */,
@@ -466,6 +466,14 @@
 				75805BC31DAF5B7E00DACFF5 /* Route.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		75BE184E21A096AF008F2DC4 /* MapView */ = {
+			isa = PBXGroup;
+			children = (
+				754A252A2132C81200B3B083 /* BMMapView.swift */,
+			);
+			path = MapView;
 			sourceTree = "<group>";
 		};
 		75C0E632218E102A00C988C5 /* Footer */ = {

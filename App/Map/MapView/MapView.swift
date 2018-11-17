@@ -9,10 +9,6 @@
 import UIKit
 import MapKit
 
-// TODO: if search is cancelled while fetching data -> cancel all ongoing requests.
-// TODO: fix successful search but address not displayed in addressView
-// TODO: fix successful search but routes list not displayed.
-
 class MapView											: UIView, MKMapViewDelegate, MapContainedElement, MapViewContainer, HUDContainer, UserLocationDataSource {
 
 	@IBOutlet weak private var mapView					: MKMapView?

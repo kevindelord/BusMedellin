@@ -11,6 +11,10 @@ import MapKit
 import Reachability
 import Appirater
 
+// TODO: If search is cancelled while fetching data -> cancel all ongoing requests.
+// TODO: Fix successful search but address not displayed in addressView
+// TODO: Fix successful search but routes list not displayed.
+
 class MapContainerView			: UIView, ContentView, MapContainer, MapActionDelegate {
 
 	// ContentView

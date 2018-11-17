@@ -28,18 +28,21 @@ extension AppCoordinator {
 	func prepare(for segue: UIStoryboardSegue, on container: (AppCoordinatorContainer & SearchResultCoordinator)) {
 		self.container = container
 
-		// All containers view should conform to the ContentView protocol.
+		// All containers should conform to the ContentView protocol.
 		var contentView = (segue.destination.view as? ContentView)
 		contentView?.coordinator = self
 		contentView?.delegate = self
 
+		// Map Container
+		var mapContainer = (segue.destination.view as? MapContainer)
+		mapContainer?.routeDataSource = self.routeManager
+
 		// Retain the map and routes containers
-		if (segue.identifier == Segue.Embed.MapView) {
-			(contentView as? BMMapView)?.routeDataSource = self.routeManager
+		if (segue.identifier == Segue.Embed.Container.Map) {
 			self.mapView = contentView
 		}
 
-		if (segue.identifier == Segue.Embed.RoutesView) {
+		if (segue.identifier == Segue.Embed.Container.Routes) {
 			self.routesContainer = contentView
 		}
 	}

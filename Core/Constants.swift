@@ -37,7 +37,7 @@ struct Map {
 
 	struct Address {
 
-		static let street			= "Street"
+		static let Street			= "Street"
 	}
 }
 
@@ -47,11 +47,25 @@ struct Segue {
 
 	struct Embed {
 
-		static let FooterView		= "embedFooterView"
-		static let MapView			= "embedMapView"
-		static let RoutesView		= "embedRoutesView"
-		static let PageController	= "embedPageController"
-		static let PageControl		= "embedPageControl"
+		struct Container {
+
+			static let Footer		= "embedFooterView"
+			static let Map			= "embedMapContainer"
+			static let Routes		= "embedRoutesContainer"
+		}
+
+		struct ViewController {
+
+			static let Page			= "embedPageViewController"
+			static let Address 		= "embedAddressViewController"
+			static let Map 			= "embedMapViewController"
+			static let ActionPin	= "embedPinLocationViewController"
+		}
+
+		struct View {
+
+			static let PageControl	= "embedPageControl"
+		}
 	}
 }
 

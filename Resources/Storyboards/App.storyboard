@@ -24,7 +24,7 @@
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MuQ-MQ-mhZ" userLabel="Map">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="698"/>
                                         <connections>
-                                            <segue destination="LJG-pO-0Xv" kind="embed" identifier="embedMapView" id="uo6-Sd-0Ws"/>
+                                            <segue destination="LJG-pO-0Xv" kind="embed" identifier="embedMapContainer" id="uo6-Sd-0Ws"/>
                                         </connections>
                                     </containerView>
                                     <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7DQ-8Z-yCl" userLabel="Routes">
@@ -33,7 +33,7 @@
                                             <constraint firstAttribute="height" constant="150" id="gvW-rc-omN"/>
                                         </constraints>
                                         <connections>
-                                            <segue destination="DwQ-nU-pUH" kind="embed" identifier="embedRoutesView" id="QeD-Ca-lK5"/>
+                                            <segue destination="DwQ-nU-pUH" kind="embed" identifier="embedRoutesContainer" id="QeD-Ca-lK5"/>
                                         </connections>
                                     </containerView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bBv-pr-e78" userLabel="Footer">
@@ -42,7 +42,7 @@
                                             <constraint firstAttribute="height" constant="80" id="zd9-e8-0PP"/>
                                         </constraints>
                                         <connections>
-                                            <segue destination="oQ6-zH-lnD" kind="embed" identifier="embedFooterView" id="92m-vM-MPQ"/>
+                                            <segue destination="oQ6-zH-lnD" kind="embed" identifier="embedFooterContainer" id="92m-vM-MPQ"/>
                                         </connections>
                                     </containerView>
                                 </subviews>
@@ -67,10 +67,10 @@
             </objects>
             <point key="canvasLocation" x="552.79999999999995" y="891.87192118226608"/>
         </scene>
-        <!--MapView-->
+        <!--Map-->
         <scene sceneID="qWy-Fx-0KE">
             <objects>
-                <viewControllerPlaceholder storyboardName="MapView" id="LJG-pO-0Xv" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Map" id="LJG-pO-0Xv" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PBB-mw-0Mp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1223" y="733"/>

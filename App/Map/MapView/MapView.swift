@@ -24,14 +24,6 @@ class MapView											: UIView, MKMapViewDelegate, MapContainedElement, MapVie
 
 	var delegate 										: MapActionDelegate?
 
-	override init(frame: CGRect) {
-		super.init(frame: frame)
-	}
-
-	required init?(coder aDecoder: NSCoder) {
-		super.init(coder: aDecoder)
-	}
-
 	override func layoutSubviews() {
 		super.layoutSubviews()
 
@@ -40,9 +32,9 @@ class MapView											: UIView, MKMapViewDelegate, MapContainedElement, MapVie
 	}
 
 	private lazy var initializationProcess: Void = {
-		// By default show Medellin city center
+		// On start center the map onto the city center
 		self.centerMap(on: Map.cityCenterLocation)
-
+		// If enabled and authorized, show the user location's blue annotation.
 		self.mapView?.showsUserLocation = (CLLocationManager.authorizationAccepted == true)
 	}()
 }

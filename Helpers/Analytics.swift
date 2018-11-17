@@ -58,12 +58,12 @@ struct Analytics {
 
 	enum UserLocation						: String {
 
-		case didLocateUser					= "UserLocation_DidLocateUser"
-		case didLocateUserTooFar			= "UserLocation_DidLocateUserTooFar"
-		case didAskForSettings				= "UserLocation_DidAskForSettings"
-		case didOpenSettings				= "UserLocation_DidOpenSettings"
-		case didCancelLocationPopup			= "UserLocation_DidCancelUserLocationPopup"
-		case didAskForUserLocation			= "UserLocation_DidAskForUserLocation"
+		case didLocateUser					= "Location_LocateUser"
+		case didLocateUserTooFar			= "Location_UserTooFar"
+		case didAskForSettings				= "Location_AskForSettings"
+		case didOpenSettings				= "Location_OpenSettings"
+		case didCancelLocationPopup			= "Location_CancelAuthorization"
+		case didAskForUserLocation			= "Location_RequestAuthorization"
 
 		func send() {
 			Analytics.send(category: .UserLocation, action: self.rawValue, label: nil, value: nil)
@@ -87,9 +87,7 @@ struct Analytics {
 
 	enum Search								: String {
 
-		case matchingRoutes					= "Route_DidSearchForMatchingRoutes"
-		case startRoutes					= "Route_DidSearchForStartRoutes"
-		case destinationRoutes				= "Route_DidSearchForDestinationRoutes"
+		case routes							= "Search_Routes"
 
 		func send(routeCode: String? = nil, rounteCount: Int? = 0) {
 			var value: NSNumber?

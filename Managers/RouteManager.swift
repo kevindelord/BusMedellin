@@ -17,18 +17,13 @@ class RouteManager				: RouteManagerDataSource {
 	func routes(between start: CLLocationCoordinate2D, and destination: CLLocationCoordinate2D, completion: @escaping (() -> Void)) {
 		// Fetch all routes passing by the pick up location.
 		self.fetchRoutes(forCoordinates: start, completion: { (pickUpRoutes: [Route], error: Error?) in
-			// Analytics
-			Analytics.Search.startRoutes.send(routeCode: nil, rounteCount: pickUpRoutes.count)
 			// Fetch all routes passing by the destination location.
 			self.fetchRoutes(forCoordinates: destination, completion: { (destinationRoutes: [Route], error: Error?) in
-				// Analytics
-				Analytics.Search.destinationRoutes.send(routeCode: nil, rounteCount: destinationRoutes.count)
-
 				// Filter the routes to only the ones matching.
 				self.availableRoutes = self.findMatchingRoutes(pickUpRoutes: pickUpRoutes, destinationRoutes: destinationRoutes)
 				self.selectedRoute = self.availableRoutes.first
 				// Analytics
-				Analytics.Search.matchingRoutes.send(routeCode: nil, rounteCount: self.availableRoutes.count)
+				Analytics.Search.routes.send(routeCode: nil, rounteCount: self.availableRoutes.count)
 				completion()
 			})
 		})

@@ -1,5 +1,5 @@
 //
-//  BMSettingsViewController.swift
+//  SettingsViewController.swift
 //  BusMedellin
 //
 //  Created by Kevin Delord on 23/10/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BMSettingsViewController					: UIViewController {
+class SettingsViewController					: UIViewController {
 
 	@IBOutlet private weak var versionLabel		: UILabel?
 	@IBOutlet private weak var aboutTitleLabel	: UILabel?

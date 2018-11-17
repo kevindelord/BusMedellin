@@ -13,7 +13,7 @@
         <!--Title-->
         <scene sceneID="VK7-B1-Th4">
             <objects>
-                <viewController id="4v1-FH-IEg" customClass="BMSettingsViewController" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="4v1-FH-IEg" customClass="SettingsViewController" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Lpn-xd-bYG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

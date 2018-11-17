@@ -32,6 +32,8 @@ extension RoutesContainerView {
 
 		self.routePageControl?.update(currentPage: index)
 		self.delegate?.select(route: route)
+		print("send didSelectRoute: \(route.code)")
+		Analytics.Route.didSelectRoute.send(routeCode: route.code, rounteCount: 1)
 	}
 }
 

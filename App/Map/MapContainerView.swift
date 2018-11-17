@@ -9,6 +9,7 @@
 import Foundation
 import MapKit
 import Reachability
+import Appirater
 
 class MapContainerView			: UIView, ContentView, MapContainer, MapActionDelegate {
 
@@ -110,6 +111,11 @@ extension MapContainerView {
 			self?.delegate?.reloadContentViews()
 			// Hide waiting HUD
 			self?.map?.hideWaitingHUD()
+
+			if (self?.routeDataSource?.availableRoutes.isEmpty == false) {
+				// Significant Event: The user just did another successful search.
+				Appirater.triggerSignificantEvent()
+			}
 		})
 	}
 

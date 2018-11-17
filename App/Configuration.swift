@@ -8,7 +8,7 @@
 
 import Foundation
 
-// TODO: remove all #if debug #else #endif
+// TODO: Replace #if debug #else #endif with xcconfig
 
 #if DEBUG
 private let isDebug		= true

@@ -8,6 +8,8 @@
 
 import Firebase
 
+// TODO: use different log events.
+
 // MARK: - Firebase
 
 struct Firebase {

@@ -6,8 +6,6 @@
 //  Copyright © 2018 Kevin Delord. All rights reserved.
 //
 
-// TODO: document protocol
-
 import MapKit
 
 protocol MapViewContainer: HUDContainer {

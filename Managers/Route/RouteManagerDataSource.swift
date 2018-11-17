@@ -33,8 +33,8 @@ protocol RouteManagerDataSource {
 	func routes(between start: CLLocationCoordinate2D, and destination: CLLocationCoordinate2D, completion: @escaping (() -> Void))
 
 	/// Array of all matching round found for the active search (active start and destination annotations).
-	var availableRoutes			: [Route] { get }
+	var availableRoutes : [Route] { get }
 
 	/// Optional selected Route.
-	var selectedRoute			: Route? { get }
+	var selectedRoute : Route? { get }
 }

@@ -1,5 +1,5 @@
 //
-//  MBButtonState.swift
+//  ButtonState.swift
 //  BusMedellin
 //
 //  Created by kevindelord on 26/08/2018.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum MBButtonState {
+enum ButtonState {
 	case inactive
 	case available
 

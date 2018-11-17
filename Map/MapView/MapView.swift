@@ -17,7 +17,7 @@ import MapKit
 class MapView											: UIView, MKMapViewDelegate, MapContainedElement, MapViewContainer, HUDContainer {
 
 	@IBOutlet weak private var mapView					: MKMapView?
-	@IBOutlet weak private var nearMeButton				: BMLocateButton?
+	@IBOutlet weak private var nearMeButton				: UserLocationButton?
 
 	private let locationManager							= CLLocationManager()
 	private var startAnnotation							: Annotation?

@@ -207,7 +207,7 @@
                                     <outlet property="delegate" destination="gcp-S5-Cmt" id="oXZ-Ye-2S3"/>
                                 </connections>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ccJ-zf-weA" customClass="BMLocateButton" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ccJ-zf-weA" customClass="UserLocationButton" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target">
                                 <rect key="frame" x="319" y="722" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="12n-DE-6lM"/>

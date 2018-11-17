@@ -1,5 +1,5 @@
 //
-//  BMLocateButton.swift
+//  UserLocationButton.swift
 //  BusMedellin
 //
 //  Created by Kevin Delord on 13/10/16.
@@ -9,9 +9,9 @@
 import UIKit
 import MapKit
 
-class BMLocateButton	: UIButton {
+class UserLocationButton	: UIButton {
 
-	var locationState	: MBButtonState = .inactive {
+	var locationState		: ButtonState = .inactive {
 		didSet {
 			let img = UIImage(named: "NearMe")?.withRenderingMode(.alwaysTemplate)
 			self.setImage(img, for: .normal)

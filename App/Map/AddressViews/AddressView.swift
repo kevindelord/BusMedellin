@@ -25,9 +25,9 @@ class AddressView									: UIView, UITextFieldDelegate {
 
 		// Borders
 		self.layer.borderWidth = 1
-		self.layer.borderColor = BMColor.lightGray.cgColor
+		self.layer.borderColor = Color.lightGray.cgColor
 		self.dotIndicator?.layer.borderWidth = 1
-		self.dotIndicator?.layer.borderColor = BMColor.darkGray.cgColor
+		self.dotIndicator?.layer.borderColor = Color.darkGray.cgColor
 	}
 
 	func update(withAddress address: String?) {

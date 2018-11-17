@@ -76,7 +76,7 @@ struct ReuseId {
 	static let destinationPin		= "DestinationAnnotaion_Id"
 }
 
-struct BMColor {
+struct Color {
 
 	static let red					= (UIColor(red: 255, green: 59, blue: 48) ?? .red)
 	static let green				= (UIColor(red: 76, green: 217, blue: 100) ?? .green)

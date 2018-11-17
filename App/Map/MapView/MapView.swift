@@ -155,7 +155,7 @@ extension MapView {
 	func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
 		if (overlay is MKGeodesicPolyline) {
 			let lineView = MKPolylineRenderer(overlay: overlay)
-			lineView.strokeColor = BMColor.blue
+			lineView.strokeColor = Color.blue
 			lineView.lineWidth = Map.polylineWidth
 			return lineView
 

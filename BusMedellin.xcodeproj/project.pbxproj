@@ -281,7 +281,7 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		754A25292132C80300B3B083 /* MapView */ = {
+		754A25292132C80300B3B083 /* Map */ = {
 			isa = PBXGroup;
 			children = (
 				755994C22197B6A000FCE602 /* PinLocation */,
@@ -293,7 +293,7 @@
 				75C811F12196C7CA009BAD79 /* HUDContainer.swift */,
 				75BE184B21A095A0008F2DC4 /* MapActionDelegate.swift */,
 			);
-			path = MapView;
+			path = Map;
 			sourceTree = "<group>";
 		};
 		754A25302132CA5E00B3B083 /* Extensions */ = {
@@ -449,7 +449,7 @@
 				752B316F218F4CE200A1DE0D /* Settings */,
 				75C0E632218E102A00C988C5 /* Footer */,
 				755DB8DA213C208A0092756E /* Managers */,
-				754A25292132C80300B3B083 /* MapView */,
+				754A25292132C80300B3B083 /* Map */,
 				75F8B4C31DB9772A00F43109 /* Routes */,
 				75513BE11DB01ECD00957F40 /* AdditionalViews */,
 				75F8B4CC1DB9774600F43109 /* AppCoordinator */,

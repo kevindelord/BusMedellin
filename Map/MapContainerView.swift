@@ -1,5 +1,5 @@
 //
-//  MapCoordinator.swift
+//  MapContainerView.swift
 //  BusMedellin
 //
 //  Created by kevindelord on 11/11/2018.
@@ -10,7 +10,7 @@ import Foundation
 import MapKit
 import Reachability
 
-class MapCoordinator			: UIView, ContentView, MapContainer, MapActionDelegate {
+class MapContainerView			: UIView, ContentView, MapContainer, MapActionDelegate {
 
 	// ContentView
 	var coordinator				: Coordinator?
@@ -18,16 +18,16 @@ class MapCoordinator			: UIView, ContentView, MapContainer, MapActionDelegate {
 
 	// Map Container
 	var routeDataSource			: RouteManagerDataSource?
-	var map						: (MapCoordinatedElement & MapViewContainer)?
-	var pinLocation				: (MapCoordinatedElement & PinLocationContainer)?
-	var addressLocation			: (MapCoordinatedElement & AddressViewContainer)?
+	var map						: (MapContainedElement & MapViewContainer)?
+	var pinLocation				: (MapContainedElement & PinLocationContainer)?
+	var addressLocation			: (MapContainedElement & AddressViewContainer)?
 
 	private var locationCoordinates = [Location: CLLocationCoordinate2D]()
 }
 
 // MARK: - MapActionDelegate
 
-extension MapCoordinator {
+extension MapContainerView {
 
 	func cancel(location: Location) {
 		self.map?.didCancel(location: location)
@@ -113,7 +113,7 @@ extension MapCoordinator {
 
 // MARK: - ContentView
 
-extension MapCoordinator {
+extension MapContainerView {
 
 	func update(availableRoutes: [Route], selectedRoute: Route?) {
 		guard

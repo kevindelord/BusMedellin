@@ -1,5 +1,5 @@
 //
-//  BMMapView.swift
+//  MapView.swift
 //  BusMedellin
 //
 //  Created by kevindelord on 26/08/2018.
@@ -9,47 +9,21 @@
 import UIKit
 import MapKit
 
-// TODO: extract & document protocols
 // TODO: fully extract location Manager
 // TODO: if search is cancelled while fetching data -> cancel all ongoing requests.
 // TODO: fix successful search but address not displayed in addressView
 // TODO: fix successful search but routes list not displayed.
 
-protocol MapContainer {
-
-	var routeDataSource			: RouteManagerDataSource? { get set }
-
-	var map				 		: (MapCoordinatedElement & MapViewContainer)? { get set }
-
-	var addressLocation			: (MapCoordinatedElement & AddressViewContainer)? { get set }
-
-	var pinLocation				: (MapCoordinatedElement & PinLocationContainer)? { get set }
-}
-
-protocol MapCoordinatedElement {
-
-	var delegate: MapActionDelegate? { get set }
-
-	func didCancel(location: Location)
-}
-
-protocol MapViewContainer: HUDContainer {
-
-	func addAnnotation(forLocation location: Location) -> CLLocationCoordinate2D?
-
-	func draw(selectedRoute: Route, routeDataSource: RouteManagerDataSource)
-}
-
-class BMMapView											: UIView, MKMapViewDelegate, MapCoordinatedElement, MapViewContainer, HUDContainer {
+class MapView											: UIView, MKMapViewDelegate, MapContainedElement, MapViewContainer, HUDContainer {
 
 	@IBOutlet weak private var mapView					: MKMapView?
 	@IBOutlet weak private var nearMeButton				: BMLocateButton?
 
 	private let locationManager							= CLLocationManager()
-	private var startAnnotation							: BMAnnotation?
-	private var destinationAnnotation					: BMAnnotation?
-	private var startCircle								: BMMapCircle?
-	private var destinationCircle						: BMMapCircle?
+	private var startAnnotation							: Annotation?
+	private var destinationAnnotation					: Annotation?
+	private var startCircle								: MapCircle?
+	private var destinationCircle						: MapCircle?
 
 	var delegate 										: MapActionDelegate?
 
@@ -78,7 +52,7 @@ class BMMapView											: UIView, MKMapViewDelegate, MapCoordinatedElement, Ma
 
 // MARK: - MapViewContainer
 
-extension BMMapView {
+extension MapView {
 
 	func addAnnotation(forLocation location: Location) -> CLLocationCoordinate2D? {
 		guard let coordinate = self.mapView?.centerCoordinate else {
@@ -89,7 +63,7 @@ extension BMMapView {
 		switch location {
 		case .PickUp:
 			self.addPickupAnnotation(coordinate: coordinate)
-			// Move the map up North a bit.
+			// Move a bit the map up North to easily understand to transition to the .Destination Location.
 			self.moveMapView(from: coordinate)
 		case .Destination:
 			self.addDestinationAnnotation(coordinate: coordinate)
@@ -109,9 +83,9 @@ extension BMMapView {
 	}
 }
 
-// MARK: - MapCoordinatedElement
+// MARK: - MapContainedElement
 
-extension BMMapView {
+extension MapView {
 
 	func didCancel(location: Location) {
 		self.removeDrawnRoutes()
@@ -140,36 +114,36 @@ extension BMMapView {
 
 // MARK: - MapView Delegate functions
 
-extension BMMapView {
+extension MapView {
 
+	/// Force the map to stay close to the city center.
 	func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
 		let mapCenter = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
-		// Force the map to stay close to the city center.
 		if (self.cityCenterLocation.distance(from: mapCenter) > Map.maxScrollDistance) {
 			self.centerMap(on: self.cityCenterLocation)
 		}
 	}
 
+	/// Create new Pin Annotation.
 	func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-		if let annotation = annotation as? BMAnnotation {
-
-			var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotation.reuseId) as? MKPinAnnotationView
-			if (annotationView == nil) {
-				annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: annotation.reuseId)
-			}
-
-			annotationView?.annotation = annotation
-			annotationView?.animatesDrop = false
-			annotationView?.pinTintColor = annotation.pinColor
-			annotationView?.canShowCallout = false
-			return annotationView
+		guard let annotation = annotation as? Annotation else {
+			return nil
 		}
 
-		return nil
+		var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotation.reuseId) as? MKPinAnnotationView
+		if (annotationView == nil) {
+			annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: annotation.reuseId)
+		}
+
+		annotationView?.annotation = annotation
+		annotationView?.animatesDrop = false
+		annotationView?.pinTintColor = annotation.pinColor
+		annotationView?.canShowCallout = false
+		return annotationView
 	}
 
+	/// If the location suddenly become available adapt the location button.
 	func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-		// If the location suddenly become available adapt the location button.
 		if (userLocation.location == nil) {
 			self.nearMeButton?.locationState = .inactive
 		} else if (self.nearMeButton?.locationState == .inactive) {
@@ -177,6 +151,7 @@ extension BMMapView {
 		}
 	}
 
+	/// Draw a map overlay, either a bus route or a circle around a pin annotation.
 	func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
 		if (overlay is MKGeodesicPolyline) {
 			let lineView = MKPolylineRenderer(overlay: overlay)
@@ -184,7 +159,7 @@ extension BMMapView {
 			lineView.lineWidth = Map.polylineWidth
 			return lineView
 
-		} else if let circle = overlay as? BMMapCircle {
+		} else if let circle = overlay as? MapCircle {
 			let circleRenderer = MKCircleRenderer(overlay: overlay)
 			circleRenderer.fillColor = (circle.color ?? UIColor.blue).withAlphaComponent(Map.circleColorAlpha)
 			circleRenderer.strokeColor = (circle.color ?? UIColor.blue)
@@ -198,7 +173,7 @@ extension BMMapView {
 
 // MARK: - User Location functions
 
-extension BMMapView {
+extension MapView {
 
 	/// Default city center location
 	private var cityCenterLocation : CLLocation {
@@ -248,7 +223,7 @@ extension BMMapView {
 
 // MARK: - MapView Utility functions
 
-extension BMMapView {
+extension MapView {
 
 	/// Center the map on a specific location.
 	///
@@ -291,9 +266,9 @@ extension BMMapView {
 	///
 	/// - Parameter coordinate: Coordinate of the annotation.
 	private func addPickupAnnotation(coordinate: CLLocationCoordinate2D) {
-		self.startAnnotation = BMStartAnnotation.create(withCoordinates: coordinate)
+		self.startAnnotation = StartAnnotation.create(withCoordinates: coordinate)
 		self.mapView?.addAnnotation(safe: self.startAnnotation)
-		self.startCircle = BMMapCircle.createStartCircle(centerCoordinate: coordinate)
+		self.startCircle = MapCircle.createStartCircle(centerCoordinate: coordinate)
 		self.mapView?.addOverlay(safe: self.startCircle)
 	}
 
@@ -301,9 +276,9 @@ extension BMMapView {
 	///
 	/// - Parameter coordinate: Coordinate of the annotation.
 	private func addDestinationAnnotation(coordinate: CLLocationCoordinate2D) {
-		self.destinationAnnotation = BMDestinationAnnotation.create(withCoordinates: coordinate)
+		self.destinationAnnotation = DestinationAnnotation.create(withCoordinates: coordinate)
 		self.mapView?.addAnnotation(safe: self.destinationAnnotation)
-		self.destinationCircle = BMMapCircle.createDestinationCircle(centerCoordinate: coordinate)
+		self.destinationCircle = MapCircle.createDestinationCircle(centerCoordinate: coordinate)
 		self.mapView?.addOverlay(safe: self.destinationCircle)
 	}
 
@@ -325,20 +300,21 @@ extension BMMapView {
 
 // MARK: - Interface Builder Action
 
-extension BMMapView {
+extension MapView {
 
 	/// Function called when the user presses the 'near me' (or aka 'locate me') button.
 	@IBAction private func locateMeButtonPressed() {
-		if let userLocation = self.checkLocationAuthorizationStatus() {
-			// Disable the locate me feature if the user is too far away from the city center.
-			if (self.cityCenterLocation.distance(from: userLocation) < Map.maxScrollDistance) {
-				self.centerMap(on: userLocation)
-				Analytics.UserLocation.didLocateUser.send()
-			} else {
-				UIAlertController.showInfoMessage("", message: L("USER_LOCATION_TOO_FAR"))
-				Analytics.UserLocation.didLocateUserTooFar.send()
-			}
+		guard let userLocation = self.checkLocationAuthorizationStatus() else {
+			return
+		}
+
+		// Disable the locate me feature if the user is too far away from the city center.
+		if (self.cityCenterLocation.distance(from: userLocation) < Map.maxScrollDistance) {
+			self.centerMap(on: userLocation)
+			Analytics.UserLocation.didLocateUser.send()
+		} else {
+			UIAlertController.showInfoMessage("", message: L("USER_LOCATION_TOO_FAR"))
+			Analytics.UserLocation.didLocateUserTooFar.send()
 		}
 	}
 }
-

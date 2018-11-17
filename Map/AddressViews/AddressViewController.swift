@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddressViewController 									: UIViewController, MapCoordinatedElement, AddressViewContainer {
+class AddressViewController 									: UIViewController, MapContainedElement, AddressViewContainer {
 
 	@IBOutlet weak private var pickUpInfoView					: AddressView?
 	@IBOutlet weak private var destinationInfoView				: AddressView?
@@ -55,7 +55,7 @@ extension AddressViewController {
 	}
 }
 
-// MARK: - MapCoordinatedElement
+// MARK: - MapContainedElement
 
 extension AddressViewController {
 

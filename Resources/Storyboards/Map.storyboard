@@ -14,7 +14,7 @@
         <scene sceneID="ALl-DY-zWs">
             <objects>
                 <viewController id="YNG-ob-itT" customClass="MapContainerViewController" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Uxb-H2-SLU" customClass="MapCoordinator" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="Uxb-H2-SLU" customClass="MapContainerView" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -197,7 +197,7 @@
         <scene sceneID="vbE-4g-vXm">
             <objects>
                 <viewController id="gKa-7Z-L6l" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="gcp-S5-Cmt" customClass="BMMapView" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="gcp-S5-Cmt" customClass="MapView" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>

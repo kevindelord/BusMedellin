@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PinLocationViewController 						: UIViewController, MapCoordinatedElement, PinLocationContainer {
+class PinLocationViewController 						: UIViewController, MapContainedElement, PinLocationContainer {
 
 	@IBOutlet weak private var locationButton			: UIButton?
 	@IBOutlet weak private var pinDescriptionLabel		: UILabel?
@@ -27,7 +27,7 @@ class PinLocationViewController 						: UIViewController, MapCoordinatedElement,
 	}
 }
 
-// MARK: - MapCoordinatedElement
+// MARK: - MapContainedElement
 
 extension PinLocationViewController {
 

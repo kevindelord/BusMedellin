@@ -8,8 +8,6 @@
 
 import UIKit
 
-// TODO: Review animation duration, previous duration: 0.5
-
 class AddressViewController 									: UIViewController, MapCoordinatedElement, AddressViewContainer {
 
 	@IBOutlet weak private var pickUpInfoView					: AddressView?
@@ -33,19 +31,22 @@ class AddressViewController 									: UIViewController, MapCoordinatedElement, 
 extension AddressViewController {
 
 	func update(location: Location, withAddress address: String?) {
-		let view = (location == .PickUp ? self.pickUpInfoView : self.destinationInfoView)
-		view?.update(withAddress: address)
+		switch location {
+		case .PickUp: self.pickUpInfoView?.update(withAddress: address)
+		case .Destination: self.destinationInfoView?.update(withAddress: address)
+		}
 	}
 
 	func show(viewForLocation location: Location) {
 		UIView.animate(withDuration: 0.3, animations: {
-			if (location == .PickUp) {
+			switch location {
+			case .PickUp:
 				self.destinationInfoView?.backgroundColor = BMColor.lightGray
 				self.destinationInfoViewPosition?.isActive = false
 				self.destinationInfoView?.isUserInteractionEnabled = false
 				self.destinationInfoView?.update(withAddress: nil)
 
-			} else if (location == .Destination) {
+			case .Destination:
 				self.destinationInfoView?.backgroundColor = .white
 				self.destinationInfoView?.isUserInteractionEnabled = true
 				self.destinationInfoViewPosition?.isActive = true
@@ -62,10 +63,9 @@ extension AddressViewController {
 		self.show(viewForLocation: location)
 
 		UIView.animate(withDuration: 0.3, animations: {
-			if (location == .PickUp) {
-				self.pickUpInfoView?.update(withAddress: nil)
-			} else if (location == .Destination) {
-				self.destinationInfoView?.update(withAddress: nil)
+			switch location {
+			case .PickUp:		self.pickUpInfoView?.update(withAddress: nil)
+			case .Destination:	self.destinationInfoView?.update(withAddress: nil)
 			}
 		})
 	}

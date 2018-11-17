@@ -55,6 +55,7 @@ extension AddressView {
 	}
 
 	func textFieldShouldClear(_ textField: UITextField) -> Bool {
+		// Inform the delegate that the clear button of the text field has been pressed.
 		self.delegate?.cancel(location: self.location)
 		return true
 	}

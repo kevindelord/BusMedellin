@@ -11,7 +11,8 @@ import MapKit
 
 // TODO: extract & document protocols
 // TODO: fully extract location Manager
-// TODO: fix position of locationButton compared to annotations.
+// TODO: fix with successful search but address not displayed in addressView
+// TODO: fix with successful search but routes list not displayed.
 
 protocol MapContainer {
 
@@ -107,12 +108,12 @@ extension BMMapView {
 		}
 
 		// Add a new annotation at the center of the map.
-		if (location == .PickUp) {
+		switch location {
+		case .PickUp:
 			self.addPickupAnnotation(coordinate: coordinate)
 			// Move the map up North a bit.
 			self.moveMapViewNorthFromCoordinate(coordinate: coordinate)
-
-		} else {
+		case .Destination:
 			self.addDestinationAnnotation(coordinate: coordinate)
 		}
 
@@ -137,17 +138,25 @@ extension BMMapView {
 	func didCancel(location: Location) {
 		self.removeDrawnRoutes()
 
-		let annotation = (location == .PickUp ? self.startAnnotation : self.destinationAnnotation)
-		self.mapView?.removeAnnotation(safe: annotation)
-
-		let overlay = (location == .PickUp ? self.startCircle : self.destinationCircle)
-		self.mapView?.removeOverlay(safe: overlay)
-
-		if (location == .PickUp) {
-			self.startAnnotation = nil
-		} else {
-			self.destinationAnnotation = nil
+		switch location {
+		case .PickUp:
+			self.cancelPickUp()
+			self.cancelDestination()
+		case .Destination:
+			self.cancelDestination()
 		}
+	}
+
+	private func cancelDestination() {
+		self.mapView?.removeAnnotation(safe: self.destinationAnnotation)
+		self.mapView?.removeOverlay(safe: self.destinationCircle)
+		self.destinationAnnotation = nil
+	}
+
+	private func cancelPickUp() {
+		self.mapView?.removeAnnotation(safe: self.startAnnotation)
+		self.mapView?.removeOverlay(safe: self.startCircle)
+		self.startAnnotation = nil
 	}
 }
 

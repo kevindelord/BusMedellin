@@ -25,7 +25,7 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pXa-OM-2tW" userLabel="Address Container">
-                                <rect key="frame" x="20" y="52" width="335" height="80"/>
+                                <rect key="frame" x="16" y="52" width="343" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="eWP-o0-3Ff"/>
                                 </constraints>
@@ -34,10 +34,10 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dD2-Li-Ipa" userLabel="Location Container">
-                                <rect key="frame" x="53.666666666666657" y="344.66666666666669" width="267" height="59"/>
+                                <rect key="frame" x="53.666666666666657" y="356" width="267" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="267" id="Qjw-WF-KyI"/>
-                                    <constraint firstAttribute="height" constant="59" id="tf2-7R-H85"/>
+                                    <constraint firstAttribute="height" constant="60" id="tf2-7R-H85"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="7Yg-mn-3wu" kind="embed" identifier="embedPinLocationViewController" id="DEv-5V-T4v"/>
@@ -46,15 +46,15 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="T7Q-4b-QUV" firstAttribute="trailing" secondItem="pXa-OM-2tW" secondAttribute="trailing" constant="20" id="FJ3-P1-g19"/>
-                            <constraint firstItem="pXa-OM-2tW" firstAttribute="top" secondItem="Uxb-H2-SLU" secondAttribute="top" constant="52" id="SL3-4l-7jB"/>
+                            <constraint firstItem="T7Q-4b-QUV" firstAttribute="trailing" secondItem="pXa-OM-2tW" secondAttribute="trailing" constant="16" id="FJ3-P1-g19"/>
                             <constraint firstItem="IF3-Cl-hyl" firstAttribute="top" secondItem="Uxb-H2-SLU" secondAttribute="top" id="TNN-Pb-at1"/>
-                            <constraint firstItem="dD2-Li-Ipa" firstAttribute="centerY" secondItem="Uxb-H2-SLU" secondAttribute="centerY" constant="-32" id="Yzh-GK-Kw0"/>
+                            <constraint firstItem="pXa-OM-2tW" firstAttribute="top" secondItem="T7Q-4b-QUV" secondAttribute="top" constant="8" id="YKs-yW-lNn"/>
+                            <constraint firstItem="dD2-Li-Ipa" firstAttribute="centerY" secondItem="Uxb-H2-SLU" secondAttribute="centerY" constant="-20" id="Yzh-GK-Kw0"/>
                             <constraint firstAttribute="bottom" secondItem="IF3-Cl-hyl" secondAttribute="bottom" id="ZV2-lE-6yZ"/>
                             <constraint firstItem="IF3-Cl-hyl" firstAttribute="leading" secondItem="Uxb-H2-SLU" secondAttribute="leading" id="d9A-ef-BOc"/>
                             <constraint firstAttribute="trailing" secondItem="IF3-Cl-hyl" secondAttribute="trailing" id="eOg-TJ-8Aj"/>
                             <constraint firstItem="dD2-Li-Ipa" firstAttribute="centerX" secondItem="Uxb-H2-SLU" secondAttribute="centerX" id="tGx-hE-THl"/>
-                            <constraint firstItem="pXa-OM-2tW" firstAttribute="leading" secondItem="Uxb-H2-SLU" secondAttribute="leading" constant="20" id="vwv-pz-91F"/>
+                            <constraint firstItem="pXa-OM-2tW" firstAttribute="leading" secondItem="Uxb-H2-SLU" secondAttribute="leading" constant="16" id="vwv-pz-91F"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="T7Q-4b-QUV"/>
                     </view>
@@ -68,11 +68,11 @@
             <objects>
                 <viewController id="CrO-Uk-Chb" customClass="AddressViewController" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AK4-DV-WPV">
-                        <rect key="frame" x="0.0" y="0.0" width="335" height="80"/>
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="80"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bsa-fx-YHy" userLabel="DestinationInfoView" customClass="AddressView" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="19" width="335" height="40"/>
+                                <rect key="frame" x="0.0" y="19" width="343" height="40"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uoe-gS-xnv">
                                         <rect key="frame" x="10" y="12" width="16" height="16"/>
@@ -91,7 +91,7 @@
                                         </constraints>
                                     </view>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9j3-bP-BV5">
-                                        <rect key="frame" x="34" y="0.0" width="293" height="40"/>
+                                        <rect key="frame" x="34" y="0.0" width="301" height="40"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -119,7 +119,7 @@
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5JV-KX-jQt" userLabel="PickUpInfoView" customClass="AddressView" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="335" height="40"/>
+                                <rect key="frame" x="0.0" y="0.0" width="343" height="40"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="esg-mI-02Z">
                                         <rect key="frame" x="10" y="12" width="16" height="16"/>
@@ -138,7 +138,7 @@
                                         </constraints>
                                     </view>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W2B-md-kd8">
-                                        <rect key="frame" x="34" y="0.0" width="293" height="40"/>
+                                        <rect key="frame" x="34" y="0.0" width="301" height="40"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -245,14 +245,13 @@
             <objects>
                 <viewController id="7Yg-mn-3wu" customClass="PinLocationViewController" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="s8k-eY-ysL">
-                        <rect key="frame" x="0.0" y="0.0" width="267" height="59"/>
+                        <rect key="frame" x="0.0" y="0.0" width="267" height="60"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UaH-qS-59A" userLabel="Location Button">
-                                <rect key="frame" x="0.0" y="0.0" width="267" height="59"/>
+                                <rect key="frame" x="0.0" y="0.66666666666666785" width="267" height="59"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="59" id="Hs7-a2-gz4"/>
-                                    <constraint firstAttribute="width" constant="267" id="z2Y-pI-yFX"/>
+                                    <constraint firstAttribute="height" constant="59" id="pJM-iL-UL7"/>
                                 </constraints>
                                 <state key="normal" image="pickupLocation"/>
                                 <connections>
@@ -260,7 +259,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SET PICKUP LOCATION" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aeH-mN-jLh" userLabel="Pin Description Label">
-                                <rect key="frame" x="0.0" y="5" width="247" height="30"/>
+                                <rect key="frame" x="0.0" y="6" width="247" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="JKe-6B-IHu"/>
                                 </constraints>
@@ -272,8 +271,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="aeH-mN-jLh" firstAttribute="leading" secondItem="UaH-qS-59A" secondAttribute="leading" id="6Pd-Ly-2pF"/>
+                            <constraint firstAttribute="bottom" secondItem="UaH-qS-59A" secondAttribute="bottom" id="Ipp-0T-bMu"/>
                             <constraint firstItem="aeH-mN-jLh" firstAttribute="top" secondItem="UaH-qS-59A" secondAttribute="top" constant="5" id="Ssf-IO-QQL"/>
-                            <constraint firstItem="UaH-qS-59A" firstAttribute="centerY" secondItem="s8k-eY-ysL" secondAttribute="centerY" id="Ucb-2D-Z3m"/>
                             <constraint firstItem="UaH-qS-59A" firstAttribute="centerX" secondItem="s8k-eY-ysL" secondAttribute="centerX" id="aGZ-7G-3rS"/>
                             <constraint firstItem="aeH-mN-jLh" firstAttribute="trailing" secondItem="UaH-qS-59A" secondAttribute="trailing" constant="-20" id="xKy-3h-2pi"/>
                         </constraints>

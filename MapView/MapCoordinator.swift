@@ -10,8 +10,6 @@ import Foundation
 import MapKit
 import Reachability
 
-// TODO: Fix bug when using the cancel buttons.
-
 class MapCoordinator			: UIView, ContentView, MapContainer, MapActionDelegate {
 
 	// ContentView
@@ -38,10 +36,9 @@ extension MapCoordinator {
 		// Notify the app coordinator.
 		self.delegate?.cancelSearch()
 		// Analytics
-		if (location == .PickUp) {
-			Analytics.PinLocation.didCancelStart.send()
-		} else {
-			Analytics.PinLocation.didCancelDestination.send()
+		switch location {
+		case .PickUp: 		Analytics.PinLocation.didCancelStart.send()
+		case .Destination:	Analytics.PinLocation.didCancelDestination.send()
 		}
 	}
 
@@ -62,8 +59,10 @@ extension MapCoordinator {
 		// Show waiting HUD
 		self.map?.showWaitingHUD()
 		// Analytics
-		let tag: Analytics.PinLocation = (location == .PickUp ? .didSetStart : .didSetDestination)
-		tag.send()
+		switch location {
+		case .PickUp: 		Analytics.PinLocation.didSetStart.send()
+		case .Destination:	Analytics.PinLocation.didSetDestination.send()
+		}
 
 		// Hide the location button and its text
 		self.pinLocation?.hide()
@@ -74,11 +73,12 @@ extension MapCoordinator {
 			// Show the address in the dedicated view.
 			self?.addressLocation?.update(location: location, withAddress: address)
 
-			if (location == .PickUp) {
+			switch location {
+			case .PickUp:
 				self?.configureInterfaceForDestinationLocation()
 				// Hide waiting HUD
 				self?.map?.hideWaitingHUD()
-			} else {
+			case .Destination:
 				// Search for available routes between the two selected locations.
 				// This function must hide the HUD on completion.
 				self?.searchForAvailableRoutes()

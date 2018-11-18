@@ -34,7 +34,7 @@ struct Analytics {
 		var params: [String: Any] = [
 			AnalyticsParameterContentType: action,
 			AnalyticsParameterItemName: action,
-			AnalyticsParameterItemCategory: category
+			AnalyticsParameterItemCategory: category.rawValue
 		]
 
 		if let _label = label {

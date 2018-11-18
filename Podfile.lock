@@ -1,23 +1,7 @@
 PODS:
   - Appirater (2.3.1)
   - Buglife (2.8.1)
-  - CHIPageControl (0.1.7):
-    - CHIPageControl/Aji (= 0.1.7)
-    - CHIPageControl/Aleppo (= 0.1.7)
-    - CHIPageControl/Chimayo (= 0.1.7)
-    - CHIPageControl/Fresno (= 0.1.7)
-    - CHIPageControl/Jalapeno (= 0.1.7)
-    - CHIPageControl/Jaloro (= 0.1.7)
-    - CHIPageControl/Paprika (= 0.1.7)
-    - CHIPageControl/Puya (= 0.1.7)
-  - CHIPageControl/Aji (0.1.7)
-  - CHIPageControl/Aleppo (0.1.7)
-  - CHIPageControl/Chimayo (0.1.7)
-  - CHIPageControl/Fresno (0.1.7)
   - CHIPageControl/Jalapeno (0.1.7)
-  - CHIPageControl/Jaloro (0.1.7)
-  - CHIPageControl/Paprika (0.1.7)
-  - CHIPageControl/Puya (0.1.7)
   - Crashlytics (3.11.1):
     - Fabric (~> 1.8.1)
   - Fabric (1.8.2)
@@ -76,7 +60,7 @@ PODS:
 DEPENDENCIES:
   - Appirater (~> 2.3.1)
   - Buglife (~> 2.8.1)
-  - CHIPageControl (~> 0.1.7)
+  - CHIPageControl/Jalapeno (~> 0.1.7)
   - Crashlytics (~> 3.11.1)
   - Fabric (~> 1.8.2)
   - Firebase/Core (~> 5.12.0)
@@ -116,6 +100,6 @@ SPEC CHECKSUMS:
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SwiftLint: 088cfacb75b45970017e62b7524d506776d60148
 
-PODFILE CHECKSUM: dee5deb7ac4180ac763a1c211936637b279140a9
+PODFILE CHECKSUM: db0b7424dfa307473f4919c404fd747d1d8ff653
 
 COCOAPODS: 1.5.3

@@ -8,7 +8,7 @@ target 'BusMedellin' do
 	pod 'Appirater', '~> 2.3.1'
 	pod 'Buglife', '~> 2.8.1'
 	pod 'SwiftLint', '~> 0.28.0'
-	pod 'CHIPageControl', '~> 0.1.7'
+	pod 'CHIPageControl/Jalapeno', '~> 0.1.7'
 
 	# Google Analytics + Crash Reports
 	pod 'Firebase/Core', '~> 5.12.0'

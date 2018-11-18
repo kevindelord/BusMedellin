@@ -10,7 +10,8 @@ import UIKit
 
 class RoutePageViewController	: UIPageViewController, RoutePageController {
 
-	weak var handler			: RoutePageControllerHandler?
+	// The page controller handler must be retained in this controller.
+	var handler					: RoutePageControllerHandler?
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -48,7 +49,6 @@ extension RoutePageViewController {
 extension RoutePageViewController : UIPageViewControllerDelegate {
 
 	func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-
 		guard
 			let routeDetailPage = pageViewController.viewControllers?.first as? RouteDetailPage,
 			let index = self.handler?.index(of: routeDetailPage) else {

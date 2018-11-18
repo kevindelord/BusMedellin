@@ -15,7 +15,7 @@ protocol RouteManagerDataSource: AnyObject {
 	/// - Parameters:
 	///   - location: The location to find the address.
 	///   - completion: Block having as optional parameter the address of the given location.
-	func address(forLocation location: CLLocation, completion: @escaping ((_ address: String?) -> Void))
+	func address(forLocation location: CLLocation, completion: @escaping ((_ address: String?, _ error: Error?) -> Void))
 
 	/// Fetch coordinates of a route using its identifier (aka route code).
 	///
@@ -30,7 +30,7 @@ protocol RouteManagerDataSource: AnyObject {
 	///   - start: Coordinates of the start / pickup annotation.
 	///   - destination: Coordinates of the destination annotation.
 	///   - completion: Closure called when the matching routes have been fetched.
-	func routes(between start: CLLocationCoordinate2D, and destination: CLLocationCoordinate2D, completion: @escaping (() -> Void))
+	func routes(between start: CLLocationCoordinate2D, and destination: CLLocationCoordinate2D, completion: @escaping ((_ error: Error?) -> Void))
 
 	/// Array of all matching round found for the active search (active start and destination annotations).
 	var availableRoutes : [Route] { get }

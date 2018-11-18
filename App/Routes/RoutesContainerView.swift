@@ -44,13 +44,14 @@ extension RoutesContainerView {
 		self.routePageControl?.reload(numberOfPages: pages.count)
 		self.routePageController?.handler = nil
 
-		guard (pages.isEmpty == false) else {
+		if (pages.isEmpty == false) {
+			// Reload the page controller with a page for each available bus route.
+			let handler = RoutePageControllerHandler(availableRouteDetailPages: pages, delegate: self)
+			self.routePageController?.reload(with: handler)
+		} else {
+			// When the route page controller is reloaded without any handler, all displayed controllers are getting removed.
 			self.routePageController?.reload(with: nil)
-			return
 		}
-
-		let handler = RoutePageControllerHandler(availableRouteDetailPages: pages, delegate: self)
-		self.routePageController?.reload(with: handler)
 	}
 }
 

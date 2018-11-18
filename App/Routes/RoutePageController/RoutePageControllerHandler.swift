@@ -19,7 +19,7 @@ class RoutePageControllerHandler	: RoutePageControllerDataSource {
 	}
 }
 
-// MARK: - RoutePageController DataSource
+// MARK: - RoutePageControllerDataSource
 
 extension RoutePageControllerHandler {
 

@@ -59,6 +59,7 @@ extension MapView {
 
 	func draw(selectedRoute: Route, routeDataSource: RouteManagerDataSource) {
 		routeDataSource.routeCoordinates(for: selectedRoute.code, completion: { [weak self] (coordinates: [CLLocationCoordinate2D], _ error: Error?) in
+			UIAlertController.showErrorPopup(error as NSError?)
 			self?.drawRouteForCoordinates(coordinates: coordinates)
 			// Analytics
 			Analytics.Route.didDrawRoute.send(routeCode: selectedRoute.code, rounteCount: 1)

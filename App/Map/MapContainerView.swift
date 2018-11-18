@@ -86,10 +86,10 @@ extension MapContainerView {
 
 		// Fetch the address of the location
 		let coreLocation = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
-		self.routeDataSource?.address(forLocation: coreLocation, completion: { [weak self] (address: String?) in
+		self.routeDataSource?.address(forLocation: coreLocation, completion: { [weak self] (address: String?, error: Error?) in
+			UIAlertController.showErrorPopup(error as NSError?)
 			// Show the address in the dedicated view.
 			self?.addressLocation?.update(location: location, withAddress: address)
-
 			switch location {
 			case .PickUp:
 				self?.configureInterfaceForDestinationLocation()
@@ -113,7 +113,8 @@ extension MapContainerView {
 				return
 		}
 
-		self.routeDataSource?.routes(between: start, and: destination, completion: { [weak self] in
+		self.routeDataSource?.routes(between: start, and: destination, completion: { [weak self] (_ error: Error?) in
+			UIAlertController.showErrorPopup(error as NSError?)
 			self?.delegate?.reloadContentViews()
 			// Hide waiting HUD
 			self?.map?.hideWaitingHUD()

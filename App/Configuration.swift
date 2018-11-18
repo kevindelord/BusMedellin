@@ -8,7 +8,6 @@
 
 import Foundation
 
-// TODO: Replace #if debug #else #endif with xcconfig
 // TODO: migrate to new Xcode version
 // TODO: fix all swiftlint warnings
 

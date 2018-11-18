@@ -8,8 +8,7 @@
 
 import Firebase
 
-// TODO: use different log events.
-// TODO: remove hockeyapp and integrate Firebase crash analytics tool.
+// TODO: Use different log events.
 
 // MARK: - Firebase
 

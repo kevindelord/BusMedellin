@@ -19,6 +19,7 @@ class MapView											: UIView, MKMapViewDelegate, MapContainedElement, MapVie
 	private var destinationCircle						: MapCircle?
 
 	weak var delegate									: MapActionDelegate?
+	internal var progressView							: HUDView?
 
 	override func layoutSubviews() {
 		super.layoutSubviews()
@@ -32,6 +33,8 @@ class MapView											: UIView, MKMapViewDelegate, MapContainedElement, MapVie
 		self.centerMap(on: Map.cityCenterLocation)
 		// If enabled and authorized, show the user location's blue annotation.
 		self.mapView?.showsUserLocation = (CLLocationManager.authorizationAccepted == true)
+
+		self.progressView = HUDView(within: self, layoutSupport: self.viewController!.bottomLayoutGuide)
 	}()
 }
 

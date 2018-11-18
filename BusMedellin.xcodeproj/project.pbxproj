@@ -92,6 +92,7 @@
 		75C812082196CDD2009BAD79 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C811FE2196CDD2009BAD79 /* Map.storyboard */; };
 		75C8120A2196CDD2009BAD79 /* Routes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C811FF2196CDD2009BAD79 /* Routes.storyboard */; };
 		75C8120C2196CDD2009BAD79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C812002196CDD2009BAD79 /* LaunchScreen.storyboard */; };
+		75F7DE8721A1D7E300B1AE6B /* HUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F7DE8621A1D7E300B1AE6B /* HUDView.swift */; };
 		9552F5CFA445C643C39142C2 /* Pods_BusMedellin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9338684B5BA91C70C2AF54F /* Pods_BusMedellin.framework */; };
 /* End PBXBuildFile section */
 
@@ -191,6 +192,7 @@
 		75C811FE2196CDD2009BAD79 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Map.storyboard; path = Resources/Storyboards/Map.storyboard; sourceTree = "<group>"; };
 		75C811FF2196CDD2009BAD79 /* Routes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Routes.storyboard; path = Resources/Storyboards/Routes.storyboard; sourceTree = "<group>"; };
 		75C812002196CDD2009BAD79 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Resources/Storyboards/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		75F7DE8621A1D7E300B1AE6B /* HUDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUDView.swift; sourceTree = "<group>"; };
 		EC1D87735014DA38EA85466A /* Pods-BusMedellin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusMedellin.release.xcconfig"; path = "Pods/Target Support Files/Pods-BusMedellin/Pods-BusMedellin.release.xcconfig"; sourceTree = "<group>"; };
 		F9338684B5BA91C70C2AF54F /* Pods_BusMedellin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BusMedellin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -409,11 +411,11 @@
 		75BE189A21A0B858008F2DC4 /* MapView */ = {
 			isa = PBXGroup;
 			children = (
-				75BE189B21A0B858008F2DC4 /* HUDContainer.swift */,
 				75BE189C21A0B858008F2DC4 /* MapViewContainer.swift */,
 				75BE189D21A0B858008F2DC4 /* MapView.swift */,
 				75BE189E21A0B858008F2DC4 /* MapCircle */,
 				75BE18A021A0B858008F2DC4 /* Annotation */,
+				75F7DE8821A1D7E700B1AE6B /* HUD */,
 			);
 			path = MapView;
 			sourceTree = "<group>";
@@ -503,6 +505,16 @@
 				75C811FC2196CDD2009BAD79 /* Settings.storyboard */,
 			);
 			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		75F7DE8821A1D7E700B1AE6B /* HUD */ = {
+			isa = PBXGroup;
+			children = (
+				75BE189B21A0B858008F2DC4 /* HUDContainer.swift */,
+				75F7DE8621A1D7E300B1AE6B /* HUDView.swift */,
+			);
+			name = HUD;
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		AE0CB248D55F640D6BD12CEB /* Frameworks */ = {
@@ -749,6 +761,7 @@
 				75BE18F021A0B858008F2DC4 /* MapActionDelegate.swift in Sources */,
 				75BE187E21A0B7CF008F2DC4 /* UIAlertController.swift in Sources */,
 				75BE191A21A0BA94008F2DC4 /* UserLocationViewController.swift in Sources */,
+				75F7DE8721A1D7E300B1AE6B /* HUDView.swift in Sources */,
 				754A25332132CA8B00B3B083 /* Log.swift in Sources */,
 				75BE190421A0B858008F2DC4 /* RoutePageControl.swift in Sources */,
 				750F9D3A21A1732200919626 /* PageControl.swift in Sources */,

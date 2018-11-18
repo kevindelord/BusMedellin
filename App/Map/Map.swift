@@ -20,6 +20,7 @@ struct Map {
 	struct Address {
 
 		static let street			= "Street"
+		static let formatedAddress	= "FormattedAddressLines"
 	}
 
 	/// Default city center location

@@ -24,6 +24,7 @@
 "LOCATION_ERROR_MESSAGE"    = "Por favor vaya a Ajustes para permitir que la aplicación lo localice en el mapa.";
 "LOCATION_ERROR_SETTINGS"   = "Ajustes";
 "LOCATION_ERROR_CANCEL"     = "Cancelar";
+"LOCATION_UNKNOWN"			= "Ubicación desconocida";
 
 //
 // Error Alerts

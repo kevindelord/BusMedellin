@@ -12,7 +12,6 @@ import Reachability
 import Appirater
 
 // TODO: If search is cancelled while fetching data -> cancel all ongoing requests.
-// TODO: Fix successful search but address not displayed in addressView
 
 class MapContainerView			: UIView, ContentView, MapContainer, MapActionDelegate {
 

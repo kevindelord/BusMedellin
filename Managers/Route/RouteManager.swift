@@ -58,11 +58,15 @@ class RouteManager				: RouteManagerDataSource {
 				return
 			}
 
-			for placemark in (placemarks ?? []) {
-				Log(.pinAddress, "Address found: \(placemark.addressDictionary ?? [:])")
-				let street = placemark.addressDictionary?[Map.Address.street] as? String
-				completion(street, nil)
+			guard let placemark = placemarks?.first else {
+				completion(nil, APIManager.Invalid.routes.localizedError)
+				return
 			}
+
+			Log(.pinAddress, "Address found: \(placemark.addressDictionary ?? [:])")
+			let street = placemark.addressDictionary?[Map.Address.street] as? String
+			let address = placemark.addressDictionary?[Map.Address.formatedAddress] as? String
+			completion(street ?? address ?? L("LOCATION_UNKNOWN"), nil)
 		}
 
 		CLGeocoder().reverseGeocodeLocation(location, completionHandler: handler)

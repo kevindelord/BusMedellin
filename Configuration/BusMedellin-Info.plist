@@ -49,5 +49,11 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>isLogEnabled</key>
+	<string>$(IS_LOG_ENABLED)</string>
+	<key>isAnalyticsEnabled</key>
+	<string>$(IS_ANALYTICS_ENABLED)</string>
+	<key>isAppiraterDebug</key>
+	<string>$(IS_APPIRATER_DEBUG)</string>
 </dict>
 </plist>

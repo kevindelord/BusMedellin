@@ -1,0 +1,11 @@
+//
+//  Release.xcconfig
+//  BusMedellin
+//
+//  Created by kevindelord on 18/11/2018.
+//  Copyright © 2018 Kevin Delord. All rights reserved.
+//
+
+IS_APPIRATER_DEBUG = FALSE
+IS_LOG_ENABLED = FALSE
+IS_ANALYTICS_ENABLED = YES

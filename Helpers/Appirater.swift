@@ -17,7 +17,7 @@ extension Appirater {
 		Appirater.setUsesUntilPrompt(0)
 		Appirater.setSignificantEventsUntilPrompt(5)
 		Appirater.setTimeBeforeReminding(1)
-		Appirater.setDebug(Configuration.debugAppirater)
+		Appirater.setDebug(Configuration.isAppiraterDebug)
 		Appirater.appLaunched(true)
 	}
 

@@ -8,7 +8,7 @@
 
 import Firebase
 
-// TODO: use different log events.
+// TODO: Use different log events.
 
 // MARK: - Firebase
 

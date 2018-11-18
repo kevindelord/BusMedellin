@@ -8,15 +8,8 @@
 
 import Foundation
 
-// TODO: Replace #if debug #else #endif with xcconfig
-
-#if DEBUG
-private let isDebug		= true
-private let isRelease	= false
-#else
-private let isDebug		= false
-private let isRelease	= true
-#endif
+// TODO: migrate to new Xcode version
+// TODO: fix all swiftlint warnings
 
 struct Configuration: Decodable {
 
@@ -26,7 +19,6 @@ struct Configuration: Decodable {
 		case buglifeIdentifier
 		case fusionTableIdentifier
 		case fusionTableKey
-		case hockeyAppIdentifier
 		case defaultLatitude
 		case defaultLongitude
 	}
@@ -36,7 +28,6 @@ struct Configuration: Decodable {
 	let buglifeIdentifier		: String
 	let fusionTableIdentifier	: String
 	let fusionTableKey			: String
-	let hockeyAppIdentifier		: String
 	let defaultLatitude			: String
 	let defaultLongitude		: String
 
@@ -51,13 +42,36 @@ struct Configuration: Decodable {
 		self = config
 	}
 
-	static let debugAppirater	: Bool = (false && isDebug)
-	static let analyticsEnabled	: Bool = (true && isRelease)
-
 	struct Verbose {
 
 		static let pinAddress	: Bool = false
 		static let api			: Bool = false
 		static let analytics	: Bool = false
+	}
+}
+
+extension Configuration {
+
+	private enum XCConfigKey: String {
+		case isLogEnabled = "isLogEnabled"
+		case isAppiraterDebug = "isAppiraterDebug"
+		case isAnalyticsEnabled = "isAnalyticsEnabled"
+
+		var boolValue: Bool {
+			// Values from a .xcconfig file can only be automatically added to the main bundle info plist.
+			return (Bundle.main.object(forInfoDictionaryKey: self.rawValue) as? String == "YES")
+		}
+	}
+
+	static var isLogEnabled			: Bool {
+		return XCConfigKey.isLogEnabled.boolValue
+	}
+
+	static var isAppiraterDebug		: Bool {
+		return XCConfigKey.isAppiraterDebug.boolValue
+	}
+
+	static var isAnalyticsEnabled	: Bool {
+		return XCConfigKey.isAnalyticsEnabled.boolValue
 	}
 }

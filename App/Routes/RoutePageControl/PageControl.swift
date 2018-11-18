@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PageControl 						: UIPageControl {
+class PageControl						: UIPageControl {
 
 	@IBInspectable var maximumPageCount	: Int = 0
 }

@@ -14,12 +14,12 @@ enum Storyboard				: String {
 
 	case routes				= "Routes"
 
-	enum Controller 		: String {
+	enum Controller			: String {
 
 		case route			= "RouteViewController"
 	}
 
-	enum Segue 				: String {
+	enum Segue				: String {
 
 		case openSettings	= "openSettings"
 	}

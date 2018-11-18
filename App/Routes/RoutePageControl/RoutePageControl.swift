@@ -6,7 +6,7 @@
 //  Copyright © 2018 Kevin Delord. All rights reserved.
 //
 
-protocol RoutePageControl {
+protocol RoutePageControl: AnyObject {
 
 	/// Reload the page control with a total number of pages displayed.
 	///

@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol SearchResultCoordinator {
+protocol SearchResultCoordinator: AnyObject {
 
 	/// Show the container view displaying the search results.
 	func showSearchResults()

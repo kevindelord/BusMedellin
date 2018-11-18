@@ -8,7 +8,7 @@
 
 import MapKit
 
-protocol UserLocationContainer {
+protocol UserLocationContainer: AnyObject {
 
 	/// Update the UI to reflect a user location status' change.
 	func update(userLocation: MKUserLocation)

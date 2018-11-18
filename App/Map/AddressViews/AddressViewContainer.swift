@@ -8,7 +8,7 @@
 
 /// When conforming to this protocol, an object is supposed to handled UI views to show address Locations.
 /// How the UI is or how the address are shown to the user is not relevant.
-protocol AddressViewContainer {
+protocol AddressViewContainer: AnyObject {
 
 	/// Update the UI elements related to a given location with an address text.
 	///

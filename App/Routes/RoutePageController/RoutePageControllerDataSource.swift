@@ -7,7 +7,7 @@
 //
 
 /// Extract the DataSource logic out of a UIPageViewController instance.
-protocol RoutePageControllerDataSource {
+protocol RoutePageControllerDataSource: AnyObject {
 
 	/// Initial route detail page used to setup the first page of a UIPageViewController stack.
 	var initialRouteDetailPage: RouteDetailPage? { get }

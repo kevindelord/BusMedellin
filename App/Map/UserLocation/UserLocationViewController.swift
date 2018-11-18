@@ -17,10 +17,10 @@ class UserLocationViewController					: UIViewController, UserLocationContainer, 
 	private let locationManager						= CLLocationManager()
 
 	// MapContainedElement
-	var delegate									: MapActionDelegate?
+	weak var delegate								: MapActionDelegate?
 
 	// UserLocationContainer
-	var dataSource									: UserLocationDataSource?
+	weak var dataSource								: UserLocationDataSource?
 }
 
 // MARK: - MapContainedElement

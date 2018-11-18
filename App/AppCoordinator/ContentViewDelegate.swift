@@ -6,7 +6,7 @@
 //  Copyright © 2018 Kevin Delord. All rights reserved.
 //
 
-protocol ContentViewDelegate {
+protocol ContentViewDelegate: AnyObject {
 
 	/// Tells the delegate to reload all content views.
 	func reloadContentViews()

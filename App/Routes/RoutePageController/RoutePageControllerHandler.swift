@@ -11,7 +11,7 @@ import UIKit
 class RoutePageControllerHandler	: RoutePageControllerDataSource {
 
 	private var routeDetailPages	: [RouteDetailPage]
-	private(set) var delegate		: RoutePageViewControllerDelegate?
+	private(set) weak var delegate	: RoutePageViewControllerDelegate?
 
 	init(availableRouteDetailPages routeDetailPages: [RouteDetailPage], delegate: RoutePageViewControllerDelegate?) {
 		self.delegate = delegate

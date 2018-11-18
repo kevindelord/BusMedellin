@@ -9,7 +9,7 @@
 import UIKit
 
 /// Search Result Container displaying available routes.
-protocol RoutesContainer {
+protocol RoutesContainer: AnyObject {
 
 	/// Page Controller to display all avaialble routes from a specific search.
 	var routePageController : RoutePageController? { get set }

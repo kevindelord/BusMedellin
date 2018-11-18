@@ -10,7 +10,7 @@ import UIKit
 
 class RoutePageViewController	: UIPageViewController, RoutePageController {
 
-	var handler					: RoutePageControllerHandler?
+	weak var handler			: RoutePageControllerHandler?
 
 	override func viewDidLoad() {
 		super.viewDidLoad()

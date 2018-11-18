@@ -8,7 +8,7 @@
 
 import CoreLocation
 
-protocol RouteManagerDataSource {
+protocol RouteManagerDataSource: AnyObject {
 
 	/// Fetch the real address of a location using the CLGeocoder.
 	///

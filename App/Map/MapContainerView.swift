@@ -14,19 +14,21 @@ import Appirater
 // TODO: If search is cancelled while fetching data -> cancel all ongoing requests.
 // TODO: Fix successful search but address not displayed in addressView
 // TODO: Fix successful search but routes list not displayed.
+// TODO: Fix scroll on search with multiple results.
 
 class MapContainerView			: UIView, ContentView, MapContainer, MapActionDelegate {
 
 	// ContentView
-	var coordinator				: Coordinator?
-	var delegate				: (RouteManagerDelegate & ContentViewDelegate)?
+	weak var coordinator		: Coordinator?
+	weak var delegate			: (RouteManagerDelegate & ContentViewDelegate)?
 
 	// Map Container
-	var routeDataSource			: RouteManagerDataSource?
-	var map						: (MapContainedElement & MapViewContainer & UserLocationDataSource)?
-	var pinLocation				: (MapContainedElement & PinLocationContainer)?
-	var addressLocation			: (MapContainedElement & AddressViewContainer)?
-	var userLocation			: (MapContainedElement & UserLocationContainer)?
+
+	weak var routeDataSource	: RouteManagerDataSource?
+	weak var map				: (MapContainedElement & MapViewContainer & UserLocationDataSource)?
+	weak var pinLocation		: (MapContainedElement & PinLocationContainer)?
+	weak var addressLocation	: (MapContainedElement & AddressViewContainer)?
+	weak var userLocation		: (MapContainedElement & UserLocationContainer)?
 
 	private var locationCoordinates = [Location: CLLocationCoordinate2D]()
 }

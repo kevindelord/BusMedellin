@@ -13,7 +13,7 @@ class PinLocationViewController							: UIViewController, MapContainedElement, P
 	@IBOutlet weak private var locationButton			: UIButton?
 	@IBOutlet weak private var pinDescriptionLabel		: UILabel?
 
-	var delegate										: MapActionDelegate?
+	weak var delegate									: MapActionDelegate?
 	var currentLocationState							: Location = .PickUp
 
 	override func viewDidLoad() {

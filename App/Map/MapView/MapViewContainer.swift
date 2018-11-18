@@ -8,7 +8,7 @@
 
 import MapKit
 
-protocol MapViewContainer: HUDContainer {
+protocol MapViewContainer: AnyObject, HUDContainer {
 
 	/// Add an annotation at the center of the map view for a specific kind of Location.
 	///

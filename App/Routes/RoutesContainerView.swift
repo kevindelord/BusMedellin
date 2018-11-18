@@ -13,12 +13,12 @@ class RoutesContainerView						: UIView, RoutesContainer, ContentView, RoutePage
 	@IBOutlet private weak var totalRoutes		: UILabel?
 
 	// RouteContainer Protocol
-	var routePageController						: RoutePageController?
-	var routePageControl						: RoutePageControl?
+	weak var routePageController				: RoutePageController?
+	weak var routePageControl					: RoutePageControl?
 
 	// ContentView Protocol
-	var coordinator								: Coordinator?
-	var delegate								: (RouteManagerDelegate & ContentViewDelegate)?
+	weak var coordinator						: Coordinator?
+	weak var delegate							: (RouteManagerDelegate & ContentViewDelegate)?
 }
 
 // MARK: - RoutePageViewControllerDelegate

@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol RoutePageController {
+protocol RoutePageController: AnyObject {
 
 	/// PageViewController's DataSource handler.
 	/// The exact type of the displayed page is not known to the controller, neither its DataSource.

@@ -6,7 +6,7 @@
 //  Copyright © 2018 Kevin Delord. All rights reserved.
 //
 
-protocol RouteManagerDelegate {
+protocol RouteManagerDelegate: AnyObject {
 
 	/// Cancel the search and reset the attributes.
 	func cancelSearch()

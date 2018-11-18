@@ -14,7 +14,7 @@ class AddressView									: UIView, UITextFieldDelegate {
 	@IBOutlet private weak var dotIndicator			: UIView?
 
 	private var location							: Location = .PickUp
-	private var delegate							: MapActionDelegate?
+	private weak var delegate						: MapActionDelegate?
 
 	func setup(as location: Location, delegate: MapActionDelegate?) {
 		self.location = location

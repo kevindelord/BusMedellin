@@ -14,7 +14,7 @@ class AddressViewController										: UIViewController, MapContainedElement, Ad
 	@IBOutlet weak private var destinationInfoView				: AddressView?
 	@IBOutlet weak private var destinationInfoViewPosition		: NSLayoutConstraint?
 
-	var delegate												: MapActionDelegate?
+	weak var delegate											: MapActionDelegate?
 
 	override func viewDidLoad() {
 		super.viewDidLoad()

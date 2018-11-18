@@ -16,8 +16,8 @@ class FooterView										: UIView {
 
 	// MARK: - Attributes
 
-	var coordinator										: Coordinator?
-	var delegate										: (ContentViewDelegate & RouteManagerDelegate)?
+	weak var coordinator								: Coordinator?
+	weak var delegate									: (ContentViewDelegate & RouteManagerDelegate)?
 
 	override func awakeFromNib() {
 		super.awakeFromNib()

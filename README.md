@@ -41,7 +41,7 @@ $> pod install
 
 ## Analytics
 
-[Google Analytics](https://console.developers.google.com) and [Firebase](https://console.firebase.google.com) are integrated to analyse how the users use the app.
+[Firebase](https://console.firebase.google.com) is integrated to analyse how users use the app and monitor crashes.
 
 ## External Links:
 

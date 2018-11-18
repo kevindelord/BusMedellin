@@ -47,43 +47,23 @@ extension RoutePageControllerHandler {
 		guard
 			(self.numberOfRouteDetailPages > 1),
 			let routeDetailPage = routeDetailPage,
-			let index = self.index(of: routeDetailPage) else {
+			let index = self.index(of: routeDetailPage),
+			(self.numberOfRouteDetailPages > (index - 1)) else {
 				return nil
 		}
 
-		let previousIndex = (index - 1)
-
-		// User is on the first view controller and swiped left to loop to the last view controller.
-		guard (previousIndex >= 0) else {
-			return self.routeDetailPages.last
-		}
-
-		guard (self.numberOfRouteDetailPages > previousIndex) else {
-			return nil
-		}
-
-		return self.routeDetailPages[safe: previousIndex]
+		return self.routeDetailPages[safe: (index - 1)]
 	}
 
 	func routeDetailPage(after routeDetailPage: RouteDetailPage?) -> RouteDetailPage? {
 		guard
 			(self.numberOfRouteDetailPages > 1),
 			let routeDetailPage = routeDetailPage,
-			let index = self.index(of: routeDetailPage) else {
+			let index = self.index(of: routeDetailPage),
+			(self.numberOfRouteDetailPages > (index + 1)) else {
 				return nil
 		}
 
-		let nextIndex = (index + 1)
-
-		// User is on the last view controller and swiped right to loop to the first view controller.
-		guard (self.numberOfRouteDetailPages != nextIndex) else {
-			return self.routeDetailPages.first
-		}
-
-		guard (self.numberOfRouteDetailPages > nextIndex) else {
-			return nil
-		}
-
-		return self.routeDetailPages[safe: nextIndex]
+		return self.routeDetailPages[safe: (index + 1)]
 	}
 }

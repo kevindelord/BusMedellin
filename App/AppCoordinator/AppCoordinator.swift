@@ -48,7 +48,7 @@ extension AppCoordinator {
 	}
 
 	func openSettings() {
-		self.container?.performSegue(withIdentifier: Storyboard.Segue.openSettings, sender: nil)
+		self.container?.performSegue(withIdentifier: Storyboard.Segue.openSettings.rawValue, sender: nil)
 	}
 }
 

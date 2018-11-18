@@ -1,33 +1,12 @@
 //
-//  Constants.swift
+//  Color.swift
 //  BusMedellin
 //
-//  Created by Kevin Delord on 13/10/16.
-//  Copyright © 2016 Kevin Delord. All rights reserved.
+//  Created by kevindelord on 18/11/2018.
+//  Copyright © 2018 Kevin Delord. All rights reserved.
 //
 
-import Foundation
 import UIKit
-
-extension UIPageControl {
-
-	static let maximumPageCount		= 15
-}
-
-struct Storyboard {
-
-	static let routes				= "Routes"
-
-	struct Controller {
-
-		static let route			= "RouteViewController"
-	}
-
-	struct Segue {
-
-		static let openSettings		= "openSettings"
-	}
-}
 
 struct Color {
 

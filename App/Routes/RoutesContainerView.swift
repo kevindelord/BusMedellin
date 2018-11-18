@@ -86,8 +86,8 @@ extension RoutesContainerView {
 		var pages = [RouteDetailPage]()
 
 		for route in routes {
-			let storyboard = UIStoryboard(name: Storyboard.routes, bundle: nil)
-			let controller = storyboard.instantiateViewController(withIdentifier: Storyboard.Controller.route)
+			let storyboard = UIStoryboard(name: Storyboard.routes.rawValue, bundle: nil)
+			let controller = storyboard.instantiateViewController(withIdentifier: Storyboard.Controller.route.rawValue)
 			if let routeController = controller as? RouteDetailViewController {
 				routeController.route = route
 				pages.append(routeController)

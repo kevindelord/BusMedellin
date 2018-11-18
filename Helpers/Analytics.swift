@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 struct Analytics {
 
@@ -16,8 +17,10 @@ struct Analytics {
 			return
 		}
 
-		// Firebase
-		Firebase.setup()
+		// Set the Firebase log to the minimum required.
+		FirebaseConfiguration.shared.setLoggerLevel(.min)
+		// Use Firebase library to configure APIs
+		FirebaseApp.configure()
 	}
 
 	// MARK: - Send Actions
@@ -28,9 +31,25 @@ struct Analytics {
 			return
 		}
 
-		// Firebase
-		Firebase.send(category: category.rawValue, action: action, label: label, value: value)
+		var params: [String: Any] = [
+			AnalyticsParameterContentType: action,
+			AnalyticsParameterItemName: action,
+			AnalyticsParameterItemCategory: category
+		]
+
+		if let _label = label {
+			params[AnalyticsParameterItemVariant] = _label
+		}
+
+		if let _value = value {
+			params[AnalyticsParameterValue] = _value
+		}
+
+		FirebaseAnalytics.Analytics.logEvent(AnalyticsEventSelectContent, parameters: params)
 	}
+}
+
+extension Analytics {
 
 	// MARK: - Categories
 

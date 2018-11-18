@@ -9,23 +9,6 @@
 import Foundation
 import UIKit
 
-struct API {
-
-	struct Response {
-
-		struct Key {
-
-			static let rows			= "rows"
-			static let coordinates	= "coordinates"
-			static let geometry		= "geometry"
-			static let geometries	= "geometries"
-		}
-
-		// 'Sin Nombre' and 'sn' are known invalid values coming from the API.
-		static let invalidValues	= ["Sin Nombre", "sn"]
-	}
-}
-
 struct Segue {
 
 	static let settings				= "openSettings"
@@ -85,13 +68,4 @@ struct Color {
 	static let black				= UIColor.black
 	static let lightGray			= (UIColor(red: 230, green: 230, blue: 230) ?? .lightGray)
 	static let darkGray				= (UIColor(red: 150, green: 150, blue: 150) ?? .darkGray)
-}
-
-struct BMExternalLink {
-
-	static let project				= "https://github.com/kevindelord/BusMedellin"
-	static let thibaultDurand		= "https://github.com/tdurand"
-	static let twitterTDurand		= "https://twitter.com/tibbb"
-	static let webVersion			= "http://tdurand.github.io/mapamedellin"
-	static let kevinDelord			= "https://github.com/kevindelord"
 }

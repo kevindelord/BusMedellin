@@ -61,10 +61,10 @@ class SettingsViewController					: UIViewController {
 		let attrStr = NSMutableAttributedString(string: L("SETTINGS_ABOUT_TEXT"))
 
 		let anchors : [(text: String, url: String)] = [
-			(L("SETTINGS_ABOUT_ANCHOR_1"), BMExternalLink.project),
-			(L("SETTINGS_ABOUT_ANCHOR_2"), BMExternalLink.thibaultDurand),
-			(L("SETTINGS_ABOUT_ANCHOR_3"), BMExternalLink.twitterTDurand),
-			(L("SETTINGS_ABOUT_ANCHOR_4"), BMExternalLink.webVersion)
+			(L("SETTINGS_ABOUT_ANCHOR_1"), ExternalLink.project),
+			(L("SETTINGS_ABOUT_ANCHOR_2"), ExternalLink.thibaultDurand),
+			(L("SETTINGS_ABOUT_ANCHOR_3"), ExternalLink.twitterTDurand),
+			(L("SETTINGS_ABOUT_ANCHOR_4"), ExternalLink.webVersion)
 		]
 
 		for anchor in anchors {
@@ -79,7 +79,7 @@ class SettingsViewController					: UIViewController {
 		let str = L("SETTINGS_MADE_BY")
 		let attrStr = NSMutableAttributedString(string: L("SETTINGS_MADE_BY"))
 
-		let tuple = (anchor: L("SETTINGS_MADE_BY_ANCHOR"), url: BMExternalLink.kevinDelord)
+		let tuple = (anchor: L("SETTINGS_MADE_BY_ANCHOR"), url: ExternalLink.kevinDelord)
 		attrStr.addAttribute(.link, value: tuple.url, range: (str as NSString).range(of: tuple.anchor))
 		attrStr.addAttribute(.link, value: self.textViewFont, range: NSRange(location: 0, length: str.count))
 		// Center text

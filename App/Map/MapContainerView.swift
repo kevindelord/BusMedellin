@@ -13,8 +13,6 @@ import Appirater
 
 // TODO: If search is cancelled while fetching data -> cancel all ongoing requests.
 // TODO: Fix successful search but address not displayed in addressView
-// TODO: Fix successful search but routes list not displayed.
-// TODO: Fix scroll on search with multiple results.
 
 class MapContainerView			: UIView, ContentView, MapContainer, MapActionDelegate {
 
@@ -115,14 +113,15 @@ extension MapContainerView {
 
 		self.routeDataSource?.routes(between: start, and: destination, completion: { [weak self] (_ error: Error?) in
 			UIAlertController.showErrorPopup(error as NSError?)
-			self?.delegate?.reloadContentViews()
-			// Hide waiting HUD
-			self?.map?.hideWaitingHUD()
-
 			if (self?.routeDataSource?.availableRoutes.isEmpty == false) {
 				// Significant Event: The user just did another successful search.
 				Appirater.triggerSignificantEvent()
 			}
+
+			// Reload contained views.
+			self?.delegate?.reloadContentViews()
+			// Hide waiting HUD
+			self?.map?.hideWaitingHUD()
 		})
 	}
 

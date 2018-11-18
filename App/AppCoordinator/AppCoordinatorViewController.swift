@@ -33,6 +33,11 @@ class AppCoordinatorViewController					: UIViewController, AppCoordinatorContain
 extension AppCoordinatorViewController {
 
 	func showSearchResults() {
+		// Only trigger the animation when necessary.
+		guard (self.routesContainer.isHidden == true) else {
+			return
+		}
+
 		UIView.animate(withDuration: 0.3) {
 			self.footerContainer.isHidden = true
 			self.routesContainer.isHidden = false
@@ -41,6 +46,11 @@ extension AppCoordinatorViewController {
 	}
 
 	func hideSearchResults() {
+		// Only trigger the animation when necessary.
+		guard (self.routesContainer.isHidden == false) else {
+			return
+		}
+
 		UIView.animate(withDuration: 0.3) {
 			self.footerContainer.isHidden = false
 			self.routesContainer.isHidden = true

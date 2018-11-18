@@ -58,8 +58,9 @@ class SettingsViewController					: UIViewController {
 
 	private func setupAboutTextView() {
 		let str = L("SETTINGS_ABOUT_TEXT")
-		let attrStr = NSMutableAttributedString(string: L("SETTINGS_ABOUT_TEXT"))
+		let attrStr = NSMutableAttributedString(string: str)
 
+		// Add URL Links
 		let anchors : [(text: String, url: String)] = [
 			(L("SETTINGS_ABOUT_ANCHOR_1"), ExternalLink.project),
 			(L("SETTINGS_ABOUT_ANCHOR_2"), ExternalLink.thibaultDurand),
@@ -71,21 +72,24 @@ class SettingsViewController					: UIViewController {
 			attrStr.addAttribute(.link, value: anchor.url, range: (str as NSString).range(of: anchor.text))
 		}
 
+		// Text Font
 		attrStr.addAttribute(.font, value: self.textViewFont, range: NSRange(location: 0, length: str.count))
 		self.aboutTextView?.attributedText = attrStr
 	}
 
 	private func setupMadeByTextView() {
 		let str = L("SETTINGS_MADE_BY")
-		let attrStr = NSMutableAttributedString(string: L("SETTINGS_MADE_BY"))
+		let attrStr = NSMutableAttributedString(string: str)
 
-		let tuple = (anchor: L("SETTINGS_MADE_BY_ANCHOR"), url: ExternalLink.kevinDelord)
-		attrStr.addAttribute(.link, value: tuple.url, range: (str as NSString).range(of: tuple.anchor))
-		attrStr.addAttribute(.link, value: self.textViewFont, range: NSRange(location: 0, length: str.count))
+		// Add URL Link
+		let anchor = (text: L("SETTINGS_MADE_BY_ANCHOR"), url: ExternalLink.kevinDelord)
+		attrStr.addAttribute(.link, value: anchor.url, range: (str as NSString).range(of: anchor.text))
 		// Center text
 		let paragraphStyle = NSMutableParagraphStyle()
 		paragraphStyle.alignment = .center
 		attrStr.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: str.count))
+		// Text Font
+		attrStr.addAttribute(.font, value: self.textViewFont, range: NSRange(location: 0, length: str.count))
 
 		self.madeByTextView?.attributedText = attrStr
 	}

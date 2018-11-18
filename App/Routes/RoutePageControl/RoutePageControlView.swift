@@ -20,12 +20,16 @@ class RoutePageControlView					: UIView, RoutePageControl {
 extension RoutePageControlView {
 
 	func reload(numberOfPages: Int) {
-		self.pageControl.pageIndicatorTintColor = Color.lightGray.withAlphaComponent(0.7)
-		self.pageControl.currentPageIndicatorTintColor = Color.blue
+		self.pageControl.radius = 5
+		self.pageControl.padding = 10
+		self.pageControl.tintColor = Color.lightGray
+		self.pageControl.currentPageTintColor = Color.blue
 		self.pageControl.numberOfPages = min(numberOfPages, self.pageControl.maximumPageCount)
+		self.pageControl.set(progress: 0, animated: false)
 	}
 
 	func update(currentPage: Int) {
-		self.pageControl.currentPage = (currentPage % self.pageControl.maximumPageCount)
+		let progress = (currentPage % self.pageControl.maximumPageCount)
+		self.pageControl.set(progress: progress, animated: true)
 	}
 }

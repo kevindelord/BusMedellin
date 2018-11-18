@@ -12,7 +12,7 @@ struct Analytics {
 
 	static func setup() {
 		// Check if the analytics is enabled
-		guard (Configuration().isAnalyticsEnabled.boolValue == true) else {
+		guard (Configuration.isAnalyticsEnabled == true) else {
 			return
 		}
 
@@ -24,7 +24,7 @@ struct Analytics {
 
 	private static func send(category: Analytics.Category, action: String, label: String?, value: NSNumber?) {
 		// Check if the analytics is enabled
-		guard (Configuration().isAnalyticsEnabled.boolValue == true) else {
+		guard (Configuration.isAnalyticsEnabled == true) else {
 			return
 		}
 

@@ -14,6 +14,8 @@
 		752DB9A421A0D5C500286042 /* CLLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752DB9A221A0D5C500286042 /* CLLocationManager.swift */; };
 		752DB9A721A0E3B400286042 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752DB9A521A0E3B400286042 /* API.swift */; };
 		752DB9AA21A0E3E500286042 /* ExternalLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752DB9A821A0E3E500286042 /* ExternalLink.swift */; };
+		752DB9AF21A0F25500286042 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 752DB9AB21A0EB5A00286042 /* Debug.xcconfig */; };
+		752DB9B021A0F25700286042 /* Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 752DB9AC21A0EBC000286042 /* Release.xcconfig */; };
 		754A25332132CA8B00B3B083 /* DKLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A25312132CA8B00B3B083 /* DKLog.swift */; };
 		754A25422132CC7300B3B083 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A25402132CC7300B3B083 /* Localization.swift */; };
 		755DB8D9213C207B0092756E /* RouteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755DB8D7213C207B0092756E /* RouteManager.swift */; };
@@ -215,12 +217,10 @@
 				75BE188121A0B858008F2DC4 /* App */,
 				75805BC21DAF5B6900DACFF5 /* Models */,
 				755DB8DA213C208A0092756E /* Managers */,
-				75640BF51DAF1A5F002B4A56 /* PLists */,
+				75640BF51DAF1A5F002B4A56 /* Configuration */,
 				75640BEE1DAF19FB002B4A56 /* Helpers */,
 				7554E78B1DAF18BE00F1178C /* Resources */,
 				7554E7771DAF16E400F1178C /* Products */,
-				752DB9AB21A0EB5A00286042 /* Debug.xcconfig */,
-				752DB9AC21A0EBC000286042 /* Release.xcconfig */,
 				D8AB5BF2B8EDA9E3FE522DE2 /* Pods */,
 				AE0CB248D55F640D6BD12CEB /* Frameworks */,
 			);
@@ -270,14 +270,16 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		75640BF51DAF1A5F002B4A56 /* PLists */ = {
+		75640BF51DAF1A5F002B4A56 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
+				752DB9AB21A0EB5A00286042 /* Debug.xcconfig */,
+				752DB9AC21A0EBC000286042 /* Release.xcconfig */,
 				757F31611DBE5E16002BB03F /* GoogleService-Info.plist */,
 				758E105B1DBD930A00D872BC /* BusMedellin-Info.plist */,
 				75B41C5521343D8500588CE8 /* Configuration.plist */,
 			);
-			path = PLists;
+			path = Configuration;
 			sourceTree = "<group>";
 		};
 		75805BC21DAF5B6900DACFF5 /* Models */ = {
@@ -592,12 +594,14 @@
 			files = (
 				75B41C5721343D8500588CE8 /* Configuration.plist in Resources */,
 				757F31631DBE5E16002BB03F /* GoogleService-Info.plist in Resources */,
+				752DB9B021A0F25700286042 /* Release.xcconfig in Resources */,
 				758E104E1DBD92D000D872BC /* Settings.bundle in Resources */,
 				75C812022196CDD2009BAD79 /* Footer.storyboard in Resources */,
 				758E10501DBD92D000D872BC /* Assets.xcassets in Resources */,
 				75C812082196CDD2009BAD79 /* Map.storyboard in Resources */,
 				75C8120A2196CDD2009BAD79 /* Routes.storyboard in Resources */,
 				758E10511DBD92D000D872BC /* Localizable.strings in Resources */,
+				752DB9AF21A0F25500286042 /* Debug.xcconfig in Resources */,
 				75C812062196CDD2009BAD79 /* App.storyboard in Resources */,
 				75C8120C2196CDD2009BAD79 /* LaunchScreen.storyboard in Resources */,
 				75C812042196CDD2009BAD79 /* Settings.storyboard in Resources */,
@@ -904,7 +908,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Kevin Delord (366NMB25XL)";
 				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = QXY3J9PHW4;
-				INFOPLIST_FILE = "$(SRCROOT)/PLists/BusMedellin-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Configuration/BusMedellin-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.kevindelord.buspaisa;
@@ -921,7 +925,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Kevin Delord (QXY3J9PHW4)";
 				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = QXY3J9PHW4;
-				INFOPLIST_FILE = "$(SRCROOT)/PLists/BusMedellin-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Configuration/BusMedellin-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.kevindelord.buspaisa;

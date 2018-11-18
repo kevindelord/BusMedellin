@@ -23,9 +23,6 @@ struct Configuration: Decodable {
 		case hockeyAppIdentifier
 		case defaultLatitude
 		case defaultLongitude
-		case isLogEnabled
-		case isAppiraterDebug
-		case isAnalyticsEnabled
 	}
 
 	let apiBaseUrl				: String
@@ -36,9 +33,6 @@ struct Configuration: Decodable {
 	let hockeyAppIdentifier		: String
 	let defaultLatitude			: String
 	let defaultLongitude		: String
-	let isLogEnabled			: String
-	let isAppiraterDebug		: String
-	let isAnalyticsEnabled		: String
 
 	init() {
 		guard
@@ -54,14 +48,33 @@ struct Configuration: Decodable {
 	struct Verbose {
 
 		static let pinAddress	: Bool = false
-		static let api			: Bool = true
+		static let api			: Bool = false
 		static let analytics	: Bool = false
 	}
 }
 
-extension String {
+extension Configuration {
 
-	var boolValue: Bool {
-		return (self == "YES")
+	private enum XCConfigKey: String {
+		case isLogEnabled = "isLogEnabled"
+		case isAppiraterDebug = "isAppiraterDebug"
+		case isAnalyticsEnabled = "isAnalyticsEnabled"
+
+		var boolValue: Bool {
+			// Values from a .xcconfig file can only be automatically added to the main bundle info plist.
+			return (Bundle.main.object(forInfoDictionaryKey: self.rawValue) as? String == "YES")
+		}
+	}
+
+	static var isLogEnabled			: Bool {
+		return XCConfigKey.isLogEnabled.boolValue
+	}
+
+	static var isAppiraterDebug		: Bool {
+		return XCConfigKey.isAppiraterDebug.boolValue
+	}
+
+	static var isAnalyticsEnabled	: Bool {
+		return XCConfigKey.isAnalyticsEnabled.boolValue
 	}
 }

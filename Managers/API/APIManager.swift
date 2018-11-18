@@ -9,7 +9,9 @@
 import Foundation
 import MapKit
 
-// TODO: Integrate Timeout in APIManager.
+/// Active data task.
+/// As there is no concurrent data task happening, using one static variable is ugly but solves the problem easily.
+private var _currentTask: URLSessionDataTask?
 
 class APIManager {
 
@@ -37,9 +39,17 @@ class APIManager {
 			return
 		}
 
+		// As there should be no concurrent task, cancel and overwrite any existing one.
+		_currentTask?.cancel()
 		let config = URLSessionConfiguration.default
 		let session = URLSession(configuration: config)
-		let task = session.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
+		_currentTask = session.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
+			_currentTask = nil
+			guard ((error as NSError?)?.code != -999) else {
+				// Task got cancelled. Only abort.
+				return
+			}
+
 			if let error = error {
 				failure(error)
 				return
@@ -50,7 +60,7 @@ class APIManager {
 
 		Log(.api, "Request: \(request)")
 		Log(.api, "HTTP header fields: \(request.allHTTPHeaderFields ?? [:])")
-		task.resume()
+		_currentTask?.resume()
 	}
 
 	private static func didCompleteSessionTask(data: Data?, success: @escaping ((_ json: [AnyHashable: Any]) -> Void), failure: @escaping ((_ error: Error) -> Void)) {
@@ -73,6 +83,10 @@ class APIManager {
 				failure(error)
 			}
 		}
+	}
+
+	static func cancelOperations() {
+		_currentTask?.cancel()
 	}
 }
 

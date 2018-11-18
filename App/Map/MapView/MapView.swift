@@ -95,6 +95,7 @@ extension MapView {
 
 	func didCancel(location: Location) {
 		self.removeDrawnRoutes()
+		self.hideWaitingHUD()
 
 		switch location {
 		case .PickUp:

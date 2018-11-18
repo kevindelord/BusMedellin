@@ -11,8 +11,6 @@ import MapKit
 import Reachability
 import Appirater
 
-// TODO: If search is cancelled while fetching data -> cancel all ongoing requests.
-
 class MapContainerView			: UIView, ContentView, MapContainer, MapActionDelegate {
 
 	// ContentView

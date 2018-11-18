@@ -14,9 +14,7 @@
 		752DB9A421A0D5C500286042 /* CLLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752DB9A221A0D5C500286042 /* CLLocationManager.swift */; };
 		752DB9A721A0E3B400286042 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752DB9A521A0E3B400286042 /* API.swift */; };
 		752DB9AA21A0E3E500286042 /* ExternalLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752DB9A821A0E3E500286042 /* ExternalLink.swift */; };
-		752DB9AF21A0F25500286042 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 752DB9AB21A0EB5A00286042 /* Debug.xcconfig */; };
-		752DB9B021A0F25700286042 /* Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 752DB9AC21A0EBC000286042 /* Release.xcconfig */; };
-		754A25332132CA8B00B3B083 /* DKLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A25312132CA8B00B3B083 /* DKLog.swift */; };
+		754A25332132CA8B00B3B083 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A25312132CA8B00B3B083 /* Log.swift */; };
 		754A25422132CC7300B3B083 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A25402132CC7300B3B083 /* Localization.swift */; };
 		755DB8D9213C207B0092756E /* RouteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755DB8D7213C207B0092756E /* RouteManager.swift */; };
 		755DB8DC213C5C390092756E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 755DB8DB213C5C390092756E /* StoreKit.framework */; };
@@ -109,7 +107,7 @@
 		752DB9A821A0E3E500286042 /* ExternalLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalLink.swift; sourceTree = "<group>"; };
 		752DB9AB21A0EB5A00286042 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		752DB9AC21A0EBC000286042 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
-		754A25312132CA8B00B3B083 /* DKLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DKLog.swift; sourceTree = "<group>"; };
+		754A25312132CA8B00B3B083 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		754A25402132CC7300B3B083 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		75513BDF1DB019C600957F40 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
 		755DB8D7213C207B0092756E /* RouteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteManager.swift; sourceTree = "<group>"; };
@@ -258,7 +256,7 @@
 			children = (
 				75BE186B21A0B7CF008F2DC4 /* Extensions */,
 				75640BF01DAF19FB002B4A56 /* Appirater.swift */,
-				754A25312132CA8B00B3B083 /* DKLog.swift */,
+				754A25312132CA8B00B3B083 /* Log.swift */,
 				757F31641DBE5F14002BB03F /* Analytics.swift */,
 				75052AC821381C510063AE05 /* Firebase.swift */,
 				75640BF11DAF19FB002B4A56 /* Reachability.swift */,
@@ -557,7 +555,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Kevin Delord";
 				TargetAttributes = {
 					758E10331DBD92D000D872BC = {
@@ -592,14 +590,12 @@
 			files = (
 				75B41C5721343D8500588CE8 /* Configuration.plist in Resources */,
 				757F31631DBE5E16002BB03F /* GoogleService-Info.plist in Resources */,
-				752DB9B021A0F25700286042 /* Release.xcconfig in Resources */,
 				758E104E1DBD92D000D872BC /* Settings.bundle in Resources */,
 				75C812022196CDD2009BAD79 /* Footer.storyboard in Resources */,
 				758E10501DBD92D000D872BC /* Assets.xcassets in Resources */,
 				75C812082196CDD2009BAD79 /* Map.storyboard in Resources */,
 				75C8120A2196CDD2009BAD79 /* Routes.storyboard in Resources */,
 				758E10511DBD92D000D872BC /* Localizable.strings in Resources */,
-				752DB9AF21A0F25500286042 /* Debug.xcconfig in Resources */,
 				75C812062196CDD2009BAD79 /* App.storyboard in Resources */,
 				75C8120C2196CDD2009BAD79 /* LaunchScreen.storyboard in Resources */,
 				75C812042196CDD2009BAD79 /* Settings.storyboard in Resources */,
@@ -750,7 +746,7 @@
 				75BE18F021A0B858008F2DC4 /* MapActionDelegate.swift in Sources */,
 				75BE187E21A0B7CF008F2DC4 /* UIAlertController.swift in Sources */,
 				75BE191A21A0BA94008F2DC4 /* UserLocationViewController.swift in Sources */,
-				754A25332132CA8B00B3B083 /* DKLog.swift in Sources */,
+				754A25332132CA8B00B3B083 /* Log.swift in Sources */,
 				75BE190421A0B858008F2DC4 /* RoutePageControl.swift in Sources */,
 				75BE191221A0B858008F2DC4 /* RoutesViewController.swift in Sources */,
 				752DB9A721A0E3B400286042 /* API.swift in Sources */,
@@ -901,6 +897,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Kevin Delord (366NMB25XL)";
 				CURRENT_PROJECT_VERSION = 5;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = QXY3J9PHW4;
 				INFOPLIST_FILE = "$(SRCROOT)/Configuration/BusMedellin-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;

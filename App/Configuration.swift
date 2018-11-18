@@ -41,13 +41,6 @@ struct Configuration: Decodable {
 
 		self = config
 	}
-
-	struct Verbose {
-
-		static let pinAddress	: Bool = false
-		static let api			: Bool = false
-		static let analytics	: Bool = false
-	}
 }
 
 extension Configuration {

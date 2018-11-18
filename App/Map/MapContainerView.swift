@@ -25,7 +25,7 @@ class MapContainerView			: UIView, ContentView, MapContainer, MapActionDelegate,
 	weak var userLocation		: (MapContainedElement & UserLocationContainer)?
 
 	// HUD Container
-	weak var hudView 			: HUDView?
+	weak var hudView			: HUDView?
 
 	private var locationCoordinates = [Location: CLLocationCoordinate2D]()
 }

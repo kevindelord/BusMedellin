@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		75052ACA21381C510063AE05 /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75052AC821381C510063AE05 /* Firebase.swift */; };
 		75052ACD213833AE0063AE05 /* APIManager+Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75052ACB213833AE0063AE05 /* APIManager+Errors.swift */; };
+		750F9D3A21A1732200919626 /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750F9D3921A1732200919626 /* PageControl.swift */; };
+		750F9D3C21A1735700919626 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750F9D3B21A1735700919626 /* Color.swift */; };
 		752DB99E21A0BF0D00286042 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752DB99C21A0BF0D00286042 /* Map.swift */; };
 		752DB9A121A0CF0C00286042 /* UserLocationDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752DB99F21A0CF0C00286042 /* UserLocationDataSource.swift */; };
 		752DB9A421A0D5C500286042 /* CLLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752DB9A221A0D5C500286042 /* CLLocationManager.swift */; };
@@ -37,10 +39,9 @@
 		75BE187C21A0B7CF008F2DC4 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BE187021A0B7CF008F2DC4 /* UIColor.swift */; };
 		75BE187E21A0B7CF008F2DC4 /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BE187121A0B7CF008F2DC4 /* UIAlertController.swift */; };
 		75BE188021A0B7CF008F2DC4 /* NSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BE187221A0B7CF008F2DC4 /* NSError.swift */; };
-		75BE18BE21A0B858008F2DC4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BE188221A0B858008F2DC4 /* Constants.swift */; };
+		75BE18BE21A0B858008F2DC4 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BE188221A0B858008F2DC4 /* Storyboard.swift */; };
 		75BE18C021A0B858008F2DC4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BE188421A0B858008F2DC4 /* SettingsViewController.swift */; };
 		75BE18C221A0B858008F2DC4 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BE188621A0B858008F2DC4 /* FooterView.swift */; };
-		75BE18C421A0B858008F2DC4 /* FooterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BE188721A0B858008F2DC4 /* FooterViewController.swift */; };
 		75BE18C621A0B858008F2DC4 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BE188921A0B858008F2DC4 /* AppCoordinator.swift */; };
 		75BE18C821A0B858008F2DC4 /* AppCoordinatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BE188A21A0B858008F2DC4 /* AppCoordinatorViewController.swift */; };
 		75BE18CA21A0B858008F2DC4 /* ContentViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BE188B21A0B858008F2DC4 /* ContentViewDelegate.swift */; };
@@ -100,6 +101,8 @@
 		4301C8C80BE111EDA26F55FC /* Pods_BusMedellin_Live_AppStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BusMedellin_Live_AppStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75052AC821381C510063AE05 /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
 		75052ACB213833AE0063AE05 /* APIManager+Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIManager+Errors.swift"; sourceTree = "<group>"; };
+		750F9D3921A1732200919626 /* PageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
+		750F9D3B21A1735700919626 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		752DB99C21A0BF0D00286042 /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		752DB99F21A0CF0C00286042 /* UserLocationDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationDataSource.swift; sourceTree = "<group>"; };
 		752DB9A221A0D5C500286042 /* CLLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationManager.swift; sourceTree = "<group>"; };
@@ -133,10 +136,9 @@
 		75BE187021A0B7CF008F2DC4 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		75BE187121A0B7CF008F2DC4 /* UIAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
 		75BE187221A0B7CF008F2DC4 /* NSError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSError.swift; sourceTree = "<group>"; };
-		75BE188221A0B858008F2DC4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		75BE188221A0B858008F2DC4 /* Storyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		75BE188421A0B858008F2DC4 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		75BE188621A0B858008F2DC4 /* FooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
-		75BE188721A0B858008F2DC4 /* FooterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FooterViewController.swift; sourceTree = "<group>"; };
 		75BE188921A0B858008F2DC4 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		75BE188A21A0B858008F2DC4 /* AppCoordinatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinatorViewController.swift; sourceTree = "<group>"; };
 		75BE188B21A0B858008F2DC4 /* ContentViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewDelegate.swift; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 				75052AC821381C510063AE05 /* Firebase.swift */,
 				75640BF11DAF19FB002B4A56 /* Reachability.swift */,
 				754A25402132CC7300B3B083 /* Localization.swift */,
+				750F9D3B21A1735700919626 /* Color.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -330,7 +333,7 @@
 				75BE189121A0B858008F2DC4 /* Map */,
 				75BE18AC21A0B858008F2DC4 /* Routes */,
 				75BE18AB21A0B858008F2DC4 /* AppDelegate.swift */,
-				75BE188221A0B858008F2DC4 /* Constants.swift */,
+				75BE188221A0B858008F2DC4 /* Storyboard.swift */,
 				75BE18BC21A0B858008F2DC4 /* Configuration.swift */,
 			);
 			path = App;
@@ -349,7 +352,6 @@
 			isa = PBXGroup;
 			children = (
 				75BE188621A0B858008F2DC4 /* FooterView.swift */,
-				75BE188721A0B858008F2DC4 /* FooterViewController.swift */,
 			);
 			path = Footer;
 			sourceTree = "<group>";
@@ -473,6 +475,7 @@
 			children = (
 				75BE18B221A0B858008F2DC4 /* RoutePageControlView.swift */,
 				75BE18B321A0B858008F2DC4 /* RoutePageControl.swift */,
+				750F9D3921A1732200919626 /* PageControl.swift */,
 			);
 			path = RoutePageControl;
 			sourceTree = "<group>";
@@ -663,7 +666,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 			showEnvVarsInLog = 0;
 		};
 		75E8F9CC21A0F893000E3D4D /* Crashlytics */ = {
@@ -692,7 +695,7 @@
 				752DB9A421A0D5C500286042 /* CLLocationManager.swift in Sources */,
 				757F31661DBE5F14002BB03F /* Analytics.swift in Sources */,
 				75BE18CA21A0B858008F2DC4 /* ContentViewDelegate.swift in Sources */,
-				75BE18BE21A0B858008F2DC4 /* Constants.swift in Sources */,
+				75BE18BE21A0B858008F2DC4 /* Storyboard.swift in Sources */,
 				75BE190021A0B858008F2DC4 /* RoutesContainerView.swift in Sources */,
 				75BE190A21A0B858008F2DC4 /* RoutePageControllerDataSource.swift in Sources */,
 				75BE18C621A0B858008F2DC4 /* AppCoordinator.swift in Sources */,
@@ -716,7 +719,6 @@
 				75BE18EC21A0B858008F2DC4 /* Annotation.swift in Sources */,
 				75BE18F421A0B858008F2DC4 /* UserLocationButton.swift in Sources */,
 				75BE18D021A0B858008F2DC4 /* ContentView.swift in Sources */,
-				75BE18C421A0B858008F2DC4 /* FooterViewController.swift in Sources */,
 				75BE18E421A0B858008F2DC4 /* MapView.swift in Sources */,
 				75BE187C21A0B7CF008F2DC4 /* UIColor.swift in Sources */,
 				75BE18DE21A0B858008F2DC4 /* AddressViewContainer.swift in Sources */,
@@ -742,12 +744,14 @@
 				75BE18CC21A0B858008F2DC4 /* AppCoordinatorContainer.swift in Sources */,
 				75BE18CE21A0B858008F2DC4 /* SearchResultCoordinator.swift in Sources */,
 				75BE190E21A0B858008F2DC4 /* RoutePageControllerDelegate.swift in Sources */,
+				750F9D3C21A1735700919626 /* Color.swift in Sources */,
 				75BE18D421A0B858008F2DC4 /* MapContainedElement.swift in Sources */,
 				75BE18F021A0B858008F2DC4 /* MapActionDelegate.swift in Sources */,
 				75BE187E21A0B7CF008F2DC4 /* UIAlertController.swift in Sources */,
 				75BE191A21A0BA94008F2DC4 /* UserLocationViewController.swift in Sources */,
 				754A25332132CA8B00B3B083 /* Log.swift in Sources */,
 				75BE190421A0B858008F2DC4 /* RoutePageControl.swift in Sources */,
+				750F9D3A21A1732200919626 /* PageControl.swift in Sources */,
 				75BE191221A0B858008F2DC4 /* RoutesViewController.swift in Sources */,
 				752DB9A721A0E3B400286042 /* API.swift in Sources */,
 				75BE18F221A0B858008F2DC4 /* ButtonState.swift in Sources */,

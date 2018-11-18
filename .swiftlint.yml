@@ -1,6 +1,6 @@
 ###
 # Swiftlint configuration file.
-# Latest version supported: 0.25.0
+# Latest version supported: 0.25.1
 # Any newer version hasn't been checked yet and might not follow the style guide.
 ###
 
@@ -13,6 +13,7 @@ disabled_rules:
   - redundant_string_enum_value
   - vertical_parameter_alignment
   - switch_case_alignment
+  - empty_enum_arguments # case .unexpectedSituation(_): ... is not allowed
 
 # paths to ignore during linting. overridden by `included`.
 excluded:
@@ -278,7 +279,7 @@ custom_rules:
     severity: warning
   one_condition_per_if_statement_line:
     name: "One condition per if statement line"
-    regex: '[\t]+(if|guard)[^\n]+?,(?!\s[a-zA-Z]+:)'
+    regex: '[\t]+(if|guard)[^\n]+?,(?![^\(]*\))(?!\s[a-zA-Z]+:)'
     message: "Use if/guard with one condition per line indent by one level"
     severity: warning
   lowercase_constants:

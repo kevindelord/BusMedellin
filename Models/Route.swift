@@ -15,7 +15,7 @@ enum RouteData : Int {
 	case area
 }
 
-struct Route 		: Equatable {
+struct Route		: Equatable {
 	var name		: String
 	var code		: String
 	var district	: String
@@ -59,6 +59,6 @@ struct Route 		: Equatable {
 	}
 }
 
-func ==(lhs: Route, hrs: Route) -> Bool {
+func == (lhs: Route, hrs: Route) -> Bool {
 	return (lhs.code == hrs.code)
 }

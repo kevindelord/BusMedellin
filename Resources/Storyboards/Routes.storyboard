@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="iYE-dl-uyP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="iYE-dl-uyP">
     <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,12 +13,12 @@
         <!--Routes View Controller-->
         <scene sceneID="ejA-ve-3zJ">
             <objects>
-                <viewController id="iYE-dl-uyP" customClass="RoutesViewController" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="iYE-dl-uyP" customClass="RoutesViewController" customModule="BusMedellin" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WRN-Eq-tzX"/>
                         <viewControllerLayoutGuide type="bottom" id="IFv-g3-1C7"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="GhH-8R-Ffb" customClass="RoutesContainerView" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="GhH-8R-Ffb" customClass="RoutesContainerView" customModule="BusMedellin" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -37,7 +37,7 @@
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MPR-04-Q4n">
                                         <rect key="frame" x="0.0" y="30" width="320" height="409"/>
                                         <connections>
-                                            <segue destination="Qpa-Zo-pDH" kind="embed" identifier="embedPageViewController" id="Uts-vV-oc6"/>
+                                            <segue destination="Qpa-Zo-pDH" kind="embed" identifier="" id="Uts-vV-oc6"/>
                                         </connections>
                                     </containerView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xNS-MK-bIt">
@@ -46,7 +46,7 @@
                                             <constraint firstAttribute="height" constant="37" id="lIR-BL-da1"/>
                                         </constraints>
                                         <connections>
-                                            <segue destination="k0e-BD-soo" kind="embed" identifier="embedPageControl" id="cVm-Gq-hkP"/>
+                                            <segue destination="k0e-BD-soo" kind="embed" identifier="" id="cVm-Gq-hkP"/>
                                         </connections>
                                     </containerView>
                                 </subviews>
@@ -71,7 +71,7 @@
         <!--Route Page View Controller-->
         <scene sceneID="yEl-LF-tdy">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Qpa-Zo-pDH" customClass="RoutePageViewController" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Qpa-Zo-pDH" customClass="RoutePageViewController" customModule="BusMedellin" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CP4-q2-WsH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="929" y="151"/>
@@ -79,7 +79,7 @@
         <!--Route Detail View Controller-->
         <scene sceneID="PP2-no-WNG">
             <objects>
-                <viewController storyboardIdentifier="RouteViewController" id="b3I-sv-vke" customClass="RouteDetailViewController" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RouteViewController" id="b3I-sv-vke" customClass="RouteDetailViewController" customModule="BusMedellin" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ydW-sB-adj"/>
                         <viewControllerLayoutGuide type="bottom" id="3AH-00-5WJ"/>
@@ -155,12 +155,17 @@
                         <viewControllerLayoutGuide type="top" id="KVS-9D-ocq"/>
                         <viewControllerLayoutGuide type="bottom" id="k9u-L6-aFu"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Qaj-Md-Tds" customClass="RoutePageControlView" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="Qaj-Md-Tds" customClass="RoutePageControlView" customModule="BusMedellin" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="37"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="hTF-ZR-fgi">
+                            <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="hTF-ZR-fgi" customClass="PageControl" customModule="BusMedellin" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="37"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="maximumPageCount">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

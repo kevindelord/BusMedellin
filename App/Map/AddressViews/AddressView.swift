@@ -10,8 +10,8 @@ import UIKit
 
 class AddressView									: UIView, UITextFieldDelegate {
 
-	@IBOutlet private weak var addressTextField 	: UITextField?
-	@IBOutlet private weak var dotIndicator 		: UIView?
+	@IBOutlet private weak var addressTextField		: UITextField?
+	@IBOutlet private weak var dotIndicator			: UIView?
 
 	private var location							: Location = .PickUp
 	private var delegate							: MapActionDelegate?

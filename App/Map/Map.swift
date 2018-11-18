@@ -19,7 +19,7 @@ struct Map {
 
 	struct Address {
 
-		static let Street			= "Street"
+		static let street			= "Street"
 	}
 
 	/// Default city center location

@@ -8,11 +8,11 @@
 
 import UIKit
 
-class AddressViewController 									: UIViewController, MapContainedElement, AddressViewContainer {
+class AddressViewController										: UIViewController, MapContainedElement, AddressViewContainer {
 
 	@IBOutlet weak private var pickUpInfoView					: AddressView?
 	@IBOutlet weak private var destinationInfoView				: AddressView?
-	@IBOutlet weak private var destinationInfoViewPosition 		: NSLayoutConstraint?
+	@IBOutlet weak private var destinationInfoViewPosition		: NSLayoutConstraint?
 
 	var delegate												: MapActionDelegate?
 

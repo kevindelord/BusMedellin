@@ -14,4 +14,3 @@ class DestinationAnnotation : Annotation {
 		return DestinationAnnotation(coordinate: coordinates, reuseId: Map.ReuseId.destinationPin, pinColor: .red)
 	}
 }
-

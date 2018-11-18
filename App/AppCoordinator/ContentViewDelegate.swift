@@ -14,4 +14,3 @@ protocol ContentViewDelegate {
 	/// Tells the delegate to reload all content views with a specific selected route.
 	func reloadContentViewsForSelectedRoute()
 }
-

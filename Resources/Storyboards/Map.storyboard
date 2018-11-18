@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YNG-ob-itT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YNG-ob-itT">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,15 +13,15 @@
         <!--Map Container View Controller-->
         <scene sceneID="ALl-DY-zWs">
             <objects>
-                <viewController id="YNG-ob-itT" customClass="MapContainerViewController" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Uxb-H2-SLU" customClass="MapContainerView" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target">
+                <viewController id="YNG-ob-itT" customClass="MapContainerViewController" customModule="BusMedellin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Uxb-H2-SLU" customClass="MapContainerView" customModule="BusMedellin" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IF3-Cl-hyl" userLabel="Map Container">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <connections>
-                                    <segue destination="gKa-7Z-L6l" kind="embed" identifier="embedMapViewController" id="EBc-iy-lbo"/>
+                                    <segue destination="gKa-7Z-L6l" kind="embed" identifier="" id="EBc-iy-lbo"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pXa-OM-2tW" userLabel="Address Container">
@@ -30,17 +30,17 @@
                                     <constraint firstAttribute="height" constant="80" id="eWP-o0-3Ff"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="CrO-Uk-Chb" kind="embed" identifier="embedAddressViewController" id="Bbh-MZ-soV"/>
+                                    <segue destination="CrO-Uk-Chb" kind="embed" identifier="" id="Bbh-MZ-soV"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dD2-Li-Ipa" userLabel="Location Container">
-                                <rect key="frame" x="53.666666666666657" y="356" width="267" height="60"/>
+                                <rect key="frame" x="54" y="356" width="267" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="267" id="Qjw-WF-KyI"/>
                                     <constraint firstAttribute="height" constant="60" id="tf2-7R-H85"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="7Yg-mn-3wu" kind="embed" identifier="embedPinLocationViewController" id="DEv-5V-T4v"/>
+                                    <segue destination="7Yg-mn-3wu" kind="embed" identifier="" id="DEv-5V-T4v"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S6l-Ep-FHQ">
@@ -50,7 +50,7 @@
                                     <constraint firstAttribute="height" constant="40" id="Qdt-2i-qUp"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="hVC-IO-hD3" kind="embed" identifier="embedUserLocationViewController" id="H55-0w-uXi"/>
+                                    <segue destination="hVC-IO-hD3" kind="embed" identifier="" id="H55-0w-uXi"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -78,12 +78,12 @@
         <!--Address View Controller-->
         <scene sceneID="pHy-43-2tr">
             <objects>
-                <viewController id="CrO-Uk-Chb" customClass="AddressViewController" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="CrO-Uk-Chb" customClass="AddressViewController" customModule="BusMedellin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AK4-DV-WPV">
                         <rect key="frame" x="0.0" y="0.0" width="343" height="80"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bsa-fx-YHy" userLabel="DestinationInfoView" customClass="AddressView" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bsa-fx-YHy" userLabel="DestinationInfoView" customClass="AddressView" customModule="BusMedellin" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="19" width="343" height="40"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uoe-gS-xnv">
@@ -130,7 +130,7 @@
                                     <outlet property="dotIndicator" destination="uoe-gS-xnv" id="NrV-py-9nf"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5JV-KX-jQt" userLabel="PickUpInfoView" customClass="AddressView" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5JV-KX-jQt" userLabel="PickUpInfoView" customClass="AddressView" customModule="BusMedellin" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="343" height="40"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="esg-mI-02Z">
@@ -209,7 +209,7 @@
         <scene sceneID="vbE-4g-vXm">
             <objects>
                 <viewController id="gKa-7Z-L6l" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="gcp-S5-Cmt" customClass="MapView" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="gcp-S5-Cmt" customClass="MapView" customModule="BusMedellin" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -241,13 +241,13 @@
         <!--Pin Location View Controller-->
         <scene sceneID="bPY-4o-iYb">
             <objects>
-                <viewController id="7Yg-mn-3wu" customClass="PinLocationViewController" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="7Yg-mn-3wu" customClass="PinLocationViewController" customModule="BusMedellin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="s8k-eY-ysL">
                         <rect key="frame" x="0.0" y="0.0" width="267" height="60"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UaH-qS-59A" userLabel="Location Button">
-                                <rect key="frame" x="0.0" y="0.66666666666666785" width="267" height="59"/>
+                                <rect key="frame" x="0.0" y="1" width="267" height="59"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="59" id="pJM-iL-UL7"/>
                                 </constraints>
@@ -288,12 +288,12 @@
         <!--User Location View Controller-->
         <scene sceneID="5yV-Cz-y7R">
             <objects>
-                <viewController id="hVC-IO-hD3" customClass="UserLocationViewController" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="hVC-IO-hD3" customClass="UserLocationViewController" customModule="BusMedellin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pdc-3w-AKj">
                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ccJ-zf-weA" customClass="UserLocationButton" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ccJ-zf-weA" customClass="UserLocationButton" customModule="BusMedellin" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="12n-DE-6lM"/>

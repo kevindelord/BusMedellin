@@ -52,7 +52,7 @@ extension MapContainerView {
 		self.delegate?.cancelSearch()
 		// Analytics
 		switch location {
-		case .PickUp: 		Analytics.PinLocation.didCancelStart.send()
+		case .PickUp:		Analytics.PinLocation.didCancelStart.send()
 		case .Destination:	Analytics.PinLocation.didCancelDestination.send()
 		}
 	}
@@ -75,7 +75,7 @@ extension MapContainerView {
 		self.map?.showWaitingHUD()
 		// Analytics
 		switch location {
-		case .PickUp: 		Analytics.PinLocation.didSetStart.send()
+		case .PickUp:		Analytics.PinLocation.didSetStart.send()
 		case .Destination:	Analytics.PinLocation.didSetDestination.send()
 		}
 

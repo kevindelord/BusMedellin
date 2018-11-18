@@ -12,8 +12,8 @@ class AppCoordinatorViewController					: UIViewController, AppCoordinatorContain
 
 	var coordinator									: Coordinator
 
-	@IBOutlet internal weak var routesContainer		: UIView!
-	@IBOutlet internal weak var footerContainer		: UIView!
+	@IBOutlet private weak var routesContainer		: UIView!
+	@IBOutlet private weak var footerContainer		: UIView!
 
 	required init?(coder aDecoder: NSCoder) {
 		self.coordinator = AppCoordinator()

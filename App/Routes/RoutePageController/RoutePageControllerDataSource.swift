@@ -10,7 +10,7 @@
 protocol RoutePageControllerDataSource {
 
 	/// Initial route detail page used to setup the first page of a UIPageViewController stack.
-	var initialRouteDetailPage: RouteDetailPage?  { get }
+	var initialRouteDetailPage: RouteDetailPage? { get }
 
 	/// Total number of pages.
 	var numberOfRouteDetailPages: Int { get }

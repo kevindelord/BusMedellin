@@ -13,7 +13,7 @@ protocol MapContainer {
 	var routeDataSource			: RouteManagerDataSource? { get set }
 
 	/// Element displaying the MKMapView.
-	var map				 		: (MapContainedElement & MapViewContainer & UserLocationDataSource)? { get set }
+	var map						: (MapContainedElement & MapViewContainer & UserLocationDataSource)? { get set }
 
 	/// Element displaying the selected address views.
 	var addressLocation			: (MapContainedElement & AddressViewContainer)? { get set }
@@ -24,4 +24,3 @@ protocol MapContainer {
 	/// Element displaying the button locate the current position of the user.
 	var userLocation			: (MapContainedElement & UserLocationContainer)? { get set }
 }
-

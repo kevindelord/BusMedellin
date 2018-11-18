@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol AppCoordinatorContainer {
+protocol AppCoordinatorContainer: AnyObject {
 
 	/// Coordinator object managing what is displayed on to the UI.
 	var coordinator: Coordinator { get }

@@ -18,7 +18,7 @@ class MapView											: UIView, MKMapViewDelegate, MapContainedElement, MapVie
 	private var startCircle								: MapCircle?
 	private var destinationCircle						: MapCircle?
 
-	var delegate										: MapActionDelegate?
+	weak var delegate									: MapActionDelegate?
 
 	override func layoutSubviews() {
 		super.layoutSubviews()
@@ -59,6 +59,7 @@ extension MapView {
 
 	func draw(selectedRoute: Route, routeDataSource: RouteManagerDataSource) {
 		routeDataSource.routeCoordinates(for: selectedRoute.code, completion: { [weak self] (coordinates: [CLLocationCoordinate2D], _ error: Error?) in
+			UIAlertController.showErrorPopup(error as NSError?)
 			self?.drawRouteForCoordinates(coordinates: coordinates)
 			// Analytics
 			Analytics.Route.didDrawRoute.send(routeCode: selectedRoute.code, rounteCount: 1)
@@ -69,7 +70,9 @@ extension MapView {
 
 	func centerMap(on location: CLLocation) {
 		let regionRadius: CLLocationDistance = Map.defaultZoomRadius
+		// swiftlint:disable explicit_init
 		let coordinateRegion = MKCoordinateRegion.init(center: location.coordinate, latitudinalMeters: regionRadius * 2.0, longitudinalMeters: regionRadius * 2.0)
+		// swiftlint:enable explicit_init
 		self.mapView?.setRegion(coordinateRegion, animated: true)
 	}
 }

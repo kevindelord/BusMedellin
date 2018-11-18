@@ -9,7 +9,7 @@
 import MapKit
 
 /// Delegate for possible user actions on the map view.
-protocol MapActionDelegate {
+protocol MapActionDelegate: AnyObject {
 
 	/// Function called when the user cancel a location-based search
 	///

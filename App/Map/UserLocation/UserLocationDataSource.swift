@@ -8,7 +8,7 @@
 
 import MapKit
 
-protocol UserLocationDataSource {
+protocol UserLocationDataSource: AnyObject {
 
 	/// Current user location available.
 	var currentUserLocation : MKUserLocation? { get }

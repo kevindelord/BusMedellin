@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol Coordinator {
+protocol Coordinator: AnyObject {
 
 	/// Redirect the user to the settings flow.
 	func openSettings()

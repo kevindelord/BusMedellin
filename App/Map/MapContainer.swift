@@ -7,7 +7,7 @@
 //
 
 /// Protocol defining what a map container must have as contained elements.
-protocol MapContainer {
+protocol MapContainer: AnyObject {
 
 	/// Data Source to get exact CoreLocation objects to display bus routes.
 	var routeDataSource			: RouteManagerDataSource? { get set }

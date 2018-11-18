@@ -8,8 +8,6 @@
 
 import Foundation
 
-// TODO: fix all swiftlint warnings
-
 struct Configuration: Decodable {
 
 	private enum CodingKeys: String, CodingKey {

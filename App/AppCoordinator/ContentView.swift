@@ -7,7 +7,7 @@
 //
 
 /// Define basic structure for displayed Content Views.
-protocol ContentView {
+protocol ContentView: AnyObject {
 
 	/// Function called when a search result has been processed and need to be displayed.
 	func update(availableRoutes: [Route], selectedRoute: Route?)

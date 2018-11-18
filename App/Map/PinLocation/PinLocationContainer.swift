@@ -7,7 +7,7 @@
 //
 
 /// When conforming to this protocol, an object is supposed to handled UI views to let the user know where the annotation pins will be set.
-protocol PinLocationContainer {
+protocol PinLocationContainer: AnyObject {
 
 	/// Configure the current interface to adapt to a new Location.
 	///

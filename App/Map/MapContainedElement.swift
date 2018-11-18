@@ -7,7 +7,7 @@
 //
 
 /// Object conforming to this protocol are therefore contained within a MapContainer.
-protocol MapContainedElement {
+protocol MapContainedElement: AnyObject {
 
 	/// Delegate for possible user actions on a MapContainer.
 	var delegate: MapActionDelegate? { get set }

@@ -6,7 +6,7 @@
 //  Copyright © 2018 Kevin Delord. All rights reserved.
 //
 
-protocol RoutePageViewControllerDelegate {
+protocol RoutePageViewControllerDelegate: AnyObject {
 
 	/// Function called after the user did scroll to a new page within a PageViewController.
 	///

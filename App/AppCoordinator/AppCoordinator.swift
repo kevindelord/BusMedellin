@@ -8,17 +8,17 @@
 
 import UIKit
 
-class AppCoordinator			: Coordinator, ContentViewDelegate, RouteManagerDelegate {
+class AppCoordinator					: Coordinator, ContentViewDelegate, RouteManagerDelegate {
 
-	private let routeManager	= RouteManager()
+	private let routeManager			= RouteManager()
 
 	// Main App View Container owning the different UI elements.
-	private var container		: (AppCoordinatorContainer & SearchResultCoordinator)?
+	private weak var container			: (AppCoordinatorContainer & SearchResultCoordinator)?
 
 	// Contained Content Views that must be retained in order to coordinate the app.
 	// Depending on user actions the retained content views must be regurlarly updated.
-	private var mapView			: (ContentView & MapContainer)?
-	private var routesContainer	: (ContentView & RoutesContainer)?
+	private weak var mapView			: (ContentView & MapContainer)?
+	private weak var routesContainer	: (ContentView & RoutesContainer)?
 }
 
 // MARK: - Coordinator
@@ -29,12 +29,12 @@ extension AppCoordinator {
 		self.container = container
 
 		// All containers should conform to the ContentView protocol.
-		var contentView = (segue.destination.view as? ContentView)
+		let contentView = (segue.destination.view as? ContentView)
 		contentView?.coordinator = self
 		contentView?.delegate = self
 
 		// Map Container
-		var mapContainer = (segue.destination.view as? MapContainer)
+		let mapContainer = (segue.destination.view as? MapContainer)
 		mapContainer?.routeDataSource = self.routeManager
 
 		// Retain the map and routes containers

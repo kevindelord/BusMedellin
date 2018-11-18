@@ -14,17 +14,30 @@ class RouteManager				: RouteManagerDataSource {
 	var availableRoutes			= [Route]()
 	var selectedRoute			: Route?
 
-	func routes(between start: CLLocationCoordinate2D, and destination: CLLocationCoordinate2D, completion: @escaping (() -> Void)) {
+	func routes(between start: CLLocationCoordinate2D, and destination: CLLocationCoordinate2D, completion: @escaping ((_ error: Error?) -> Void)) {
 		// Fetch all routes passing by the pick up location.
 		self.fetchRoutes(forCoordinates: start, completion: { (pickUpRoutes: [Route], error: Error?) in
+			guard (error == nil) else {
+				completion(error)
+				return
+			}
+
 			// Fetch all routes passing by the destination location.
 			self.fetchRoutes(forCoordinates: destination, completion: { (destinationRoutes: [Route], error: Error?) in
+				guard (error == nil) else {
+					// Reset retained search results.
+					self.cancelSearch()
+					completion(error)
+					return
+				}
+
 				// Filter the routes to only the ones matching.
 				self.availableRoutes = self.findMatchingRoutes(pickUpRoutes: pickUpRoutes, destinationRoutes: destinationRoutes)
 				self.selectedRoute = self.availableRoutes.first
 				// Analytics
 				Analytics.Search.routes.send(routeCode: nil, rounteCount: self.availableRoutes.count)
-				completion()
+				// Check in the end if at least one route has been found.
+				completion((self.selectedRoute == nil ? APIManager.Invalid.routes.localizedError : nil))
 			})
 		})
 	}
@@ -38,12 +51,17 @@ class RouteManager				: RouteManagerDataSource {
 		})
 	}
 
-	func address(forLocation location: CLLocation, completion: @escaping ((_ address: String?) -> Void)) {
+	func address(forLocation location: CLLocation, completion: @escaping ((_ address: String?, _ error: Error?) -> Void)) {
 		let handler = { (placemarks: [CLPlacemark]?, error: Error?) in
+			guard (error == nil) else {
+				completion(nil, error)
+				return
+			}
+
 			for placemark in (placemarks ?? []) {
 				Log(.pinAddress, "Address found: \(placemark.addressDictionary ?? [:])")
 				let street = placemark.addressDictionary?[Map.Address.street] as? String
-				completion(street)
+				completion(street, nil)
 			}
 		}
 

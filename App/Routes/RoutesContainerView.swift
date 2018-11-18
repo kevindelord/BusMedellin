@@ -13,12 +13,12 @@ class RoutesContainerView						: UIView, RoutesContainer, ContentView, RoutePage
 	@IBOutlet private weak var totalRoutes		: UILabel?
 
 	// RouteContainer Protocol
-	var routePageController						: RoutePageController?
-	var routePageControl						: RoutePageControl?
+	weak var routePageController				: RoutePageController?
+	weak var routePageControl					: RoutePageControl?
 
 	// ContentView Protocol
-	var coordinator								: Coordinator?
-	var delegate								: (RouteManagerDelegate & ContentViewDelegate)?
+	weak var coordinator						: Coordinator?
+	weak var delegate							: (RouteManagerDelegate & ContentViewDelegate)?
 }
 
 // MARK: - RoutePageViewControllerDelegate
@@ -44,13 +44,14 @@ extension RoutesContainerView {
 		self.routePageControl?.reload(numberOfPages: pages.count)
 		self.routePageController?.handler = nil
 
-		guard (pages.isEmpty == false) else {
+		if (pages.isEmpty == false) {
+			// Reload the page controller with a page for each available bus route.
+			let handler = RoutePageControllerHandler(availableRouteDetailPages: pages, delegate: self)
+			self.routePageController?.reload(with: handler)
+		} else {
+			// When the route page controller is reloaded without any handler, all displayed controllers are getting removed.
 			self.routePageController?.reload(with: nil)
-			return
 		}
-
-		let handler = RoutePageControllerHandler(availableRouteDetailPages: pages, delegate: self)
-		self.routePageController?.reload(with: handler)
 	}
 }
 

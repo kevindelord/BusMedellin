@@ -13,7 +13,7 @@ func L(_ key: String) -> String {
 	let defaultValue = "__Unique_Default_String__"
 	let localizedString = NSLocalizedString(key, tableName: nil, bundle: Bundle.main, value: defaultValue, comment: "")
 	guard (defaultValue != localizedString) else {
-		DKLog(true, "Warning: Localized string with key '\(key)' can't be found!")
+		Log(.error, "Warning: Localized string with key '\(key)' can't be found!")
 		return key
 	}
 

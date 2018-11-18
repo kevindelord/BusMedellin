@@ -47,7 +47,7 @@ extension MKMapView {
 			return
 		}
 
-		self.add(overlay)
+		self.addOverlay(overlay)
 	}
 
 	/**
@@ -60,6 +60,6 @@ extension MKMapView {
 			return
 		}
 
-		self.remove(overlay)
+		self.removeOverlay(overlay)
 	}
 }

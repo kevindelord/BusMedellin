@@ -8,7 +8,6 @@
 
 import Foundation
 
-// TODO: migrate to new Xcode version
 // TODO: fix all swiftlint warnings
 
 struct Configuration: Decodable {
@@ -40,13 +39,6 @@ struct Configuration: Decodable {
 		}
 
 		self = config
-	}
-
-	struct Verbose {
-
-		static let pinAddress	: Bool = false
-		static let api			: Bool = false
-		static let analytics	: Bool = false
 	}
 }
 

@@ -12,12 +12,13 @@ import Appirater
 extension Appirater {
 
 	class func setup() {
-		Appirater.setAppId(Configuration().appIdentifier)
+		let config = Configuration()
+		Appirater.setAppId(config.appIdentifier)
 		Appirater.setDaysUntilPrompt(0)
 		Appirater.setUsesUntilPrompt(0)
 		Appirater.setSignificantEventsUntilPrompt(5)
 		Appirater.setTimeBeforeReminding(1)
-		Appirater.setDebug(Configuration.debugAppirater)
+		Appirater.setDebug(config.isAppiraterDebug.boolValue)
 		Appirater.appLaunched(true)
 	}
 

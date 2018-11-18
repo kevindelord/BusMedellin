@@ -9,14 +9,8 @@
 import Foundation
 
 // TODO: Replace #if debug #else #endif with xcconfig
-
-#if DEBUG
-private let isDebug		= true
-private let isRelease	= false
-#else
-private let isDebug		= false
-private let isRelease	= true
-#endif
+// TODO: migrate to new Xcode version
+// TODO: fix all swiftlint warnings
 
 struct Configuration: Decodable {
 
@@ -29,6 +23,9 @@ struct Configuration: Decodable {
 		case hockeyAppIdentifier
 		case defaultLatitude
 		case defaultLongitude
+		case isLogEnabled
+		case isAppiraterDebug
+		case isAnalyticsEnabled
 	}
 
 	let apiBaseUrl				: String
@@ -39,6 +36,9 @@ struct Configuration: Decodable {
 	let hockeyAppIdentifier		: String
 	let defaultLatitude			: String
 	let defaultLongitude		: String
+	let isLogEnabled			: String
+	let isAppiraterDebug		: String
+	let isAnalyticsEnabled		: String
 
 	init() {
 		guard
@@ -51,13 +51,17 @@ struct Configuration: Decodable {
 		self = config
 	}
 
-	static let debugAppirater	: Bool = (false && isDebug)
-	static let analyticsEnabled	: Bool = (true && isRelease)
-
 	struct Verbose {
 
 		static let pinAddress	: Bool = false
-		static let api			: Bool = false
+		static let api			: Bool = true
 		static let analytics	: Bool = false
+	}
+}
+
+extension String {
+
+	var boolValue: Bool {
+		return (self == "YES")
 	}
 }

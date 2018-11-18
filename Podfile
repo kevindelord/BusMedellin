@@ -3,27 +3,14 @@ source 'https://github.com/cocoapods/specs.git'
 platform :ios, '9.3'
 use_frameworks!
 
-def corePods
-    pod 'Reachability', '~> 3.2'
+target 'BusMedellin' do
+	pod 'Reachability', '~> 3.2'
 	pod 'Appirater', '~> 2.3.1'
 	pod 'MBProgressHUD', '~> 1.1.0'
 	pod 'Buglife', '~> 2.8.1'
-    pod 'HockeySDK', '~> 5.1.2'
+	pod 'HockeySDK', '~> 5.1.2'
 	pod 'SwiftLint', '~> 0.28.0'
-end
-
-def analytics
-    pod 'Firebase/Core', '~> 5.12.0'
-end
-
-target 'BusMedellin-Alpha-AdHoc' do
-    corePods
-	analytics
-end
-
-target 'BusMedellin-Live-AppStore' do
-    corePods
-	analytics
+	pod 'Firebase/Core', '~> 5.12.0'
 end
 
 post_install do |installer|

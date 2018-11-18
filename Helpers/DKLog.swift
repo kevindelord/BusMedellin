@@ -10,7 +10,7 @@ import Foundation
 
 struct DKLogSettings {
 
-	static var shouldShowDetailedLogs	: Bool = false
+	static var shouldShowDetailedLogs	: Bool = true
 	static var detailedLogFormat		= ">>> :line :className.:function --> :obj"
 	static var detailedLogDateFormat	= "yyyy-MM-dd HH:mm:ss.SSS"
 	static fileprivate var dateFormatter	: DateFormatter {
@@ -21,7 +21,6 @@ struct DKLogSettings {
 }
 
 func DKLog(_ verbose: Bool, _ obj: Any = "", file: String = #file, function: String = #function, line: Int = #line) {
-	#if DEBUG
 	guard (verbose == true) else {
 		return
 	}
@@ -44,5 +43,4 @@ func DKLog(_ verbose: Bool, _ obj: Any = "", file: String = #file, function: Str
 	}
 
 	print(logStatement)
-	#endif
 }

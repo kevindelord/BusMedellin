@@ -562,6 +562,7 @@
 				TargetAttributes = {
 					758E10331DBD92D000D872BC = {
 						DevelopmentTeam = QXY3J9PHW4;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -666,7 +667,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#\"${PODS_ROOT}/SwiftLint/swiftlint\"";
+			shellScript = "#\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 			showEnvVarsInLog = 0;
 		};
 		75E8F9CC21A0F893000E3D4D /* Crashlytics */ = {
@@ -682,7 +683,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\"";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -907,6 +908,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.kevindelord.buspaisa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Bus Paisa Alpha AdHoc DEBUG";
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -924,6 +926,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.kevindelord.buspaisa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Bus Paisa Live AppStore RELEASE";
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};

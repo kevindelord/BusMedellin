@@ -73,7 +73,7 @@ extension UserLocationViewController {
 		}))
 		// Open Settings action button
 		alertController.addAction(UIAlertAction(title: L("LOCATION_ERROR_SETTINGS"), style: .cancel, handler: { (action: UIAlertAction) in
-			if let url = URL(string: UIApplicationOpenSettingsURLString) {
+			if let url = URL(string: UIApplication.openSettingsURLString) {
 				Analytics.UserLocation.didOpenSettings.send()
 				UIApplication.shared.openURL(url)
 			}

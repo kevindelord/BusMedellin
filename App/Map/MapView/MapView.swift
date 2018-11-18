@@ -69,7 +69,7 @@ extension MapView {
 
 	func centerMap(on location: CLLocation) {
 		let regionRadius: CLLocationDistance = Map.defaultZoomRadius
-		let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 2.0, regionRadius * 2.0)
+		let coordinateRegion = MKCoordinateRegion.init(center: location.coordinate, latitudinalMeters: regionRadius * 2.0, longitudinalMeters: regionRadius * 2.0)
 		self.mapView?.setRegion(coordinateRegion, animated: true)
 	}
 }
@@ -191,14 +191,14 @@ extension MapView {
 		// Remove previous overlays
 		self.removeDrawnRoutes()
 		// Add new overlay
-		self.mapView?.add(myPolyline, level: MKOverlayLevel.aboveLabels)
+		self.mapView?.addOverlay(myPolyline, level: MKOverlayLevel.aboveLabels)
 	}
 
 	/// Remove any drawn routes from the mapView.
 	private func removeDrawnRoutes() {
 		self.mapView?.overlays.forEach { (overlay: MKOverlay) in
 			if (overlay is MKGeodesicPolyline) {
-				self.mapView?.remove(overlay)
+				self.mapView?.removeOverlay(overlay)
 			}
 		}
 	}

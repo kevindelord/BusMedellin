@@ -57,14 +57,12 @@ extension MapView {
 		return coordinate
 	}
 
-	func draw(selectedRoute: Route, routeDataSource: RouteManagerDataSource) {
+	func draw(selectedRoute: Route, routeDataSource: RouteManagerDataSource, completion: @escaping ((_ error: Error?) -> Void)) {
 		routeDataSource.routeCoordinates(for: selectedRoute.code, completion: { [weak self] (coordinates: [CLLocationCoordinate2D], _ error: Error?) in
-			UIAlertController.showErrorPopup(error as NSError?)
 			self?.drawRouteForCoordinates(coordinates: coordinates)
 			// Analytics
 			Analytics.Route.didDrawRoute.send(routeCode: selectedRoute.code, rounteCount: 1)
-			// TODO: Hide waiting HUD
-//			self?.hideWaitingHUD()
+			completion(error)
 		})
 	}
 

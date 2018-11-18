@@ -146,6 +146,10 @@ extension MapContainerView {
 				return
 		}
 
-		self.map?.draw(selectedRoute: route, routeDataSource: dataSource)
+		self.showWaitingHUD()
+		self.map?.draw(selectedRoute: route, routeDataSource: dataSource, completion: { [weak self] (_ error: Error?) in
+			UIAlertController.showErrorPopup(error as NSError?)
+			self?.hideWaitingHUD()
+		})
 	}
 }

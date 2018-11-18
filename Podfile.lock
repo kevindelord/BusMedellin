@@ -48,7 +48,6 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (5.3.6):
     - GoogleUtilities/Logger
-  - MBProgressHUD (1.1.0)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
@@ -63,7 +62,6 @@ DEPENDENCIES:
   - Crashlytics (~> 3.11.1)
   - Fabric (~> 1.8.2)
   - Firebase/Core (~> 5.12.0)
-  - MBProgressHUD (~> 1.1.0)
   - Reachability (~> 3.2)
   - SwiftLint (~> 0.28.0)
 
@@ -79,7 +77,6 @@ SPEC REPOS:
     - FirebaseInstanceID
     - GoogleAppMeasurement
     - GoogleUtilities
-    - MBProgressHUD
     - nanopb
     - Reachability
     - SwiftLint
@@ -95,11 +92,10 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: e2fa4cb35ef5558c200f7f0ad8a53e212215f93e
   GoogleAppMeasurement: 5029d78f2b438bd30ffb44e6c558b57c21622727
   GoogleUtilities: 95996bea7c7d9b8fb811b7507669a4a8762f80c7
-  MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SwiftLint: 088cfacb75b45970017e62b7524d506776d60148
 
-PODFILE CHECKSUM: 71f3668196635dcb3af35fef917c75e65dd1dda0
+PODFILE CHECKSUM: 98a9e9fb89e251d455f5cc9c66b6d78767d9b725
 
 COCOAPODS: 1.5.3

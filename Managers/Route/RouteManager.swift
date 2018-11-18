@@ -80,6 +80,8 @@ extension RouteManager: RouteManagerDelegate {
 	func cancelSearch() {
 		self.selectedRoute = nil
 		self.availableRoutes = []
+		// Cancel the data task operations here as this class should be the only one using the APIManager.
+		APIManager.cancelOperations()
 	}
 
 	func select(route: Route) {

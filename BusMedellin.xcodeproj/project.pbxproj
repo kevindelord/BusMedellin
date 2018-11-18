@@ -18,6 +18,10 @@
 		752DB9AA21A0E3E500286042 /* ExternalLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752DB9A821A0E3E500286042 /* ExternalLink.swift */; };
 		754A25332132CA8B00B3B083 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A25312132CA8B00B3B083 /* Log.swift */; };
 		754A25422132CC7300B3B083 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A25402132CC7300B3B083 /* Localization.swift */; };
+		755879EB21A1EA7D0092C0E4 /* HUDContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755879E821A1EA7D0092C0E4 /* HUDContainer.swift */; };
+		755879EC21A1EA7D0092C0E4 /* HUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755879E921A1EA7D0092C0E4 /* HUDView.swift */; };
+		755879ED21A1EA7D0092C0E4 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755879EA21A1EA7D0092C0E4 /* HUD.swift */; };
+		755879EF21A1EDD20092C0E4 /* NSLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755879EE21A1EDD20092C0E4 /* NSLayoutConstraint.swift */; };
 		755DB8D9213C207B0092756E /* RouteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755DB8D7213C207B0092756E /* RouteManager.swift */; };
 		755DB8DC213C5C390092756E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 755DB8DB213C5C390092756E /* StoreKit.framework */; };
 		757F31631DBE5E16002BB03F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 757F31611DBE5E16002BB03F /* GoogleService-Info.plist */; };
@@ -55,7 +59,6 @@
 		75BE18DA21A0B858008F2DC4 /* AddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BE189721A0B858008F2DC4 /* AddressView.swift */; };
 		75BE18DC21A0B858008F2DC4 /* AddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BE189821A0B858008F2DC4 /* AddressViewController.swift */; };
 		75BE18DE21A0B858008F2DC4 /* AddressViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BE189921A0B858008F2DC4 /* AddressViewContainer.swift */; };
-		75BE18E021A0B858008F2DC4 /* HUDContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BE189B21A0B858008F2DC4 /* HUDContainer.swift */; };
 		75BE18E221A0B858008F2DC4 /* MapViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BE189C21A0B858008F2DC4 /* MapViewContainer.swift */; };
 		75BE18E421A0B858008F2DC4 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BE189D21A0B858008F2DC4 /* MapView.swift */; };
 		75BE18E621A0B858008F2DC4 /* MapCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BE189F21A0B858008F2DC4 /* MapCircle.swift */; };
@@ -113,6 +116,10 @@
 		754A25312132CA8B00B3B083 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		754A25402132CC7300B3B083 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		75513BDF1DB019C600957F40 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
+		755879E821A1EA7D0092C0E4 /* HUDContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDContainer.swift; sourceTree = "<group>"; };
+		755879E921A1EA7D0092C0E4 /* HUDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDView.swift; sourceTree = "<group>"; };
+		755879EA21A1EA7D0092C0E4 /* HUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
+		755879EE21A1EDD20092C0E4 /* NSLayoutConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraint.swift; sourceTree = "<group>"; };
 		755DB8D7213C207B0092756E /* RouteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteManager.swift; sourceTree = "<group>"; };
 		755DB8DB213C5C390092756E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		75640BEC1DAF19C5002B4A56 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Resources/Settings.bundle; sourceTree = "<group>"; };
@@ -152,7 +159,6 @@
 		75BE189721A0B858008F2DC4 /* AddressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressView.swift; sourceTree = "<group>"; };
 		75BE189821A0B858008F2DC4 /* AddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressViewController.swift; sourceTree = "<group>"; };
 		75BE189921A0B858008F2DC4 /* AddressViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressViewContainer.swift; sourceTree = "<group>"; };
-		75BE189B21A0B858008F2DC4 /* HUDContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDContainer.swift; sourceTree = "<group>"; };
 		75BE189C21A0B858008F2DC4 /* MapViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewContainer.swift; sourceTree = "<group>"; };
 		75BE189D21A0B858008F2DC4 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		75BE189F21A0B858008F2DC4 /* MapCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapCircle.swift; sourceTree = "<group>"; };
@@ -244,6 +250,16 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		755879E721A1EA7D0092C0E4 /* HUD */ = {
+			isa = PBXGroup;
+			children = (
+				755879E821A1EA7D0092C0E4 /* HUDContainer.swift */,
+				755879E921A1EA7D0092C0E4 /* HUDView.swift */,
+				755879EA21A1EA7D0092C0E4 /* HUD.swift */,
+			);
+			path = HUD;
+			sourceTree = "<group>";
+		};
 		755DB8DA213C208A0092756E /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -320,6 +336,7 @@
 				75BE187121A0B7CF008F2DC4 /* UIAlertController.swift */,
 				75BE187221A0B7CF008F2DC4 /* NSError.swift */,
 				752DB9A221A0D5C500286042 /* CLLocationManager.swift */,
+				755879EE21A1EDD20092C0E4 /* NSLayoutConstraint.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -373,6 +390,7 @@
 		75BE189121A0B858008F2DC4 /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				755879E721A1EA7D0092C0E4 /* HUD */,
 				75BE189321A0B858008F2DC4 /* PinLocation */,
 				75BE189621A0B858008F2DC4 /* AddressViews */,
 				75BE189A21A0B858008F2DC4 /* MapView */,
@@ -409,7 +427,6 @@
 		75BE189A21A0B858008F2DC4 /* MapView */ = {
 			isa = PBXGroup;
 			children = (
-				75BE189B21A0B858008F2DC4 /* HUDContainer.swift */,
 				75BE189C21A0B858008F2DC4 /* MapViewContainer.swift */,
 				75BE189D21A0B858008F2DC4 /* MapView.swift */,
 				75BE189E21A0B858008F2DC4 /* MapCircle */,
@@ -636,7 +653,6 @@
 				"${BUILT_PRODUCTS_DIR}/Appirater/Appirater.framework",
 				"${BUILT_PRODUCTS_DIR}/Buglife/Buglife.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Reachability/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -645,7 +661,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Appirater.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Buglife.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -713,7 +728,6 @@
 				75BE18EE21A0B858008F2DC4 /* MapContainerViewController.swift in Sources */,
 				755DB8D9213C207B0092756E /* RouteManager.swift in Sources */,
 				752DB9AA21A0E3E500286042 /* ExternalLink.swift in Sources */,
-				75BE18E021A0B858008F2DC4 /* HUDContainer.swift in Sources */,
 				75052ACA21381C510063AE05 /* Firebase.swift in Sources */,
 				75BE187421A0B7CF008F2DC4 /* URLComponents.swift in Sources */,
 				75BE18EC21A0B858008F2DC4 /* Annotation.swift in Sources */,
@@ -725,6 +739,8 @@
 				75BE18FC21A0B858008F2DC4 /* RouteDetailPage.swift in Sources */,
 				75C0E645218E15A900C988C5 /* RouteManagerDataSource.swift in Sources */,
 				75BE18C821A0B858008F2DC4 /* AppCoordinatorViewController.swift in Sources */,
+				755879EB21A1EA7D0092C0E4 /* HUDContainer.swift in Sources */,
+				755879EF21A1EDD20092C0E4 /* NSLayoutConstraint.swift in Sources */,
 				75BE18E821A0B858008F2DC4 /* StartAnnotation.swift in Sources */,
 				75BE18D221A0B858008F2DC4 /* Coordinator.swift in Sources */,
 				75BE187821A0B7CF008F2DC4 /* MKMapView.swift in Sources */,
@@ -734,6 +750,7 @@
 				758E103D1DBD92D000D872BC /* Reachability.swift in Sources */,
 				75BE191721A0BA5D008F2DC4 /* UserLocationContainer.swift in Sources */,
 				75BE190621A0B858008F2DC4 /* RoutePageViewController.swift in Sources */,
+				755879ED21A1EA7D0092C0E4 /* HUD.swift in Sources */,
 				75BE186421A0B1EA008F2DC4 /* Location.swift in Sources */,
 				75BE18C021A0B858008F2DC4 /* SettingsViewController.swift in Sources */,
 				75BE191021A0B858008F2DC4 /* RoutesContainer.swift in Sources */,
@@ -749,6 +766,7 @@
 				75BE18F021A0B858008F2DC4 /* MapActionDelegate.swift in Sources */,
 				75BE187E21A0B7CF008F2DC4 /* UIAlertController.swift in Sources */,
 				75BE191A21A0BA94008F2DC4 /* UserLocationViewController.swift in Sources */,
+				755879EC21A1EA7D0092C0E4 /* HUDView.swift in Sources */,
 				754A25332132CA8B00B3B083 /* Log.swift in Sources */,
 				75BE190421A0B858008F2DC4 /* RoutePageControl.swift in Sources */,
 				750F9D3A21A1732200919626 /* PageControl.swift in Sources */,

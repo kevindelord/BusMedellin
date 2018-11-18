@@ -29,16 +29,16 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x3H-oT-s2I">
-                                        <rect key="frame" x="40" y="321.5" width="281" height="24"/>
+                                        <rect key="frame" x="40" y="321.5" width="263" height="24"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8m4-SC-Lml">
-                                        <rect key="frame" x="321" y="322.5" width="22" height="22"/>
+                                        <rect key="frame" x="303" y="313.5" width="40" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="22" id="PCr-lA-Y2R"/>
-                                            <constraint firstAttribute="height" constant="22" id="dmQ-2Q-d2a"/>
+                                            <constraint firstAttribute="width" constant="40" id="PCr-lA-Y2R"/>
+                                            <constraint firstAttribute="height" constant="40" id="dmQ-2Q-d2a"/>
                                         </constraints>
                                         <connections>
                                             <action selector="infoButtonPressed" destination="eG2-6H-BVc" eventType="touchUpInside" id="UnL-zZ-ckH"/>

@@ -6,10 +6,10 @@ use_frameworks!
 target 'BusMedellin' do
 	pod 'Reachability', '~> 3.2'
 	pod 'Appirater', '~> 2.3.1'
-	pod 'MBProgressHUD', '~> 1.1.0'
 	pod 'Buglife', '~> 2.8.1'
 	pod 'SwiftLint', '~> 0.28.0'
 
+	# Google Analytics + Crash Reports
 	pod 'Firebase/Core', '~> 5.12.0'
 	pod 'Fabric', '~> 1.8.2'
 	pod 'Crashlytics', '~> 3.11.1'

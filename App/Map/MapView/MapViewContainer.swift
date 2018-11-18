@@ -8,7 +8,7 @@
 
 import MapKit
 
-protocol MapViewContainer: AnyObject, HUDContainer {
+protocol MapViewContainer: AnyObject {
 
 	/// Add an annotation at the center of the map view for a specific kind of Location.
 	///
@@ -21,7 +21,7 @@ protocol MapViewContainer: AnyObject, HUDContainer {
 	/// - Parameters:
 	///   - selectedRoute: Selected bus Route to draw on the map.
 	///   - routeDataSource: Data Source to get exact CoreLocation objects necessary to draw the related route.
-	func draw(selectedRoute: Route, routeDataSource: RouteManagerDataSource)
+	func draw(selectedRoute: Route, routeDataSource: RouteManagerDataSource, completion: @escaping ((_ error: Error?) -> Void))
 
 	/// Center the map on a specific location.
 	///

@@ -11,21 +11,21 @@ import MapKit
 import Reachability
 import Appirater
 
-// TODO: If search is cancelled while fetching data -> cancel all ongoing requests.
-
-class MapContainerView			: UIView, ContentView, MapContainer, MapActionDelegate {
+class MapContainerView			: UIView, ContentView, MapContainer, MapActionDelegate, HUDContainer {
 
 	// ContentView
 	weak var coordinator		: Coordinator?
 	weak var delegate			: (RouteManagerDelegate & ContentViewDelegate)?
 
 	// Map Container
-
 	weak var routeDataSource	: RouteManagerDataSource?
 	weak var map				: (MapContainedElement & MapViewContainer & UserLocationDataSource)?
 	weak var pinLocation		: (MapContainedElement & PinLocationContainer)?
 	weak var addressLocation	: (MapContainedElement & AddressViewContainer)?
 	weak var userLocation		: (MapContainedElement & UserLocationContainer)?
+
+	// HUD Container
+	weak var hudView			: HUDView?
 
 	private var locationCoordinates = [Location: CLLocationCoordinate2D]()
 }
@@ -43,10 +43,13 @@ extension MapContainerView {
 	}
 
 	func cancel(location: Location) {
+		// Update the embed views
 		self.map?.didCancel(location: location)
 		self.pinLocation?.didCancel(location: location)
 		self.addressLocation?.didCancel(location: location)
 		self.userLocation?.didCancel(location: location)
+		// Hide the waiting indicator.
+		self.hideWaitingHUD()
 		// Notify the app coordinator.
 		self.delegate?.cancelSearch()
 		// Analytics
@@ -71,7 +74,7 @@ extension MapContainerView {
 		self.locationCoordinates[location] = coordinate
 
 		// Show waiting HUD
-		self.map?.showWaitingHUD()
+		self.showWaitingHUD()
 		// Analytics
 		switch location {
 		case .PickUp:		Analytics.PinLocation.didSetStart.send()
@@ -91,7 +94,7 @@ extension MapContainerView {
 			case .PickUp:
 				self?.configureInterfaceForDestinationLocation()
 				// Hide waiting HUD
-				self?.map?.hideWaitingHUD()
+				self?.hideWaitingHUD()
 			case .Destination:
 				// Search for available routes between the two selected locations.
 				// This function must hide the HUD on completion.
@@ -106,7 +109,7 @@ extension MapContainerView {
 			let start = self.locationCoordinates[.PickUp],
 			let destination = self.locationCoordinates[.Destination] else {
 				// Hide waiting HUD
-				self.map?.hideWaitingHUD()
+				self.hideWaitingHUD()
 				return
 		}
 
@@ -120,7 +123,7 @@ extension MapContainerView {
 			// Reload contained views.
 			self?.delegate?.reloadContentViews()
 			// Hide waiting HUD
-			self?.map?.hideWaitingHUD()
+			self?.hideWaitingHUD()
 		})
 	}
 
@@ -143,6 +146,10 @@ extension MapContainerView {
 				return
 		}
 
-		self.map?.draw(selectedRoute: route, routeDataSource: dataSource)
+		self.showWaitingHUD()
+		self.map?.draw(selectedRoute: route, routeDataSource: dataSource, completion: { [weak self] (_ error: Error?) in
+			UIAlertController.showErrorPopup(error as NSError?)
+			self?.hideWaitingHUD()
+		})
 	}
 }

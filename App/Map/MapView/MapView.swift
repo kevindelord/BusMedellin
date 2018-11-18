@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class MapView											: UIView, MKMapViewDelegate, MapContainedElement, MapViewContainer, HUDContainer, UserLocationDataSource {
+class MapView											: UIView, MKMapViewDelegate, MapContainedElement, MapViewContainer, UserLocationDataSource {
 
 	@IBOutlet weak private var mapView					: MKMapView?
 
@@ -19,7 +19,6 @@ class MapView											: UIView, MKMapViewDelegate, MapContainedElement, MapVie
 	private var destinationCircle						: MapCircle?
 
 	weak var delegate									: MapActionDelegate?
-	internal var progressView							: HUDView?
 
 	override func layoutSubviews() {
 		super.layoutSubviews()
@@ -33,8 +32,6 @@ class MapView											: UIView, MKMapViewDelegate, MapContainedElement, MapVie
 		self.centerMap(on: Map.cityCenterLocation)
 		// If enabled and authorized, show the user location's blue annotation.
 		self.mapView?.showsUserLocation = (CLLocationManager.authorizationAccepted == true)
-
-		self.progressView = HUDView(within: self, layoutSupport: self.viewController!.bottomLayoutGuide)
 	}()
 }
 
@@ -66,8 +63,8 @@ extension MapView {
 			self?.drawRouteForCoordinates(coordinates: coordinates)
 			// Analytics
 			Analytics.Route.didDrawRoute.send(routeCode: selectedRoute.code, rounteCount: 1)
-			// Hide waiting HUD
-			self?.hideWaitingHUD()
+			// TODO: Hide waiting HUD
+//			self?.hideWaitingHUD()
 		})
 	}
 
@@ -98,8 +95,6 @@ extension MapView {
 
 	func didCancel(location: Location) {
 		self.removeDrawnRoutes()
-		self.hideWaitingHUD()
-
 		switch location {
 		case .PickUp:
 			self.cancelPickUp()

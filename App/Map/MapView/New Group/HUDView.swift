@@ -11,19 +11,6 @@
 import Foundation
 import UIKit
 
-struct HUD {
-
-	static let standardHeight			= CGFloat(4.0)
-	static let indicatorColor			= Color.blue
-	static let reducedSizeRatio			= CGFloat(0.6)
-	static let slidedOriginRatio		= CGFloat(0.3)
-	static let firstSlideDuration		= TimeInterval(0.7)
-	static let secondSlideDuration		= TimeInterval(0.7)
-	static let secondSlideDelay			= TimeInterval(0.5)
-	static let inBetweenInterval		= TimeInterval(0.3)
-	static let lockQueueIdentifier		= "io.kevindelord.buspaisa.hudview"
-}
-
 // MARK: - ProgressView UI element
 
 /// UIKit object representing an indeterminate progress view.
@@ -83,7 +70,7 @@ public class HUDView						: UIView {
 		// Width
 		NSLayoutConstraint.equal(.trailing, view: self, superview: superView)
 		// Y origin
-		NSLayoutConstraint.equal(.top, view: self, superview: layoutSupport, secondAttribute: .bottom)
+		NSLayoutConstraint.equal(.bottom, view: self, superview: layoutSupport, secondAttribute: .bottom)
 	}
 
 	/// Configure the indicator bar.

@@ -9,10 +9,10 @@
 import UIKit
 
 /// Protocol integrating the `HUDView` attribute and related in/out functions.
-protocol HUDContainer {
+protocol HUDContainer: AnyObject {
 
 	/// Computed property of an optional HUDView UI element.
-	var progressView : HUDView? { get }
+	var hudView : HUDView? { get set }
 
 	/// Start the animation on the related computed progress view.
 	func showWaitingHUD()
@@ -28,15 +28,14 @@ extension HUDContainer {
 	/// Show and animate the progress view.
 	func showWaitingHUD() {
 		DispatchQueue.main.async {
-			self.progressView?.startAnimation()
+			self.hudView?.startAnimation()
 		}
 	}
 
 	/// Hide Progress View.
 	func hideWaitingHUD() {
 		DispatchQueue.main.async {
-			print("should hide HUD")
-//			self.progressView?.stopAnimation()
+			self.hudView?.stopAnimation()
 		}
 	}
 }

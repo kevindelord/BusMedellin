@@ -93,6 +93,7 @@
 		75C8120A2196CDD2009BAD79 /* Routes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C811FF2196CDD2009BAD79 /* Routes.storyboard */; };
 		75C8120C2196CDD2009BAD79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C812002196CDD2009BAD79 /* LaunchScreen.storyboard */; };
 		75F7DE8721A1D7E300B1AE6B /* HUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F7DE8621A1D7E300B1AE6B /* HUDView.swift */; };
+		75F7DE8A21A1DDF100B1AE6B /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F7DE8921A1DDF100B1AE6B /* HUD.swift */; };
 		9552F5CFA445C643C39142C2 /* Pods_BusMedellin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9338684B5BA91C70C2AF54F /* Pods_BusMedellin.framework */; };
 /* End PBXBuildFile section */
 
@@ -193,6 +194,7 @@
 		75C811FF2196CDD2009BAD79 /* Routes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Routes.storyboard; path = Resources/Storyboards/Routes.storyboard; sourceTree = "<group>"; };
 		75C812002196CDD2009BAD79 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Resources/Storyboards/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		75F7DE8621A1D7E300B1AE6B /* HUDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUDView.swift; sourceTree = "<group>"; };
+		75F7DE8921A1DDF100B1AE6B /* HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
 		EC1D87735014DA38EA85466A /* Pods-BusMedellin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusMedellin.release.xcconfig"; path = "Pods/Target Support Files/Pods-BusMedellin/Pods-BusMedellin.release.xcconfig"; sourceTree = "<group>"; };
 		F9338684B5BA91C70C2AF54F /* Pods_BusMedellin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BusMedellin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -512,6 +514,7 @@
 			children = (
 				75BE189B21A0B858008F2DC4 /* HUDContainer.swift */,
 				75F7DE8621A1D7E300B1AE6B /* HUDView.swift */,
+				75F7DE8921A1DDF100B1AE6B /* HUD.swift */,
 			);
 			name = HUD;
 			path = "New Group";
@@ -744,6 +747,7 @@
 				758E103D1DBD92D000D872BC /* Reachability.swift in Sources */,
 				75BE191721A0BA5D008F2DC4 /* UserLocationContainer.swift in Sources */,
 				75BE190621A0B858008F2DC4 /* RoutePageViewController.swift in Sources */,
+				75F7DE8A21A1DDF100B1AE6B /* HUD.swift in Sources */,
 				75BE186421A0B1EA008F2DC4 /* Location.swift in Sources */,
 				75BE18C021A0B858008F2DC4 /* SettingsViewController.swift in Sources */,
 				75BE191021A0B858008F2DC4 /* RoutesContainer.swift in Sources */,

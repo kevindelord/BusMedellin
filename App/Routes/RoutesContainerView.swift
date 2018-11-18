@@ -14,7 +14,7 @@ class RoutesContainerView						: UIView, RoutesContainer, ContentView, RoutePage
 
 	// RouteContainer Protocol
 	var routePageController						: RoutePageController?
-	var routePageControl 						: RoutePageControl?
+	var routePageControl						: RoutePageControl?
 
 	// ContentView Protocol
 	var coordinator								: Coordinator?
@@ -86,8 +86,8 @@ extension RoutesContainerView {
 		var pages = [RouteDetailPage]()
 
 		for route in routes {
-			let storyboard = UIStoryboard(name: Storyboard.Routes, bundle: nil)
-			let controller = storyboard.instantiateViewController(withIdentifier: Storyboard.Controller.Route)
+			let storyboard = UIStoryboard(name: Storyboard.routes, bundle: nil)
+			let controller = storyboard.instantiateViewController(withIdentifier: Storyboard.Controller.route)
 			if let routeController = controller as? RouteDetailViewController {
 				routeController.route = route
 				pages.append(routeController)

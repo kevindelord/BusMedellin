@@ -13,12 +13,12 @@ class AppCoordinator			: Coordinator, ContentViewDelegate, RouteManagerDelegate 
 	private let routeManager	= RouteManager()
 
 	// Main App View Container owning the different UI elements.
-	private var container 		: (AppCoordinatorContainer & SearchResultCoordinator)?
+	private var container		: (AppCoordinatorContainer & SearchResultCoordinator)?
 
 	// Contained Content Views that must be retained in order to coordinate the app.
 	// Depending on user actions the retained content views must be regurlarly updated.
-	private var mapView			: ContentView?
-	private var routesContainer	: ContentView?
+	private var mapView			: (ContentView & MapContainer)?
+	private var routesContainer	: (ContentView & RoutesContainer)?
 }
 
 // MARK: - Coordinator
@@ -38,17 +38,17 @@ extension AppCoordinator {
 		mapContainer?.routeDataSource = self.routeManager
 
 		// Retain the map and routes containers
-		if (segue.identifier == Segue.Embed.Container.Map) {
-			self.mapView = contentView
+		if let mapContentView = segue.destination.view as? (ContentView & MapContainer) {
+			self.mapView = mapContentView
 		}
 
-		if (segue.identifier == Segue.Embed.Container.Routes) {
-			self.routesContainer = contentView
+		if let routesContentView = segue.destination.view as? (ContentView & RoutesContainer) {
+			self.routesContainer = routesContentView
 		}
 	}
 
 	func openSettings() {
-		self.container?.performSegue(withIdentifier: Segue.settings, sender: nil)
+		self.container?.performSegue(withIdentifier: Storyboard.Segue.openSettings, sender: nil)
 	}
 }
 

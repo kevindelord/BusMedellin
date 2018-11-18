@@ -18,7 +18,7 @@ class MapView											: UIView, MKMapViewDelegate, MapContainedElement, MapVie
 	private var startCircle								: MapCircle?
 	private var destinationCircle						: MapCircle?
 
-	var delegate 										: MapActionDelegate?
+	var delegate										: MapActionDelegate?
 
 	override func layoutSubviews() {
 		super.layoutSubviews()

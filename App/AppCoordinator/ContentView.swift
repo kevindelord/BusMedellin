@@ -18,4 +18,3 @@ protocol ContentView {
 	/// Delegate to reload displayed content.
 	var delegate: (RouteManagerDelegate & ContentViewDelegate)? { get set }
 }
-

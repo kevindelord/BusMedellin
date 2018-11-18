@@ -8,9 +8,9 @@
 
 import UIKit
 
-class RoutePageControlView 					: UIView, RoutePageControl {
+class RoutePageControlView					: UIView, RoutePageControl {
 
-	@IBOutlet private weak var pageControl 	: UIPageControl?
+	@IBOutlet private weak var pageControl	: UIPageControl?
 
 	private var totalNumberOfPages			: Int = 0
 }

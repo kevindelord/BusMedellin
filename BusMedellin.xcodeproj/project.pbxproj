@@ -40,7 +40,6 @@
 		75BE18BE21A0B858008F2DC4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BE188221A0B858008F2DC4 /* Constants.swift */; };
 		75BE18C021A0B858008F2DC4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BE188421A0B858008F2DC4 /* SettingsViewController.swift */; };
 		75BE18C221A0B858008F2DC4 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BE188621A0B858008F2DC4 /* FooterView.swift */; };
-		75BE18C421A0B858008F2DC4 /* FooterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BE188721A0B858008F2DC4 /* FooterViewController.swift */; };
 		75BE18C621A0B858008F2DC4 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BE188921A0B858008F2DC4 /* AppCoordinator.swift */; };
 		75BE18C821A0B858008F2DC4 /* AppCoordinatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BE188A21A0B858008F2DC4 /* AppCoordinatorViewController.swift */; };
 		75BE18CA21A0B858008F2DC4 /* ContentViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BE188B21A0B858008F2DC4 /* ContentViewDelegate.swift */; };
@@ -136,7 +135,6 @@
 		75BE188221A0B858008F2DC4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		75BE188421A0B858008F2DC4 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		75BE188621A0B858008F2DC4 /* FooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
-		75BE188721A0B858008F2DC4 /* FooterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FooterViewController.swift; sourceTree = "<group>"; };
 		75BE188921A0B858008F2DC4 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		75BE188A21A0B858008F2DC4 /* AppCoordinatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinatorViewController.swift; sourceTree = "<group>"; };
 		75BE188B21A0B858008F2DC4 /* ContentViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewDelegate.swift; sourceTree = "<group>"; };
@@ -349,7 +347,6 @@
 			isa = PBXGroup;
 			children = (
 				75BE188621A0B858008F2DC4 /* FooterView.swift */,
-				75BE188721A0B858008F2DC4 /* FooterViewController.swift */,
 			);
 			path = Footer;
 			sourceTree = "<group>";
@@ -716,7 +713,6 @@
 				75BE18EC21A0B858008F2DC4 /* Annotation.swift in Sources */,
 				75BE18F421A0B858008F2DC4 /* UserLocationButton.swift in Sources */,
 				75BE18D021A0B858008F2DC4 /* ContentView.swift in Sources */,
-				75BE18C421A0B858008F2DC4 /* FooterViewController.swift in Sources */,
 				75BE18E421A0B858008F2DC4 /* MapView.swift in Sources */,
 				75BE187C21A0B7CF008F2DC4 /* UIColor.swift in Sources */,
 				75BE18DE21A0B858008F2DC4 /* AddressViewContainer.swift in Sources */,

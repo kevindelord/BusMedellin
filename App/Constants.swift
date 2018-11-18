@@ -9,35 +9,6 @@
 import Foundation
 import UIKit
 
-struct Segue {
-
-	static let settings				= "openSettings"
-
-	struct Embed {
-
-		struct Container {
-
-			static let Footer		= "embedFooterView"
-			static let Map			= "embedMapContainer"
-			static let Routes		= "embedRoutesContainer"
-		}
-
-		struct ViewController {
-
-			static let Page			= "embedPageViewController"
-			static let Address 		= "embedAddressViewController"
-			static let Map 			= "embedMapViewController"
-			static let ActionPin	= "embedPinLocationViewController"
-			static let UserLocation	= "embedUserLocationViewController"
-		}
-
-		struct View {
-
-			static let PageControl	= "embedPageControl"
-		}
-	}
-}
-
 extension UIPageControl {
 
 	static let maximumPageCount		= 15
@@ -45,11 +16,16 @@ extension UIPageControl {
 
 struct Storyboard {
 
-	static let Routes				= "Routes"
+	static let routes				= "Routes"
 
 	struct Controller {
 
-		static let Route 			= "RouteViewController"
+		static let route			= "RouteViewController"
+	}
+
+	struct Segue {
+
+		static let openSettings		= "openSettings"
 	}
 }
 

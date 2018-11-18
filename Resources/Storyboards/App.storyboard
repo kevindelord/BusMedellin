@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AFy-zb-brL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AFy-zb-brL">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,7 +13,7 @@
         <!--App Coordinator View Controller-->
         <scene sceneID="fFh-7S-ENO">
             <objects>
-                <viewController id="AFy-zb-brL" customClass="AppCoordinatorViewController" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="AFy-zb-brL" customClass="AppCoordinatorViewController" customModule="BusMedellin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VRG-dx-K1K">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,7 +24,7 @@
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MuQ-MQ-mhZ" userLabel="Map">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="698"/>
                                         <connections>
-                                            <segue destination="LJG-pO-0Xv" kind="embed" identifier="embedMapContainer" id="uo6-Sd-0Ws"/>
+                                            <segue destination="LJG-pO-0Xv" kind="embed" identifier="" id="uo6-Sd-0Ws"/>
                                         </connections>
                                     </containerView>
                                     <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7DQ-8Z-yCl" userLabel="Routes">
@@ -33,7 +33,7 @@
                                             <constraint firstAttribute="height" constant="150" id="gvW-rc-omN"/>
                                         </constraints>
                                         <connections>
-                                            <segue destination="DwQ-nU-pUH" kind="embed" identifier="embedRoutesContainer" id="QeD-Ca-lK5"/>
+                                            <segue destination="DwQ-nU-pUH" kind="embed" identifier="" id="QeD-Ca-lK5"/>
                                         </connections>
                                     </containerView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bBv-pr-e78" userLabel="Footer">
@@ -42,7 +42,7 @@
                                             <constraint firstAttribute="height" constant="80" id="zd9-e8-0PP"/>
                                         </constraints>
                                         <connections>
-                                            <segue destination="oQ6-zH-lnD" kind="embed" identifier="embedFooterContainer" id="92m-vM-MPQ"/>
+                                            <segue destination="oQ6-zH-lnD" kind="embed" identifier="" id="92m-vM-MPQ"/>
                                         </connections>
                                     </containerView>
                                 </subviews>

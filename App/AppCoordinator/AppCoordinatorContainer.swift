@@ -16,4 +16,3 @@ protocol AppCoordinatorContainer {
 	/// Required override of the native SDK functions to load the embed views.
 	func performSegue(withIdentifier identifier: String, sender: Any?)
 }
-

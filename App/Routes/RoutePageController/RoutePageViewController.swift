@@ -8,9 +8,9 @@
 
 import UIKit
 
-class RoutePageViewController 	: UIPageViewController, RoutePageController {
+class RoutePageViewController	: UIPageViewController, RoutePageController {
 
-	var handler 				: RoutePageControllerHandler?
+	var handler					: RoutePageControllerHandler?
 
 	override func viewDidLoad() {
 		super.viewDidLoad()

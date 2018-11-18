@@ -159,24 +159,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="37"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="hTF-ZR-fgi" customClass="PageControl" customModule="BusMedellin" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s5D-K4-MY2" customClass="PageControl" customModule="BusMedellin" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="37"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="maximumPageCount">
                                         <integer key="value" value="15"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                            </pageControl>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="k9u-L6-aFu" firstAttribute="top" secondItem="hTF-ZR-fgi" secondAttribute="bottom" id="00g-Zr-56s"/>
-                            <constraint firstItem="hTF-ZR-fgi" firstAttribute="top" secondItem="KVS-9D-ocq" secondAttribute="bottom" id="QDB-oa-zLW"/>
-                            <constraint firstItem="hTF-ZR-fgi" firstAttribute="leading" secondItem="Qaj-Md-Tds" secondAttribute="leading" id="U58-eh-Aur"/>
-                            <constraint firstAttribute="trailing" secondItem="hTF-ZR-fgi" secondAttribute="trailing" id="z3H-Wi-oul"/>
+                            <constraint firstItem="s5D-K4-MY2" firstAttribute="leading" secondItem="Qaj-Md-Tds" secondAttribute="leading" id="FtW-K6-eyw"/>
+                            <constraint firstAttribute="trailing" secondItem="s5D-K4-MY2" secondAttribute="trailing" id="GdN-7j-lEH"/>
+                            <constraint firstItem="s5D-K4-MY2" firstAttribute="top" secondItem="KVS-9D-ocq" secondAttribute="bottom" id="L68-9z-Xtg"/>
+                            <constraint firstItem="k9u-L6-aFu" firstAttribute="top" secondItem="s5D-K4-MY2" secondAttribute="bottom" id="U2c-vQ-yvv"/>
                         </constraints>
                         <connections>
-                            <outlet property="pageControl" destination="hTF-ZR-fgi" id="pxo-sd-fd8"/>
+                            <outlet property="pageControl" destination="s5D-K4-MY2" id="Xch-23-LzX"/>
                         </connections>
                     </view>
                 </viewController>

@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import CHIPageControl
 
-class PageControl						: UIPageControl {
+class PageControl						: CHIPageControlJalapeno {
 
 	@IBInspectable var maximumPageCount	: Int = 0
 }

@@ -19,14 +19,15 @@ class UserLocationButton	: UIButton {
 		}
 	}
 
-	func setup(mapView: MKMapView? = nil) {
-		guard
-			(mapView?.userLocation.location != nil),
-			(CLLocationManager.authorizationStatus() == .authorizedWhenInUse || CLLocationManager.authorizationStatus() == .authorizedAlways) else {
-				self.locationState = .inactive
-				return
-		}
+	func update(userLocation: MKUserLocation?) {
+		let canShowUserLocation = (userLocation?.location != nil && CLLocationManager.authorizationAccepted == true)
+		self.locationState = (canShowUserLocation == true ? .available : .inactive)
+	}
 
-		self.locationState = .available
+	override func awakeFromNib() {
+		super.awakeFromNib()
+
+		// Default state on init.
+		self.locationState = .inactive
 	}
 }

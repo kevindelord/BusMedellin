@@ -21,7 +21,7 @@ class RouteDetailViewController							: UIViewController, RouteDetailPage {
 
 		// Add a rounded box.
 		self.containerView?.layer.borderWidth = 1.0
-		self.containerView?.layer.borderColor = BMColor.darkGray.cgColor
+		self.containerView?.layer.borderColor = Color.darkGray.cgColor
 		self.containerView?.roundRect(radius: 5)
 
 		// Hide the subtitle by default.

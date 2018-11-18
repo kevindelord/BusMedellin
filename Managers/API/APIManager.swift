@@ -9,7 +9,7 @@
 import Foundation
 import MapKit
 
-// TODO: Integrate Time-Out in APIManager.
+// TODO: Integrate Timeout in APIManager.
 
 class APIManager {
 

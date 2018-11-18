@@ -6,8 +6,6 @@
 //  Copyright © 2018 Kevin Delord. All rights reserved.
 //
 
-// TODO: document protocol
-
 import MapKit
 
 protocol MapViewContainer: HUDContainer {
@@ -24,4 +22,9 @@ protocol MapViewContainer: HUDContainer {
 	///   - selectedRoute: Selected bus Route to draw on the map.
 	///   - routeDataSource: Data Source to get exact CoreLocation objects necessary to draw the related route.
 	func draw(selectedRoute: Route, routeDataSource: RouteManagerDataSource)
+
+	/// Center the map on a specific location.
+	///
+	/// - Parameter location: Location to center the map to.
+	func centerMap(on location: CLLocation)
 }

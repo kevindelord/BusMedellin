@@ -8,8 +8,6 @@
 
 import UIKit
 
-// TODO: Is localised strings 'USER_LOCATION_TOO_FAR' used?
-
 class AppCoordinatorViewController					: UIViewController, AppCoordinatorContainer, SearchResultCoordinator {
 
 	var coordinator									: Coordinator

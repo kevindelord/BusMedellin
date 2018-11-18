@@ -9,31 +9,16 @@
 import UIKit
 import MapKit
 
-// TODO: fully extract location Manager
-// TODO: if search is cancelled while fetching data -> cancel all ongoing requests.
-// TODO: fix successful search but address not displayed in addressView
-// TODO: fix successful search but routes list not displayed.
-
-class MapView											: UIView, MKMapViewDelegate, MapContainedElement, MapViewContainer, HUDContainer {
+class MapView											: UIView, MKMapViewDelegate, MapContainedElement, MapViewContainer, HUDContainer, UserLocationDataSource {
 
 	@IBOutlet weak private var mapView					: MKMapView?
-	@IBOutlet weak private var nearMeButton				: UserLocationButton?
 
-	private let locationManager							= CLLocationManager()
 	private var startAnnotation							: Annotation?
 	private var destinationAnnotation					: Annotation?
 	private var startCircle								: MapCircle?
 	private var destinationCircle						: MapCircle?
 
 	var delegate 										: MapActionDelegate?
-
-	override init(frame: CGRect) {
-		super.init(frame: frame)
-	}
-
-	required init?(coder aDecoder: NSCoder) {
-		super.init(coder: aDecoder)
-	}
 
 	override func layoutSubviews() {
 		super.layoutSubviews()
@@ -43,10 +28,10 @@ class MapView											: UIView, MKMapViewDelegate, MapContainedElement, MapVie
 	}
 
 	private lazy var initializationProcess: Void = {
-		// By default show Medellin city center
-		self.centerMap(on: self.cityCenterLocation)
-		// Setup 'locate me' button.
-		self.nearMeButton?.setup(mapView: self.mapView)
+		// On start center the map onto the city center
+		self.centerMap(on: Map.cityCenterLocation)
+		// If enabled and authorized, show the user location's blue annotation.
+		self.mapView?.showsUserLocation = (CLLocationManager.authorizationAccepted == true)
 	}()
 }
 
@@ -80,6 +65,24 @@ extension MapView {
 			// Hide waiting HUD
 			self?.hideWaitingHUD()
 		})
+	}
+
+	func centerMap(on location: CLLocation) {
+		let regionRadius: CLLocationDistance = Map.defaultZoomRadius
+		let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 2.0, regionRadius * 2.0)
+		self.mapView?.setRegion(coordinateRegion, animated: true)
+	}
+}
+
+// MARK: - UserLocationDataSource
+
+extension MapView {
+
+	// The user wants to see his location annotation on the map.
+	// If the access has been authorized, enable the mapView's user location and returned the processed location.
+	var currentUserLocation: MKUserLocation? {
+		self.mapView?.showsUserLocation = (CLLocationManager.authorizationAccepted == true)
+		return self.mapView?.userLocation
 	}
 }
 
@@ -119,8 +122,8 @@ extension MapView {
 	/// Force the map to stay close to the city center.
 	func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
 		let mapCenter = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
-		if (self.cityCenterLocation.distance(from: mapCenter) > Map.maxScrollDistance) {
-			self.centerMap(on: self.cityCenterLocation)
+		if (Map.cityCenterLocation.distance(from: mapCenter) > Map.maxScrollDistance) {
+			self.centerMap(on: Map.cityCenterLocation)
 		}
 	}
 
@@ -144,25 +147,22 @@ extension MapView {
 
 	/// If the location suddenly become available adapt the location button.
 	func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-		if (userLocation.location == nil) {
-			self.nearMeButton?.locationState = .inactive
-		} else if (self.nearMeButton?.locationState == .inactive) {
-			self.nearMeButton?.locationState = .available
-		}
+		self.mapView?.showsUserLocation = (CLLocationManager.authorizationAccepted == true)
+		self.delegate?.updateUserLocation(userLocation)
 	}
 
 	/// Draw a map overlay, either a bus route or a circle around a pin annotation.
 	func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
 		if (overlay is MKGeodesicPolyline) {
 			let lineView = MKPolylineRenderer(overlay: overlay)
-			lineView.strokeColor = BMColor.blue
+			lineView.strokeColor = Color.blue
 			lineView.lineWidth = Map.polylineWidth
 			return lineView
 
 		} else if let circle = overlay as? MapCircle {
 			let circleRenderer = MKCircleRenderer(overlay: overlay)
-			circleRenderer.fillColor = (circle.color ?? UIColor.blue).withAlphaComponent(Map.circleColorAlpha)
-			circleRenderer.strokeColor = (circle.color ?? UIColor.blue)
+			circleRenderer.fillColor = (circle.color ?? Color.blue).withAlphaComponent(Map.circleColorAlpha)
+			circleRenderer.strokeColor = (circle.color ?? Color.blue)
 			circleRenderer.lineWidth = 1
 			return circleRenderer
 		}
@@ -171,68 +171,9 @@ extension MapView {
 	}
 }
 
-// MARK: - User Location functions
-
-extension MapView {
-
-	/// Default city center location
-	private var cityCenterLocation : CLLocation {
-		let latitude = (Double(Configuration().defaultLatitude) ?? 0)
-		let longitude = (Double(Configuration().defaultLongitude) ?? 0)
-		return CLLocation(latitude: latitude, longitude: longitude)
-	}
-
-	private func checkLocationAuthorizationStatus() -> CLLocation? {
-		if (CLLocationManager.authorizationStatus() == .authorizedWhenInUse) {
-			self.mapView?.showsUserLocation = true
-			let userLocation = self.mapView?.userLocation.location
-			if (userLocation == nil) {
-				self.showPopupToRedirectToSettings()
-			}
-
-			return userLocation
-		} else if (CLLocationManager.authorizationStatus() == .denied) {
-			self.showPopupToRedirectToSettings()
-			return nil
-		} else {
-			self.locationManager.requestWhenInUseAuthorization()
-			Analytics.UserLocation.didAskForUserLocation.send()
-			return nil
-		}
-	}
-
-	private func showPopupToRedirectToSettings() {
-		let presentingViewController = UIApplication.shared.windows.first?.rootViewController
-		let alertController = UIAlertController(title: L("LOCATION_ERROR_TITLE"), message: L("LOCATION_ERROR_MESSAGE"), preferredStyle: .alert)
-		// Cancel action button
-		alertController.addAction(UIAlertAction(title: L("LOCATION_ERROR_CANCEL"), style: .default, handler: { (action: UIAlertAction) in
-			Analytics.UserLocation.didCancelLocationPopup.send()
-		}))
-		// Open Settings action button
-		alertController.addAction(UIAlertAction(title: L("LOCATION_ERROR_SETTINGS"), style: .cancel, handler: { (action: UIAlertAction) in
-			if let url = URL(string: UIApplicationOpenSettingsURLString) {
-				Analytics.UserLocation.didOpenSettings.send()
-				UIApplication.shared.openURL(url)
-			}
-		}))
-		// Present Controller
-		presentingViewController?.present(alertController, animated: true, completion: nil)
-		Analytics.UserLocation.didAskForSettings.send()
-	}
-}
-
 // MARK: - MapView Utility functions
 
 extension MapView {
-
-	/// Center the map on a specific location.
-	///
-	/// - Parameter location: Location to center the map to.
-	private func centerMap(on location: CLLocation) {
-		let regionRadius: CLLocationDistance = Map.defaultZoomRadius
-		let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 2.0, regionRadius * 2.0)
-		self.mapView?.setRegion(coordinateRegion, animated: true)
-	}
 
 	/// Draw a new route on the map using a set of coordinates.
 	///
@@ -295,26 +236,5 @@ extension MapView {
 		let northCoordinate = CLLocationCoordinate2D(latitude: coordinate.latitude + delta, longitude: coordinate.longitude)
 		region.center = northCoordinate
 		self.mapView?.setRegion(region, animated: true)
-	}
-}
-
-// MARK: - Interface Builder Action
-
-extension MapView {
-
-	/// Function called when the user presses the 'near me' (or aka 'locate me') button.
-	@IBAction private func locateMeButtonPressed() {
-		guard let userLocation = self.checkLocationAuthorizationStatus() else {
-			return
-		}
-
-		// Disable the locate me feature if the user is too far away from the city center.
-		if (self.cityCenterLocation.distance(from: userLocation) < Map.maxScrollDistance) {
-			self.centerMap(on: userLocation)
-			Analytics.UserLocation.didLocateUser.send()
-		} else {
-			UIAlertController.showInfoMessage("", message: L("USER_LOCATION_TOO_FAR"))
-			Analytics.UserLocation.didLocateUserTooFar.send()
-		}
 	}
 }

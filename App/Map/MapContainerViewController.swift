@@ -19,7 +19,7 @@ class MapContainerViewController : UIViewController {
 			addressController.delegate = container
 		}
 
-		if (segue.identifier == Segue.Embed.ViewController.Map), var mapController = segue.destination.view as? (MapContainedElement & MapViewContainer) {
+		if (segue.identifier == Segue.Embed.ViewController.Map), var mapController = segue.destination.view as? (MapContainedElement & MapViewContainer & UserLocationDataSource) {
 			var container = (self.view as? (MapContainer & MapActionDelegate))
 			container?.map = mapController
 			mapController.delegate = container
@@ -29,6 +29,13 @@ class MapContainerViewController : UIViewController {
 			var container = (self.view as? (MapContainer & MapActionDelegate))
 			container?.pinLocation = pinController
 			pinController.delegate = container
+		}
+
+		if (segue.identifier == Segue.Embed.ViewController.UserLocation), var locationController = segue.destination as? (MapContainedElement & UserLocationContainer) {
+			var container = (self.view as? (MapContainer & MapActionDelegate))
+			container?.userLocation = locationController
+			locationController.delegate = container
+			locationController.dataSource = container?.map
 		}
 	}
 }

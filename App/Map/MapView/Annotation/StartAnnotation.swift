@@ -11,6 +11,6 @@ import MapKit
 class StartAnnotation : Annotation {
 
 	static func create(withCoordinates coordinates: CLLocationCoordinate2D) -> StartAnnotation {
-		return StartAnnotation(coordinate: coordinates, reuseId: ReuseId.pickUpPin, pinColor: .green)
+		return StartAnnotation(coordinate: coordinates, reuseId: Map.ReuseId.pickUpPin, pinColor: .green)
 	}
 }

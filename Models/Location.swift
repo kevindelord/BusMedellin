@@ -14,8 +14,8 @@ enum Location {
 
 	var dotColor: UIColor {
 		switch self {
-		case .PickUp		: return BMColor.green
-		case .Destination	: return BMColor.red
+		case .PickUp		: return Color.green
+		case .Destination	: return Color.red
 		}
 	}
 

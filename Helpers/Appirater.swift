@@ -9,18 +9,19 @@
 import Foundation
 import Appirater
 
-// TODO: Test Appirater+Storekit on iOS 10.3 and newer. https://github.com/arashpayan/appirater
-// TODO: Migrate logic to 3 significant events until prompt.
-
 extension Appirater {
 
 	class func setup() {
 		Appirater.setAppId(Configuration().appIdentifier)
-		Appirater.setDaysUntilPrompt(3)
-		Appirater.setUsesUntilPrompt(3)
-		Appirater.setSignificantEventsUntilPrompt(-1)
-		Appirater.setTimeBeforeReminding(7)
+		Appirater.setDaysUntilPrompt(0)
+		Appirater.setUsesUntilPrompt(0)
+		Appirater.setSignificantEventsUntilPrompt(5)
+		Appirater.setTimeBeforeReminding(1)
 		Appirater.setDebug(Configuration.debugAppirater)
 		Appirater.appLaunched(true)
+	}
+
+	class func triggerSignificantEvent() {
+		Appirater.userDidSignificantEvent(true)
 	}
 }

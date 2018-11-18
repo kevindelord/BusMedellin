@@ -23,8 +23,8 @@ extension HUDContainer where Self: UIView {
 	func showWaitingHUD() {
 		DispatchQueue.main.async {
 			let hud = MBProgressHUD.showAdded(to: self, animated: true)
-			hud.bezelView.color = UIColor.black
-			hud.contentColor = UIColor.white
+			hud.bezelView.color = Color.black
+			hud.contentColor = Color.white
 		}
 	}
 

@@ -41,7 +41,7 @@ extension AddressViewController {
 		UIView.animate(withDuration: 0.3, animations: {
 			switch location {
 			case .PickUp:
-				self.destinationInfoView?.backgroundColor = BMColor.lightGray
+				self.destinationInfoView?.backgroundColor = Color.lightGray
 				self.destinationInfoViewPosition?.isActive = false
 				self.destinationInfoView?.isUserInteractionEnabled = false
 				self.destinationInfoView?.update(withAddress: nil)

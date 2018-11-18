@@ -6,6 +6,8 @@
 //  Copyright © 2018 Kevin Delord. All rights reserved.
 //
 
+import MapKit
+
 /// Delegate for possible user actions on the map view.
 protocol MapActionDelegate {
 
@@ -19,4 +21,12 @@ protocol MapActionDelegate {
 	///
 	/// - Parameter location: Related Location.
 	func pinPoint(location: Location)
+
+	/// Center the map on a specific location.
+	///
+	/// - Parameter location: Location to center the map to.
+	func centerMap(on location: CLLocation)
+
+	/// Update after the notifications received from the MapKit delegate functions.
+	func updateUserLocation(_ location: MKUserLocation)
 }

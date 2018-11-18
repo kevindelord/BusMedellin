@@ -20,10 +20,10 @@ class MapCircle	: MKCircle {
 	}
 
 	class func createStartCircle(centerCoordinate coord: CLLocationCoordinate2D) -> MapCircle {
-		return MapCircle.create(centerCoordinate: coord, radius: Map.defaultSearchRadius, color: BMColor.green)
+		return MapCircle.create(centerCoordinate: coord, radius: Map.defaultSearchRadius, color: Color.green)
 	}
 
 	class func createDestinationCircle(centerCoordinate coord: CLLocationCoordinate2D) -> MapCircle {
-		return MapCircle.create(centerCoordinate: coord, radius: Map.defaultSearchRadius, color: BMColor.red)
+		return MapCircle.create(centerCoordinate: coord, radius: Map.defaultSearchRadius, color: Color.red)
 	}
 }

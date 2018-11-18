@@ -43,11 +43,23 @@
                                     <segue destination="7Yg-mn-3wu" kind="embed" identifier="embedPinLocationViewController" id="DEv-5V-T4v"/>
                                 </connections>
                             </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S6l-Ep-FHQ">
+                                <rect key="frame" x="319" y="722" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="OOO-8I-CvG"/>
+                                    <constraint firstAttribute="height" constant="40" id="Qdt-2i-qUp"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="hVC-IO-hD3" kind="embed" identifier="embedUserLocationViewController" id="H55-0w-uXi"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="T7Q-4b-QUV" firstAttribute="trailing" secondItem="S6l-Ep-FHQ" secondAttribute="trailing" constant="16" id="Bc7-Xt-c9H"/>
                             <constraint firstItem="T7Q-4b-QUV" firstAttribute="trailing" secondItem="pXa-OM-2tW" secondAttribute="trailing" constant="16" id="FJ3-P1-g19"/>
                             <constraint firstItem="IF3-Cl-hyl" firstAttribute="top" secondItem="Uxb-H2-SLU" secondAttribute="top" id="TNN-Pb-at1"/>
+                            <constraint firstItem="T7Q-4b-QUV" firstAttribute="bottom" secondItem="S6l-Ep-FHQ" secondAttribute="bottom" constant="16" id="WHc-Wg-3sG"/>
                             <constraint firstItem="pXa-OM-2tW" firstAttribute="top" secondItem="T7Q-4b-QUV" secondAttribute="top" constant="8" id="YKs-yW-lNn"/>
                             <constraint firstItem="dD2-Li-Ipa" firstAttribute="centerY" secondItem="Uxb-H2-SLU" secondAttribute="centerY" constant="-20" id="Yzh-GK-Kw0"/>
                             <constraint firstAttribute="bottom" secondItem="IF3-Cl-hyl" secondAttribute="bottom" id="ZV2-lE-6yZ"/>
@@ -207,26 +219,12 @@
                                     <outlet property="delegate" destination="gcp-S5-Cmt" id="oXZ-Ye-2S3"/>
                                 </connections>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ccJ-zf-weA" customClass="UserLocationButton" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target">
-                                <rect key="frame" x="319" y="722" width="40" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="12n-DE-6lM"/>
-                                    <constraint firstAttribute="height" constant="40" id="zO8-TC-Ggi"/>
-                                </constraints>
-                                <color key="tintColor" red="0.61176470589999998" green="0.019607843140000001" blue="0.1137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" image="NearMe"/>
-                                <connections>
-                                    <action selector="locateMeButtonPressed" destination="gcp-S5-Cmt" eventType="touchUpInside" id="2Ac-rr-nCS"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="I8G-dQ-iP1" firstAttribute="top" secondItem="gcp-S5-Cmt" secondAttribute="top" id="BwO-a8-Xux"/>
                             <constraint firstAttribute="trailing" secondItem="I8G-dQ-iP1" secondAttribute="trailing" id="LBS-ct-AVg"/>
                             <constraint firstAttribute="bottom" secondItem="I8G-dQ-iP1" secondAttribute="bottom" id="ZX2-SJ-uXp"/>
-                            <constraint firstItem="dgl-ee-Bso" firstAttribute="trailing" secondItem="ccJ-zf-weA" secondAttribute="trailing" constant="16" id="kgr-TV-BtU"/>
-                            <constraint firstItem="dgl-ee-Bso" firstAttribute="bottom" secondItem="ccJ-zf-weA" secondAttribute="bottom" constant="16" id="sdH-ac-Z9m"/>
                             <constraint firstItem="I8G-dQ-iP1" firstAttribute="leading" secondItem="gcp-S5-Cmt" secondAttribute="leading" id="uLq-Un-0rg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dgl-ee-Bso"/>
@@ -285,7 +283,45 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LrH-yH-PYq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="113" y="624"/>
+            <point key="canvasLocation" x="70" y="630"/>
+        </scene>
+        <!--User Location View Controller-->
+        <scene sceneID="5yV-Cz-y7R">
+            <objects>
+                <viewController id="hVC-IO-hD3" customClass="UserLocationViewController" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pdc-3w-AKj">
+                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ccJ-zf-weA" customClass="UserLocationButton" customModule="BusMedellin_Alpha_AdHoc" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="12n-DE-6lM"/>
+                                    <constraint firstAttribute="height" constant="40" id="zO8-TC-Ggi"/>
+                                </constraints>
+                                <color key="tintColor" red="0.61176470589999998" green="0.019607843140000001" blue="0.1137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="NearMe"/>
+                                <connections>
+                                    <action selector="locateMeButtonPressed" destination="gcp-S5-Cmt" eventType="touchUpInside" id="2Ac-rr-nCS"/>
+                                    <action selector="locateUser" destination="hVC-IO-hD3" eventType="touchUpInside" id="WBT-Rn-TQL"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="ccJ-zf-weA" firstAttribute="leading" secondItem="pdc-3w-AKj" secondAttribute="leading" id="Cdv-Xo-qkQ"/>
+                            <constraint firstItem="ccJ-zf-weA" firstAttribute="top" secondItem="pdc-3w-AKj" secondAttribute="top" id="FQH-IW-Dk6"/>
+                            <constraint firstAttribute="trailing" secondItem="ccJ-zf-weA" secondAttribute="trailing" id="HVH-hW-MCt"/>
+                            <constraint firstAttribute="bottom" secondItem="ccJ-zf-weA" secondAttribute="bottom" id="pRw-rk-XTS"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="aaJ-u8-S1C"/>
+                    </view>
+                    <connections>
+                        <outlet property="userLocationButton" destination="ccJ-zf-weA" id="sJf-h7-OiV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eBB-Ov-JTx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="501" y="630"/>
         </scene>
     </scenes>
     <resources>

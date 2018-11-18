@@ -29,4 +29,10 @@ struct Map {
 		let longitude = (Double(config.defaultLongitude) ?? 0)
 		return CLLocation(latitude: latitude, longitude: longitude)
 	}
+
+	struct ReuseId {
+
+		static let pickUpPin			= "PickUpAnnotaion_Id"
+		static let destinationPin		= "DestinationAnnotaion_Id"
+	}
 }

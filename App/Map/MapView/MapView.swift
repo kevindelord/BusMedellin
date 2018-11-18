@@ -161,8 +161,8 @@ extension MapView {
 
 		} else if let circle = overlay as? MapCircle {
 			let circleRenderer = MKCircleRenderer(overlay: overlay)
-			circleRenderer.fillColor = (circle.color ?? UIColor.blue).withAlphaComponent(Map.circleColorAlpha)
-			circleRenderer.strokeColor = (circle.color ?? UIColor.blue)
+			circleRenderer.fillColor = (circle.color ?? Color.blue).withAlphaComponent(Map.circleColorAlpha)
+			circleRenderer.strokeColor = (circle.color ?? Color.blue)
 			circleRenderer.lineWidth = 1
 			return circleRenderer
 		}

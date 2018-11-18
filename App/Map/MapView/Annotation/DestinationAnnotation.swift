@@ -11,7 +11,7 @@ import MapKit
 class DestinationAnnotation : Annotation {
 
 	static func create(withCoordinates coordinates: CLLocationCoordinate2D) -> DestinationAnnotation {
-		return DestinationAnnotation(coordinate: coordinates, reuseId: ReuseId.destinationPin, pinColor: .red)
+		return DestinationAnnotation(coordinate: coordinates, reuseId: Map.ReuseId.destinationPin, pinColor: .red)
 	}
 }
 

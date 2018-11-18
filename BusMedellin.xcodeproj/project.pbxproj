@@ -21,6 +21,7 @@
 		755879EB21A1EA7D0092C0E4 /* HUDContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755879E821A1EA7D0092C0E4 /* HUDContainer.swift */; };
 		755879EC21A1EA7D0092C0E4 /* HUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755879E921A1EA7D0092C0E4 /* HUDView.swift */; };
 		755879ED21A1EA7D0092C0E4 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755879EA21A1EA7D0092C0E4 /* HUD.swift */; };
+		755879EF21A1EDD20092C0E4 /* NSLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755879EE21A1EDD20092C0E4 /* NSLayoutConstraint.swift */; };
 		755DB8D9213C207B0092756E /* RouteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755DB8D7213C207B0092756E /* RouteManager.swift */; };
 		755DB8DC213C5C390092756E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 755DB8DB213C5C390092756E /* StoreKit.framework */; };
 		757F31631DBE5E16002BB03F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 757F31611DBE5E16002BB03F /* GoogleService-Info.plist */; };
@@ -118,6 +119,7 @@
 		755879E821A1EA7D0092C0E4 /* HUDContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDContainer.swift; sourceTree = "<group>"; };
 		755879E921A1EA7D0092C0E4 /* HUDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDView.swift; sourceTree = "<group>"; };
 		755879EA21A1EA7D0092C0E4 /* HUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
+		755879EE21A1EDD20092C0E4 /* NSLayoutConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraint.swift; sourceTree = "<group>"; };
 		755DB8D7213C207B0092756E /* RouteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteManager.swift; sourceTree = "<group>"; };
 		755DB8DB213C5C390092756E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		75640BEC1DAF19C5002B4A56 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Resources/Settings.bundle; sourceTree = "<group>"; };
@@ -334,6 +336,7 @@
 				75BE187121A0B7CF008F2DC4 /* UIAlertController.swift */,
 				75BE187221A0B7CF008F2DC4 /* NSError.swift */,
 				752DB9A221A0D5C500286042 /* CLLocationManager.swift */,
+				755879EE21A1EDD20092C0E4 /* NSLayoutConstraint.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -737,6 +740,7 @@
 				75C0E645218E15A900C988C5 /* RouteManagerDataSource.swift in Sources */,
 				75BE18C821A0B858008F2DC4 /* AppCoordinatorViewController.swift in Sources */,
 				755879EB21A1EA7D0092C0E4 /* HUDContainer.swift in Sources */,
+				755879EF21A1EDD20092C0E4 /* NSLayoutConstraint.swift in Sources */,
 				75BE18E821A0B858008F2DC4 /* StartAnnotation.swift in Sources */,
 				75BE18D221A0B858008F2DC4 /* Coordinator.swift in Sources */,
 				75BE187821A0B7CF008F2DC4 /* MKMapView.swift in Sources */,

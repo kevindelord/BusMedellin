@@ -30,7 +30,6 @@
 		758E104E1DBD92D000D872BC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 75640BEC1DAF19C5002B4A56 /* Settings.bundle */; };
 		758E10501DBD92D000D872BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75513BDF1DB019C600957F40 /* Assets.xcassets */; };
 		758E10511DBD92D000D872BC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 75C5E9571DBD673700FCE9D0 /* Localizable.strings */; };
-		758E105E1DBD96D000D872BC /* HockeySDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758E105C1DBD96D000D872BC /* HockeySDK.swift */; };
 		75B41C5721343D8500588CE8 /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75B41C5521343D8500588CE8 /* Configuration.plist */; };
 		75BE186421A0B1EA008F2DC4 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BE186221A0B1EA008F2DC4 /* Location.swift */; };
 		75BE187421A0B7CF008F2DC4 /* URLComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BE186C21A0B7CF008F2DC4 /* URLComponents.swift */; };
@@ -127,7 +126,6 @@
 		75805BC31DAF5B7E00DACFF5 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Route.swift; path = Models/Route.swift; sourceTree = "<group>"; };
 		758E10591DBD92D100D872BC /* BusMedellin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BusMedellin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		758E105B1DBD930A00D872BC /* BusMedellin-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BusMedellin-Info.plist"; sourceTree = "<group>"; };
-		758E105C1DBD96D000D872BC /* HockeySDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HockeySDK.swift; sourceTree = "<group>"; };
 		75B41C5521343D8500588CE8 /* Configuration.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Configuration.plist; sourceTree = "<group>"; };
 		75BE186221A0B1EA008F2DC4 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Location.swift; path = Models/Location.swift; sourceTree = "<group>"; };
 		75BE186C21A0B7CF008F2DC4 /* URLComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLComponents.swift; sourceTree = "<group>"; };
@@ -259,7 +257,6 @@
 			isa = PBXGroup;
 			children = (
 				75BE186B21A0B7CF008F2DC4 /* Extensions */,
-				758E105C1DBD96D000D872BC /* HockeySDK.swift */,
 				75640BF01DAF19FB002B4A56 /* Appirater.swift */,
 				754A25312132CA8B00B3B083 /* DKLog.swift */,
 				757F31641DBE5F14002BB03F /* Analytics.swift */,
@@ -541,8 +538,8 @@
 				758E10481DBD92D000D872BC /* Frameworks */,
 				758E104A1DBD92D000D872BC /* Resources */,
 				758E10531DBD92D000D872BC /* [CP] Embed Pods Frameworks */,
-				758E10541DBD92D000D872BC /* [CP] Copy Pods Resources */,
 				758E10551DBD92D000D872BC /* Swiftlint */,
+				75E8F9CC21A0F893000E3D4D /* Crashlytics */,
 			);
 			buildRules = (
 			);
@@ -657,24 +654,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BusMedellin/Pods-BusMedellin-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		758E10541DBD92D000D872BC /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-BusMedellin/Pods-BusMedellin-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/HockeySDK/HockeySDKResources.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/HockeySDKResources.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BusMedellin/Pods-BusMedellin-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		758E10551DBD92D000D872BC /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -689,6 +668,21 @@
 			shellPath = /bin/sh;
 			shellScript = "#\"${PODS_ROOT}/SwiftLint/swiftlint\"";
 			showEnvVarsInLog = 0;
+		};
+		75E8F9CC21A0F893000E3D4D /* Crashlytics */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			name = Crashlytics;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -713,7 +707,6 @@
 				75BE18FA21A0B858008F2DC4 /* AppDelegate.swift in Sources */,
 				75BE18F821A0B858008F2DC4 /* MapContainer.swift in Sources */,
 				75BE18D621A0B858008F2DC4 /* PinLocationViewController.swift in Sources */,
-				758E105E1DBD96D000D872BC /* HockeySDK.swift in Sources */,
 				758E10371DBD92D000D872BC /* Route.swift in Sources */,
 				75BE18FE21A0B858008F2DC4 /* RouteDetailViewController.swift in Sources */,
 				758E10391DBD92D000D872BC /* APIManager.swift in Sources */,

@@ -20,7 +20,6 @@ struct Configuration: Decodable {
 		case buglifeIdentifier
 		case fusionTableIdentifier
 		case fusionTableKey
-		case hockeyAppIdentifier
 		case defaultLatitude
 		case defaultLongitude
 	}
@@ -30,7 +29,6 @@ struct Configuration: Decodable {
 	let buglifeIdentifier		: String
 	let fusionTableIdentifier	: String
 	let fusionTableKey			: String
-	let hockeyAppIdentifier		: String
 	let defaultLatitude			: String
 	let defaultLongitude		: String
 

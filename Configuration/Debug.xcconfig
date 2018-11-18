@@ -6,6 +6,6 @@
 //  Copyright © 2018 Kevin Delord. All rights reserved.
 //
 
-IS_APPIRATER_DEBUG = YES
+IS_APPIRATER_DEBUG = FALSE
 IS_LOG_ENABLED = YES
 IS_ANALYTICS_ENABLED = FALSE

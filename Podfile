@@ -8,9 +8,11 @@ target 'BusMedellin' do
 	pod 'Appirater', '~> 2.3.1'
 	pod 'MBProgressHUD', '~> 1.1.0'
 	pod 'Buglife', '~> 2.8.1'
-	pod 'HockeySDK', '~> 5.1.2'
 	pod 'SwiftLint', '~> 0.28.0'
+
 	pod 'Firebase/Core', '~> 5.12.0'
+	pod 'Fabric', '~> 1.8.2'
+	pod 'Crashlytics', '~> 3.11.1'
 end
 
 post_install do |installer|

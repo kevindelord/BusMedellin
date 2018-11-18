@@ -260,6 +260,15 @@
 			path = HUD;
 			sourceTree = "<group>";
 		};
+		755879F021A1EF1A0092C0E4 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				757F31641DBE5F14002BB03F /* Analytics.swift */,
+				75052AC821381C510063AE05 /* Firebase.swift */,
+			);
+			path = Analytics;
+			sourceTree = "<group>";
+		};
 		755DB8DA213C208A0092756E /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -272,11 +281,10 @@
 		75640BEE1DAF19FB002B4A56 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				755879F021A1EF1A0092C0E4 /* Analytics */,
 				75BE186B21A0B7CF008F2DC4 /* Extensions */,
 				75640BF01DAF19FB002B4A56 /* Appirater.swift */,
 				754A25312132CA8B00B3B083 /* Log.swift */,
-				757F31641DBE5F14002BB03F /* Analytics.swift */,
-				75052AC821381C510063AE05 /* Firebase.swift */,
 				75640BF11DAF19FB002B4A56 /* Reachability.swift */,
 				754A25402132CC7300B3B083 /* Localization.swift */,
 				750F9D3B21A1735700919626 /* Color.swift */,

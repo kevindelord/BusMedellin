@@ -49,8 +49,3 @@ $> pod install
 * [Mapamedellin](http://tdurand.github.io/mapamedellin)
 * [Thibault Durand's Blog](http://thibault-durand.fr/)
 * [Story The Bus Map Of Fortaleza](http://tdurand.tumblr.com/post/31393552608/how-i-created-a-bus-map-of-fortaleza-brazil)
-
-## TODO List
-
-* Add direction of route?
-* Add advertising?

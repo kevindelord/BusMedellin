@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		75052ACA21381C510063AE05 /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75052AC821381C510063AE05 /* Firebase.swift */; };
 		75052ACD213833AE0063AE05 /* APIManager+Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75052ACB213833AE0063AE05 /* APIManager+Errors.swift */; };
 		750F9D3A21A1732200919626 /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750F9D3921A1732200919626 /* PageControl.swift */; };
 		750F9D3C21A1735700919626 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750F9D3B21A1735700919626 /* Color.swift */; };
@@ -102,7 +101,6 @@
 		0669351D7212F380D200E0BA /* Pods_BusMedellin_Alpha_AdHoc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BusMedellin_Alpha_AdHoc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		14962F37B68363BBD1DB2412 /* Pods-BusMedellin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusMedellin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BusMedellin/Pods-BusMedellin.debug.xcconfig"; sourceTree = "<group>"; };
 		4301C8C80BE111EDA26F55FC /* Pods_BusMedellin_Live_AppStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BusMedellin_Live_AppStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		75052AC821381C510063AE05 /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
 		75052ACB213833AE0063AE05 /* APIManager+Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIManager+Errors.swift"; sourceTree = "<group>"; };
 		750F9D3921A1732200919626 /* PageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
 		750F9D3B21A1735700919626 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -274,9 +272,8 @@
 			children = (
 				75BE186B21A0B7CF008F2DC4 /* Extensions */,
 				75640BF01DAF19FB002B4A56 /* Appirater.swift */,
-				754A25312132CA8B00B3B083 /* Log.swift */,
 				757F31641DBE5F14002BB03F /* Analytics.swift */,
-				75052AC821381C510063AE05 /* Firebase.swift */,
+				754A25312132CA8B00B3B083 /* Log.swift */,
 				75640BF11DAF19FB002B4A56 /* Reachability.swift */,
 				754A25402132CC7300B3B083 /* Localization.swift */,
 				750F9D3B21A1735700919626 /* Color.swift */,
@@ -728,7 +725,6 @@
 				75BE18EE21A0B858008F2DC4 /* MapContainerViewController.swift in Sources */,
 				755DB8D9213C207B0092756E /* RouteManager.swift in Sources */,
 				752DB9AA21A0E3E500286042 /* ExternalLink.swift in Sources */,
-				75052ACA21381C510063AE05 /* Firebase.swift in Sources */,
 				75BE187421A0B7CF008F2DC4 /* URLComponents.swift in Sources */,
 				75BE18EC21A0B858008F2DC4 /* Annotation.swift in Sources */,
 				75BE18F421A0B858008F2DC4 /* UserLocationButton.swift in Sources */,

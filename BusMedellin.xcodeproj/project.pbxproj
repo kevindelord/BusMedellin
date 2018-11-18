@@ -25,7 +25,6 @@
 		755DB8DC213C5C390092756E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 755DB8DB213C5C390092756E /* StoreKit.framework */; };
 		757F31631DBE5E16002BB03F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 757F31611DBE5E16002BB03F /* GoogleService-Info.plist */; };
 		757F31661DBE5F14002BB03F /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757F31641DBE5F14002BB03F /* Analytics.swift */; };
-		757F31691DBE5FDC002BB03F /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 757F31671DBE5FD4002BB03F /* AdSupport.framework */; };
 		758E10371DBD92D000D872BC /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75805BC31DAF5B7E00DACFF5 /* Route.swift */; };
 		758E10391DBD92D000D872BC /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75640BEF1DAF19FB002B4A56 /* APIManager.swift */; };
 		758E103C1DBD92D000D872BC /* Appirater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75640BF01DAF19FB002B4A56 /* Appirater.swift */; };
@@ -205,7 +204,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				755DB8DC213C5C390092756E /* StoreKit.framework in Frameworks */,
-				757F31691DBE5FDC002BB03F /* AdSupport.framework in Frameworks */,
 				9552F5CFA445C643C39142C2 /* Pods_BusMedellin.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

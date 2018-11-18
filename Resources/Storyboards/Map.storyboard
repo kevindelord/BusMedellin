@@ -27,6 +27,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pXa-OM-2tW" userLabel="Address Container">
                                 <rect key="frame" x="16" y="52" width="343" height="80"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="500" id="T5R-aw-m7n"/>
                                     <constraint firstAttribute="height" constant="80" id="eWP-o0-3Ff"/>
                                 </constraints>
                                 <connections>
@@ -56,8 +57,9 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="pXa-OM-2tW" firstAttribute="centerX" secondItem="Uxb-H2-SLU" secondAttribute="centerX" id="0pW-w1-7E4"/>
                             <constraint firstItem="T7Q-4b-QUV" firstAttribute="trailing" secondItem="S6l-Ep-FHQ" secondAttribute="trailing" constant="16" id="Bc7-Xt-c9H"/>
-                            <constraint firstItem="T7Q-4b-QUV" firstAttribute="trailing" secondItem="pXa-OM-2tW" secondAttribute="trailing" constant="16" id="FJ3-P1-g19"/>
+                            <constraint firstItem="pXa-OM-2tW" firstAttribute="leading" secondItem="T7Q-4b-QUV" secondAttribute="leading" priority="750" constant="16" id="FCi-VM-wZP"/>
                             <constraint firstItem="IF3-Cl-hyl" firstAttribute="top" secondItem="Uxb-H2-SLU" secondAttribute="top" id="TNN-Pb-at1"/>
                             <constraint firstItem="T7Q-4b-QUV" firstAttribute="bottom" secondItem="S6l-Ep-FHQ" secondAttribute="bottom" constant="16" id="WHc-Wg-3sG"/>
                             <constraint firstItem="pXa-OM-2tW" firstAttribute="top" secondItem="T7Q-4b-QUV" secondAttribute="top" constant="8" id="YKs-yW-lNn"/>
@@ -66,7 +68,7 @@
                             <constraint firstItem="IF3-Cl-hyl" firstAttribute="leading" secondItem="Uxb-H2-SLU" secondAttribute="leading" id="d9A-ef-BOc"/>
                             <constraint firstAttribute="trailing" secondItem="IF3-Cl-hyl" secondAttribute="trailing" id="eOg-TJ-8Aj"/>
                             <constraint firstItem="dD2-Li-Ipa" firstAttribute="centerX" secondItem="Uxb-H2-SLU" secondAttribute="centerX" id="tGx-hE-THl"/>
-                            <constraint firstItem="pXa-OM-2tW" firstAttribute="leading" secondItem="Uxb-H2-SLU" secondAttribute="leading" constant="16" id="vwv-pz-91F"/>
+                            <constraint firstItem="T7Q-4b-QUV" firstAttribute="trailing" secondItem="pXa-OM-2tW" secondAttribute="trailing" priority="750" constant="16" id="yws-TJ-QZB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="T7Q-4b-QUV"/>
                     </view>

@@ -120,6 +120,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="bT2-JW-ZR8" secondAttribute="bottom" constant="8" id="0A0-lw-gHr"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="900" id="OBl-xo-XNK"/>
                                     <constraint firstAttribute="trailing" secondItem="bT2-JW-ZR8" secondAttribute="trailing" constant="8" id="S8T-VZ-SbL"/>
                                     <constraint firstItem="bT2-JW-ZR8" firstAttribute="top" secondItem="1A0-8i-53V" secondAttribute="top" constant="8" id="i2J-Wo-lIP"/>
                                     <constraint firstItem="bT2-JW-ZR8" firstAttribute="leading" secondItem="1A0-8i-53V" secondAttribute="leading" constant="8" id="yKk-Fw-94O"/>
@@ -128,9 +129,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="1A0-8i-53V" secondAttribute="trailing" constant="8" id="WWt-qb-EiF"/>
-                            <constraint firstItem="1A0-8i-53V" firstAttribute="leading" secondItem="Sjp-o6-1Fm" secondAttribute="leading" constant="8" id="XRa-so-e5M"/>
+                            <constraint firstAttribute="trailing" secondItem="1A0-8i-53V" secondAttribute="trailing" priority="750" constant="8" id="WWt-qb-EiF"/>
+                            <constraint firstItem="1A0-8i-53V" firstAttribute="leading" secondItem="Sjp-o6-1Fm" secondAttribute="leading" priority="750" constant="8" id="XRa-so-e5M"/>
                             <constraint firstAttribute="bottom" secondItem="1A0-8i-53V" secondAttribute="bottom" constant="4" id="d1n-bh-yDJ"/>
+                            <constraint firstItem="1A0-8i-53V" firstAttribute="centerX" secondItem="Sjp-o6-1Fm" secondAttribute="centerX" id="nU7-wV-bB1"/>
                             <constraint firstItem="1A0-8i-53V" firstAttribute="top" secondItem="Sjp-o6-1Fm" secondAttribute="top" constant="4" id="vK7-x0-kyU"/>
                         </constraints>
                     </view>

@@ -7,11 +7,11 @@ target 'BusMedellin' do
 	pod 'Reachability', '~> 3.2'
 	pod 'Appirater', '~> 2.3.1'
 	pod 'Buglife', '~> 2.8.1'
-	pod 'SwiftLint', '~> 0.28.0'
+	pod 'SwiftLint', '~> 0.28.1'
 	pod 'CHIPageControl/Jalapeno', '~> 0.1.7'
 
 	# Google Analytics + Crash Reports
-	pod 'Firebase/Core', '~> 5.12.0'
+	pod 'Firebase/Core', '~> 5.13.0'
 	pod 'Fabric', '~> 1.8.2'
 	pod 'Crashlytics', '~> 3.11.1'
 end

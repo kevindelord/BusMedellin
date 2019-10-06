@@ -15,6 +15,9 @@ struct CoordindateJSON : Codable {
 	var coordinate2D : CLLocationCoordinate2D {
 		return CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
 	}
+}
+
+extension CoordindateJSON {
 
 	static func generate(from stringCoordinates: String) -> [CoordindateJSON] {
 		var locations = [CoordindateJSON]()

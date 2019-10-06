@@ -14,7 +14,10 @@ class MetersLabel : UILabel {
 		self.init(frame: CGRect(x: 0, y: 0, width: 70, height: 30))
 		self.backgroundColor = .white
 		self.textAlignment = .center
-		// TODO: set text font
-		// TODO: add border, round corners and shadow
+		self.layer.cornerRadius = 10.0
+		self.layer.masksToBounds = true
+		self.layer.borderWidth = 1
+		self.layer.borderColor = Color.lightGray.cgColor
+		self.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.light)
 	}
 }

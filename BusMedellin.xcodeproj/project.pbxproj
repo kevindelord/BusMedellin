@@ -18,6 +18,11 @@
 		754A25332132CA8B00B3B083 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A25312132CA8B00B3B083 /* Log.swift */; };
 		754A25422132CC7300B3B083 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A25402132CC7300B3B083 /* Localization.swift */; };
 		754A30112349F7BC000A024C /* rutas_medellin.json in Resources */ = {isa = PBXBuildFile; fileRef = 754A30102349F7BC000A024C /* rutas_medellin.json */; };
+		754A30142349F8EB000A024C /* RouteDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A30132349F8EB000A024C /* RouteDataDelegate.swift */; };
+		754A30162349F95F000A024C /* RouteCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A30152349F95F000A024C /* RouteCollector.swift */; };
+		754A30182349F9D6000A024C /* RouteJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A30172349F9D6000A024C /* RouteJSON.swift */; };
+		754A301A234A0C27000A024C /* CoordindateJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A3019234A0C27000A024C /* CoordindateJSON.swift */; };
+		754A301C234A0C3E000A024C /* FailableCodableArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A301B234A0C3E000A024C /* FailableCodableArray.swift */; };
 		755879EB21A1EA7D0092C0E4 /* HUDContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755879E821A1EA7D0092C0E4 /* HUDContainer.swift */; };
 		755879EC21A1EA7D0092C0E4 /* HUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755879E921A1EA7D0092C0E4 /* HUDView.swift */; };
 		755879ED21A1EA7D0092C0E4 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755879EA21A1EA7D0092C0E4 /* HUD.swift */; };
@@ -114,6 +119,11 @@
 		754A25312132CA8B00B3B083 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		754A25402132CC7300B3B083 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		754A30102349F7BC000A024C /* rutas_medellin.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = rutas_medellin.json; path = Resources/rutas_medellin.json; sourceTree = "<group>"; };
+		754A30132349F8EB000A024C /* RouteDataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDataDelegate.swift; sourceTree = "<group>"; };
+		754A30152349F95F000A024C /* RouteCollector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteCollector.swift; sourceTree = "<group>"; };
+		754A30172349F9D6000A024C /* RouteJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteJSON.swift; sourceTree = "<group>"; };
+		754A3019234A0C27000A024C /* CoordindateJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordindateJSON.swift; sourceTree = "<group>"; };
+		754A301B234A0C3E000A024C /* FailableCodableArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailableCodableArray.swift; sourceTree = "<group>"; };
 		75513BDF1DB019C600957F40 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
 		755879E821A1EA7D0092C0E4 /* HUDContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDContainer.swift; sourceTree = "<group>"; };
 		755879E921A1EA7D0092C0E4 /* HUDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDView.swift; sourceTree = "<group>"; };
@@ -213,6 +223,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		754A30122349F8C1000A024C /* RouteData */ = {
+			isa = PBXGroup;
+			children = (
+				754A30132349F8EB000A024C /* RouteDataDelegate.swift */,
+				754A30152349F95F000A024C /* RouteCollector.swift */,
+				754A30172349F9D6000A024C /* RouteJSON.swift */,
+				754A3019234A0C27000A024C /* CoordindateJSON.swift */,
+				754A301B234A0C3E000A024C /* FailableCodableArray.swift */,
+			);
+			path = RouteData;
+			sourceTree = "<group>";
+		};
 		7554E76D1DAF16E400F1178C = {
 			isa = PBXGroup;
 			children = (
@@ -262,6 +284,7 @@
 		755DB8DA213C208A0092756E /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				754A30122349F8C1000A024C /* RouteData */,
 				75BE186521A0B201008F2DC4 /* API */,
 				75BE186621A0B207008F2DC4 /* Route */,
 			);
@@ -734,14 +757,19 @@
 				75BE18EC21A0B858008F2DC4 /* Annotation.swift in Sources */,
 				75BE18F421A0B858008F2DC4 /* UserLocationButton.swift in Sources */,
 				75BE18D021A0B858008F2DC4 /* ContentView.swift in Sources */,
+				754A301A234A0C27000A024C /* CoordindateJSON.swift in Sources */,
 				75BE18E421A0B858008F2DC4 /* MapView.swift in Sources */,
 				75BE187C21A0B7CF008F2DC4 /* UIColor.swift in Sources */,
 				75BE18DE21A0B858008F2DC4 /* AddressViewContainer.swift in Sources */,
 				75BE18FC21A0B858008F2DC4 /* RouteDetailPage.swift in Sources */,
 				75C0E645218E15A900C988C5 /* RouteManagerDataSource.swift in Sources */,
 				75BE18C821A0B858008F2DC4 /* AppCoordinatorViewController.swift in Sources */,
+				754A301C234A0C3E000A024C /* FailableCodableArray.swift in Sources */,
 				755879EB21A1EA7D0092C0E4 /* HUDContainer.swift in Sources */,
+				754A30162349F95F000A024C /* RouteCollector.swift in Sources */,
+				754A30142349F8EB000A024C /* RouteDataDelegate.swift in Sources */,
 				755879EF21A1EDD20092C0E4 /* NSLayoutConstraint.swift in Sources */,
+				754A30182349F9D6000A024C /* RouteJSON.swift in Sources */,
 				75BE18E821A0B858008F2DC4 /* StartAnnotation.swift in Sources */,
 				75BE18D221A0B858008F2DC4 /* Coordinator.swift in Sources */,
 				75BE187821A0B7CF008F2DC4 /* MKMapView.swift in Sources */,

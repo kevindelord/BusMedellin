@@ -43,7 +43,8 @@ class RouteManager				: RouteManagerDataSource {
 	}
 
 	func routeCoordinates(for routeCode: String, completion: @escaping ((_ coordinates: [CLLocationCoordinate2D], _ error: Error?) -> Void)) {
-		APIManager.coordinates(forRouteCode: routeCode, success: { (coordinates: [[Double]]) in
+		RouteCollector.coordinates(forRouteCode: routeCode, success: { (coordinates: [[Double]]) in
+//		APIManager.coordinates(forRouteCode: routeCode, success: { (coordinates: [[Double]]) in
 			let locationCoordinates = self.createLocations(fromCoordinates: coordinates)
 			completion(locationCoordinates, nil)
 		}, failure: { (error: Error) in
@@ -81,7 +82,7 @@ extension RouteManager: RouteManagerDelegate {
 		self.selectedRoute = nil
 		self.availableRoutes = []
 		// Cancel the data task operations here as this class should be the only one using the APIManager.
-		APIManager.cancelOperations()
+//		APIManager.cancelOperations()
 	}
 
 	func select(route: Route) {
@@ -146,7 +147,8 @@ extension RouteManager {
 	///   - location: The location to search for routes around it.
 	///   - completion: Completion closure with the available routes at a specific location and an optional error object.
 	private func fetchRoutes(forLocation location: CLLocation, completion: @escaping ((_ routes: [Route], _ error: Error?) -> Void)) {
-		APIManager.routes(aroundLocation: location, success: { (routes: [Route]) in
+		RouteCollector.routes(aroundLocation: location, success: { (routes: [Route]) in
+//		APIManager.routes(aroundLocation: location, success: { (routes: [Route]) in
 			completion(routes, nil)
 		}, failure: { (error: Error) in
 			completion([], error)

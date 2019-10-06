@@ -11,6 +11,8 @@ import MapKit
 struct Map {
 
 	static let defaultSearchRadius	= 500.0
+	static let minimumSearchRadius	= 100.0
+	static let maximumSearchRadius	= 1000.0
 	static let defaultZoomRadius	: Double = 3300
 	static let deltaAfterSearch		= 0.007
 	static let maxScrollDistance	: Double = 12000.0

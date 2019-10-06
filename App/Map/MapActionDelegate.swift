@@ -29,4 +29,7 @@ protocol MapActionDelegate: AnyObject {
 
 	/// Update after the notifications received from the MapKit delegate functions.
 	func updateUserLocation(_ location: MKUserLocation)
+
+	/// Update the current search radius with the new value in meters.
+	func updateSearchRadius(to value: Double)
 }

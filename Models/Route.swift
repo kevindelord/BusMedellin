@@ -21,14 +21,6 @@ struct Route		: Equatable {
 	var district	: String
 	var area		: String
 
-	init(name: String, code: String, district: String, area: String) {
-		self.name = name
-		self.code = code
-		// Only use valid values.
-		self.district = (API.Response.invalidValues.contains(district) == true ? "" : district)
-		self.area = (API.Response.invalidValues.contains(area) == true ? "" : area)
-	}
-
 	var description	: String {
 		var description = ""
 		if (self.district != "") {

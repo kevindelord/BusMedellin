@@ -4,7 +4,6 @@ platform :ios, '9.3'
 use_frameworks!
 
 target 'BusMedellin' do
-	pod 'Reachability', '~> 3.2'
 	pod 'Appirater', '~> 2.3.1'
 	pod 'Buglife', '~> 2.8.1'
 	pod 'SwiftLint', '~> 0.28.1'

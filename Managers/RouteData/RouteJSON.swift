@@ -25,6 +25,9 @@ struct RouteJSON	: Codable {
 		case geometry
 	}
 
+	// 'Sin Nombre' and 'sn' are known invalid values coming from the JSON.
+	private static let invalidValues = ["Sin Nombre", "sn"]
+
 	public init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: RouteJSONCodingKey.self)
 		self.name = try container.decode(String.self, forKey: .Nombre_Rut)
@@ -32,8 +35,13 @@ struct RouteJSON	: Codable {
 		self.district = try container.decode(String.self, forKey: .NomBar)
 		self.area = try container.decode(String.self, forKey: .NomCom)
 
+		// Generate the coordinates from the received String.
 		let stringCoordinates = try container.decode(String.self, forKey: .geometry)
 		self.geometry = CoordindateJSON.generate(from: stringCoordinates)
+
+		// Only use valid values for the district and the area.
+		self.district = (RouteJSON.invalidValues.contains(self.district) == true ? "" : self.district)
+		self.area = (RouteJSON.invalidValues.contains(self.area) == true ? "" : self.area)
 	}
 }
 

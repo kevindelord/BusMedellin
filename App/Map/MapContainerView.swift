@@ -8,7 +8,6 @@
 
 import Foundation
 import MapKit
-import Reachability
 import Appirater
 
 class MapContainerView			: UIView, ContentView, MapContainer, MapActionDelegate, HUDContainer {
@@ -62,11 +61,6 @@ extension MapContainerView {
 	/// Function called when the user selects a pickup or destination location.
 	/// This function checks what needs to be set and forward the process to a more dedicated function.
 	func pinPoint(location: Location) {
-		guard (Reachability.isConnected == true) else {
-			UIAlertController.showErrorMessage(L("NO_INTERNET_CONNECTION"))
-			return
-		}
-
 		guard let coordinate = self.map?.addAnnotation(forLocation: location) else {
 			return
 		}

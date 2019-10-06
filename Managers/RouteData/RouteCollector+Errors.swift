@@ -1,5 +1,5 @@
 //
-//  APIManager+Errors.swift
+//  RouteCollector+Errors.swift
 //  BusMedellin
 //
 //  Created by kevindelord on 30/08/2018.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension APIManager {
+extension RouteCollector {
 
 	enum Invalid {
 		case json

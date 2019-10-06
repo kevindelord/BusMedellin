@@ -37,14 +37,13 @@ class RouteManager				: RouteManagerDataSource {
 				// Analytics
 				Analytics.Search.routes.send(routeCode: nil, rounteCount: self.availableRoutes.count)
 				// Check in the end if at least one route has been found.
-				completion((self.selectedRoute == nil ? APIManager.Invalid.routes.localizedError : nil))
+				completion((self.selectedRoute == nil ? RouteCollector.Invalid.routes.localizedError : nil))
 			})
 		})
 	}
 
 	func routeCoordinates(for routeCode: String, completion: @escaping ((_ coordinates: [CLLocationCoordinate2D], _ error: Error?) -> Void)) {
 		RouteCollector.coordinates(forRouteCode: routeCode, success: { (coordinates: [[Double]]) in
-//		APIManager.coordinates(forRouteCode: routeCode, success: { (coordinates: [[Double]]) in
 			let locationCoordinates = self.createLocations(fromCoordinates: coordinates)
 			completion(locationCoordinates, nil)
 		}, failure: { (error: Error) in
@@ -54,20 +53,23 @@ class RouteManager				: RouteManagerDataSource {
 
 	func address(forLocation location: CLLocation, completion: @escaping ((_ address: String?, _ error: Error?) -> Void)) {
 		let handler = { (placemarks: [CLPlacemark]?, error: Error?) in
-			guard (error == nil) else {
-				completion(nil, error)
+			if (error != nil) {
+				// Ignore the errors coming from the CLGeocoder.
+				// Since the data is coming froma local json the only thing needed is the CLLocation values.
+				// The reverse geocode is only necessary for the UI elements but does not provide any real feature.
+				completion(L("LOCATION_UNKNOWN"), nil)
 				return
 			}
 
 			guard let placemark = placemarks?.first else {
-				completion(nil, APIManager.Invalid.routes.localizedError)
+				completion(nil, RouteCollector.Invalid.routes.localizedError)
 				return
 			}
 
 			Log(.pinAddress, "Address found: \(placemark.addressDictionary ?? [:])")
 			let street = placemark.addressDictionary?[Map.Address.street] as? String
 			let address = placemark.addressDictionary?[Map.Address.formatedAddress] as? String
-			completion(street ?? address ?? L("LOCATION_UNKNOWN"), nil)
+			completion(street ?? address ?? L("LOCATION_UNKNOWN"), error)
 		}
 
 		CLGeocoder().reverseGeocodeLocation(location, completionHandler: handler)
@@ -81,8 +83,6 @@ extension RouteManager: RouteManagerDelegate {
 	func cancelSearch() {
 		self.selectedRoute = nil
 		self.availableRoutes = []
-		// Cancel the data task operations here as this class should be the only one using the APIManager.
-//		APIManager.cancelOperations()
 	}
 
 	func select(route: Route) {
@@ -148,7 +148,6 @@ extension RouteManager {
 	///   - completion: Completion closure with the available routes at a specific location and an optional error object.
 	private func fetchRoutes(forLocation location: CLLocation, completion: @escaping ((_ routes: [Route], _ error: Error?) -> Void)) {
 		RouteCollector.routes(aroundLocation: location, success: { (routes: [Route]) in
-//		APIManager.routes(aroundLocation: location, success: { (routes: [Route]) in
 			completion(routes, nil)
 		}, failure: { (error: Error) in
 			completion([], error)

@@ -31,6 +31,7 @@
 //
 "POPUP_OK"                  = "OK";
 "NO_ROUTE_FOUND"            = "No routes available for the chosen locations.";
+"INVALID_JSON"				= "Invalid local data. Please report the issue.";
 
 //
 // Settings View Controller

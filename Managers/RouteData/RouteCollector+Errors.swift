@@ -30,7 +30,8 @@ extension RouteCollector {
 
 		private var message				: String {
 			switch self {
-			case .json, .coordinates	: return String(format: L("NUMBER_ROUTES_AVAILABLE"), 0)
+			case .json					: return L("INVALID_JSON")
+			case .coordinates			: return String(format: L("NUMBER_ROUTES_AVAILABLE"), 0)
 			case .routes				: return L("NO_ROUTE_FOUND")
 			}
 		}

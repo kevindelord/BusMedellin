@@ -51,10 +51,12 @@ class RouteCollector : RouteCollectorDelegate {
 	}
 
 	/// Fetch all available routes around a specific location.
-	static func routes(aroundLocation location: CLLocation, success: @escaping (_ routes: [Route]) -> Void, failure: @escaping (_ error: Error) -> Void) {
+	static func routes(aroundLocation location: CLLocation,
+					    with radius: Double,
+						success: @escaping (_ routes: [Route]) -> Void, failure: @escaping (_ error: Error) -> Void) {
 		DispatchQueue.global(qos: .background).async {
 			let result = routeCollection.filter { (route: RouteJSON) -> Bool in
-				return route.isAroundLocation(location)
+				return route.isAroundLocation(location, with: radius)
 			}
 
 			let routes = result.map { (routeJSON: RouteJSON) -> Route in

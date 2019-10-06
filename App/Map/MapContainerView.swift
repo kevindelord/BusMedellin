@@ -107,7 +107,7 @@ extension MapContainerView {
 				return
 		}
 
-		self.routeDataSource?.routes(between: start, and: destination, completion: { [weak self] (_ error: Error?) in
+		self.routeDataSource?.routes(between: start, and: destination, with: Map.defaultSearchRadius, completion: { [weak self] (_ error: Error?) in
 			UIAlertController.showErrorPopup(error as NSError?)
 			if (self?.routeDataSource?.availableRoutes.isEmpty == false) {
 				// Significant Event: The user just did another successful search.

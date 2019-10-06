@@ -14,16 +14,16 @@ class RouteManager				: RouteManagerDataSource {
 	var availableRoutes			= [Route]()
 	var selectedRoute			: Route?
 
-	func routes(between start: CLLocationCoordinate2D, and destination: CLLocationCoordinate2D, completion: @escaping ((_ error: Error?) -> Void)) {
+	func routes(between start: CLLocationCoordinate2D, and destination: CLLocationCoordinate2D, with radius: Double, completion: @escaping ((_ error: Error?) -> Void)) {
 		// Fetch all routes passing by the pick up location.
-		self.fetchRoutes(forCoordinates: start, completion: { (pickUpRoutes: [Route], error: Error?) in
+		self.fetchRoutes(forCoordinates: start, with: radius, completion: { (pickUpRoutes: [Route], error: Error?) in
 			guard (error == nil) else {
 				completion(error)
 				return
 			}
 
 			// Fetch all routes passing by the destination location.
-			self.fetchRoutes(forCoordinates: destination, completion: { (destinationRoutes: [Route], error: Error?) in
+			self.fetchRoutes(forCoordinates: destination, with: radius, completion: { (destinationRoutes: [Route], error: Error?) in
 				guard (error == nil) else {
 					// Reset retained search results.
 					self.cancelSearch()
@@ -135,19 +135,21 @@ extension RouteManager {
 	///
 	/// - Parameters:
 	///   - coordinates: The coordinates to search for routes around.
+	///   - radius: Search radius in meters.
 	///   - completion: Completion closure with the available routes at specific coordinates and an optional error object.
-	private func fetchRoutes(forCoordinates coordinates: CLLocationCoordinate2D, completion: @escaping ((_ routes: [Route], _ error: Error?) -> Void)) {
+	private func fetchRoutes(forCoordinates coordinates: CLLocationCoordinate2D, with radius: Double, completion: @escaping ((_ routes: [Route], _ error: Error?) -> Void)) {
 		let location = CLLocation(latitude: coordinates.latitude, longitude: coordinates.longitude)
-		self.fetchRoutes(forLocation: location, completion: completion)
+		self.fetchRoutes(forLocation: location, with: radius, completion: completion)
 	}
 
 	/// Fetch all bus routes around a given location.
 	///
 	/// - Parameters:
 	///   - location: The location to search for routes around it.
+	///   - radius: Search radius in meters.
 	///   - completion: Completion closure with the available routes at a specific location and an optional error object.
-	private func fetchRoutes(forLocation location: CLLocation, completion: @escaping ((_ routes: [Route], _ error: Error?) -> Void)) {
-		RouteCollector.routes(aroundLocation: location, success: { (routes: [Route]) in
+	private func fetchRoutes(forLocation location: CLLocation, with radius: Double, completion: @escaping ((_ routes: [Route], _ error: Error?) -> Void)) {
+		RouteCollector.routes(aroundLocation: location, with: radius, success: { (routes: [Route]) in
 			completion(routes, nil)
 		}, failure: { (error: Error) in
 			completion([], error)

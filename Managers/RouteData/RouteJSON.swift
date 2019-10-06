@@ -47,9 +47,9 @@ struct RouteJSON	: Codable {
 
 extension RouteJSON {
 
-	public func isAroundLocation(_ location: CLLocation) -> Bool {
+	public func isAroundLocation(_ location: CLLocation, with radius: Double) -> Bool {
 		let result = self.geometry.first { (coordinateJSON: CoordindateJSON) -> Bool in
-			return coordinateJSON.isAroundLocation(location, radius: 500)
+			return coordinateJSON.isAroundLocation(location, radius: radius)
 		}
 
 		return (result != nil)

@@ -14,35 +14,23 @@ class RouteManager				: RouteManagerDataSource {
 	var availableRoutes			= [Route]()
 	var selectedRoute			: Route?
 
-	func routes(between start: CLLocationCoordinate2D, and destination: CLLocationCoordinate2D, with radius: Double, completion: @escaping ((_ error: Error?) -> Void)) {
-		// Fetch all routes passing by the pick up location.
-		self.fetchRoutes(forCoordinates: start, with: radius, completion: { (pickUpRoutes: [Route], error: Error?) in
-			guard (error == nil) else {
-				completion(error)
-				return
-			}
+	/// Fetch all routes passing by the pick up (aka start) and destination (aka finish) locations.
+	public func routes(between start: CLLocationCoordinate2D, and destination: CLLocationCoordinate2D, with radius: Double, completion: @escaping ((_ error: Error?) -> Void)) {
+		let startLocation = CLLocation(latitude: start.latitude, longitude: start.longitude)
+		let endLocation = CLLocation(latitude: destination.latitude, longitude: destination.longitude)
 
-			// Fetch all routes passing by the destination location.
-			self.fetchRoutes(forCoordinates: destination, with: radius, completion: { (destinationRoutes: [Route], error: Error?) in
-				guard (error == nil) else {
-					// Reset retained search results.
-					self.cancelSearch()
-					completion(error)
-					return
-				}
-
-				// Filter the routes to only the ones matching.
-				self.availableRoutes = self.findMatchingRoutes(pickUpRoutes: pickUpRoutes, destinationRoutes: destinationRoutes)
-				self.selectedRoute = self.availableRoutes.first
-				// Analytics
-				Analytics.Search.routes.send(routeCode: nil, rounteCount: self.availableRoutes.count)
-				// Check in the end if at least one route has been found.
-				completion((self.selectedRoute == nil ? RouteCollector.Invalid.routes.localizedError : nil))
-			})
+		RouteCollector.routes(between: startLocation, and: endLocation, with: radius, completion: { (routes: [Route]) in
+			// Filter the routes to only the ones matching.
+			self.availableRoutes = routes
+			self.selectedRoute = self.availableRoutes.first
+			// Analytics
+			Analytics.Search.routes.send(routeCode: nil, rounteCount: self.availableRoutes.count)
+			// Check in the end if at least one route has been found.
+			completion((self.selectedRoute == nil ? RouteCollector.Invalid.routes.localizedError : nil))
 		})
 	}
 
-	func routeCoordinates(for routeCode: String, completion: @escaping ((_ coordinates: [CLLocationCoordinate2D], _ error: Error?) -> Void)) {
+	public func routeCoordinates(for routeCode: String, completion: @escaping ((_ coordinates: [CLLocationCoordinate2D], _ error: Error?) -> Void)) {
 		RouteCollector.coordinates(forRouteCode: routeCode, success: { (coordinates: [[Double]]) in
 			let locationCoordinates = self.createLocations(fromCoordinates: coordinates)
 			completion(locationCoordinates, nil)
@@ -51,7 +39,7 @@ class RouteManager				: RouteManagerDataSource {
 		})
 	}
 
-	func address(forLocation location: CLLocation, completion: @escaping ((_ address: String?, _ error: Error?) -> Void)) {
+	public func address(forLocation location: CLLocation, completion: @escaping ((_ address: String?, _ error: Error?) -> Void)) {
 		let handler = { (placemarks: [CLPlacemark]?, error: Error?) in
 			if (error != nil) {
 				// Ignore the errors coming from the CLGeocoder.
@@ -94,24 +82,6 @@ extension RouteManager: RouteManagerDelegate {
 
 extension RouteManager {
 
-	/// Filter the available routes to only the ones going through both PICKUP and DESTINATION annotation areas.
-	///
-	/// - Parameters:
-	///   - pickUpRoutes: All routes going through the PICKUP annotation area.
-	///   - destinationRoutes: All routes going through the DESTINATION annotation area.
-	/// - Returns: Array of matching routes that go through both PICKUP and DESTINATION annotation areas.
-	private func findMatchingRoutes(pickUpRoutes: [Route], destinationRoutes: [Route]) -> [Route] {
-		var commonRoutes = [Route]()
-		for pickUpRoute in pickUpRoutes {
-			for destinationRoute in destinationRoutes
-				where (destinationRoute.code == pickUpRoute.code) {
-					commonRoutes.append(destinationRoute)
-			}
-		}
-
-		return commonRoutes
-	}
-
 	/// Transform an array of latitudes and longitudes into an array of CLLocationCoordinate2D.
 	///
 	/// - Parameter coordinates: Array of latitudes and longitudes.
@@ -129,30 +99,5 @@ extension RouteManager {
 		}
 
 		return pointsToUse
-	}
-
-	/// Fetch all bus routes around given coordinates.
-	///
-	/// - Parameters:
-	///   - coordinates: The coordinates to search for routes around.
-	///   - radius: Search radius in meters.
-	///   - completion: Completion closure with the available routes at specific coordinates and an optional error object.
-	private func fetchRoutes(forCoordinates coordinates: CLLocationCoordinate2D, with radius: Double, completion: @escaping ((_ routes: [Route], _ error: Error?) -> Void)) {
-		let location = CLLocation(latitude: coordinates.latitude, longitude: coordinates.longitude)
-		self.fetchRoutes(forLocation: location, with: radius, completion: completion)
-	}
-
-	/// Fetch all bus routes around a given location.
-	///
-	/// - Parameters:
-	///   - location: The location to search for routes around it.
-	///   - radius: Search radius in meters.
-	///   - completion: Completion closure with the available routes at a specific location and an optional error object.
-	private func fetchRoutes(forLocation location: CLLocation, with radius: Double, completion: @escaping ((_ routes: [Route], _ error: Error?) -> Void)) {
-		RouteCollector.routes(aroundLocation: location, with: radius, success: { (routes: [Route]) in
-			completion(routes, nil)
-		}, failure: { (error: Error) in
-			completion([], error)
-		})
 	}
 }

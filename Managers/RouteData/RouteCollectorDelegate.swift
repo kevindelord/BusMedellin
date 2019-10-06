@@ -16,6 +16,6 @@ protocol RouteCollectorDelegate: AnyObject {
 	/// Fetch all coordinates for a specific route.
 	static func coordinates(forRouteCode routeCode: String, success: @escaping (_ coordinates: [[Double]]) -> Void, failure: @escaping (_ error: Error) -> Void)
 
-	/// Fetch all available routes around a specific location.
-	static func routes(aroundLocation location: CLLocation, with radius: Double, success: @escaping (_ routes: [Route]) -> Void, failure: @escaping (_ error: Error) -> Void)
+	/// Fetch all available routes passing around a start and finish locations (within a given radius range).
+	static func routes(between start: CLLocation, and finish: CLLocation, with radius: Double, completion: @escaping (_ routes: [Route]) -> Void)
 }

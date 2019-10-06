@@ -50,13 +50,15 @@ class RouteCollector : RouteCollectorDelegate {
 		}
 	}
 
-	/// Fetch all available routes around a specific location.
-	static func routes(aroundLocation location: CLLocation,
-					    with radius: Double,
-						success: @escaping (_ routes: [Route]) -> Void, failure: @escaping (_ error: Error) -> Void) {
+	/// Fetch all available routes passing around a start and finish locations (within a given radius range).
+	static func routes(between start: CLLocation, and finish: CLLocation, with radius: Double, completion: @escaping (_ routes: [Route]) -> Void) {
 		DispatchQueue.global(qos: .background).async {
-			let result = routeCollection.filter { (route: RouteJSON) -> Bool in
-				return route.isAroundLocation(location, with: radius)
+			let routesAroundStart = routeCollection.filter { (route: RouteJSON) -> Bool in
+				return route.isAroundLocation(start, with: radius)
+			}
+
+			let result = routesAroundStart.filter { (route: RouteJSON) -> Bool in
+				return route.isAroundLocation(finish, with: radius)
 			}
 
 			let routes = result.map { (routeJSON: RouteJSON) -> Route in
@@ -64,7 +66,7 @@ class RouteCollector : RouteCollectorDelegate {
 			}
 
 			DispatchQueue.main.async {
-				success(routes)
+				completion(routes)
 			}
 		}
 	}

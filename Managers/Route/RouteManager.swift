@@ -10,6 +10,7 @@ import UIKit
 import CoreLocation
 
 class RouteManager {
+
 	var availableRoutes = [Route]()
 	var selectedRoute : Route?
 }

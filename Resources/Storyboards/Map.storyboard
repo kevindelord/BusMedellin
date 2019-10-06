@@ -55,9 +55,9 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rcb-xu-XQN">
-                                <rect key="frame" x="72" y="722" width="231" height="40"/>
+                                <rect key="frame" x="72" y="731" width="231" height="31"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="c36-5m-OD7"/>
+                                    <constraint firstAttribute="height" constant="31" id="c36-5m-OD7"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="jCX-TW-Wjc" kind="embed" id="Qka-z3-olG"/>
@@ -342,15 +342,16 @@
             <objects>
                 <viewController id="jCX-TW-Wjc" customClass="RadiusSliderViewController" customModule="BusMedellin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FPa-58-YGp">
-                        <rect key="frame" x="0.0" y="0.0" width="231" height="40"/>
+                        <rect key="frame" x="0.0" y="0.0" width="231" height="31"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="oCr-zU-nyL">
-                                <rect key="frame" x="-2" y="5" width="235" height="31"/>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="oCr-zU-nyL" customClass="RadiusSlider" customModule="BusMedellin" customModuleProvider="target">
+                                <rect key="frame" x="-2" y="1" width="235" height="31"/>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
-                                    <action selector="sliderValueDidChange" destination="jCX-TW-Wjc" eventType="touchUpInside" id="J4B-31-jOR"/>
-                                    <action selector="sliderValueDidChange" destination="jCX-TW-Wjc" eventType="touchUpOutside" id="Kmu-su-Ekl"/>
+                                    <action selector="selectNewRadiusValue" destination="jCX-TW-Wjc" eventType="touchUpOutside" id="IZP-WA-gdn"/>
+                                    <action selector="selectNewRadiusValue" destination="jCX-TW-Wjc" eventType="touchUpInside" id="jwt-hf-tZw"/>
+                                    <action selector="sliderThumbDidMove" destination="jCX-TW-Wjc" eventType="valueChanged" id="3kM-7B-ZPA"/>
                                 </connections>
                             </slider>
                         </subviews>
@@ -359,7 +360,7 @@
                             <constraint firstAttribute="trailing" secondItem="oCr-zU-nyL" secondAttribute="trailing" id="3Qi-GO-RGY"/>
                             <constraint firstItem="oCr-zU-nyL" firstAttribute="leading" secondItem="FPa-58-YGp" secondAttribute="leading" id="93i-3X-rgC"/>
                             <constraint firstItem="oCr-zU-nyL" firstAttribute="centerX" secondItem="FPa-58-YGp" secondAttribute="centerX" id="B83-mK-sOd"/>
-                            <constraint firstItem="oCr-zU-nyL" firstAttribute="centerY" secondItem="FPa-58-YGp" secondAttribute="centerY" id="t9T-Na-JyU"/>
+                            <constraint firstAttribute="bottom" secondItem="oCr-zU-nyL" secondAttribute="bottom" id="erb-bt-QPX"/>
                         </constraints>
                     </view>
                     <connections>

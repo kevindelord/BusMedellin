@@ -98,6 +98,8 @@
 		75EA56A7234A5B5200FEDBBB /* rutas_medellin_light.json in Resources */ = {isa = PBXBuildFile; fileRef = 75EA56A6234A5B5200FEDBBB /* rutas_medellin_light.json */; };
 		75EA56AA234A6DF300FEDBBB /* RadiusSliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA56A9234A6DF300FEDBBB /* RadiusSliderViewController.swift */; };
 		75EA56AC234A70DB00FEDBBB /* RadiusSliderContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA56AB234A70DB00FEDBBB /* RadiusSliderContainer.swift */; };
+		75EA56AE234A8B9C00FEDBBB /* MetersLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA56AD234A8B9C00FEDBBB /* MetersLabel.swift */; };
+		75EA56B0234A8BBE00FEDBBB /* RadiusSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA56AF234A8BBE00FEDBBB /* RadiusSlider.swift */; };
 		9552F5CFA445C643C39142C2 /* Pods_BusMedellin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9338684B5BA91C70C2AF54F /* Pods_BusMedellin.framework */; };
 /* End PBXBuildFile section */
 
@@ -204,6 +206,8 @@
 		75EA56A6234A5B5200FEDBBB /* rutas_medellin_light.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = rutas_medellin_light.json; path = Resources/rutas_medellin_light.json; sourceTree = "<group>"; };
 		75EA56A9234A6DF300FEDBBB /* RadiusSliderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadiusSliderViewController.swift; sourceTree = "<group>"; };
 		75EA56AB234A70DB00FEDBBB /* RadiusSliderContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadiusSliderContainer.swift; sourceTree = "<group>"; };
+		75EA56AD234A8B9C00FEDBBB /* MetersLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetersLabel.swift; sourceTree = "<group>"; };
+		75EA56AF234A8BBE00FEDBBB /* RadiusSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadiusSlider.swift; sourceTree = "<group>"; };
 		EC1D87735014DA38EA85466A /* Pods-BusMedellin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusMedellin.release.xcconfig"; path = "Pods/Target Support Files/Pods-BusMedellin/Pods-BusMedellin.release.xcconfig"; sourceTree = "<group>"; };
 		F9338684B5BA91C70C2AF54F /* Pods_BusMedellin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BusMedellin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -534,8 +538,10 @@
 		75EA56A8234A6DDF00FEDBBB /* RadiusSlider */ = {
 			isa = PBXGroup;
 			children = (
-				75EA56A9234A6DF300FEDBBB /* RadiusSliderViewController.swift */,
 				75EA56AB234A70DB00FEDBBB /* RadiusSliderContainer.swift */,
+				75EA56A9234A6DF300FEDBBB /* RadiusSliderViewController.swift */,
+				75EA56AD234A8B9C00FEDBBB /* MetersLabel.swift */,
+				75EA56AF234A8BBE00FEDBBB /* RadiusSlider.swift */,
 			);
 			path = RadiusSlider;
 			sourceTree = "<group>";
@@ -766,6 +772,7 @@
 				755879EF21A1EDD20092C0E4 /* NSLayoutConstraint.swift in Sources */,
 				754A30182349F9D6000A024C /* RouteJSON.swift in Sources */,
 				75BE18E821A0B858008F2DC4 /* StartAnnotation.swift in Sources */,
+				75EA56B0234A8BBE00FEDBBB /* RadiusSlider.swift in Sources */,
 				75BE18D221A0B858008F2DC4 /* Coordinator.swift in Sources */,
 				75BE187821A0B7CF008F2DC4 /* MKMapView.swift in Sources */,
 				75BE18D821A0B858008F2DC4 /* PinLocationContainer.swift in Sources */,
@@ -777,6 +784,7 @@
 				75BE186421A0B1EA008F2DC4 /* Location.swift in Sources */,
 				75BE18C021A0B858008F2DC4 /* SettingsViewController.swift in Sources */,
 				75BE191021A0B858008F2DC4 /* RoutesContainer.swift in Sources */,
+				75EA56AE234A8B9C00FEDBBB /* MetersLabel.swift in Sources */,
 				75BE188021A0B7CF008F2DC4 /* NSError.swift in Sources */,
 				75BE18F621A0B858008F2DC4 /* MapContainerView.swift in Sources */,
 				75BE187621A0B7CF008F2DC4 /* UIView.swift in Sources */,

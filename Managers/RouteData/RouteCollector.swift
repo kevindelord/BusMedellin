@@ -64,7 +64,7 @@ class RouteCollector : RouteCollectorDelegate {
 			}
 
 			let routes = result.map { (routeJSON: RouteJSON) -> Route in
-				return Route(name: routeJSON.name, code: routeJSON.code, district: routeJSON.district, area: routeJSON.area)
+				return Route(name: routeJSON.name, code: routeJSON.code, district: routeJSON.district, area: routeJSON.area, number: routeJSON.number)
 			}
 
 			DispatchQueue.main.async {

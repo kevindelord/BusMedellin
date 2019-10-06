@@ -11,9 +11,12 @@ import MapKit
 
 // Static variable that is lazy loaded and therefore only initialized and parsed the first time the data is accessed.
 // This logic simulates an easy database and improve the launch time.
+//
+// In an attempt to reduce the decoding time the file "rutas_medellin_light.json" only contains the values required by the application.
+// A more complete data structure is available in the archive "RUTAS_URBANAS_INTEGRADAS_MEDELLIN.zip".
 private var routeCollection : [RouteJSON] = {
 	var routes = [RouteJSON]()
-	if let path = Bundle.main.path(forResource: "rutas_medellin", ofType: "json") {
+	if let path = Bundle.main.path(forResource: "rutas_medellin_light", ofType: "json") {
 		do {
 			let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
 			routes = try JSONDecoder()

@@ -14,6 +14,7 @@ struct RouteJSON	: Codable {
 	var code		: String
 	var district	: String
 	var area		: String
+	var number		: String
 	var geometry	: [CoordindateJSON]
 
 	// Real JSON Keys from the resource file.
@@ -22,6 +23,7 @@ struct RouteJSON	: Codable {
 		case CODIGO_RUT // Code
 		case NomBar		// District
 		case NomCom		// Area
+		case Numero_Rut // Number
 		case geometry
 	}
 
@@ -34,6 +36,7 @@ struct RouteJSON	: Codable {
 		self.code = try container.decode(String.self, forKey: .CODIGO_RUT)
 		self.district = try container.decode(String.self, forKey: .NomBar)
 		self.area = try container.decode(String.self, forKey: .NomCom)
+		self.number = try container.decode(String.self, forKey: .Numero_Rut)
 
 		// Generate the coordinates from the received String.
 		let stringCoordinates = try container.decode(String.self, forKey: .geometry)

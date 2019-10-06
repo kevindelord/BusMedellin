@@ -16,7 +16,6 @@
 		752DB9AA21A0E3E500286042 /* ExternalLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752DB9A821A0E3E500286042 /* ExternalLink.swift */; };
 		754A25332132CA8B00B3B083 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A25312132CA8B00B3B083 /* Log.swift */; };
 		754A25422132CC7300B3B083 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A25402132CC7300B3B083 /* Localization.swift */; };
-		754A30112349F7BC000A024C /* rutas_medellin.json in Resources */ = {isa = PBXBuildFile; fileRef = 754A30102349F7BC000A024C /* rutas_medellin.json */; };
 		754A30142349F8EB000A024C /* RouteCollectorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A30132349F8EB000A024C /* RouteCollectorDelegate.swift */; };
 		754A30162349F95F000A024C /* RouteCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A30152349F95F000A024C /* RouteCollector.swift */; };
 		754A30182349F9D6000A024C /* RouteJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A30172349F9D6000A024C /* RouteJSON.swift */; };
@@ -96,6 +95,7 @@
 		75C812082196CDD2009BAD79 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C811FE2196CDD2009BAD79 /* Map.storyboard */; };
 		75C8120A2196CDD2009BAD79 /* Routes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C811FF2196CDD2009BAD79 /* Routes.storyboard */; };
 		75C8120C2196CDD2009BAD79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C812002196CDD2009BAD79 /* LaunchScreen.storyboard */; };
+		75EA56A7234A5B5200FEDBBB /* rutas_medellin_light.json in Resources */ = {isa = PBXBuildFile; fileRef = 75EA56A6234A5B5200FEDBBB /* rutas_medellin_light.json */; };
 		9552F5CFA445C643C39142C2 /* Pods_BusMedellin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9338684B5BA91C70C2AF54F /* Pods_BusMedellin.framework */; };
 /* End PBXBuildFile section */
 
@@ -114,7 +114,6 @@
 		752DB9AC21A0EBC000286042 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		754A25312132CA8B00B3B083 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		754A25402132CC7300B3B083 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
-		754A30102349F7BC000A024C /* rutas_medellin.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = rutas_medellin.json; path = Resources/rutas_medellin.json; sourceTree = "<group>"; };
 		754A30132349F8EB000A024C /* RouteCollectorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteCollectorDelegate.swift; sourceTree = "<group>"; };
 		754A30152349F95F000A024C /* RouteCollector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteCollector.swift; sourceTree = "<group>"; };
 		754A30172349F9D6000A024C /* RouteJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteJSON.swift; sourceTree = "<group>"; };
@@ -200,6 +199,7 @@
 		75C811FE2196CDD2009BAD79 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Map.storyboard; path = Resources/Storyboards/Map.storyboard; sourceTree = "<group>"; };
 		75C811FF2196CDD2009BAD79 /* Routes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Routes.storyboard; path = Resources/Storyboards/Routes.storyboard; sourceTree = "<group>"; };
 		75C812002196CDD2009BAD79 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Resources/Storyboards/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		75EA56A6234A5B5200FEDBBB /* rutas_medellin_light.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = rutas_medellin_light.json; path = Resources/rutas_medellin_light.json; sourceTree = "<group>"; };
 		EC1D87735014DA38EA85466A /* Pods-BusMedellin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusMedellin.release.xcconfig"; path = "Pods/Target Support Files/Pods-BusMedellin/Pods-BusMedellin.release.xcconfig"; sourceTree = "<group>"; };
 		F9338684B5BA91C70C2AF54F /* Pods_BusMedellin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BusMedellin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -256,7 +256,7 @@
 		7554E78B1DAF18BE00F1178C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				754A30102349F7BC000A024C /* rutas_medellin.json */,
+				75EA56A6234A5B5200FEDBBB /* rutas_medellin_light.json */,
 				75C811FA2196CDB7009BAD79 /* Storyboards */,
 				75513BDF1DB019C600957F40 /* Assets.xcassets */,
 				75805BC01DAF5B3A00DACFF5 /* medellin.gpx */,
@@ -613,10 +613,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75EA56A7234A5B5200FEDBBB /* rutas_medellin_light.json in Resources */,
 				75B41C5721343D8500588CE8 /* Configuration.plist in Resources */,
 				757F31631DBE5E16002BB03F /* GoogleService-Info.plist in Resources */,
 				758E104E1DBD92D000D872BC /* Settings.bundle in Resources */,
-				754A30112349F7BC000A024C /* rutas_medellin.json in Resources */,
 				75C812022196CDD2009BAD79 /* Footer.storyboard in Resources */,
 				758E10501DBD92D000D872BC /* Assets.xcassets in Resources */,
 				75C812082196CDD2009BAD79 /* Map.storyboard in Resources */,

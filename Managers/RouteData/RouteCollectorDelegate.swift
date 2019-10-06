@@ -9,7 +9,7 @@
 import Foundation
 import MapKit
 
-// TODO: update xcode project and migrate to Swift 5.
+// TODO: Update xcode project and migrate to Swift 5.
 
 protocol RouteCollectorDelegate: AnyObject {
 

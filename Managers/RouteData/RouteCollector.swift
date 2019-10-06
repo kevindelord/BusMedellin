@@ -9,8 +9,8 @@
 import Foundation
 import MapKit
 
-// Static variable that is lazy laoded and therefore only initialized and parsed the first time the data is accessed.
-// Improve launch time.
+// Static variable that is lazy loaded and therefore only initialized and parsed the first time the data is accessed.
+// This logic simulates an easy database and improve the launch time.
 private var routeCollection : [RouteJSON] = {
 	var routes = [RouteJSON]()
 	if let path = Bundle.main.path(forResource: "rutas_medellin", ofType: "json") {
@@ -20,10 +20,9 @@ private var routeCollection : [RouteJSON] = {
 				.decode(FailableCodableArray<RouteJSON>.self, from: data)
 				.elements
 		} catch {
-			let error = RouteCollector.Invalid.json.localizedError
-			assertionFailure("Error Parsing JSON: \(error as NSError?)")
+			let error = RouteCollector.Invalid.json.localizedError as NSError?
 			DispatchQueue.main.async {
-				UIAlertController.showErrorPopup(error as NSError?)
+				UIAlertController.showErrorPopup(error)
 			}
 		}
 	}
@@ -34,14 +33,14 @@ private var routeCollection : [RouteJSON] = {
 class RouteCollector : RouteCollectorDelegate {
 
 	/// Fetch all coordinates for a specific route.
-	static func coordinates(forRouteCode routeCode: String, success: @escaping (_ coordinates: [[Double]]) -> Void, failure: @escaping (_ error: Error) -> Void) {
+	static func coordinates(forRouteCode routeCode: String, success: @escaping (_ coordinates: [CLLocationCoordinate2D]) -> Void, failure: @escaping (_ error: Error) -> Void) {
 		DispatchQueue.global(qos: .background).async {
 			let selectedRoute = routeCollection.first { (route: RouteJSON) -> Bool in
 				return (route.code == routeCode)
 			}
 
-			let coordinates = selectedRoute?.geometry.map({ (coordinates: CoordindateJSON) -> [Double] in
-				return [coordinates.longitude, coordinates.latitude]
+			let coordinates = selectedRoute?.geometry.map({ (coordinates: CoordindateJSON) -> CLLocationCoordinate2D in
+				return coordinates.coordinate2D
 			})
 
 			DispatchQueue.main.async {

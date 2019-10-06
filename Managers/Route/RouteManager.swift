@@ -9,10 +9,14 @@
 import UIKit
 import CoreLocation
 
-class RouteManager				: RouteManagerDataSource {
+class RouteManager {
+	var availableRoutes = [Route]()
+	var selectedRoute : Route?
+}
 
-	var availableRoutes			= [Route]()
-	var selectedRoute			: Route?
+// MARK: - RouteManagerDataSource
+
+extension RouteManager : RouteManagerDataSource {
 
 	/// Fetch all routes passing by the pick up (aka start) and destination (aka finish) locations.
 	public func routes(between start: CLLocationCoordinate2D, and destination: CLLocationCoordinate2D, with radius: Double, completion: @escaping ((_ error: Error?) -> Void)) {
@@ -31,9 +35,8 @@ class RouteManager				: RouteManagerDataSource {
 	}
 
 	public func routeCoordinates(for routeCode: String, completion: @escaping ((_ coordinates: [CLLocationCoordinate2D], _ error: Error?) -> Void)) {
-		RouteCollector.coordinates(forRouteCode: routeCode, success: { (coordinates: [[Double]]) in
-			let locationCoordinates = self.createLocations(fromCoordinates: coordinates)
-			completion(locationCoordinates, nil)
+		RouteCollector.coordinates(forRouteCode: routeCode, success: { (coordinates: [CLLocationCoordinate2D]) in
+			completion(coordinates, nil)
 		}, failure: { (error: Error) in
 			completion([], error)
 		})
@@ -64,7 +67,7 @@ class RouteManager				: RouteManagerDataSource {
 	}
 }
 
-// MARK: - RouteDataSourceHandler
+// MARK: - RouteManagerDelegate
 
 extension RouteManager: RouteManagerDelegate {
 
@@ -75,29 +78,5 @@ extension RouteManager: RouteManagerDelegate {
 
 	func select(route: Route) {
 		self.selectedRoute = route
-	}
-}
-
-// MARK: - Private Functions
-
-extension RouteManager {
-
-	/// Transform an array of latitudes and longitudes into an array of CLLocationCoordinate2D.
-	///
-	/// - Parameter coordinates: Array of latitudes and longitudes.
-	/// - Returns: Array of CLLocationCoordinate2D.
-	private func createLocations(fromCoordinates coordinates: [[Double]]) -> [CLLocationCoordinate2D] {
-		var pointsToUse = [CLLocationCoordinate2D]()
-		for values in coordinates {
-			guard
-				let y = values[safe: 0],
-				let x = values[safe: 1] else {
-					continue
-			}
-
-			pointsToUse += [CLLocationCoordinate2DMake(CLLocationDegrees(x), CLLocationDegrees(y))]
-		}
-
-		return pointsToUse
 	}
 }

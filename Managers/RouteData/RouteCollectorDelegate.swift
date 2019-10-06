@@ -14,7 +14,7 @@ import MapKit
 protocol RouteCollectorDelegate: AnyObject {
 
 	/// Fetch all coordinates for a specific route.
-	static func coordinates(forRouteCode routeCode: String, success: @escaping (_ coordinates: [[Double]]) -> Void, failure: @escaping (_ error: Error) -> Void)
+	static func coordinates(forRouteCode routeCode: String, success: @escaping (_ coordinates: [CLLocationCoordinate2D]) -> Void, failure: @escaping (_ error: Error) -> Void)
 
 	/// Fetch all available routes passing around a start and finish locations (within a given radius range).
 	static func routes(between start: CLLocation, and finish: CLLocation, with radius: Double, completion: @escaping (_ routes: [Route]) -> Void)

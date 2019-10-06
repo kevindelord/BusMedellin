@@ -9,9 +9,12 @@
 import MapKit
 
 struct CoordindateJSON : Codable {
-
 	var latitude: Double
 	var longitude: Double
+
+	var coordinate2D : CLLocationCoordinate2D {
+		return CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
+	}
 
 	static func generate(from stringCoordinates: String) -> [CoordindateJSON] {
 		var locations = [CoordindateJSON]()

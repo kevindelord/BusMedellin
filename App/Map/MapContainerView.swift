@@ -22,11 +22,14 @@ class MapContainerView			: UIView, ContentView, MapContainer, MapActionDelegate,
 	weak var pinLocation		: (MapContainedElement & PinLocationContainer)?
 	weak var addressLocation	: (MapContainedElement & AddressViewContainer)?
 	weak var userLocation		: (MapContainedElement & UserLocationContainer)?
+	weak var radiusSlider		: (MapContainedElement & RadiusSliderContainer)?
 
 	// HUD Container
 	weak var hudView			: HUDView?
 
+	// Private Attributes
 	private var locationCoordinates = [Location: CLLocationCoordinate2D]()
+	private var searchRadius = Map.defaultSearchRadius
 }
 
 // MARK: - MapActionDelegate
@@ -42,11 +45,15 @@ extension MapContainerView {
 	}
 
 	func cancel(location: Location) {
+		// Remove the local coordinates
+		self.locationCoordinates.removeValue(forKey: location)
+
 		// Update the embed views
 		self.map?.didCancel(location: location)
 		self.pinLocation?.didCancel(location: location)
 		self.addressLocation?.didCancel(location: location)
 		self.userLocation?.didCancel(location: location)
+		self.radiusSlider?.didCancel(location: location)
 		// Hide the waiting indicator.
 		self.hideWaitingHUD()
 		// Notify the app coordinator.
@@ -61,7 +68,7 @@ extension MapContainerView {
 	/// Function called when the user selects a pickup or destination location.
 	/// This function checks what needs to be set and forward the process to a more dedicated function.
 	func pinPoint(location: Location) {
-		guard let coordinate = self.map?.addAnnotation(forLocation: location) else {
+		guard let coordinate = self.map?.addAnnotation(forLocation: location, radius: self.searchRadius) else {
 			return
 		}
 
@@ -90,7 +97,7 @@ extension MapContainerView {
 				// Hide waiting HUD
 				self?.hideWaitingHUD()
 			case .Destination:
-				// Search for available routes between the two selected locations.
+				// Search for available routes between the two selected locations based on the current search radius.
 				// This function must hide the HUD on completion.
 				self?.searchForAvailableRoutes()
 			}
@@ -107,7 +114,7 @@ extension MapContainerView {
 				return
 		}
 
-		self.routeDataSource?.routes(between: start, and: destination, with: Map.defaultSearchRadius, completion: { [weak self] (_ error: Error?) in
+		self.routeDataSource?.routes(between: start, and: destination, with: self.searchRadius, completion: { [weak self] (_ error: Error?) in
 			UIAlertController.showErrorPopup(error as NSError?)
 			if (self?.routeDataSource?.availableRoutes.isEmpty == false) {
 				// Significant Event: The user just did another successful search.
@@ -126,6 +133,26 @@ extension MapContainerView {
 		self.addressLocation?.show(viewForLocation: .Destination)
 		self.pinLocation?.configureInterface(forLocation: .Destination)
 		self.pinLocation?.show()
+		self.radiusSlider?.show()
+	}
+
+	/// Update the circles around the displayed annotations on the MapView (if any).
+	// If both start and finish locations have been specified then re-fetch the data.
+	func updateSearchRadius(to value: Double) {
+		self.searchRadius = value
+
+		if (self.locationCoordinates[.PickUp] != nil) {
+			self.map?.updateAnnotationCircle(forLocation: .PickUp, radius: self.searchRadius)
+		}
+
+		if (self.locationCoordinates[.Destination] != nil) {
+			self.map?.updateAnnotationCircle(forLocation: .Destination, radius: self.searchRadius)
+
+			// As a full refetch and reload needs to occur, remove any dranw routes from the map.
+			self.map?.removeDrawnRoutes()
+			// Search again for available routes between the two selected locations based on the current search radius.
+			self.searchForAvailableRoutes()
+		}
 	}
 }
 

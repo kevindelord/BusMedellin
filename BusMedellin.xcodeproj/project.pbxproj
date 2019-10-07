@@ -96,6 +96,10 @@
 		75C8120A2196CDD2009BAD79 /* Routes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C811FF2196CDD2009BAD79 /* Routes.storyboard */; };
 		75C8120C2196CDD2009BAD79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C812002196CDD2009BAD79 /* LaunchScreen.storyboard */; };
 		75EA56A7234A5B5200FEDBBB /* rutas_medellin_light.json in Resources */ = {isa = PBXBuildFile; fileRef = 75EA56A6234A5B5200FEDBBB /* rutas_medellin_light.json */; };
+		75EA56AA234A6DF300FEDBBB /* RadiusSliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA56A9234A6DF300FEDBBB /* RadiusSliderViewController.swift */; };
+		75EA56AC234A70DB00FEDBBB /* RadiusSliderContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA56AB234A70DB00FEDBBB /* RadiusSliderContainer.swift */; };
+		75EA56AE234A8B9C00FEDBBB /* MetersLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA56AD234A8B9C00FEDBBB /* MetersLabel.swift */; };
+		75EA56B0234A8BBE00FEDBBB /* RadiusSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA56AF234A8BBE00FEDBBB /* RadiusSlider.swift */; };
 		9552F5CFA445C643C39142C2 /* Pods_BusMedellin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9338684B5BA91C70C2AF54F /* Pods_BusMedellin.framework */; };
 /* End PBXBuildFile section */
 
@@ -200,6 +204,10 @@
 		75C811FF2196CDD2009BAD79 /* Routes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Routes.storyboard; path = Resources/Storyboards/Routes.storyboard; sourceTree = "<group>"; };
 		75C812002196CDD2009BAD79 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Resources/Storyboards/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		75EA56A6234A5B5200FEDBBB /* rutas_medellin_light.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = rutas_medellin_light.json; path = Resources/rutas_medellin_light.json; sourceTree = "<group>"; };
+		75EA56A9234A6DF300FEDBBB /* RadiusSliderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadiusSliderViewController.swift; sourceTree = "<group>"; };
+		75EA56AB234A70DB00FEDBBB /* RadiusSliderContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadiusSliderContainer.swift; sourceTree = "<group>"; };
+		75EA56AD234A8B9C00FEDBBB /* MetersLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetersLabel.swift; sourceTree = "<group>"; };
+		75EA56AF234A8BBE00FEDBBB /* RadiusSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadiusSlider.swift; sourceTree = "<group>"; };
 		EC1D87735014DA38EA85466A /* Pods-BusMedellin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusMedellin.release.xcconfig"; path = "Pods/Target Support Files/Pods-BusMedellin/Pods-BusMedellin.release.xcconfig"; sourceTree = "<group>"; };
 		F9338684B5BA91C70C2AF54F /* Pods_BusMedellin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BusMedellin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -394,6 +402,7 @@
 		75BE189121A0B858008F2DC4 /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				75EA56A8234A6DDF00FEDBBB /* RadiusSlider */,
 				755879E721A1EA7D0092C0E4 /* HUD */,
 				75BE189321A0B858008F2DC4 /* PinLocation */,
 				75BE189621A0B858008F2DC4 /* AddressViews */,
@@ -524,6 +533,17 @@
 				75C811FC2196CDD2009BAD79 /* Settings.storyboard */,
 			);
 			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		75EA56A8234A6DDF00FEDBBB /* RadiusSlider */ = {
+			isa = PBXGroup;
+			children = (
+				75EA56AB234A70DB00FEDBBB /* RadiusSliderContainer.swift */,
+				75EA56A9234A6DF300FEDBBB /* RadiusSliderViewController.swift */,
+				75EA56AD234A8B9C00FEDBBB /* MetersLabel.swift */,
+				75EA56AF234A8BBE00FEDBBB /* RadiusSlider.swift */,
+			);
+			path = RadiusSlider;
 			sourceTree = "<group>";
 		};
 		AE0CB248D55F640D6BD12CEB /* Frameworks */ = {
@@ -745,12 +765,14 @@
 				75C0E645218E15A900C988C5 /* RouteManagerDataSource.swift in Sources */,
 				75BE18C821A0B858008F2DC4 /* AppCoordinatorViewController.swift in Sources */,
 				754A301C234A0C3E000A024C /* FailableCodableArray.swift in Sources */,
+				75EA56AA234A6DF300FEDBBB /* RadiusSliderViewController.swift in Sources */,
 				755879EB21A1EA7D0092C0E4 /* HUDContainer.swift in Sources */,
 				754A30162349F95F000A024C /* RouteCollector.swift in Sources */,
 				754A30142349F8EB000A024C /* RouteCollectorDelegate.swift in Sources */,
 				755879EF21A1EDD20092C0E4 /* NSLayoutConstraint.swift in Sources */,
 				754A30182349F9D6000A024C /* RouteJSON.swift in Sources */,
 				75BE18E821A0B858008F2DC4 /* StartAnnotation.swift in Sources */,
+				75EA56B0234A8BBE00FEDBBB /* RadiusSlider.swift in Sources */,
 				75BE18D221A0B858008F2DC4 /* Coordinator.swift in Sources */,
 				75BE187821A0B7CF008F2DC4 /* MKMapView.swift in Sources */,
 				75BE18D821A0B858008F2DC4 /* PinLocationContainer.swift in Sources */,
@@ -762,6 +784,7 @@
 				75BE186421A0B1EA008F2DC4 /* Location.swift in Sources */,
 				75BE18C021A0B858008F2DC4 /* SettingsViewController.swift in Sources */,
 				75BE191021A0B858008F2DC4 /* RoutesContainer.swift in Sources */,
+				75EA56AE234A8B9C00FEDBBB /* MetersLabel.swift in Sources */,
 				75BE188021A0B7CF008F2DC4 /* NSError.swift in Sources */,
 				75BE18F621A0B858008F2DC4 /* MapContainerView.swift in Sources */,
 				75BE187621A0B7CF008F2DC4 /* UIView.swift in Sources */,
@@ -777,6 +800,7 @@
 				755879EC21A1EA7D0092C0E4 /* HUDView.swift in Sources */,
 				754A25332132CA8B00B3B083 /* Log.swift in Sources */,
 				75BE190421A0B858008F2DC4 /* RoutePageControl.swift in Sources */,
+				75EA56AC234A70DB00FEDBBB /* RadiusSliderContainer.swift in Sources */,
 				750F9D3A21A1732200919626 /* PageControl.swift in Sources */,
 				75BE191221A0B858008F2DC4 /* RoutesViewController.swift in Sources */,
 				75BE18F221A0B858008F2DC4 /* ButtonState.swift in Sources */,

@@ -41,6 +41,11 @@ class MapContainerViewController : UIViewController {
 			locationController.delegate = self.container
 			locationController.dataSource = self.container?.map
 		}
+
+		if let sliderController = segue.destination as? (MapContainedElement & RadiusSliderContainer) {
+			self.container?.radiusSlider = sliderController
+			sliderController.delegate = self.container
+		}
 	}
 
 	private var container : (MapContainer & MapActionDelegate & HUDContainer)? {

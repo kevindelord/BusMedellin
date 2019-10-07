@@ -23,4 +23,7 @@ protocol MapContainer: AnyObject {
 
 	/// Element displaying the button locate the current position of the user.
 	var userLocation			: (MapContainedElement & UserLocationContainer)? { get set }
+
+	/// Element displaying a slider to change the search radius value in meters.
+	var radiusSlider			: (MapContainedElement & RadiusSliderContainer)? { get set }
 }

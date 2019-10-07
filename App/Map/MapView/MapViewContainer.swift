@@ -12,9 +12,18 @@ protocol MapViewContainer: AnyObject {
 
 	/// Add an annotation at the center of the map view for a specific kind of Location.
 	///
-	/// - Parameter location: Related Location.
+	/// - Parameters:
+	///   - location: Related Location.
+	///   - radius: Size in meters of the circle around the map.
 	/// - Returns: The CoreLocation of the center of the screen where the pin annotation has been added.
-	func addAnnotation(forLocation location: Location) -> CLLocationCoordinate2D?
+	func addAnnotation(forLocation location: Location, radius: Double) -> CLLocationCoordinate2D?
+
+	/// Update the circle around the annotation related to the location.
+	///
+	/// - Parameters:
+	///   - location: Related Location.
+	///   - radius: Size in meters of the circle around the map.
+	func updateAnnotationCircle(forLocation location: Location, radius: Double)
 
 	/// Draw on the map the given bus Route.
 	///
@@ -27,4 +36,7 @@ protocol MapViewContainer: AnyObject {
 	///
 	/// - Parameter location: Location to center the map to.
 	func centerMap(on location: CLLocation)
+
+	/// Remove any drawn routes from the mapView.
+	func removeDrawnRoutes()
 }

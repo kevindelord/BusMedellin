@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YNG-ob-itT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YNG-ob-itT">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -54,12 +54,23 @@
                                     <segue destination="hVC-IO-hD3" kind="embed" identifier="" id="H55-0w-uXi"/>
                                 </connections>
                             </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rcb-xu-XQN">
+                                <rect key="frame" x="72" y="731" width="231" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="c36-5m-OD7"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="jCX-TW-Wjc" kind="embed" id="Qka-z3-olG"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="pXa-OM-2tW" firstAttribute="centerX" secondItem="Uxb-H2-SLU" secondAttribute="centerX" id="0pW-w1-7E4"/>
                             <constraint firstItem="T7Q-4b-QUV" firstAttribute="trailing" secondItem="S6l-Ep-FHQ" secondAttribute="trailing" constant="16" id="Bc7-Xt-c9H"/>
+                            <constraint firstItem="S6l-Ep-FHQ" firstAttribute="leading" secondItem="rcb-xu-XQN" secondAttribute="trailing" constant="16" id="CDk-ad-3pA"/>
                             <constraint firstItem="pXa-OM-2tW" firstAttribute="leading" secondItem="T7Q-4b-QUV" secondAttribute="leading" priority="750" constant="16" id="FCi-VM-wZP"/>
+                            <constraint firstItem="S6l-Ep-FHQ" firstAttribute="bottom" secondItem="rcb-xu-XQN" secondAttribute="bottom" id="MsV-w7-bis"/>
                             <constraint firstItem="IF3-Cl-hyl" firstAttribute="top" secondItem="Uxb-H2-SLU" secondAttribute="top" id="TNN-Pb-at1"/>
                             <constraint firstItem="T7Q-4b-QUV" firstAttribute="bottom" secondItem="S6l-Ep-FHQ" secondAttribute="bottom" constant="16" id="WHc-Wg-3sG"/>
                             <constraint firstItem="pXa-OM-2tW" firstAttribute="top" secondItem="T7Q-4b-QUV" secondAttribute="top" constant="8" id="YKs-yW-lNn"/>
@@ -67,6 +78,7 @@
                             <constraint firstAttribute="bottom" secondItem="IF3-Cl-hyl" secondAttribute="bottom" id="ZV2-lE-6yZ"/>
                             <constraint firstItem="IF3-Cl-hyl" firstAttribute="leading" secondItem="Uxb-H2-SLU" secondAttribute="leading" id="d9A-ef-BOc"/>
                             <constraint firstAttribute="trailing" secondItem="IF3-Cl-hyl" secondAttribute="trailing" id="eOg-TJ-8Aj"/>
+                            <constraint firstItem="rcb-xu-XQN" firstAttribute="centerX" secondItem="Uxb-H2-SLU" secondAttribute="centerX" id="o89-R6-h6L"/>
                             <constraint firstItem="dD2-Li-Ipa" firstAttribute="centerX" secondItem="Uxb-H2-SLU" secondAttribute="centerX" id="tGx-hE-THl"/>
                             <constraint firstItem="T7Q-4b-QUV" firstAttribute="trailing" secondItem="pXa-OM-2tW" secondAttribute="trailing" priority="750" constant="16" id="yws-TJ-QZB"/>
                         </constraints>
@@ -324,6 +336,40 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eBB-Ov-JTx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="501" y="630"/>
+        </scene>
+        <!--Radius Slider View Controller-->
+        <scene sceneID="2sq-kc-XFW">
+            <objects>
+                <viewController id="jCX-TW-Wjc" customClass="RadiusSliderViewController" customModule="BusMedellin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FPa-58-YGp">
+                        <rect key="frame" x="0.0" y="0.0" width="231" height="31"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="oCr-zU-nyL" customClass="RadiusSlider" customModule="BusMedellin" customModuleProvider="target">
+                                <rect key="frame" x="-2" y="1" width="235" height="31"/>
+                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="selectNewRadiusValue" destination="jCX-TW-Wjc" eventType="touchUpOutside" id="IZP-WA-gdn"/>
+                                    <action selector="selectNewRadiusValue" destination="jCX-TW-Wjc" eventType="touchUpInside" id="jwt-hf-tZw"/>
+                                    <action selector="sliderThumbDidMove" destination="jCX-TW-Wjc" eventType="valueChanged" id="3kM-7B-ZPA"/>
+                                </connections>
+                            </slider>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="oCr-zU-nyL" secondAttribute="trailing" id="3Qi-GO-RGY"/>
+                            <constraint firstItem="oCr-zU-nyL" firstAttribute="leading" secondItem="FPa-58-YGp" secondAttribute="leading" id="93i-3X-rgC"/>
+                            <constraint firstItem="oCr-zU-nyL" firstAttribute="centerX" secondItem="FPa-58-YGp" secondAttribute="centerX" id="B83-mK-sOd"/>
+                            <constraint firstAttribute="bottom" secondItem="oCr-zU-nyL" secondAttribute="bottom" id="erb-bt-QPX"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="radiusSlider" destination="oCr-zU-nyL" id="Gta-Ab-7zy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gug-fk-OGy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-497" y="630"/>
         </scene>
     </scenes>
     <resources>

@@ -9,8 +9,6 @@
 import Foundation
 import MapKit
 
-// TODO: Update pods.
-
 protocol RouteCollectorDelegate: AnyObject {
 
 	/// Fetch all coordinates for a specific route.

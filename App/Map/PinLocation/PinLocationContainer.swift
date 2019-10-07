@@ -17,6 +17,6 @@ protocol PinLocationContainer: AnyObject {
 	/// Show the indicator (with its current configuration) to the user.
 	func show()
 
-	/// Show the indicator from the user.
+	/// Hide the indicator from the user.
 	func hide()
 }

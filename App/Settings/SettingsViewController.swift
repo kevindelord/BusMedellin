@@ -51,9 +51,7 @@ class SettingsViewController					: UIViewController {
 	}
 
 	private var textViewFont : UIFont {
-		var font = (UIFont(name: "Helvetica Neue Light", size: 15) ?? UIFont.systemFont(ofSize: 15))
-		font = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.light)
-		return font
+		return UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.light)
 	}
 
 	private func setupAboutTextView() {

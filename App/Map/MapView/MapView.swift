@@ -39,7 +39,7 @@ class MapView											: UIView, MKMapViewDelegate, MapContainedElement, MapVie
 
 extension MapView {
 
-	func addAnnotation(forLocation location: Location) -> CLLocationCoordinate2D? {
+	func addAnnotation(forLocation location: Location, radius: Double) -> CLLocationCoordinate2D? {
 		guard let coordinate = self.mapView?.centerCoordinate else {
 			return nil
 		}
@@ -47,14 +47,36 @@ extension MapView {
 		// Add a new annotation at the center of the map.
 		switch location {
 		case .PickUp:
-			self.addPickupAnnotation(coordinate: coordinate)
+			self.addPickupAnnotation(coordinate: coordinate, radius: radius)
 			// Move a bit the map up North to easily understand to transition to the .Destination Location.
 			self.moveMapView(from: coordinate)
 		case .Destination:
-			self.addDestinationAnnotation(coordinate: coordinate)
+			self.addDestinationAnnotation(coordinate: coordinate, radius: radius)
 		}
 
 		return coordinate
+	}
+
+	// Remove and recrate the circle overlay related to the given location.
+	func updateAnnotationCircle(forLocation location: Location, radius: Double) {
+		switch location {
+		case .PickUp:
+			guard let coordinate = self.startAnnotation?.coordinate else {
+				return
+			}
+
+			self.mapView?.removeOverlay(safe: self.startCircle)
+			self.startCircle = MapCircle.createStartCircle(centerCoordinate: coordinate, radius: radius)
+			self.mapView?.addOverlay(safe: self.startCircle)
+		case .Destination:
+			guard let coordinate = self.destinationAnnotation?.coordinate else {
+				return
+			}
+
+			self.mapView?.removeOverlay(safe: self.destinationCircle)
+			self.destinationCircle = MapCircle.createDestinationCircle(centerCoordinate: coordinate, radius: radius)
+			self.mapView?.addOverlay(safe: self.destinationCircle)
+		}
 	}
 
 	func draw(selectedRoute: Route, routeDataSource: RouteManagerDataSource, completion: @escaping ((_ error: Error?) -> Void)) {
@@ -72,6 +94,15 @@ extension MapView {
 		let coordinateRegion = MKCoordinateRegion.init(center: location.coordinate, latitudinalMeters: regionRadius * 2.0, longitudinalMeters: regionRadius * 2.0)
 		// swiftlint:enable explicit_init
 		self.mapView?.setRegion(coordinateRegion, animated: true)
+	}
+
+	/// Remove any drawn routes from the mapView.
+	func removeDrawnRoutes() {
+		self.mapView?.overlays.forEach { (overlay: MKOverlay) in
+			if (overlay is MKGeodesicPolyline) {
+				self.mapView?.removeOverlay(overlay)
+			}
+		}
 	}
 }
 
@@ -194,32 +225,27 @@ extension MapView {
 		self.mapView?.addOverlay(myPolyline, level: MKOverlayLevel.aboveLabels)
 	}
 
-	/// Remove any drawn routes from the mapView.
-	private func removeDrawnRoutes() {
-		self.mapView?.overlays.forEach { (overlay: MKOverlay) in
-			if (overlay is MKGeodesicPolyline) {
-				self.mapView?.removeOverlay(overlay)
-			}
-		}
-	}
-
 	/// Add a new start/pickup annotation on the map.
 	///
-	/// - Parameter coordinate: Coordinate of the annotation.
-	private func addPickupAnnotation(coordinate: CLLocationCoordinate2D) {
+	/// - Parameters:
+	///   - coordinate: Coordinate of the annotation.
+	///   - radius: Size of the circle around the annonation in meters.
+	private func addPickupAnnotation(coordinate: CLLocationCoordinate2D, radius: Double) {
 		self.startAnnotation = StartAnnotation.create(withCoordinates: coordinate)
 		self.mapView?.addAnnotation(safe: self.startAnnotation)
-		self.startCircle = MapCircle.createStartCircle(centerCoordinate: coordinate)
+		self.startCircle = MapCircle.createStartCircle(centerCoordinate: coordinate, radius: radius)
 		self.mapView?.addOverlay(safe: self.startCircle)
 	}
 
 	/// Add a new destination annotation on the map.
 	///
-	/// - Parameter coordinate: Coordinate of the annotation.
-	private func addDestinationAnnotation(coordinate: CLLocationCoordinate2D) {
+	/// - Parameters:
+	///   - coordinate: Coordinate of the annotation.
+	///   - radius: Size of the circle around the annonation in meters.
+	private func addDestinationAnnotation(coordinate: CLLocationCoordinate2D, radius: Double) {
 		self.destinationAnnotation = DestinationAnnotation.create(withCoordinates: coordinate)
 		self.mapView?.addAnnotation(safe: self.destinationAnnotation)
-		self.destinationCircle = MapCircle.createDestinationCircle(centerCoordinate: coordinate)
+		self.destinationCircle = MapCircle.createDestinationCircle(centerCoordinate: coordinate, radius: radius)
 		self.mapView?.addOverlay(safe: self.destinationCircle)
 	}
 

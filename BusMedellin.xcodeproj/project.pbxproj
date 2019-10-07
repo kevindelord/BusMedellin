@@ -590,10 +590,9 @@
 			};
 			buildConfigurationList = 7554E7711DAF16E400F1178C /* Build configuration list for PBXProject "BusMedellin" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 				es,

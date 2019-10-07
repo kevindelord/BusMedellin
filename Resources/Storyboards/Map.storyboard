@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YNG-ob-itT">
-    <device id="retina5_9" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YNG-ob-itT">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -45,7 +43,7 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S6l-Ep-FHQ">
-                                <rect key="frame" x="319" y="722" width="40" height="40"/>
+                                <rect key="frame" x="311" y="714" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="OOO-8I-CvG"/>
                                     <constraint firstAttribute="height" constant="40" id="Qdt-2i-qUp"/>
@@ -55,7 +53,7 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rcb-xu-XQN">
-                                <rect key="frame" x="72" y="731" width="231" height="31"/>
+                                <rect key="frame" x="80" y="718.66666666666663" width="215" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="c36-5m-OD7"/>
                                 </constraints>
@@ -67,12 +65,12 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="pXa-OM-2tW" firstAttribute="centerX" secondItem="Uxb-H2-SLU" secondAttribute="centerX" id="0pW-w1-7E4"/>
-                            <constraint firstItem="T7Q-4b-QUV" firstAttribute="trailing" secondItem="S6l-Ep-FHQ" secondAttribute="trailing" constant="16" id="Bc7-Xt-c9H"/>
+                            <constraint firstItem="S6l-Ep-FHQ" firstAttribute="centerY" secondItem="rcb-xu-XQN" secondAttribute="centerY" id="4aH-L7-piz"/>
+                            <constraint firstItem="T7Q-4b-QUV" firstAttribute="trailing" secondItem="S6l-Ep-FHQ" secondAttribute="trailing" constant="24" id="Bc7-Xt-c9H"/>
                             <constraint firstItem="S6l-Ep-FHQ" firstAttribute="leading" secondItem="rcb-xu-XQN" secondAttribute="trailing" constant="16" id="CDk-ad-3pA"/>
                             <constraint firstItem="pXa-OM-2tW" firstAttribute="leading" secondItem="T7Q-4b-QUV" secondAttribute="leading" priority="750" constant="16" id="FCi-VM-wZP"/>
-                            <constraint firstItem="S6l-Ep-FHQ" firstAttribute="bottom" secondItem="rcb-xu-XQN" secondAttribute="bottom" id="MsV-w7-bis"/>
                             <constraint firstItem="IF3-Cl-hyl" firstAttribute="top" secondItem="Uxb-H2-SLU" secondAttribute="top" id="TNN-Pb-at1"/>
-                            <constraint firstItem="T7Q-4b-QUV" firstAttribute="bottom" secondItem="S6l-Ep-FHQ" secondAttribute="bottom" constant="16" id="WHc-Wg-3sG"/>
+                            <constraint firstItem="T7Q-4b-QUV" firstAttribute="bottom" secondItem="S6l-Ep-FHQ" secondAttribute="bottom" constant="24" id="WHc-Wg-3sG"/>
                             <constraint firstItem="pXa-OM-2tW" firstAttribute="top" secondItem="T7Q-4b-QUV" secondAttribute="top" constant="8" id="YKs-yW-lNn"/>
                             <constraint firstItem="dD2-Li-Ipa" firstAttribute="centerY" secondItem="Uxb-H2-SLU" secondAttribute="centerY" constant="-20" id="Yzh-GK-Kw0"/>
                             <constraint firstAttribute="bottom" secondItem="IF3-Cl-hyl" secondAttribute="bottom" id="ZV2-lE-6yZ"/>
@@ -118,7 +116,6 @@
                                     </view>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9j3-bP-BV5">
                                         <rect key="frame" x="34" y="0.0" width="301" height="40"/>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -165,7 +162,6 @@
                                     </view>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W2B-md-kd8">
                                         <rect key="frame" x="34" y="0.0" width="301" height="40"/>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -227,7 +223,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I8G-dQ-iP1">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" showsUserLocation="YES" showsCompass="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I8G-dQ-iP1">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <connections>
                                     <outlet property="delegate" destination="gcp-S5-Cmt" id="oXZ-Ye-2S3"/>
@@ -362,6 +358,7 @@
                             <constraint firstItem="oCr-zU-nyL" firstAttribute="centerX" secondItem="FPa-58-YGp" secondAttribute="centerX" id="B83-mK-sOd"/>
                             <constraint firstAttribute="bottom" secondItem="oCr-zU-nyL" secondAttribute="bottom" id="erb-bt-QPX"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Onz-Ba-9HM"/>
                     </view>
                     <connections>
                         <outlet property="radiusSlider" destination="oCr-zU-nyL" id="Gta-Ab-7zy"/>

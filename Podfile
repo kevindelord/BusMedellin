@@ -2,17 +2,18 @@ source 'https://github.com/cocoapods/specs.git'
 
 platform :ios, '9.3'
 use_frameworks!
+inhibit_all_warnings!
 
 target 'BusMedellin' do
 	pod 'Appirater', '~> 2.3.1'
-	pod 'Buglife', '~> 2.8.1'
-	pod 'SwiftLint', '~> 0.28.1'
-	pod 'CHIPageControl/Jalapeno', '~> 0.1.7'
+	pod 'Buglife', '~> 2.10.1'
+	pod 'SwiftLint', '~> 0.35.0'
+	pod 'CHIPageControl/Jalapeno', '~> 0.2'
 
 	# Google Analytics + Crash Reports
-	pod 'Firebase/Core', '~> 5.13.0'
-	pod 'Fabric', '~> 1.8.2'
-	pod 'Crashlytics', '~> 3.11.1'
+	pod 'Firebase/Core', '~> 6.9.0'
+	pod 'Fabric', '~> 1.10.2'
+	pod 'Crashlytics', '~> 3.14.0'
 end
 
 post_install do |installer|

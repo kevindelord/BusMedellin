@@ -9,9 +9,6 @@
 import Foundation
 import MapKit
 
-// TODO: Update xcode project and migrate to Swift 5.
-// TODO: Update pods.
-
 protocol RouteCollectorDelegate: AnyObject {
 
 	/// Fetch all coordinates for a specific route.

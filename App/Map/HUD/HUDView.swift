@@ -75,17 +75,10 @@ public class HUDView						: UIView {
 	private func initProgressBarIndicator() {
 		self.progressBarIndicator = UIView(frame: CGRect.zero)
 		self.progressBarIndicator?.backgroundColor = self.progressBarColor
+		self.progressBarIndicator?.clipsToBounds = false
 		self.progressBarIndicator?.roundRect(radius: 2)
+		self.progressBarIndicator?.translatesAutoresizingMaskIntoConstraints = true
 		self.addSubview(safe: self.progressBarIndicator)
-
-		guard let subview = self.progressBarIndicator else {
-			return
-		}
-
-		subview.translatesAutoresizingMaskIntoConstraints = false
-		// X, Height
-		NSLayoutConstraint.equal(.top, view: subview, superview: self)
-		NSLayoutConstraint.equal(.bottom, view: subview, superview: self)
 	}
 }
 

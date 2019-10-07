@@ -54,7 +54,6 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
-  - Reachability (3.2)
   - SwiftLint (0.28.1)
 
 DEPENDENCIES:
@@ -64,7 +63,6 @@ DEPENDENCIES:
   - Crashlytics (~> 3.11.1)
   - Fabric (~> 1.8.2)
   - Firebase/Core (~> 5.13.0)
-  - Reachability (~> 3.2)
   - SwiftLint (~> 0.28.1)
 
 SPEC REPOS:
@@ -81,7 +79,6 @@ SPEC REPOS:
     - GoogleAppMeasurement
     - GoogleUtilities
     - nanopb
-    - Reachability
     - SwiftLint
 
 SPEC CHECKSUMS:
@@ -97,9 +94,8 @@ SPEC CHECKSUMS:
   GoogleAppMeasurement: 5029d78f2b438bd30ffb44e6c558b57c21622727
   GoogleUtilities: 95996bea7c7d9b8fb811b7507669a4a8762f80c7
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
-  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SwiftLint: 7f5f7de0da74a649b16616cb5246ae323489656e
 
-PODFILE CHECKSUM: a9c012a743eb779417025cd8aa223fa157bd6b2f
+PODFILE CHECKSUM: bf301e22c9863b33c31c836d1cda1315fc019147
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.1

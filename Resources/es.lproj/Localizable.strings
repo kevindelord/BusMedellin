@@ -30,8 +30,8 @@
 // Error Alerts
 //
 "POPUP_OK"                  = "OK";
-"NO_INTERNET_CONNECTION"    = "No hay conexión a internet.";
 "NO_ROUTE_FOUND"            = "No hay rutas disponibles para las ubicaciones seleccionadas.";
+"INVALID_JSON"				= "Error con los datos locales. Por favor reporta el problema.";
 
 //
 // Settings View Controller

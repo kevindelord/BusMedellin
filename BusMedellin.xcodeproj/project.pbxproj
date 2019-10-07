@@ -7,16 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		75052ACD213833AE0063AE05 /* APIManager+Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75052ACB213833AE0063AE05 /* APIManager+Errors.swift */; };
+		75052ACD213833AE0063AE05 /* RouteCollector+Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75052ACB213833AE0063AE05 /* RouteCollector+Errors.swift */; };
 		750F9D3A21A1732200919626 /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750F9D3921A1732200919626 /* PageControl.swift */; };
 		750F9D3C21A1735700919626 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750F9D3B21A1735700919626 /* Color.swift */; };
 		752DB99E21A0BF0D00286042 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752DB99C21A0BF0D00286042 /* Map.swift */; };
 		752DB9A121A0CF0C00286042 /* UserLocationDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752DB99F21A0CF0C00286042 /* UserLocationDataSource.swift */; };
 		752DB9A421A0D5C500286042 /* CLLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752DB9A221A0D5C500286042 /* CLLocationManager.swift */; };
-		752DB9A721A0E3B400286042 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752DB9A521A0E3B400286042 /* API.swift */; };
 		752DB9AA21A0E3E500286042 /* ExternalLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752DB9A821A0E3E500286042 /* ExternalLink.swift */; };
 		754A25332132CA8B00B3B083 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A25312132CA8B00B3B083 /* Log.swift */; };
 		754A25422132CC7300B3B083 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A25402132CC7300B3B083 /* Localization.swift */; };
+		754A30142349F8EB000A024C /* RouteCollectorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A30132349F8EB000A024C /* RouteCollectorDelegate.swift */; };
+		754A30162349F95F000A024C /* RouteCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A30152349F95F000A024C /* RouteCollector.swift */; };
+		754A30182349F9D6000A024C /* RouteJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A30172349F9D6000A024C /* RouteJSON.swift */; };
+		754A301A234A0C27000A024C /* CoordindateJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A3019234A0C27000A024C /* CoordindateJSON.swift */; };
+		754A301C234A0C3E000A024C /* FailableCodableArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754A301B234A0C3E000A024C /* FailableCodableArray.swift */; };
 		755879EB21A1EA7D0092C0E4 /* HUDContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755879E821A1EA7D0092C0E4 /* HUDContainer.swift */; };
 		755879EC21A1EA7D0092C0E4 /* HUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755879E921A1EA7D0092C0E4 /* HUDView.swift */; };
 		755879ED21A1EA7D0092C0E4 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755879EA21A1EA7D0092C0E4 /* HUD.swift */; };
@@ -26,9 +30,7 @@
 		757F31631DBE5E16002BB03F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 757F31611DBE5E16002BB03F /* GoogleService-Info.plist */; };
 		757F31661DBE5F14002BB03F /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757F31641DBE5F14002BB03F /* Analytics.swift */; };
 		758E10371DBD92D000D872BC /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75805BC31DAF5B7E00DACFF5 /* Route.swift */; };
-		758E10391DBD92D000D872BC /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75640BEF1DAF19FB002B4A56 /* APIManager.swift */; };
 		758E103C1DBD92D000D872BC /* Appirater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75640BF01DAF19FB002B4A56 /* Appirater.swift */; };
-		758E103D1DBD92D000D872BC /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75640BF11DAF19FB002B4A56 /* Reachability.swift */; };
 		758E104E1DBD92D000D872BC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 75640BEC1DAF19C5002B4A56 /* Settings.bundle */; };
 		758E10501DBD92D000D872BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75513BDF1DB019C600957F40 /* Assets.xcassets */; };
 		758E10511DBD92D000D872BC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 75C5E9571DBD673700FCE9D0 /* Localizable.strings */; };
@@ -93,6 +95,7 @@
 		75C812082196CDD2009BAD79 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C811FE2196CDD2009BAD79 /* Map.storyboard */; };
 		75C8120A2196CDD2009BAD79 /* Routes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C811FF2196CDD2009BAD79 /* Routes.storyboard */; };
 		75C8120C2196CDD2009BAD79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C812002196CDD2009BAD79 /* LaunchScreen.storyboard */; };
+		75EA56A7234A5B5200FEDBBB /* rutas_medellin_light.json in Resources */ = {isa = PBXBuildFile; fileRef = 75EA56A6234A5B5200FEDBBB /* rutas_medellin_light.json */; };
 		9552F5CFA445C643C39142C2 /* Pods_BusMedellin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9338684B5BA91C70C2AF54F /* Pods_BusMedellin.framework */; };
 /* End PBXBuildFile section */
 
@@ -100,18 +103,22 @@
 		0669351D7212F380D200E0BA /* Pods_BusMedellin_Alpha_AdHoc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BusMedellin_Alpha_AdHoc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		14962F37B68363BBD1DB2412 /* Pods-BusMedellin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusMedellin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BusMedellin/Pods-BusMedellin.debug.xcconfig"; sourceTree = "<group>"; };
 		4301C8C80BE111EDA26F55FC /* Pods_BusMedellin_Live_AppStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BusMedellin_Live_AppStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		75052ACB213833AE0063AE05 /* APIManager+Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIManager+Errors.swift"; sourceTree = "<group>"; };
+		75052ACB213833AE0063AE05 /* RouteCollector+Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RouteCollector+Errors.swift"; sourceTree = "<group>"; };
 		750F9D3921A1732200919626 /* PageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
 		750F9D3B21A1735700919626 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		752DB99C21A0BF0D00286042 /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		752DB99F21A0CF0C00286042 /* UserLocationDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationDataSource.swift; sourceTree = "<group>"; };
 		752DB9A221A0D5C500286042 /* CLLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationManager.swift; sourceTree = "<group>"; };
-		752DB9A521A0E3B400286042 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		752DB9A821A0E3E500286042 /* ExternalLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalLink.swift; sourceTree = "<group>"; };
 		752DB9AB21A0EB5A00286042 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		752DB9AC21A0EBC000286042 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		754A25312132CA8B00B3B083 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		754A25402132CC7300B3B083 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		754A30132349F8EB000A024C /* RouteCollectorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteCollectorDelegate.swift; sourceTree = "<group>"; };
+		754A30152349F95F000A024C /* RouteCollector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteCollector.swift; sourceTree = "<group>"; };
+		754A30172349F9D6000A024C /* RouteJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteJSON.swift; sourceTree = "<group>"; };
+		754A3019234A0C27000A024C /* CoordindateJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordindateJSON.swift; sourceTree = "<group>"; };
+		754A301B234A0C3E000A024C /* FailableCodableArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailableCodableArray.swift; sourceTree = "<group>"; };
 		75513BDF1DB019C600957F40 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
 		755879E821A1EA7D0092C0E4 /* HUDContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDContainer.swift; sourceTree = "<group>"; };
 		755879E921A1EA7D0092C0E4 /* HUDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDView.swift; sourceTree = "<group>"; };
@@ -120,9 +127,7 @@
 		755DB8D7213C207B0092756E /* RouteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteManager.swift; sourceTree = "<group>"; };
 		755DB8DB213C5C390092756E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		75640BEC1DAF19C5002B4A56 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Resources/Settings.bundle; sourceTree = "<group>"; };
-		75640BEF1DAF19FB002B4A56 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		75640BF01DAF19FB002B4A56 /* Appirater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appirater.swift; sourceTree = "<group>"; };
-		75640BF11DAF19FB002B4A56 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		75679F151DBE77AF0066DF0F /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		757F31611DBE5E16002BB03F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		757F31641DBE5F14002BB03F /* Analytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
@@ -194,6 +199,7 @@
 		75C811FE2196CDD2009BAD79 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Map.storyboard; path = Resources/Storyboards/Map.storyboard; sourceTree = "<group>"; };
 		75C811FF2196CDD2009BAD79 /* Routes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Routes.storyboard; path = Resources/Storyboards/Routes.storyboard; sourceTree = "<group>"; };
 		75C812002196CDD2009BAD79 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Resources/Storyboards/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		75EA56A6234A5B5200FEDBBB /* rutas_medellin_light.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = rutas_medellin_light.json; path = Resources/rutas_medellin_light.json; sourceTree = "<group>"; };
 		EC1D87735014DA38EA85466A /* Pods-BusMedellin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusMedellin.release.xcconfig"; path = "Pods/Target Support Files/Pods-BusMedellin/Pods-BusMedellin.release.xcconfig"; sourceTree = "<group>"; };
 		F9338684B5BA91C70C2AF54F /* Pods_BusMedellin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BusMedellin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -211,6 +217,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		754A30122349F8C1000A024C /* RouteData */ = {
+			isa = PBXGroup;
+			children = (
+				754A30132349F8EB000A024C /* RouteCollectorDelegate.swift */,
+				754A30152349F95F000A024C /* RouteCollector.swift */,
+				75052ACB213833AE0063AE05 /* RouteCollector+Errors.swift */,
+				754A30172349F9D6000A024C /* RouteJSON.swift */,
+				754A3019234A0C27000A024C /* CoordindateJSON.swift */,
+				754A301B234A0C3E000A024C /* FailableCodableArray.swift */,
+			);
+			path = RouteData;
+			sourceTree = "<group>";
+		};
 		7554E76D1DAF16E400F1178C = {
 			isa = PBXGroup;
 			children = (
@@ -237,6 +256,7 @@
 		7554E78B1DAF18BE00F1178C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				75EA56A6234A5B5200FEDBBB /* rutas_medellin_light.json */,
 				75C811FA2196CDB7009BAD79 /* Storyboards */,
 				75513BDF1DB019C600957F40 /* Assets.xcassets */,
 				75805BC01DAF5B3A00DACFF5 /* medellin.gpx */,
@@ -259,7 +279,7 @@
 		755DB8DA213C208A0092756E /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				75BE186521A0B201008F2DC4 /* API */,
+				754A30122349F8C1000A024C /* RouteData */,
 				75BE186621A0B207008F2DC4 /* Route */,
 			);
 			path = Managers;
@@ -272,7 +292,6 @@
 				75640BF01DAF19FB002B4A56 /* Appirater.swift */,
 				757F31641DBE5F14002BB03F /* Analytics.swift */,
 				754A25312132CA8B00B3B083 /* Log.swift */,
-				75640BF11DAF19FB002B4A56 /* Reachability.swift */,
 				754A25402132CC7300B3B083 /* Localization.swift */,
 				750F9D3B21A1735700919626 /* Color.swift */,
 			);
@@ -298,16 +317,6 @@
 				75BE186221A0B1EA008F2DC4 /* Location.swift */,
 			);
 			name = Models;
-			sourceTree = "<group>";
-		};
-		75BE186521A0B201008F2DC4 /* API */ = {
-			isa = PBXGroup;
-			children = (
-				75640BEF1DAF19FB002B4A56 /* APIManager.swift */,
-				75052ACB213833AE0063AE05 /* APIManager+Errors.swift */,
-				752DB9A521A0E3B400286042 /* API.swift */,
-			);
-			path = API;
 			sourceTree = "<group>";
 		};
 		75BE186621A0B207008F2DC4 /* Route */ = {
@@ -575,7 +584,7 @@
 				TargetAttributes = {
 					758E10331DBD92D000D872BC = {
 						DevelopmentTeam = QXY3J9PHW4;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -584,6 +593,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 				es,
@@ -603,6 +613,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75EA56A7234A5B5200FEDBBB /* rutas_medellin_light.json in Resources */,
 				75B41C5721343D8500588CE8 /* Configuration.plist in Resources */,
 				757F31631DBE5E16002BB03F /* GoogleService-Info.plist in Resources */,
 				758E104E1DBD92D000D872BC /* Settings.bundle in Resources */,
@@ -644,12 +655,11 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-BusMedellin/Pods-BusMedellin-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-BusMedellin/Pods-BusMedellin-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Appirater/Appirater.framework",
 				"${BUILT_PRODUCTS_DIR}/Buglife/Buglife.framework",
 				"${BUILT_PRODUCTS_DIR}/CHIPageControl/CHIPageControl.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/Reachability/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -658,12 +668,11 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Buglife.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CHIPageControl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BusMedellin/Pods-BusMedellin-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BusMedellin/Pods-BusMedellin-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		758E10551DBD92D000D872BC /* Swiftlint */ = {
@@ -721,7 +730,6 @@
 				75BE18D621A0B858008F2DC4 /* PinLocationViewController.swift in Sources */,
 				758E10371DBD92D000D872BC /* Route.swift in Sources */,
 				75BE18FE21A0B858008F2DC4 /* RouteDetailViewController.swift in Sources */,
-				758E10391DBD92D000D872BC /* APIManager.swift in Sources */,
 				75BE18EE21A0B858008F2DC4 /* MapContainerViewController.swift in Sources */,
 				755DB8D9213C207B0092756E /* RouteManager.swift in Sources */,
 				752DB9AA21A0E3E500286042 /* ExternalLink.swift in Sources */,
@@ -729,21 +737,25 @@
 				75BE18EC21A0B858008F2DC4 /* Annotation.swift in Sources */,
 				75BE18F421A0B858008F2DC4 /* UserLocationButton.swift in Sources */,
 				75BE18D021A0B858008F2DC4 /* ContentView.swift in Sources */,
+				754A301A234A0C27000A024C /* CoordindateJSON.swift in Sources */,
 				75BE18E421A0B858008F2DC4 /* MapView.swift in Sources */,
 				75BE187C21A0B7CF008F2DC4 /* UIColor.swift in Sources */,
 				75BE18DE21A0B858008F2DC4 /* AddressViewContainer.swift in Sources */,
 				75BE18FC21A0B858008F2DC4 /* RouteDetailPage.swift in Sources */,
 				75C0E645218E15A900C988C5 /* RouteManagerDataSource.swift in Sources */,
 				75BE18C821A0B858008F2DC4 /* AppCoordinatorViewController.swift in Sources */,
+				754A301C234A0C3E000A024C /* FailableCodableArray.swift in Sources */,
 				755879EB21A1EA7D0092C0E4 /* HUDContainer.swift in Sources */,
+				754A30162349F95F000A024C /* RouteCollector.swift in Sources */,
+				754A30142349F8EB000A024C /* RouteCollectorDelegate.swift in Sources */,
 				755879EF21A1EDD20092C0E4 /* NSLayoutConstraint.swift in Sources */,
+				754A30182349F9D6000A024C /* RouteJSON.swift in Sources */,
 				75BE18E821A0B858008F2DC4 /* StartAnnotation.swift in Sources */,
 				75BE18D221A0B858008F2DC4 /* Coordinator.swift in Sources */,
 				75BE187821A0B7CF008F2DC4 /* MKMapView.swift in Sources */,
 				75BE18D821A0B858008F2DC4 /* PinLocationContainer.swift in Sources */,
 				758E103C1DBD92D000D872BC /* Appirater.swift in Sources */,
 				752DB99E21A0BF0D00286042 /* Map.swift in Sources */,
-				758E103D1DBD92D000D872BC /* Reachability.swift in Sources */,
 				75BE191721A0BA5D008F2DC4 /* UserLocationContainer.swift in Sources */,
 				75BE190621A0B858008F2DC4 /* RoutePageViewController.swift in Sources */,
 				755879ED21A1EA7D0092C0E4 /* HUD.swift in Sources */,
@@ -767,12 +779,11 @@
 				75BE190421A0B858008F2DC4 /* RoutePageControl.swift in Sources */,
 				750F9D3A21A1732200919626 /* PageControl.swift in Sources */,
 				75BE191221A0B858008F2DC4 /* RoutesViewController.swift in Sources */,
-				752DB9A721A0E3B400286042 /* API.swift in Sources */,
 				75BE18F221A0B858008F2DC4 /* ButtonState.swift in Sources */,
 				75C0E648218E263900C988C5 /* RouteManagerDelegate.swift in Sources */,
 				75BE18C221A0B858008F2DC4 /* FooterView.swift in Sources */,
 				75BE190C21A0B858008F2DC4 /* RoutePageControllerHandler.swift in Sources */,
-				75052ACD213833AE0063AE05 /* APIManager+Errors.swift in Sources */,
+				75052ACD213833AE0063AE05 /* RouteCollector+Errors.swift in Sources */,
 				75BE18E621A0B858008F2DC4 /* MapCircle.swift in Sources */,
 				75BE190221A0B858008F2DC4 /* RoutePageControlView.swift in Sources */,
 				75BE187A21A0B7CF008F2DC4 /* Array.swift in Sources */,
@@ -923,7 +934,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.kevindelord.buspaisa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Bus Paisa Alpha AdHoc DEBUG";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -941,7 +952,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.kevindelord.buspaisa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Bus Paisa Live AppStore RELEASE";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

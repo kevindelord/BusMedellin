@@ -29,8 +29,9 @@ protocol RouteManagerDataSource: AnyObject {
 	/// - Parameters:
 	///   - start: Coordinates of the start / pickup annotation.
 	///   - destination: Coordinates of the destination annotation.
+	///   - radius: Search radius in meters.
 	///   - completion: Closure called when the matching routes have been fetched.
-	func routes(between start: CLLocationCoordinate2D, and destination: CLLocationCoordinate2D, completion: @escaping ((_ error: Error?) -> Void))
+	func routes(between start: CLLocationCoordinate2D, and destination: CLLocationCoordinate2D, with radius: Double, completion: @escaping ((_ error: Error?) -> Void))
 
 	/// Array of all matching round found for the active search (active start and destination annotations).
 	var availableRoutes : [Route] { get }

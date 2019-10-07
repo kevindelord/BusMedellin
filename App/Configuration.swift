@@ -11,20 +11,14 @@ import Foundation
 struct Configuration: Decodable {
 
 	private enum CodingKeys: String, CodingKey {
-		case apiBaseUrl
 		case appIdentifier
 		case buglifeIdentifier
-		case fusionTableIdentifier
-		case fusionTableKey
 		case defaultLatitude
 		case defaultLongitude
 	}
 
-	let apiBaseUrl				: String
 	let appIdentifier			: String
 	let buglifeIdentifier		: String
-	let fusionTableIdentifier	: String
-	let fusionTableKey			: String
 	let defaultLatitude			: String
 	let defaultLongitude		: String
 

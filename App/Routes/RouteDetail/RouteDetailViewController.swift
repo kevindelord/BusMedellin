@@ -13,6 +13,7 @@ class RouteDetailViewController							: UIViewController, RouteDetailPage {
 	@IBOutlet private weak var containerView			: UIView?
 	@IBOutlet private weak var titleLabel				: UILabel?
 	@IBOutlet private weak var subtitleLabel			: UILabel?
+	@IBOutlet private weak var routeNumberLabel			: UILabel?
 
 	var route											: Route?
 
@@ -38,6 +39,7 @@ class RouteDetailViewController							: UIViewController, RouteDetailPage {
 
 		// Title
 		self.titleLabel?.text = route.name
+		self.routeNumberLabel?.text = route.number
 		// Subtitle
 		self.subtitleLabel?.text = route.description
 		self.subtitleLabel?.isHidden = (route.description.isEmpty == true)

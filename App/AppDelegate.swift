@@ -9,6 +9,7 @@
 import UIKit
 import Appirater
 import Buglife
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,6 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		Appirater.setup()
 		Analytics.setup()
 		Buglife.shared().start(withAPIKey: Configuration().buglifeIdentifier)
+		// Use Firebase library to configure APIs
+		FirebaseApp.configure()
+
+		// In the end setup the local database (must happen after Firebase to monitor the performances).
 		RouteDatabase.setup()
 
 		return true

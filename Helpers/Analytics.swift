@@ -6,22 +6,9 @@
 //  Copyright © 2016 Kevin Delord. All rights reserved.
 //
 
-import Foundation
 import Firebase
 
 struct Analytics {
-
-	static func setup() {
-		// Check if the analytics is enabled
-		guard (Configuration.isAnalyticsEnabled == true) else {
-			return
-		}
-
-		// Set the Firebase log to the minimum required.
-		FirebaseConfiguration.shared.setLoggerLevel(.min)
-		// Use Firebase library to configure APIs
-		FirebaseApp.configure()
-	}
 
 	// MARK: - Send Actions
 

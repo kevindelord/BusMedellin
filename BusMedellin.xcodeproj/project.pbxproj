@@ -26,7 +26,6 @@
 		755879ED21A1EA7D0092C0E4 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755879EA21A1EA7D0092C0E4 /* HUD.swift */; };
 		755879EF21A1EDD20092C0E4 /* NSLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755879EE21A1EDD20092C0E4 /* NSLayoutConstraint.swift */; };
 		755DB8D9213C207B0092756E /* RouteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755DB8D7213C207B0092756E /* RouteManager.swift */; };
-		755DB8DC213C5C390092756E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 755DB8DB213C5C390092756E /* StoreKit.framework */; };
 		7577C40A235124AA00E82F8E /* ParkBenchTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7577C409235124AA00E82F8E /* ParkBenchTimer.swift */; };
 		7577C40C23512AEC00E82F8E /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7577C40B23512AEC00E82F8E /* Firebase.swift */; };
 		757F31631DBE5E16002BB03F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 757F31611DBE5E16002BB03F /* GoogleService-Info.plist */; };
@@ -223,7 +222,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				755DB8DC213C5C390092756E /* StoreKit.framework in Frameworks */,
 				9552F5CFA445C643C39142C2 /* Pods_BusMedellin.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -612,7 +610,7 @@
 				ORGANIZATIONNAME = "Kevin Delord";
 				TargetAttributes = {
 					758E10331DBD92D000D872BC = {
-						DevelopmentTeam = VYFF455VZD;
+						DevelopmentTeam = QXY3J9PHW4;
 						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
@@ -966,11 +964,10 @@
 			baseConfigurationReference = 14962F37B68363BBD1DB2412 /* Pods-BusMedellin.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 9;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = VYFF455VZD;
+				DEVELOPMENT_TEAM = QXY3J9PHW4;
 				INFOPLIST_FILE = "$(SRCROOT)/Configuration/BusMedellin-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -986,10 +983,9 @@
 			baseConfigurationReference = EC1D87735014DA38EA85466A /* Pods-BusMedellin.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Apple Distribution";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 9;
-				DEVELOPMENT_TEAM = VYFF455VZD;
+				DEVELOPMENT_TEAM = QXY3J9PHW4;
 				INFOPLIST_FILE = "$(SRCROOT)/Configuration/BusMedellin-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

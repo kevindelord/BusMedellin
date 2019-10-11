@@ -34,6 +34,7 @@
 		758E104E1DBD92D000D872BC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 75640BEC1DAF19C5002B4A56 /* Settings.bundle */; };
 		758E10501DBD92D000D872BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75513BDF1DB019C600957F40 /* Assets.xcassets */; };
 		758E10511DBD92D000D872BC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 75C5E9571DBD673700FCE9D0 /* Localizable.strings */; };
+		759984A62350F61000C96A75 /* RouteDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759984A52350F61000C96A75 /* RouteDatabase.swift */; };
 		75B41C5721343D8500588CE8 /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75B41C5521343D8500588CE8 /* Configuration.plist */; };
 		75BE186421A0B1EA008F2DC4 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BE186221A0B1EA008F2DC4 /* Location.swift */; };
 		75BE187421A0B7CF008F2DC4 /* URLComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BE186C21A0B7CF008F2DC4 /* URLComponents.swift */; };
@@ -140,6 +141,7 @@
 		75805BC31DAF5B7E00DACFF5 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Route.swift; path = Models/Route.swift; sourceTree = "<group>"; };
 		758E10591DBD92D100D872BC /* BusMedellin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BusMedellin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		758E105B1DBD930A00D872BC /* BusMedellin-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BusMedellin-Info.plist"; sourceTree = "<group>"; };
+		759984A52350F61000C96A75 /* RouteDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDatabase.swift; sourceTree = "<group>"; };
 		75B41C5521343D8500588CE8 /* Configuration.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Configuration.plist; sourceTree = "<group>"; };
 		75BE186221A0B1EA008F2DC4 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Location.swift; path = Models/Location.swift; sourceTree = "<group>"; };
 		75BE186C21A0B7CF008F2DC4 /* URLComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLComponents.swift; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 				754A30132349F8EB000A024C /* RouteCollectorDelegate.swift */,
 				754A30152349F95F000A024C /* RouteCollector.swift */,
 				75052ACB213833AE0063AE05 /* RouteCollector+Errors.swift */,
+				759984A52350F61000C96A75 /* RouteDatabase.swift */,
 				754A30172349F9D6000A024C /* RouteJSON.swift */,
 				754A3019234A0C27000A024C /* CoordindateJSON.swift */,
 				754A301B234A0C3E000A024C /* FailableCodableArray.swift */,
@@ -793,6 +796,7 @@
 				75BE18CE21A0B858008F2DC4 /* SearchResultCoordinator.swift in Sources */,
 				75BE190E21A0B858008F2DC4 /* RoutePageControllerDelegate.swift in Sources */,
 				750F9D3C21A1735700919626 /* Color.swift in Sources */,
+				759984A62350F61000C96A75 /* RouteDatabase.swift in Sources */,
 				75BE18D421A0B858008F2DC4 /* MapContainedElement.swift in Sources */,
 				75BE18F021A0B858008F2DC4 /* MapActionDelegate.swift in Sources */,
 				75BE187E21A0B7CF008F2DC4 /* UIAlertController.swift in Sources */,

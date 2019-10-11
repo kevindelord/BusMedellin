@@ -8,36 +8,22 @@
 
 import MapKit
 
-struct CoordindateJSON : Codable {
-	var latitude: Double
-	var longitude: Double
+typealias CoordindateJSON = [Double]
+
+// Data received from the local JSON: [longitude, latitude].
+extension CoordindateJSON {
+
+	var latitude: Double {
+		return self[1]
+	}
+
+	var longitude: Double {
+		return self[0]
+	}
 
 	var coordinate2D : CLLocationCoordinate2D {
 		return CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
 	}
-}
-
-extension CoordindateJSON {
-
-	static func generate(from stringCoordinates: String) -> [CoordindateJSON] {
-		var locations = [CoordindateJSON]()
-		for singleStringCoordinate in stringCoordinates.split(separator: " ") {
-			let coordinates = singleStringCoordinate.split(separator: ",")
-			guard
-				let latitude = Double(coordinates[1]),
-				let longitude = Double(coordinates[0]) else {
-					continue
-			}
-
-			let location = CoordindateJSON(latitude: latitude, longitude: longitude)
-			locations.append(location)
-		}
-
-		return locations
-	}
-}
-
-extension CoordindateJSON {
 
 	public func isAroundLocation(_ location: CLLocation, radius: Double) -> Bool {
 		let currentLocation = CLLocation(latitude: self.latitude, longitude: self.longitude)

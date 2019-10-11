@@ -37,10 +37,7 @@ struct RouteJSON	: Codable {
 		self.district = try container.decode(String.self, forKey: .NomBar)
 		self.area = try container.decode(String.self, forKey: .NomCom)
 		self.number = try container.decode(String.self, forKey: .Numero_Rut)
-
-		// Generate the coordinates from the received String.
-		let stringCoordinates = try container.decode(String.self, forKey: .geometry)
-		self.geometry = CoordindateJSON.generate(from: stringCoordinates)
+		self.geometry = try container.decode([CoordindateJSON].self, forKey: .geometry)
 
 		// Only use valid values for the district and the area.
 		self.district = (RouteJSON.invalidValues.contains(self.district) == true ? "" : self.district)

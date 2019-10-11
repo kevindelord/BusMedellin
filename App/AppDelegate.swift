@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		Appirater.setup()
 		Analytics.setup()
 		Buglife.shared().start(withAPIKey: Configuration().buglifeIdentifier)
+		RouteDatabase.setup()
 
 		return true
 	}

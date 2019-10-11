@@ -8,6 +8,8 @@
 
 import CoreFoundation
 
+// swiftlint:disable comments_capitalized_ignore_possible_code
+
 /// Timer class based on CoreFoundation's CFAbsoluteTime.
 ///
 /// This class is not actively used in the project but became very handy when integrating the new offline database.
@@ -43,3 +45,5 @@ class ParkBenchTimer {
 		return (endTime - self.startTime)
 	}
 }
+
+// swiftlint:enable comments_capitalized_ignore_possible_code

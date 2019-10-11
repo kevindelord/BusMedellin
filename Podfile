@@ -11,7 +11,8 @@ target 'BusMedellin' do
 	pod 'CHIPageControl/Jalapeno', '~> 0.2'
 
 	# Google Analytics + Crash Reports
-	pod 'Firebase/Core', '~> 6.9.0'
+	pod 'Firebase/Analytics', '~> 6.10.0'
+	pod 'Firebase/Performance', '~> 6.10.0'
 	pod 'Fabric', '~> 1.10.2'
 	pod 'Crashlytics', '~> 3.14.0'
 end
